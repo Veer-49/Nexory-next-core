@@ -7,7 +7,10 @@ export default defineConfig({
     rollupOptions: {
       input: './index-3.html'
     },
-    assetsDir: 'assets'
+    assetsDir: 'assets',
+    minify: 'terser',
+    sourcemap: false,
+    chunkSizeWarningLimit: 1000
   },
   server: {
     port: 3000,
