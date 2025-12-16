@@ -5,7 +5,11 @@ export default defineConfig({
   build: {
     outDir: 'dist',
     rollupOptions: {
-      input: './index-3.html'
+      input: {
+        main: './index-3.html',
+        header: './header.html',
+        footer: './footer.html'
+      }
     },
     assetsDir: 'assets',
     minify: 'terser',
