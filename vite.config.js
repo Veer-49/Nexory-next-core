@@ -6,7 +6,8 @@ export default defineConfig({
     outDir: 'dist',
     rollupOptions: {
       input: './index-3.html'
-    }
+    },
+    assetsDir: 'assets'
   },
   server: {
     port: 3000,
