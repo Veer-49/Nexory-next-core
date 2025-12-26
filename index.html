@@ -26,6 +26,7 @@
 
     <!-- template styles -->
     <link rel="stylesheet" href="assets/css/ogency.css" />
+    <link rel="stylesheet" href="assets/css/project-showcase.css" />
 </head>
 
 <body class="custom-cursor">
@@ -44,6 +45,7 @@
                     // Re-initialize sticky header after dynamic load
                     if (window.$ && window.$.fn) {
                         initializeStickyHeader();
+                        initializeMobileMenu();
                     }
                 });
             
@@ -60,6 +62,22 @@
                     let mobileNavContainer = document.querySelector(".mobile-nav__container");
                     mobileNavContainer.innerHTML = navContent;
                 }
+            }
+            
+            // Function to initialize mobile menu
+            function initializeMobileMenu() {
+                // Wait a bit for dynamic content to fully load
+                setTimeout(function() {
+                    if ($(".mobile-nav__toggler").length) {
+                        $(".mobile-nav__toggler").off("click").on("click", function (e) {
+                            e.preventDefault();
+                            $(".mobile-nav__wrapper").toggleClass("expanded");
+                            $("body").toggleClass("locked");
+                            console.log("Mobile menu clicked");
+                        });
+                        console.log("Mobile menu initialized");
+                    }
+                }, 100);
             }
         </script>
         <!--Hero Banner Start-->
@@ -382,54 +400,94 @@
         </section>
         <!-- Why Choose End -->
         <!-- Project Start -->
-        <section class="project-scroll">
+        <section class="project-showcase">
             <div class="container">
                 <div class="section-title text-center">
                     <h5 class="section-title__tagline section-title__tagline--has-dots">project section</h5>
                     <h2 class="section-title__title">Explore our best recently<br> completed projects</h2>
-                </div><!-- /.project-section title -->
-            </div>
-            <div class="project-scroll__items">
-                <div class="project-scroll__item project-scroll__item--right">
-                    <div class="project-two__item__image"><img src="assets/images/project/project-2-1.jpg" alt="ogency"></div><!-- /.project-image -->
-                    <div class="project-two__item__content">
-                        <p class="project-two__item__content__cats"><a href="projects.html">Digital</a>, <a href="projects.html">Agency</a></p><!-- /.project-category -->
-                        <h3 class="project-two__item__content__title"><a href="project-details.html">Asus marketing</a></h3><!-- /.project-title -->
+                </div>
+                
+                <div class="project-showcase__items">
+                    <div class="project-showcase__item">
+                        <div class="project-showcase__image">
+                            <img src="assets/images/project/project-2-1.jpg" alt="Asus marketing">
+                            <div class="project-showcase__overlay">
+                                <div class="project-showcase__content">
+                                    <p class="project-showcase__cats"><a href="projects.html">Digital</a>, <a href="projects.html">Agency</a></p>
+                                    <h3 class="project-showcase__title"><a href="project-details.html">Asus marketing</a></h3>
+                                    <a href="project-details.html" class="project-showcase__link">
+                                        <span class="icon-right-arrow"></span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                </div><!-- /.project-item -->
-                <div class="project-scroll__item project-scroll__item--left">
-                    <div class="project-two__item__image"><img src="assets/images/project/project-2-2.jpg" alt="ogency"></div><!-- /.project-image -->
-                    <div class="project-two__item__content">
-                        <p class="project-two__item__content__cats"><a href="projects.html">Digital</a>, <a href="projects.html">Agency</a></p><!-- /.project-category -->
-                        <h3 class="project-two__item__content__title"><a href="project-details.html">Asus marketing</a></h3><!-- /.project-title -->
+                    
+                    <div class="project-showcase__item">
+                        <div class="project-showcase__image">
+                            <img src="assets/images/project/project-2-2.jpg" alt="Asus marketing">
+                            <div class="project-showcase__overlay">
+                                <div class="project-showcase__content">
+                                    <p class="project-showcase__cats"><a href="projects.html">Digital</a>, <a href="projects.html">Agency</a></p>
+                                    <h3 class="project-showcase__title"><a href="project-details.html">Asus marketing</a></h3>
+                                    <a href="project-details.html" class="project-showcase__link">
+                                        <span class="icon-right-arrow"></span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                </div><!-- /.project-item -->
-                <div class="project-scroll__item project-scroll__item--right">
-                    <div class="project-two__item__image"><img src="assets/images/project/project-2-3.jpg" alt="ogency"></div><!-- /.project-image -->
-                    <div class="project-two__item__content">
-                        <p class="project-two__item__content__cats"><a href="projects.html">Digital</a>, <a href="projects.html">Agency</a></p><!-- /.project-category -->
-                        <h3 class="project-two__item__content__title"><a href="project-details.html">Asus marketing</a></h3><!-- /.project-title -->
+                    
+                    <div class="project-showcase__item">
+                        <div class="project-showcase__image">
+                            <img src="assets/images/project/project-2-3.jpg" alt="Asus marketing">
+                            <div class="project-showcase__overlay">
+                                <div class="project-showcase__content">
+                                    <p class="project-showcase__cats"><a href="projects.html">Digital</a>, <a href="projects.html">Agency</a></p>
+                                    <h3 class="project-showcase__title"><a href="project-details.html">Asus marketing</a></h3>
+                                    <a href="project-details.html" class="project-showcase__link">
+                                        <span class="icon-right-arrow"></span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                </div><!-- /.project-item -->
-                <div class="project-scroll__item project-scroll__item--left">
-                    <div class="project-two__item__image"><img src="assets/images/project/project-2-4.jpg" alt="ogency"></div><!-- /.project-image -->
-                    <div class="project-two__item__content">
-                        <p class="project-two__item__content__cats"><a href="projects.html">Digital</a>, <a href="projects.html">Agency</a></p><!-- /.project-category -->
-                        <h3 class="project-two__item__content__title"><a href="project-details.html">Asus marketing</a></h3><!-- /.project-title -->
+                    
+                    <div class="project-showcase__item">
+                        <div class="project-showcase__image">
+                            <img src="assets/images/project/project-2-4.jpg" alt="Asus marketing">
+                            <div class="project-showcase__overlay">
+                                <div class="project-showcase__content">
+                                    <p class="project-showcase__cats"><a href="projects.html">Digital</a>, <a href="projects.html">Agency</a></p>
+                                    <h3 class="project-showcase__title"><a href="project-details.html">Asus marketing</a></h3>
+                                    <a href="project-details.html" class="project-showcase__link">
+                                        <span class="icon-right-arrow"></span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                </div><!-- /.project-item -->
-                <div class="project-scroll__item project-scroll__item--right">
-                    <div class="project-two__item__image"><img src="assets/images/project/project-2-5.jpg" alt="ogency"></div><!-- /.project-image -->
-                    <div class="project-two__item__content">
-                        <p class="project-two__item__content__cats"><a href="projects.html">Digital</a>, <a href="projects.html">Agency</a></p><!-- /.project-category -->
-                        <h3 class="project-two__item__content__title"><a href="project-details.html">Asus marketing</a></h3><!-- /.project-title -->
+                    
+                    <div class="project-showcase__item">
+                        <div class="project-showcase__image">
+                            <img src="assets/images/project/project-2-5.jpg" alt="Asus marketing">
+                            <div class="project-showcase__overlay">
+                                <div class="project-showcase__content">
+                                    <p class="project-showcase__cats"><a href="projects.html">Digital</a>, <a href="projects.html">Agency</a></p>
+                                    <h3 class="project-showcase__title"><a href="project-details.html">Asus marketing</a></h3>
+                                    <a href="project-details.html" class="project-showcase__link">
+                                        <span class="icon-right-arrow"></span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                </div><!-- /.project-item -->
-            </div><!-- /.project-scroll-items -->
-            
-            <!-- View All Projects Button -->
-            <div class="project-scroll__contact-btn wow fadeInUp animated" data-wow-delay="400ms">
-                <a href="projects.html" class="ogency-btn service-two__circular-btn">View All Projects</a>
+                </div>
+                
+                <!-- View All Projects Button -->
+                <div class="project-showcase__contact-btn wow fadeInUp animated" data-wow-delay="400ms">
+                    <a href="projects.html" class="ogency-btn service-two__circular-btn">View All Projects</a>
+                </div>
             </div>
         </section>
         <!-- Project End -->
@@ -734,6 +792,9 @@
     <script src="https://cdn.jsdelivr.net/npm/countdown@2.6.0/dist/countdown.min.js"></script>
     <!-- template js -->
     <script src="assets/js/ogency.js"></script>
+    
+    <!-- Project Showcase Animations -->
+    <script src="assets/js/project-showcase.js"></script>
 
     <!-- Custom Counter Script -->
     <script>
