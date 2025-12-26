@@ -10,6 +10,20 @@ export default defineConfig({
       input: {
         main: './index-3.html',
         index: './index.html',
+        about: './about.html',
+        contact: './contact.html',
+        apps: './apps-development.html',
+        digital: './digital-marketing.html',
+        faq: './faq.html',
+        graphic: './graphic-designing.html',
+        privacy: './privacy-policy.html',
+        projects: './projects.html',
+        services: './services-carousel-2.html',
+        terms: './terms&condition.html',
+        webApplication: './web-application.html',
+        webDesigning: './web-designing.html',
+        webDevelopment: './web-development.html',
+        websiteDevelopment: './website-development.html',
         header: './header.html',
         footer: './footer.html'
       }
