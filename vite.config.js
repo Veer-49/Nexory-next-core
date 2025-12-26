@@ -9,6 +9,7 @@ export default defineConfig({
     rollupOptions: {
       input: {
         main: './index-3.html',
+        index: './index.html',
         header: './header.html',
         footer: './footer.html'
       }
