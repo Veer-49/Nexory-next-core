@@ -195,7 +195,7 @@
       $("body").toggleClass("locked");
     });
   }
-  if ($(".odometer").length) {
+  if ($(".odometer").length && $.fn.appear) {
     $(".odometer").appear(function (e) {
       var odo = $(".odometer");
       odo.each(function () {
@@ -380,7 +380,7 @@
     galleryMasonaryLayout();
     priceFilter();
 
-    if ($(".circle-progress").length) {
+    if ($(".circle-progress").length && $.fn.appear) {
       $(".circle-progress").appear(function () {
         let circleProgress = $(".circle-progress");
         circleProgress.each(function () {
@@ -516,7 +516,7 @@
   };
 
   // Popular Causes Progress Bar
-  if ($(".count-bar").length) {
+  if ($(".count-bar").length && $.fn.appear) {
     $(".count-bar").appear(
       function () {
         var el = $(this);
@@ -529,7 +529,7 @@
   }
 
   //Fact Counter + Text Count
-  if ($(".count-box").length) {
+  if ($(".count-box").length && $.fn.appear) {
     $(".count-box").appear(
       function () {
         var $t = $(this),
