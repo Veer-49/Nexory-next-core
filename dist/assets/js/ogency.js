@@ -376,9 +376,6 @@
 
   // window load event
   $(window).on("load", function () {
-    if ($(".preloader").length) {
-      $(".preloader").fadeOut();
-    }
     thmTinyInit();
     galleryMasonaryLayout();
     priceFilter();
