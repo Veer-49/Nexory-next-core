@@ -28,28 +28,24 @@ export default defineConfig({
     {
       name: 'copy-assets',
       writeBundle() {
+        const fs = require('fs')
+        const path = require('path')
+        
         const copyDir = (src, dest) => {
-          if (!existsSync(dest)) {
-            mkdirSync(dest, { recursive: true })
+          if (!fs.existsSync(dest)) {
+            fs.mkdirSync(dest, { recursive: true })
           }
-          // Simple copy for now - in a real scenario you'd want recursive copy
-          try {
-            const fs = require('fs')
-            const path = require('path')
-            if (existsSync(src)) {
-              const files = fs.readdirSync(src)
-              files.forEach(file => {
-                const srcPath = path.join(src, file)
-                const destPath = path.join(dest, file)
-                if (fs.statSync(srcPath).isDirectory()) {
-                  copyDir(srcPath, destPath)
-                } else {
-                  fs.copyFileSync(srcPath, destPath)
-                }
-              })
+          if (fs.existsSync(src)) {
+            const entries = fs.readdirSync(src, { withFileTypes: true })
+            for (const entry of entries) {
+              const srcPath = path.join(src, entry.name)
+              const destPath = path.join(dest, entry.name)
+              if (entry.isDirectory()) {
+                copyDir(srcPath, destPath)
+              } else {
+                fs.copyFileSync(srcPath, destPath)
+              }
             }
-          } catch (err) {
-            console.log('Copy assets warning:', err.message)
           }
         }
         
