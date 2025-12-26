@@ -22,9 +22,7 @@ export default defineConfig({
         webApplication: './web-application.html',
         webDesigning: './web-designing.html',
         webDevelopment: './web-development.html',
-        websiteDevelopment: './website-development.html',
-        header: './header.html',
-        footer: './footer.html'
+        websiteDevelopment: './website-development.html'
       }
     },
     assetsDir: 'assets',
@@ -62,8 +60,17 @@ export default defineConfig({
           }
         }
         
+        // Copy assets directories
         copyDir('assets/vendors', 'dist/assets/vendors')
         copyDir('assets/js', 'dist/assets/js')
+        
+        // Copy header and footer files
+        if (fs.existsSync('header.html')) {
+          fs.copyFileSync('header.html', 'dist/header.html')
+        }
+        if (fs.existsSync('footer.html')) {
+          fs.copyFileSync('footer.html', 'dist/footer.html')
+        }
       }
     }
   ]
