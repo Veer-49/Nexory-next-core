@@ -1672,41 +1672,6 @@ h6 {
   font-family: "azino-icon";
 }
 
-.preloader {
-  position: fixed;
-  background-color: var(--ogency-black);
-  background-position: center center;
-  background-repeat: no-repeat;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  z-index: 9991;
-  display: -webkit-box;
-  display: flex;
-  -webkit-box-pack: center;
-  justify-content: center;
-  -webkit-box-align: center;
-  align-items: center;
-  text-align: center;
-}
-
-.preloader__image {
-  -webkit-animation-fill-mode: both;
-  animation-fill-mode: both;
-  -webkit-animation-name: flipInY;
-  animation-name: flipInY;
-  -webkit-animation-duration: 2s;
-  animation-duration: 2s;
-  -webkit-animation-iteration-count: infinite;
-  animation-iteration-count: infinite;
-  background-repeat: no-repeat;
-  background-position: center center;
-  background-size: 60px auto;
-  width: 100%;
-  height: 100%;
-}
-
 /* scroll to top */
 .scroll-top {
   position: fixed;
