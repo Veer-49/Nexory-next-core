@@ -1,0 +1,1424 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Services</title>
+    
+    <!-- fonts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com/" />
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap" rel="stylesheet" />
+
+
+    <!-- template styles -->
+  <link rel="stylesheet" crossorigin href="/assets/owl.theme.default-PTqRoNsN.css">
+  <link rel="stylesheet" crossorigin href="/assets/ogency-CMZcZUCg.css">
+</head>
+
+<body class="custom-cursor">
+
+    <div class="custom-cursor__cursor"></div>
+    <div class="custom-cursor__cursor-two"></div>
+
+    <div class="preloader">
+        <div class="preloader__image" style="background-image: url(/assets/loader-D3C5i_gk.png);"></div>
+    </div>
+    <!-- /.preloader -->
+    <div class="page-wrapper">
+        <!-- Include centralized header -->
+        <div id="header-container"></div>
+        <script>
+            fetch('header.html')
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('header-container').innerHTML = data;
+                    // Re-initialize sticky header after dynamic load
+                    if (window.$ && window.$.fn) {
+                        initializeStickyHeader();
+                    }
+                });
+            
+            // Function to initialize sticky header
+            function initializeStickyHeader() {
+                if ($(".sticky-header__content").length) {
+                    let navContent = document.querySelector(".main-menu").innerHTML;
+                    let mobileNavContainer = document.querySelector(".sticky-header__content");
+                    mobileNavContainer.innerHTML = navContent;
+                }
+                
+                if ($(".main-menu__nav").length && $(".mobile-nav__container").length) {
+                    let navContent = document.querySelector(".main-menu__nav").innerHTML;
+                    let mobileNavContainer = document.querySelector(".mobile-nav__container");
+                    mobileNavContainer.innerHTML = navContent;
+                }
+            }
+        </script>
+        <section class="page-header">
+            <div class="page-header__bg"></div>
+            <!-- /.page-header__bg -->
+            <div class="page-header__overlay"></div>
+            <!-- /.page-header__bg -->
+            <div class="container">
+                <ul class="page-header__breadcrumb list-unstyled">
+                    <li><a href="index-2.html">Home</a></li>
+                    <li><span>Services</span></li>
+                </ul><!-- /.page-breadcrumb list-unstyled -->
+                <h2 class="page-header__title" data-text="Services">Services</h2><!-- /.page-title -->
+            </div><!-- /.container -->
+        </section><!-- /.page-header -->
+        <section class="service-page__grid">
+            <div class="container">
+                <div class="service-grid">
+                    <div class="item">
+                        <div class="service-three__item">
+                            <div class="service-three__item__thumb">
+                                <img src="/assets/services-3-1-DdLKgVZu.jpg" alt="ogency" />
+                            </div><!-- /.service-image -->
+                            <div class="service-three__item__normal">
+                                <h3 class="service-three__item__normal__title">Web Development</h3>
+                            </div><!-- /.service-normal-content -->
+                            <div class="service-three__item__hover">
+                                <h3 class="service-three__item__hover__title">
+                                    <a href="web-development.html">Web Development</a>
+                                </h3><!-- /.service-title -->
+                                <p class="service-three__item__hover__text">Professional web development services for modern businesses.</p><!-- /.service-content -->
+                                <a class="service-three__item__hover__btn" href="#web-development-details" onclick="scrollToService('web-development-details')">Read More<span class="icon-down-right"></span></a><!-- /.service-read-more -->
+                            </div><!-- /.service-hover-content -->
+                        </div><!-- /.service-card-three -->
+                    </div>
+                    <div class="item">
+                        <div class="service-three__item">
+                            <div class="service-three__item__thumb">
+                                <img src="/assets/services-3-2-DJ9xKJbG.jpg" alt="ogency" />
+                            </div><!-- /.service-image -->
+                            <div class="service-three__item__normal">
+                                <h3 class="service-three__item__normal__title">Android App Development</h3>
+                            </div><!-- /.service-normal-content -->
+                            <div class="service-three__item__hover">
+                                <h3 class="service-three__item__hover__title">
+                                    <a href="android-development.html">Android App Development</a>
+                                </h3><!-- /.service-title -->
+                                <p class="service-three__item__hover__text">Native Android app development for all devices.</p><!-- /.service-content -->
+                                <a class="service-three__item__hover__btn" href="#android-development-details" onclick="scrollToService('android-development-details')">Read More<span class="icon-down-right"></span></a><!-- /.service-read-more -->
+                            </div><!-- /.service-hover-content -->
+                        </div><!-- /.service-card-three -->
+                    </div>
+                    <div class="item">
+                        <div class="service-three__item">
+                            <div class="service-three__item__thumb">
+                                <img src="/assets/services-3-3-CYG4hueB.jpg" alt="ogency" />
+                            </div><!-- /.service-image -->
+                            <div class="service-three__item__normal">
+                                <h3 class="service-three__item__normal__title">IOS App Development</h3>
+                            </div><!-- /.service-normal-content -->
+                            <div class="service-three__item__hover">
+                                <h3 class="service-three__item__hover__title">
+                                    <a href="ios-development.html">IOS App Development</a>
+                                </h3><!-- /.service-title -->
+                                <p class="service-three__item__hover__text">Native iOS app development for iPhone and iPad.</p><!-- /.service-content -->
+                                <a class="service-three__item__hover__btn" href="#ios-development-details" onclick="scrollToService('ios-development-details')">Read More<span class="icon-down-right"></span></a><!-- /.service-read-more -->
+                            </div><!-- /.service-hover-content -->
+                        </div><!-- /.service-card-three -->
+                    </div>
+                    <div class="item">
+                        <div class="service-three__item">
+                            <div class="service-three__item__thumb">
+                                <img src="/assets/services-3-4-DYWKbUs5.jpg" alt="ogency" />
+                            </div><!-- /.service-image -->
+                            <div class="service-three__item__normal">
+                                <h3 class="service-three__item__normal__title">AI Integration</h3>
+                            </div><!-- /.service-normal-content -->
+                            <div class="service-three__item__hover">
+                                <h3 class="service-three__item__hover__title">
+                                    <a href="ai-integration.html">AI Integration</a>
+                                </h3><!-- /.service-title -->
+                                <p class="service-three__item__hover__text">Cutting-edge AI solutions for your business needs.</p><!-- /.service-content -->
+                                <a class="service-three__item__hover__btn" href="#ai-integration-details" onclick="scrollToService('ai-integration-details')">Read More<span class="icon-down-right"></span></a><!-- /.service-read-more -->
+                            </div><!-- /.service-hover-content -->
+                        </div><!-- /.service-card-three -->
+                    </div>
+                    <div class="item">
+                        <div class="service-three__item">
+                            <div class="service-three__item__thumb">
+                                <img src="/assets/services-3-1-DdLKgVZu.jpg" alt="ogency" />
+                            </div><!-- /.service-image -->
+                            <div class="service-three__item__normal">
+                                <h3 class="service-three__item__normal__title">Digital Marketing</h3>
+                            </div><!-- /.service-normal-content -->
+                            <div class="service-three__item__hover">
+                                <h3 class="service-three__item__hover__title">
+                                    <a href="digital-marketing.html">Digital Marketing</a>
+                                </h3><!-- /.service-title -->
+                                <p class="service-three__item__hover__text">Comprehensive digital marketing strategies.</p><!-- /.service-content -->
+                                <a class="service-three__item__hover__btn" href="#digital-marketing-details" onclick="scrollToService('digital-marketing-details')">Read More<span class="icon-down-right"></span></a><!-- /.service-read-more -->
+                            </div><!-- /.service-hover-content -->
+                        </div><!-- /.service-card-three -->
+                    </div>
+                    <div class="item">
+                        <div class="service-three__item">
+                            <div class="service-three__item__thumb">
+                                <img src="/assets/services-3-2-DJ9xKJbG.jpg" alt="ogency" />
+                            </div><!-- /.service-image -->
+                            <div class="service-three__item__normal">
+                                <h3 class="service-three__item__normal__title">E-Commerce</h3>
+                            </div><!-- /.service-normal-content -->
+                            <div class="service-three__item__hover">
+                                <h3 class="service-three__item__hover__title">
+                                    <a href="e-commerce.html">E-Commerce</a>
+                                </h3><!-- /.service-title -->
+                                <p class="service-three__item__hover__text">Complete e-commerce solutions for online stores.</p><!-- /.service-content -->
+                                <a class="service-three__item__hover__btn" href="#e-commerce-details" onclick="scrollToService('e-commerce-details')">Read More<span class="icon-down-right"></span></a><!-- /.service-read-more -->
+                            </div><!-- /.service-hover-content -->
+                        </div><!-- /.service-card-three -->
+                    </div>
+                    <div class="item">
+                        <div class="service-three__item">
+                            <div class="service-three__item__thumb">
+                                <img src="/assets/services-3-3-CYG4hueB.jpg" alt="ogency" />
+                            </div><!-- /.service-image -->
+                            <div class="service-three__item__normal">
+                                <h3 class="service-three__item__normal__title">Payment Integration</h3>
+                            </div><!-- /.service-normal-content -->
+                            <div class="service-three__item__hover">
+                                <h3 class="service-three__item__hover__title">
+                                    <a href="payment-integration.html">Payment Integration</a>
+                                </h3><!-- /.service-title -->
+                                <p class="service-three__item__hover__text">Secure payment gateway integration services.</p><!-- /.service-content -->
+                                <a class="service-three__item__hover__btn" href="#payment-integration-details" onclick="scrollToService('payment-integration-details')">Read More<span class="icon-down-right"></span></a><!-- /.service-read-more -->
+                            </div><!-- /.service-hover-content -->
+                        </div><!-- /.service-card-three -->
+                    </div>
+                    <div class="item">
+                        <div class="service-three__item">
+                            <div class="service-three__item__thumb">
+                                <img src="/assets/services-3-4-DYWKbUs5.jpg" alt="ogency" />
+                            </div><!-- /.service-image -->
+                            <div class="service-three__item__normal">
+                                <h3 class="service-three__item__normal__title">CMS Web Development</h3>
+                            </div><!-- /.service-normal-content -->
+                            <div class="service-three__item__hover">
+                                <h3 class="service-three__item__hover__title">
+                                    <a href="cms-development.html">CMS Web Development</a>
+                                </h3><!-- /.service-title -->
+                                <p class="service-three__item__hover__text">Custom CMS development for easy content management.</p><!-- /.service-content -->
+                                <a class="service-three__item__hover__btn" href="#cms-development-details" onclick="scrollToService('cms-development-details')">Read More<span class="icon-down-right"></span></a><!-- /.service-read-more -->
+                            </div><!-- /.service-hover-content -->
+                        </div><!-- /.service-card-three -->
+                    </div>
+                    <div class="item">
+                        <div class="service-three__item">
+                            <div class="service-three__item__thumb">
+                                <img src="/assets/services-3-1-DdLKgVZu.jpg" alt="ogency" />
+                            </div><!-- /.service-image -->
+                            <div class="service-three__item__normal">
+                                <h3 class="service-three__item__normal__title">Web Hosting</h3>
+                            </div><!-- /.service-normal-content -->
+                            <div class="service-three__item__hover">
+                                <h3 class="service-three__item__hover__title">
+                                    <a href="web-hosting.html">Web Hosting</a>
+                                </h3><!-- /.service-title -->
+                                <p class="service-three__item__hover__text">Reliable and secure web hosting solutions.</p><!-- /.service-content -->
+                                <a class="service-three__item__hover__btn" href="#web-hosting-details" onclick="scrollToService('web-hosting-details')">Read More<span class="icon-down-right"></span></a><!-- /.service-read-more -->
+                            </div><!-- /.service-hover-content -->
+                        </div><!-- /.service-card-three -->
+                    </div>
+                    <div class="item">
+                        <div class="service-three__item">
+                            <div class="service-three__item__thumb">
+                                <img src="/assets/services-3-2-DJ9xKJbG.jpg" alt="ogency" />
+                            </div><!-- /.service-image -->
+                            <div class="service-three__item__normal">
+                                <h3 class="service-three__item__normal__title">Email Automation</h3>
+                            </div><!-- /.service-normal-content -->
+                            <div class="service-three__item__hover">
+                                <h3 class="service-three__item__hover__title">
+                                    <a href="email-automation.html">Email Automation</a>
+                                </h3><!-- /.service-title -->
+                                <p class="service-three__item__hover__text">Automated email marketing campaigns.</p><!-- /.service-content -->
+                                <a class="service-three__item__hover__btn" href="#email-automation-details" onclick="scrollToService('email-automation-details')">Read More<span class="icon-down-right"></span></a><!-- /.service-read-more -->
+                            </div><!-- /.service-hover-content -->
+                        </div><!-- /.service-card-three -->
+                    </div>
+                    <div class="item">
+                        <div class="service-three__item">
+                            <div class="service-three__item__thumb">
+                                <img src="/assets/services-3-3-CYG4hueB.jpg" alt="ogency" />
+                            </div><!-- /.service-image -->
+                            <div class="service-three__item__normal">
+                                <h3 class="service-three__item__normal__title">Influencer Marketing</h3>
+                            </div><!-- /.service-normal-content -->
+                            <div class="service-three__item__hover">
+                                <h3 class="service-three__item__hover__title">
+                                    <a href="influencer-marketing.html">Influencer Marketing</a>
+                                </h3><!-- /.service-title -->
+                                <p class="service-three__item__hover__text">Strategic influencer marketing campaigns.</p><!-- /.service-content -->
+                                <a class="service-three__item__hover__btn" href="#influencer-marketing-details" onclick="scrollToService('influencer-marketing-details')">Read More<span class="icon-down-right"></span></a><!-- /.service-read-more -->
+                            </div><!-- /.service-hover-content -->
+                        </div><!-- /.service-card-three -->
+                    </div>
+                    <div class="item">
+                        <div class="service-three__item">
+                            <div class="service-three__item__thumb">
+                                <img src="/assets/services-3-1-DdLKgVZu.jpg" alt="ogency" />
+                            </div><!-- /.service-image -->
+                            <div class="service-three__item__normal">
+                                <h3 class="service-three__item__normal__title">Web Design</h3>
+                            </div><!-- /.service-normal-content -->
+                            <div class="service-three__item__hover">
+                                <h3 class="service-three__item__hover__title">
+                                    <a href="web-designing.html">Web Design</a>
+                                </h3><!-- /.service-title -->
+                                <p class="service-three__item__hover__text">Creative and responsive web design solutions.</p><!-- /.service-content -->
+                                <a class="service-three__item__hover__btn" href="#web-design-details" onclick="scrollToService('web-design-details')">Read More<span class="icon-down-right"></span></a><!-- /.service-read-more -->
+                            </div><!-- /.service-hover-content -->
+                        </div><!-- /.service-card-three -->
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Service Details Sections -->
+        <section id="web-development-details" class="services-details" style="display: none;">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-4 col-lg-5">
+                        <div class="services-details__sidebar">
+                            <div class="services-details__services-list">
+                                <ul class="services-details__services list-unstyled">
+                                    <li><a href="#" onclick="showService('web-development-details')">Web Development</a></li>
+                                    <li><a href="#" onclick="showService('android-development-details')">Android App Development</a></li>
+                                    <li><a href="#" onclick="showService('ios-development-details')">IOS App Development</a></li>
+                                    <li><a href="#" onclick="showService('ai-integration-details')">AI Integration</a></li>
+                                    <li><a href="#" onclick="showService('digital-marketing-details')">Digital Marketing</a></li>
+                                    <li><a href="#" onclick="showService('e-commerce-details')">E-Commerce</a></li>
+                                    <li><a href="#" onclick="showService('payment-integration-details')">Payment Integration</a></li>
+                                    <li><a href="#" onclick="showService('cms-development-details')">CMS Web Development</a></li>
+                                    <li><a href="#" onclick="showService('web-hosting-details')">Web Hosting</a></li>
+                                    <li><a href="#" onclick="showService('email-automation-details')">Email Automation</a></li>
+                                    <li><a href="#" onclick="showService('influencer-marketing-details')">Influencer Marketing</a></li>
+                                    <li><a href="#" onclick="showService('web-design-details')">Web Design</a></li>
+                                </ul>
+                            </div>
+                            <div class="services-details__banner">
+                                <div class="services-details__banner__shape"></div>
+                                <div class="services-details__banner__image"><img src="/assets/banner-author-CZ63jT6g.png" alt="ogency"></div>
+                                <div class="services-details__banner__icon"><span class="icon-mobile-development"></span></div>
+                                <h3 class="services-details__banner__title">Are you looking for<br> a application development</h3>
+                                <a class="ogency-btn" href="contact.html">Contact</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-8 col-lg-7">
+                        <div class="services-details__content">
+                            <div class="services-details__thumb"><img src="/assets/service-details-development-BkU8FyR2.jpg" alt="ogency"></div>
+                            <h3 class="services-details__content__title">Web Development</h3>
+                            <p class="services-details__content__text">
+                                There are many variations of passages of lorem ipsum is simply free text available in the market, but the majority time you
+                                put aside to be in our office. Lorem ipsum dolor sit amet, consectetLorem ipsum dolor sit amet, consectetur adipisicing elit,
+                                sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipisicing elit,
+                                sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                            </p>
+                            <h4 class="services-details__content__title-two">Helping clients to solve application development problems</h4>
+                            <p class="services-details__content__text">
+                                Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi
+                                consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur.
+                            </p>
+                            <h3 class="services-details__content__title-three">Why choose?</h3>
+                            <p class="services-details__content__text">
+                                Quis lipsum simply free text available nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi
+                                consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur.
+                            </p>
+                            <ul class="services-details__points list-unstyled">
+                                <li>
+                                    <div class="services-details__points__icon"><span class="icon-success"></span></div>
+                                    <h3 class="services-details__points__title">Best creative<br> agency</h3>
+                                </li>
+                                <li>
+                                    <div class="services-details__points__icon"><span class="icon-job-promotion"></span></div>
+                                    <h3 class="services-details__points__title">99% success<br> rate</h3>
+                                </li>
+                                <li>
+                                    <div class="services-details__points__icon"><span class="icon-marketing"></span></div>
+                                    <h3 class="services-details__points__title">Quality<br> marketing</h3>
+                                </li>
+                            </ul>
+                            <div class="services-details__benefit">
+                                <div class="row">
+                                    <div class="col-xl-6 col-lg-12 col-md-6">
+                                        <div class="services-details__benefit__img">
+                                            <img src="/assets/services-details-benefit-img-w_iwWpMO.jpg" alt="ogency">
+                                        </div>
+                                    </div>
+                                    <div class="col-xl-6 col-lg-12 col-md-6">
+                                        <div class="services-details__benefit__content">
+                                            <h3 class="services-details__benefit__title">Our benefits</h3>
+                                            <p class="services-details__benefit__text">Get the best digital marketing from the aspro agency of exellence</p>
+                                            <ul class="services-details__benefit__lists list-unstyled">
+                                                <li><span class="fa fa-check-circle"></span>Cost Effective</li>
+                                                <li><span class="fa fa-check-circle"></span>Equal Opportunities</li>
+                                                <li><span class="fa fa-check-circle"></span>Creates High Brand Awareness</li>
+                                                <li><span class="fa fa-check-circle"></span>Higher ROI</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Android App Development Details -->
+        <section id="android-development-details" class="services-details" style="display: none;">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-4 col-lg-5">
+                        <div class="services-details__sidebar">
+                            <div class="services-details__services-list">
+                                <ul class="services-details__services list-unstyled">
+                                    <li><a href="#" onclick="showService('web-development-details')">Web Development</a></li>
+                                    <li><a href="#" onclick="showService('android-development-details')">Android App Development</a></li>
+                                    <li><a href="#" onclick="showService('ios-development-details')">IOS App Development</a></li>
+                                    <li><a href="#" onclick="showService('ai-integration-details')">AI Integration</a></li>
+                                    <li><a href="#" onclick="showService('digital-marketing-details')">Digital Marketing</a></li>
+                                    <li><a href="#" onclick="showService('e-commerce-details')">E-Commerce</a></li>
+                                    <li><a href="#" onclick="showService('payment-integration-details')">Payment Integration</a></li>
+                                    <li><a href="#" onclick="showService('cms-development-details')">CMS Web Development</a></li>
+                                    <li><a href="#" onclick="showService('web-hosting-details')">Web Hosting</a></li>
+                                    <li><a href="#" onclick="showService('email-automation-details')">Email Automation</a></li>
+                                    <li><a href="#" onclick="showService('influencer-marketing-details')">Influencer Marketing</a></li>
+                                    <li><a href="#" onclick="showService('web-design-details')">Web Design</a></li>
+                                </ul>
+                            </div>
+                            <div class="services-details__banner">
+                                <div class="services-details__banner__shape"></div>
+                                <div class="services-details__banner__image"><img src="/assets/banner-author-CZ63jT6g.png" alt="ogency"></div>
+                                <div class="services-details__banner__icon"><span class="icon-mobile-development"></span></div>
+                                <h3 class="services-details__banner__title">Are you looking for<br> Android app development</h3>
+                                <a class="ogency-btn" href="contact.html">Contact</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-8 col-lg-7">
+                        <div class="services-details__content">
+                            <div class="services-details__thumb"><img src="/assets/service-details-app-BNMfxaua.jpg" alt="ogency"></div>
+                            <h3 class="services-details__content__title">Android App Development</h3>
+                            <p class="services-details__content__text">
+                                Native Android app development for all devices. We create high-performance, user-friendly Android applications that meet your business needs and provide exceptional user experiences.
+                            </p>
+                            <h4 class="services-details__content__title-two">Expert Android Development Services</h4>
+                            <p class="services-details__content__text">
+                                Our team of experienced Android developers uses the latest technologies and best practices to build scalable, secure, and innovative mobile applications that run seamlessly on all Android devices.
+                            </p>
+                            <h3 class="services-details__content__title-three">Why choose our Android development?</h3>
+                            <p class="services-details__content__text">
+                                We deliver cutting-edge Android solutions with focus on performance, security, and user experience. Our apps are optimized for the latest Android versions and device specifications.
+                            </p>
+                            <ul class="services-details__points list-unstyled">
+                                <li>
+                                    <div class="services-details__points__icon"><span class="icon-success"></span></div>
+                                    <h3 class="services-details__points__title">Native<br> Performance</h3>
+                                </li>
+                                <li>
+                                    <div class="services-details__points__icon"><span class="icon-job-promotion"></span></div>
+                                    <h3 class="services-details__points__title">Expert<br> Developers</h3>
+                                </li>
+                                <li>
+                                    <div class="services-details__points__icon"><span class="icon-marketing"></span></div>
+                                    <h3 class="services-details__points__title">Latest<br> Technologies</h3>
+                                </li>
+                            </ul>
+                            <div class="services-details__benefit">
+                                <div class="row">
+                                    <div class="col-xl-6 col-lg-12 col-md-6">
+                                        <div class="services-details__benefit__img">
+                                            <img src="/assets/services-details-benefit-img-w_iwWpMO.jpg" alt="ogency">
+                                        </div>
+                                    </div>
+                                    <div class="col-xl-6 col-lg-12 col-md-6">
+                                        <div class="services-details__benefit__content">
+                                            <h3 class="services-details__benefit__title">Our benefits</h3>
+                                            <p class="services-details__benefit__text">Get the best Android app development from our expert team</p>
+                                            <ul class="services-details__benefit__lists list-unstyled">
+                                                <li><span class="fa fa-check-circle"></span>Native Development</li>
+                                                <li><span class="fa fa-check-circle"></span>Play Store Ready</li>
+                                                <li><span class="fa fa-check-circle"></span>Regular Updates</li>
+                                                <li><span class="fa fa-check-circle"></span>24/7 Support</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- iOS App Development Details -->
+        <section id="ios-development-details" class="services-details" style="display: none;">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-4 col-lg-5">
+                        <div class="services-details__sidebar">
+                            <div class="services-details__services-list">
+                                <ul class="services-details__services list-unstyled">
+                                    <li><a href="#" onclick="showService('web-development-details')">Web Development</a></li>
+                                    <li><a href="#" onclick="showService('android-development-details')">Android App Development</a></li>
+                                    <li><a href="#" onclick="showService('ios-development-details')">IOS App Development</a></li>
+                                    <li><a href="#" onclick="showService('ai-integration-details')">AI Integration</a></li>
+                                    <li><a href="#" onclick="showService('digital-marketing-details')">Digital Marketing</a></li>
+                                    <li><a href="#" onclick="showService('e-commerce-details')">E-Commerce</a></li>
+                                    <li><a href="#" onclick="showService('payment-integration-details')">Payment Integration</a></li>
+                                    <li><a href="#" onclick="showService('cms-development-details')">CMS Web Development</a></li>
+                                    <li><a href="#" onclick="showService('web-hosting-details')">Web Hosting</a></li>
+                                    <li><a href="#" onclick="showService('email-automation-details')">Email Automation</a></li>
+                                    <li><a href="#" onclick="showService('influencer-marketing-details')">Influencer Marketing</a></li>
+                                    <li><a href="#" onclick="showService('web-design-details')">Web Design</a></li>
+                                </ul>
+                            </div>
+                            <div class="services-details__banner">
+                                <div class="services-details__banner__shape"></div>
+                                <div class="services-details__banner__image"><img src="/assets/banner-author-CZ63jT6g.png" alt="ogency"></div>
+                                <div class="services-details__banner__icon"><span class="icon-mobile-development"></span></div>
+                                <h3 class="services-details__banner__title">Are you looking for<br> iOS app development</h3>
+                                <a class="ogency-btn" href="contact.html">Contact</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-8 col-lg-7">
+                        <div class="services-details__content">
+                            <div class="services-details__thumb"><img src="/assets/service-details-app-BNMfxaua.jpg" alt="ogency"></div>
+                            <h3 class="services-details__content__title">iOS App Development</h3>
+                            <p class="services-details__content__text">
+                                Native iOS app development for iPhone and iPad. We create high-performance, user-friendly iOS applications that meet your business needs and provide exceptional user experiences.
+                            </p>
+                            <h4 class="services-details__content__title-two">Expert iOS Development Services</h4>
+                            <p class="services-details__content__text">
+                                Our team of experienced iOS developers uses the latest technologies and best practices to build scalable, secure, and innovative mobile applications that run seamlessly on all iOS devices.
+                            </p>
+                            <h3 class="services-details__content__title-three">Why choose our iOS development?</h3>
+                            <p class="services-details__content__text">
+                                We deliver cutting-edge iOS solutions with focus on performance, security, and user experience. Our apps are optimized for the latest iOS versions and device specifications.
+                            </p>
+                            <ul class="services-details__points list-unstyled">
+                                <li>
+                                    <div class="services-details__points__icon"><span class="icon-success"></span></div>
+                                    <h3 class="services-details__points__title">Native<br> Performance</h3>
+                                </li>
+                                <li>
+                                    <div class="services-details__points__icon"><span class="icon-job-promotion"></span></div>
+                                    <h3 class="services-details__points__title">Expert<br> Developers</h3>
+                                </li>
+                                <li>
+                                    <div class="services-details__points__icon"><span class="icon-marketing"></span></div>
+                                    <h3 class="services-details__points__title">App Store<br> Ready</h3>
+                                </li>
+                            </ul>
+                            <div class="services-details__benefit">
+                                <div class="row">
+                                    <div class="col-xl-6 col-lg-12 col-md-6">
+                                        <div class="services-details__benefit__img">
+                                            <img src="/assets/services-details-benefit-img-w_iwWpMO.jpg" alt="ogency">
+                                        </div>
+                                    </div>
+                                    <div class="col-xl-6 col-lg-12 col-md-6">
+                                        <div class="services-details__benefit__content">
+                                            <h3 class="services-details__benefit__title">Our benefits</h3>
+                                            <p class="services-details__benefit__text">Get the best iOS app development from our expert team</p>
+                                            <ul class="services-details__benefit__lists list-unstyled">
+                                                <li><span class="fa fa-check-circle"></span>Native Development</li>
+                                                <li><span class="fa fa-check-circle"></span>App Store Ready</li>
+                                                <li><span class="fa fa-check-circle"></span>Regular Updates</li>
+                                                <li><span class="fa fa-check-circle"></span>24/7 Support</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- AI Integration Details -->
+        <section id="ai-integration-details" class="services-details" style="display: none;">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-4 col-lg-5">
+                        <div class="services-details__sidebar">
+                            <div class="services-details__services-list">
+                                <ul class="services-details__services list-unstyled">
+                                    <li><a href="#" onclick="showService('web-development-details')">Web Development</a></li>
+                                    <li><a href="#" onclick="showService('android-development-details')">Android App Development</a></li>
+                                    <li><a href="#" onclick="showService('ios-development-details')">IOS App Development</a></li>
+                                    <li><a href="#" onclick="showService('ai-integration-details')">AI Integration</a></li>
+                                    <li><a href="#" onclick="showService('digital-marketing-details')">Digital Marketing</a></li>
+                                    <li><a href="#" onclick="showService('e-commerce-details')">E-Commerce</a></li>
+                                    <li><a href="#" onclick="showService('payment-integration-details')">Payment Integration</a></li>
+                                    <li><a href="#" onclick="showService('cms-development-details')">CMS Web Development</a></li>
+                                    <li><a href="#" onclick="showService('web-hosting-details')">Web Hosting</a></li>
+                                    <li><a href="#" onclick="showService('email-automation-details')">Email Automation</a></li>
+                                    <li><a href="#" onclick="showService('influencer-marketing-details')">Influencer Marketing</a></li>
+                                    <li><a href="#" onclick="showService('web-design-details')">Web Design</a></li>
+                                </ul>
+                            </div>
+                            <div class="services-details__banner">
+                                <div class="services-details__banner__shape"></div>
+                                <div class="services-details__banner__image"><img src="/assets/banner-author-CZ63jT6g.png" alt="ogency"></div>
+                                <div class="services-details__banner__icon"><span class="icon-mobile-development"></span></div>
+                                <h3 class="services-details__banner__title">Are you looking for<br> AI integration solutions</h3>
+                                <a class="ogency-btn" href="contact.html">Contact</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-8 col-lg-7">
+                        <div class="services-details__content">
+                            <div class="services-details__thumb"><img src="/assets/service-details-development-BkU8FyR2.jpg" alt="ogency"></div>
+                            <h3 class="services-details__content__title">AI Integration</h3>
+                            <p class="services-details__content__text">
+                                Cutting-edge AI solutions for your business needs. We integrate artificial intelligence technologies to enhance your business processes and customer experiences.
+                            </p>
+                            <h4 class="services-details__content__title-two">Expert AI Integration Services</h4>
+                            <p class="services-details__content__text">
+                                Our team specializes in implementing AI solutions that automate processes, provide insights, and create intelligent systems that adapt to your business requirements.
+                            </p>
+                            <h3 class="services-details__content__title-three">Why choose our AI integration?</h3>
+                            <p class="services-details__content__text">
+                                We deliver innovative AI solutions with focus on practical implementation, scalability, and measurable business impact. Our AI systems are designed to grow with your business.
+                            </p>
+                            <ul class="services-details__points list-unstyled">
+                                <li>
+                                    <div class="services-details__points__icon"><span class="icon-success"></span></div>
+                                    <h3 class="services-details__points__title">Cutting-edge<br> Technology</h3>
+                                </li>
+                                <li>
+                                    <div class="services-details__points__icon"><span class="icon-job-promotion"></span></div>
+                                    <h3 class="services-details__points__title">Expert<br> AI Team</h3>
+                                </li>
+                                <li>
+                                    <div class="services-details__points__icon"><span class="icon-marketing"></span></div>
+                                    <h3 class="services-details__points__title">Scalable<br> Solutions</h3>
+                                </li>
+                            </ul>
+                            <div class="services-details__benefit">
+                                <div class="row">
+                                    <div class="col-xl-6 col-lg-12 col-md-6">
+                                        <div class="services-details__benefit__img">
+                                            <img src="/assets/services-details-benefit-img-w_iwWpMO.jpg" alt="ogency">
+                                        </div>
+                                    </div>
+                                    <div class="col-xl-6 col-lg-12 col-md-6">
+                                        <div class="services-details__benefit__content">
+                                            <h3 class="services-details__benefit__title">Our benefits</h3>
+                                            <p class="services-details__benefit__text">Get the best AI integration solutions from our expert team</p>
+                                            <ul class="services-details__benefit__lists list-unstyled">
+                                                <li><span class="fa fa-check-circle"></span>Machine Learning</li>
+                                                <li><span class="fa fa-check-circle"></span>Natural Language Processing</li>
+                                                <li><span class="fa fa-check-circle"></span>Predictive Analytics</li>
+                                                <li><span class="fa fa-check-circle"></span>24/7 Support</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Digital Marketing Details -->
+        <section id="digital-marketing-details" class="services-details" style="display: none;">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-4 col-lg-5">
+                        <div class="services-details__sidebar">
+                            <div class="services-details__services-list">
+                                <ul class="services-details__services list-unstyled">
+                                    <li><a href="#" onclick="showService('web-development-details')">Web Development</a></li>
+                                    <li><a href="#" onclick="showService('android-development-details')">Android App Development</a></li>
+                                    <li><a href="#" onclick="showService('ios-development-details')">IOS App Development</a></li>
+                                    <li><a href="#" onclick="showService('ai-integration-details')">AI Integration</a></li>
+                                    <li><a href="#" onclick="showService('digital-marketing-details')">Digital Marketing</a></li>
+                                    <li><a href="#" onclick="showService('e-commerce-details')">E-Commerce</a></li>
+                                    <li><a href="#" onclick="showService('payment-integration-details')">Payment Integration</a></li>
+                                    <li><a href="#" onclick="showService('cms-development-details')">CMS Web Development</a></li>
+                                    <li><a href="#" onclick="showService('web-hosting-details')">Web Hosting</a></li>
+                                    <li><a href="#" onclick="showService('email-automation-details')">Email Automation</a></li>
+                                    <li><a href="#" onclick="showService('influencer-marketing-details')">Influencer Marketing</a></li>
+                                    <li><a href="#" onclick="showService('web-design-details')">Web Design</a></li>
+                                </ul>
+                            </div>
+                            <div class="services-details__banner">
+                                <div class="services-details__banner__shape"></div>
+                                <div class="services-details__banner__image"><img src="/assets/banner-author-CZ63jT6g.png" alt="ogency"></div>
+                                <div class="services-details__banner__icon"><span class="icon-mobile-development"></span></div>
+                                <h3 class="services-details__banner__title">Are you looking for<br> digital marketing</h3>
+                                <a class="ogency-btn" href="contact.html">Contact</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-8 col-lg-7">
+                        <div class="services-details__content">
+                            <div class="services-details__thumb"><img src="/assets/service-details-development-BkU8FyR2.jpg" alt="ogency"></div>
+                            <h3 class="services-details__content__title">Digital Marketing</h3>
+                            <p class="services-details__content__text">
+                                Comprehensive digital marketing strategies to grow your online presence and reach your target audience effectively.
+                            </p>
+                            <h4 class="services-details__content__title-two">Expert Digital Marketing Services</h4>
+                            <p class="services-details__content__text">
+                                Our team creates data-driven marketing campaigns that deliver measurable results and maximize your return on investment.
+                            </p>
+                            <h3 class="services-details__content__title-three">Why choose our digital marketing?</h3>
+                            <p class="services-details__content__text">
+                                We deliver innovative digital marketing solutions with focus on ROI, brand visibility, and sustainable business growth.
+                            </p>
+                            <ul class="services-details__points list-unstyled">
+                                <li>
+                                    <div class="services-details__points__icon"><span class="icon-success"></span></div>
+                                    <h3 class="services-details__points__title">Data-driven<br> Strategies</h3>
+                                </li>
+                                <li>
+                                    <div class="services-details__points__icon"><span class="icon-job-promotion"></span></div>
+                                    <h3 class="services-details__points__title">Expert<br> Marketers</h3>
+                                </li>
+                                <li>
+                                    <div class="services-details__points__icon"><span class="icon-marketing"></span></div>
+                                    <h3 class="services-details__points__title">Proven<br> Results</h3>
+                                </li>
+                            </ul>
+                            <div class="services-details__benefit">
+                                <div class="row">
+                                    <div class="col-xl-6 col-lg-12 col-md-6">
+                                        <div class="services-details__benefit__img">
+                                            <img src="/assets/services-details-benefit-img-w_iwWpMO.jpg" alt="ogency">
+                                        </div>
+                                    </div>
+                                    <div class="col-xl-6 col-lg-12 col-md-6">
+                                        <div class="services-details__benefit__content">
+                                            <h3 class="services-details__benefit__title">Our benefits</h3>
+                                            <p class="services-details__benefit__text">Get the best digital marketing solutions from our expert team</p>
+                                            <ul class="services-details__benefit__lists list-unstyled">
+                                                <li><span class="fa fa-check-circle"></span>SEO Optimization</li>
+                                                <li><span class="fa fa-check-circle"></span>Social Media Marketing</li>
+                                                <li><span class="fa fa-check-circle"></span>Content Marketing</li>
+                                                <li><span class="fa fa-check-circle"></span>Analytics & Reporting</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- E-Commerce Details -->
+        <section id="e-commerce-details" class="services-details" style="display: none;">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-4 col-lg-5">
+                        <div class="services-details__sidebar">
+                            <div class="services-details__services-list">
+                                <ul class="services-details__services list-unstyled">
+                                    <li><a href="#" onclick="showService('web-development-details')">Web Development</a></li>
+                                    <li><a href="#" onclick="showService('android-development-details')">Android App Development</a></li>
+                                    <li><a href="#" onclick="showService('ios-development-details')">IOS App Development</a></li>
+                                    <li><a href="#" onclick="showService('ai-integration-details')">AI Integration</a></li>
+                                    <li><a href="#" onclick="showService('digital-marketing-details')">Digital Marketing</a></li>
+                                    <li><a href="#" onclick="showService('e-commerce-details')">E-Commerce</a></li>
+                                    <li><a href="#" onclick="showService('payment-integration-details')">Payment Integration</a></li>
+                                    <li><a href="#" onclick="showService('cms-development-details')">CMS Web Development</a></li>
+                                    <li><a href="#" onclick="showService('web-hosting-details')">Web Hosting</a></li>
+                                    <li><a href="#" onclick="showService('email-automation-details')">Email Automation</a></li>
+                                    <li><a href="#" onclick="showService('influencer-marketing-details')">Influencer Marketing</a></li>
+                                    <li><a href="#" onclick="showService('web-design-details')">Web Design</a></li>
+                                </ul>
+                            </div>
+                            <div class="services-details__banner">
+                                <div class="services-details__banner__shape"></div>
+                                <div class="services-details__banner__image"><img src="/assets/banner-author-CZ63jT6g.png" alt="ogency"></div>
+                                <div class="services-details__banner__icon"><span class="icon-mobile-development"></span></div>
+                                <h3 class="services-details__banner__title">Are you looking for<br> e-commerce solutions</h3>
+                                <a class="ogency-btn" href="contact.html">Contact</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-8 col-lg-7">
+                        <div class="services-details__content">
+                            <div class="services-details__thumb"><img src="/assets/service-details-development-BkU8FyR2.jpg" alt="ogency"></div>
+                            <h3 class="services-details__content__title">E-Commerce</h3>
+                            <p class="services-details__content__text">
+                                Complete e-commerce solutions for online stores. We build powerful, scalable, and user-friendly e-commerce platforms.
+                            </p>
+                            <h4 class="services-details__content__title-two">Expert E-Commerce Development</h4>
+                            <p class="services-details__content__text">
+                                Our team specializes in creating custom e-commerce solutions that drive sales, enhance user experience, and streamline operations.
+                            </p>
+                            <h3 class="services-details__content__title-three">Why choose our e-commerce solutions?</h3>
+                            <p class="services-details__content__text">
+                                We deliver robust e-commerce platforms with focus on security, performance, and conversion optimization.
+                            </p>
+                            <ul class="services-details__points list-unstyled">
+                                <li>
+                                    <div class="services-details__points__icon"><span class="icon-success"></span></div>
+                                    <h3 class="services-details__points__title">Secure<br> Payments</h3>
+                                </li>
+                                <li>
+                                    <div class="services-details__points__icon"><span class="icon-job-promotion"></span></div>
+                                    <h3 class="services-details__points__title">Mobile<br> Optimized</h3>
+                                </li>
+                                <li>
+                                    <div class="services-details__points__icon"><span class="icon-marketing"></span></div>
+                                    <h3 class="services-details__points__title">High<br> Conversions</h3>
+                                </li>
+                            </ul>
+                            <div class="services-details__benefit">
+                                <div class="row">
+                                    <div class="col-xl-6 col-lg-12 col-md-6">
+                                        <div class="services-details__benefit__img">
+                                            <img src="/assets/services-details-benefit-img-w_iwWpMO.jpg" alt="ogency">
+                                        </div>
+                                    </div>
+                                    <div class="col-xl-6 col-lg-12 col-md-6">
+                                        <div class="services-details__benefit__content">
+                                            <h3 class="services-details__benefit__title">Our benefits</h3>
+                                            <p class="services-details__benefit__text">Get the best e-commerce solutions from our expert team</p>
+                                            <ul class="services-details__benefit__lists list-unstyled">
+                                                <li><span class="fa fa-check-circle"></span>Custom Design</li>
+                                                <li><span class="fa fa-check-circle"></span>Inventory Management</li>
+                                                <li><span class="fa fa-check-circle"></span>Analytics Dashboard</li>
+                                                <li><span class="fa fa-check-circle"></span>24/7 Support</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CMS Web Development Details -->
+        <section id="cms-development-details" class="services-details" style="display: none;">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-4 col-lg-5">
+                        <div class="services-details__sidebar">
+                            <div class="services-details__services-list">
+                                <ul class="services-details__services list-unstyled">
+                                    <li><a href="#" onclick="showService('web-development-details')">Web Development</a></li>
+                                    <li><a href="#" onclick="showService('android-development-details')">Android App Development</a></li>
+                                    <li><a href="#" onclick="showService('ios-development-details')">IOS App Development</a></li>
+                                    <li><a href="#" onclick="showService('ai-integration-details')">AI Integration</a></li>
+                                    <li><a href="#" onclick="showService('digital-marketing-details')">Digital Marketing</a></li>
+                                    <li><a href="#" onclick="showService('e-commerce-details')">E-Commerce</a></li>
+                                    <li><a href="#" onclick="showService('payment-integration-details')">Payment Integration</a></li>
+                                    <li><a href="#" onclick="showService('cms-development-details')">CMS Web Development</a></li>
+                                    <li><a href="#" onclick="showService('web-hosting-details')">Web Hosting</a></li>
+                                    <li><a href="#" onclick="showService('email-automation-details')">Email Automation</a></li>
+                                    <li><a href="#" onclick="showService('influencer-marketing-details')">Influencer Marketing</a></li>
+                                    <li><a href="#" onclick="showService('web-design-details')">Web Design</a></li>
+                                </ul>
+                            </div>
+                            <div class="services-details__banner">
+                                <div class="services-details__banner__shape"></div>
+                                <div class="services-details__banner__image"><img src="/assets/banner-author-CZ63jT6g.png" alt="ogency"></div>
+                                <div class="services-details__banner__icon"><span class="icon-mobile-development"></span></div>
+                                <h3 class="services-details__banner__title">Are you looking for<br> CMS development</h3>
+                                <a class="ogency-btn" href="contact.html">Contact</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-8 col-lg-7">
+                        <div class="services-details__content">
+                            <div class="services-details__thumb"><img src="/assets/service-details-development-BkU8FyR2.jpg" alt="ogency"></div>
+                            <h3 class="services-details__content__title">CMS Web Development</h3>
+                            <p class="services-details__content__text">
+                                Custom CMS solutions for easy content management. We build user-friendly content management systems tailored to your needs.
+                            </p>
+                            <h4 class="services-details__content__title-two">Expert CMS Development Services</h4>
+                            <p class="services-details__content__text">
+                                Our team specializes in creating scalable, secure CMS platforms that make content management simple and efficient.
+                            </p>
+                            <h3 class="services-details__content__title-three">Why choose our CMS development?</h3>
+                            <p class="services-details__content__text">
+                                We deliver intuitive CMS solutions with focus on usability, security, and seamless content workflows.
+                            </p>
+                            <ul class="services-details__points list-unstyled">
+                                <li>
+                                    <div class="services-details__points__icon"><span class="icon-success"></span></div>
+                                    <h3 class="services-details__points__title">Easy<br> Management</h3>
+                                </li>
+                                <li>
+                                    <div class="services-details__points__icon"><span class="icon-job-promotion"></span></div>
+                                    <h3 class="services-details__points__title">Custom<br> Solutions</h3>
+                                </li>
+                                <li>
+                                    <div class="services-details__points__icon"><span class="icon-marketing"></span></div>
+                                    <h3 class="services-details__points__title">Secure<br> Platform</h3>
+                                </li>
+                            </ul>
+                            <div class="services-details__benefit">
+                                <div class="row">
+                                    <div class="col-xl-6 col-lg-12 col-md-6">
+                                        <div class="services-details__benefit__img">
+                                            <img src="/assets/services-details-benefit-img-w_iwWpMO.jpg" alt="ogency">
+                                        </div>
+                                    </div>
+                                    <div class="col-xl-6 col-lg-12 col-md-6">
+                                        <div class="services-details__benefit__content">
+                                            <h3 class="services-details__benefit__title">Our benefits</h3>
+                                            <p class="services-details__benefit__text">Get the best CMS solutions from our expert team</p>
+                                            <ul class="services-details__benefit__lists list-unstyled">
+                                                <li><span class="fa fa-check-circle"></span>User-Friendly Interface</li>
+                                                <li><span class="fa fa-check-circle"></span>Custom Workflows</li>
+                                                <li><span class="fa fa-check-circle"></span>Multi-user Support</li>
+                                                <li><span class="fa fa-check-circle"></span>24/7 Support</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Payment Integration Details -->
+        <section id="payment-integration-details" class="services-details" style="display: none;">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-4 col-lg-5">
+                        <div class="services-details__sidebar">
+                            <div class="services-details__services-list">
+                                <ul class="services-details__services list-unstyled">
+                                    <li><a href="#" onclick="showService('web-development-details')">Web Development</a></li>
+                                    <li><a href="#" onclick="showService('android-development-details')">Android App Development</a></li>
+                                    <li><a href="#" onclick="showService('ios-development-details')">IOS App Development</a></li>
+                                    <li><a href="#" onclick="showService('ai-integration-details')">AI Integration</a></li>
+                                    <li><a href="#" onclick="showService('digital-marketing-details')">Digital Marketing</a></li>
+                                    <li><a href="#" onclick="showService('e-commerce-details')">E-Commerce</a></li>
+                                    <li><a href="#" onclick="showService('payment-integration-details')">Payment Integration</a></li>
+                                    <li><a href="#" onclick="showService('cms-development-details')">CMS Web Development</a></li>
+                                    <li><a href="#" onclick="showService('web-hosting-details')">Web Hosting</a></li>
+                                    <li><a href="#" onclick="showService('email-automation-details')">Email Automation</a></li>
+                                    <li><a href="#" onclick="showService('influencer-marketing-details')">Influencer Marketing</a></li>
+                                    <li><a href="#" onclick="showService('web-design-details')">Web Design</a></li>
+                                </ul>
+                            </div>
+                            <div class="services-details__banner">
+                                <div class="services-details__banner__shape"></div>
+                                <div class="services-details__banner__image"><img src="/assets/banner-author-CZ63jT6g.png" alt="ogency"></div>
+                                <div class="services-details__banner__icon"><span class="icon-mobile-development"></span></div>
+                                <h3 class="services-details__banner__title">Are you looking for<br> payment integration</h3>
+                                <a class="ogency-btn" href="contact.html">Contact</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-8 col-lg-7">
+                        <div class="services-details__content">
+                            <div class="services-details__thumb"><img src="/assets/service-details-development-BkU8FyR2.jpg" alt="ogency"></div>
+                            <h3 class="services-details__content__title">Payment Integration</h3>
+                            <p class="services-details__content__text">
+                                Secure payment gateway integration services. We integrate multiple payment solutions to provide seamless transaction experiences.
+                            </p>
+                            <h4 class="services-details__content__title-two">Expert Payment Integration Services</h4>
+                            <p class="services-details__content__text">
+                                Our team specializes in integrating various payment gateways with focus on security, compliance, and user experience.
+                            </p>
+                            <h3 class="services-details__content__title-three">Why choose our payment integration?</h3>
+                            <p class="services-details__content__text">
+                                We deliver secure, reliable payment solutions that support multiple currencies and payment methods.
+                            </p>
+                            <ul class="services-details__points list-unstyled">
+                                <li>
+                                    <div class="services-details__points__icon"><span class="icon-success"></span></div>
+                                    <h3 class="services-details__points__title">Secure<br> Transactions</h3>
+                                </li>
+                                <li>
+                                    <div class="services-details__points__icon"><span class="icon-job-promotion"></span></div>
+                                    <h3 class="services-details__points__title">Multiple<br> Gateways</h3>
+                                </li>
+                                <li>
+                                    <div class="services-details__points__icon"><span class="icon-marketing"></span></div>
+                                    <h3 class="services-details__points__title">Global<br> Support</h3>
+                                </li>
+                            </ul>
+                            <div class="services-details__benefit">
+                                <div class="row">
+                                    <div class="col-xl-6 col-lg-12 col-md-6">
+                                        <div class="services-details__benefit__img">
+                                            <img src="/assets/services-details-benefit-img-w_iwWpMO.jpg" alt="ogency">
+                                        </div>
+                                    </div>
+                                    <div class="col-xl-6 col-lg-12 col-md-6">
+                                        <div class="services-details__benefit__content">
+                                            <h3 class="services-details__benefit__title">Our benefits</h3>
+                                            <p class="services-details__benefit__text">Get the best payment integration solutions from our expert team</p>
+                                            <ul class="services-details__benefit__lists list-unstyled">
+                                                <li><span class="fa fa-check-circle"></span>PCI Compliance</li>
+                                                <li><span class="fa fa-check-circle"></span>Multiple Currencies</li>
+                                                <li><span class="fa fa-check-circle"></span>Fraud Detection</li>
+                                                <li><span class="fa fa-check-circle"></span>24/7 Support</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Web Hosting Details -->
+        <section id="web-hosting-details" class="services-details" style="display: none;">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-4 col-lg-5">
+                        <div class="services-details__sidebar">
+                            <div class="services-details__services-list">
+                                <ul class="services-details__services list-unstyled">
+                                    <li><a href="#" onclick="showService('web-development-details')">Web Development</a></li>
+                                    <li><a href="#" onclick="showService('android-development-details')">Android App Development</a></li>
+                                    <li><a href="#" onclick="showService('ios-development-details')">IOS App Development</a></li>
+                                    <li><a href="#" onclick="showService('ai-integration-details')">AI Integration</a></li>
+                                    <li><a href="#" onclick="showService('digital-marketing-details')">Digital Marketing</a></li>
+                                    <li><a href="#" onclick="showService('e-commerce-details')">E-Commerce</a></li>
+                                    <li><a href="#" onclick="showService('payment-integration-details')">Payment Integration</a></li>
+                                    <li><a href="#" onclick="showService('cms-development-details')">CMS Web Development</a></li>
+                                    <li><a href="#" onclick="showService('web-hosting-details')">Web Hosting</a></li>
+                                    <li><a href="#" onclick="showService('email-automation-details')">Email Automation</a></li>
+                                    <li><a href="#" onclick="showService('influencer-marketing-details')">Influencer Marketing</a></li>
+                                    <li><a href="#" onclick="showService('web-design-details')">Web Design</a></li>
+                                </ul>
+                            </div>
+                            <div class="services-details__banner">
+                                <div class="services-details__banner__shape"></div>
+                                <div class="services-details__banner__image"><img src="/assets/banner-author-CZ63jT6g.png" alt="ogency"></div>
+                                <div class="services-details__banner__icon"><span class="icon-mobile-development"></span></div>
+                                <h3 class="services-details__banner__title">Are you looking for<br> web hosting</h3>
+                                <a class="ogency-btn" href="contact.html">Contact</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-8 col-lg-7">
+                        <div class="services-details__content">
+                            <div class="services-details__thumb"><img src="/assets/service-details-development-BkU8FyR2.jpg" alt="ogency"></div>
+                            <h3 class="services-details__content__title">Web Hosting</h3>
+                            <p class="services-details__content__text">
+                                Reliable and secure web hosting solutions. We provide fast, scalable hosting services with 99.9% uptime guarantee.
+                            </p>
+                            <h4 class="services-details__content__title-two">Expert Web Hosting Services</h4>
+                            <p class="services-details__content__text">
+                                Our team delivers robust hosting solutions with advanced security, daily backups, and exceptional technical support.
+                            </p>
+                            <h3 class="services-details__content__title-three">Why choose our web hosting?</h3>
+                            <p class="services-details__content__text">
+                                We provide reliable hosting infrastructure with focus on speed, security, and seamless scalability.
+                            </p>
+                            <ul class="services-details__points list-unstyled">
+                                <li>
+                                    <div class="services-details__points__icon"><span class="icon-success"></span></div>
+                                    <h3 class="services-details__points__title">99.9%<br> Uptime</h3>
+                                </li>
+                                <li>
+                                    <div class="services-details__points__icon"><span class="icon-job-promotion"></span></div>
+                                    <h3 class="services-details__points__title">Fast<br> Servers</h3>
+                                </li>
+                                <li>
+                                    <div class="services-details__points__icon"><span class="icon-marketing"></span></div>
+                                    <h3 class="services-details__points__title">24/7<br> Support</h3>
+                                </li>
+                            </ul>
+                            <div class="services-details__benefit">
+                                <div class="row">
+                                    <div class="col-xl-6 col-lg-12 col-md-6">
+                                        <div class="services-details__benefit__img">
+                                            <img src="/assets/services-details-benefit-img-w_iwWpMO.jpg" alt="ogency">
+                                        </div>
+                                    </div>
+                                    <div class="col-xl-6 col-lg-12 col-md-6">
+                                        <div class="services-details__benefit__content">
+                                            <h3 class="services-details__benefit__title">Our benefits</h3>
+                                            <p class="services-details__benefit__text">Get the best hosting solutions from our expert team</p>
+                                            <ul class="services-details__benefit__lists list-unstyled">
+                                                <li><span class="fa fa-check-circle"></span>Daily Backups</li>
+                                                <li><span class="fa fa-check-circle"></span>SSL Certificate</li>
+                                                <li><span class="fa fa-check-circle"></span>DDoS Protection</li>
+                                                <li><span class="fa fa-check-circle"></span>Free Migration</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Email Automation Details -->
+        <section id="email-automation-details" class="services-details" style="display: none;">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-4 col-lg-5">
+                        <div class="services-details__sidebar">
+                            <div class="services-details__services-list">
+                                <ul class="services-details__services list-unstyled">
+                                    <li><a href="#" onclick="showService('web-development-details')">Web Development</a></li>
+                                    <li><a href="#" onclick="showService('android-development-details')">Android App Development</a></li>
+                                    <li><a href="#" onclick="showService('ios-development-details')">IOS App Development</a></li>
+                                    <li><a href="#" onclick="showService('ai-integration-details')">AI Integration</a></li>
+                                    <li><a href="#" onclick="showService('digital-marketing-details')">Digital Marketing</a></li>
+                                    <li><a href="#" onclick="showService('e-commerce-details')">E-Commerce</a></li>
+                                    <li><a href="#" onclick="showService('payment-integration-details')">Payment Integration</a></li>
+                                    <li><a href="#" onclick="showService('cms-development-details')">CMS Web Development</a></li>
+                                    <li><a href="#" onclick="showService('web-hosting-details')">Web Hosting</a></li>
+                                    <li><a href="#" onclick="showService('email-automation-details')">Email Automation</a></li>
+                                    <li><a href="#" onclick="showService('influencer-marketing-details')">Influencer Marketing</a></li>
+                                    <li><a href="#" onclick="showService('web-design-details')">Web Design</a></li>
+                                </ul>
+                            </div>
+                            <div class="services-details__banner">
+                                <div class="services-details__banner__shape"></div>
+                                <div class="services-details__banner__image"><img src="/assets/banner-author-CZ63jT6g.png" alt="ogency"></div>
+                                <div class="services-details__banner__icon"><span class="icon-mobile-development"></span></div>
+                                <h3 class="services-details__banner__title">Are you looking for<br> email automation</h3>
+                                <a class="ogency-btn" href="contact.html">Contact</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-8 col-lg-7">
+                        <div class="services-details__content">
+                            <div class="services-details__thumb"><img src="/assets/service-details-development-BkU8FyR2.jpg" alt="ogency"></div>
+                            <h3 class="services-details__content__title">Email Automation</h3>
+                            <p class="services-details__content__text">
+                                Advanced email automation solutions. We create intelligent email campaigns that engage customers and drive conversions.
+                            </p>
+                            <h4 class="services-details__content__title-two">Expert Email Automation Services</h4>
+                            <p class="services-details__content__text">
+                                Our team specializes in setting up automated email workflows that nurture leads and build customer relationships.
+                            </p>
+                            <h3 class="services-details__content__title-three">Why choose our email automation?</h3>
+                            <p class="services-details__content__text">
+                                We deliver sophisticated email automation with focus on personalization, timing, and measurable results.
+                            </p>
+                            <ul class="services-details__points list-unstyled">
+                                <li>
+                                    <div class="services-details__points__icon"><span class="icon-success"></span></div>
+                                    <h3 class="services-details__points__title">Smart<br> Workflows</h3>
+                                </li>
+                                <li>
+                                    <div class="services-details__points__icon"><span class="icon-job-promotion"></span></div>
+                                    <h3 class="services-details__points__title">Personalized<br> Content</h3>
+                                </li>
+                                <li>
+                                    <div class="services-details__points__icon"><span class="icon-marketing"></span></div>
+                                    <h3 class="services-details__points__title">High<br> Open Rates</h3>
+                                </li>
+                            </ul>
+                            <div class="services-details__benefit">
+                                <div class="row">
+                                    <div class="col-xl-6 col-lg-12 col-md-6">
+                                        <div class="services-details__benefit__img">
+                                            <img src="/assets/services-details-benefit-img-w_iwWpMO.jpg" alt="ogency">
+                                        </div>
+                                    </div>
+                                    <div class="col-xl-6 col-lg-12 col-md-6">
+                                        <div class="services-details__benefit__content">
+                                            <h3 class="services-details__benefit__title">Our benefits</h3>
+                                            <p class="services-details__benefit__text">Get the best email automation solutions from our expert team</p>
+                                            <ul class="services-details__benefit__lists list-unstyled">
+                                                <li><span class="fa fa-check-circle"></span>A/B Testing</li>
+                                                <li><span class="fa fa-check-circle"></span>Analytics Dashboard</li>
+                                                <li><span class="fa fa-check-circle"></span>List Segmentation</li>
+                                                <li><span class="fa fa-check-circle"></span>24/7 Support</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Influencer Marketing Details -->
+        <section id="influencer-marketing-details" class="services-details" style="display: none;">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-4 col-lg-5">
+                        <div class="services-details__sidebar">
+                            <div class="services-details__services-list">
+                                <ul class="services-details__services list-unstyled">
+                                    <li><a href="#" onclick="showService('web-development-details')">Web Development</a></li>
+                                    <li><a href="#" onclick="showService('android-development-details')">Android App Development</a></li>
+                                    <li><a href="#" onclick="showService('ios-development-details')">IOS App Development</a></li>
+                                    <li><a href="#" onclick="showService('ai-integration-details')">AI Integration</a></li>
+                                    <li><a href="#" onclick="showService('digital-marketing-details')">Digital Marketing</a></li>
+                                    <li><a href="#" onclick="showService('e-commerce-details')">E-Commerce</a></li>
+                                    <li><a href="#" onclick="showService('payment-integration-details')">Payment Integration</a></li>
+                                    <li><a href="#" onclick="showService('cms-development-details')">CMS Web Development</a></li>
+                                    <li><a href="#" onclick="showService('web-hosting-details')">Web Hosting</a></li>
+                                    <li><a href="#" onclick="showService('email-automation-details')">Email Automation</a></li>
+                                    <li><a href="#" onclick="showService('influencer-marketing-details')">Influencer Marketing</a></li>
+                                    <li><a href="#" onclick="showService('web-design-details')">Web Design</a></li>
+                                </ul>
+                            </div>
+                            <div class="services-details__banner">
+                                <div class="services-details__banner__shape"></div>
+                                <div class="services-details__banner__image"><img src="/assets/banner-author-CZ63jT6g.png" alt="ogency"></div>
+                                <div class="services-details__banner__icon"><span class="icon-mobile-development"></span></div>
+                                <h3 class="services-details__banner__title">Are you looking for<br> influencer marketing</h3>
+                                <a class="ogency-btn" href="contact.html">Contact</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-8 col-lg-7">
+                        <div class="services-details__content">
+                            <div class="services-details__thumb"><img src="/assets/service-details-development-BkU8FyR2.jpg" alt="ogency"></div>
+                            <h3 class="services-details__content__title">Influencer Marketing</h3>
+                            <p class="services-details__content__text">
+                                Strategic influencer marketing campaigns. We connect brands with relevant influencers to amplify your message and reach.
+                            </p>
+                            <h4 class="services-details__content__title-two">Expert Influencer Marketing Services</h4>
+                            <p class="services-details__content__text">
+                                Our team specializes in creating authentic influencer partnerships that drive engagement and deliver measurable ROI.
+                            </p>
+                            <h3 class="services-details__content__title-three">Why choose our influencer marketing?</h3>
+                            <p class="services-details__content__text">
+                                We deliver data-driven influencer campaigns with focus on authenticity, reach, and conversion optimization.
+                            </p>
+                            <ul class="services-details__points list-unstyled">
+                                <li>
+                                    <div class="services-details__points__icon"><span class="icon-success"></span></div>
+                                    <h3 class="services-details__points__title">Authentic<br> Partnerships</h3>
+                                </li>
+                                <li>
+                                    <div class="services-details__points__icon"><span class="icon-job-promotion"></span></div>
+                                    <h3 class="services-details__points__title">Targeted<br> Reach</h3>
+                                </li>
+                                <li>
+                                    <div class="services-details__points__icon"><span class="icon-marketing"></span></div>
+                                    <h3 class="services-details__points__title">Measurable<br> Results</h3>
+                                </li>
+                            </ul>
+                            <div class="services-details__benefit">
+                                <div class="row">
+                                    <div class="col-xl-6 col-lg-12 col-md-6">
+                                        <div class="services-details__benefit__img">
+                                            <img src="/assets/services-details-benefit-img-w_iwWpMO.jpg" alt="ogency">
+                                        </div>
+                                    </div>
+                                    <div class="col-xl-6 col-lg-12 col-md-6">
+                                        <div class="services-details__benefit__content">
+                                            <h3 class="services-details__benefit__title">Our benefits</h3>
+                                            <p class="services-details__benefit__text">Get the best influencer marketing solutions from our expert team</p>
+                                            <ul class="services-details__benefit__lists list-unstyled">
+                                                <li><span class="fa fa-check-circle"></span>Influencer Vetting</li>
+                                                <li><span class="fa fa-check-circle"></span>Campaign Management</li>
+                                                <li><span class="fa fa-check-circle"></span>Performance Tracking</li>
+                                                <li><span class="fa fa-check-circle"></span>24/7 Support</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Web Design Details -->
+        <section id="web-design-details" class="services-details" style="display: none;">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-4 col-lg-5">
+                        <div class="services-details__sidebar">
+                            <div class="services-details__services-list">
+                                <ul class="services-details__services list-unstyled">
+                                    <li><a href="#" onclick="showService('web-development-details')">Web Development</a></li>
+                                    <li><a href="#" onclick="showService('android-development-details')">Android App Development</a></li>
+                                    <li><a href="#" onclick="showService('ios-development-details')">IOS App Development</a></li>
+                                    <li><a href="#" onclick="showService('ai-integration-details')">AI Integration</a></li>
+                                    <li><a href="#" onclick="showService('digital-marketing-details')">Digital Marketing</a></li>
+                                    <li><a href="#" onclick="showService('e-commerce-details')">E-Commerce</a></li>
+                                    <li><a href="#" onclick="showService('payment-integration-details')">Payment Integration</a></li>
+                                    <li><a href="#" onclick="showService('cms-development-details')">CMS Web Development</a></li>
+                                    <li><a href="#" onclick="showService('web-hosting-details')">Web Hosting</a></li>
+                                    <li><a href="#" onclick="showService('email-automation-details')">Email Automation</a></li>
+                                    <li><a href="#" onclick="showService('influencer-marketing-details')">Influencer Marketing</a></li>
+                                    <li><a href="#" onclick="showService('web-design-details')">Web Design</a></li>
+                                </ul>
+                            </div>
+                            <div class="services-details__banner">
+                                <div class="services-details__banner__shape"></div>
+                                <div class="services-details__banner__image"><img src="/assets/banner-author-CZ63jT6g.png" alt="ogency"></div>
+                                <div class="services-details__banner__icon"><span class="icon-mobile-development"></span></div>
+                                <h3 class="services-details__banner__title">Are you looking for<br> web design</h3>
+                                <a class="ogency-btn" href="contact.html">Contact</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-8 col-lg-7">
+                        <div class="services-details__content">
+                            <div class="services-details__thumb"><img src="/assets/service-details-development-BkU8FyR2.jpg" alt="ogency"></div>
+                            <h3 class="services-details__content__title">Web Design</h3>
+                            <p class="services-details__content__text">
+                                Creative and responsive web design solutions. We create stunning, user-friendly websites that captivate your audience and drive results.
+                            </p>
+                            <h4 class="services-details__content__title-two">Expert Web Design Services</h4>
+                            <p class="services-details__content__text">
+                                Our team specializes in creating visually appealing, functional designs that provide exceptional user experiences across all devices.
+                            </p>
+                            <h3 class="services-details__content__title-three">Why choose our web design?</h3>
+                            <p class="services-details__content__text">
+                                We deliver innovative design solutions with focus on aesthetics, usability, and conversion optimization.
+                            </p>
+                            <ul class="services-details__points list-unstyled">
+                                <li>
+                                    <div class="services-details__points__icon"><span class="icon-success"></span></div>
+                                    <h3 class="services-details__points__title">Creative<br> Designs</h3>
+                                </li>
+                                <li>
+                                    <div class="services-details__points__icon"><span class="icon-job-promotion"></span></div>
+                                    <h3 class="services-details__points__title">User<br> Focused</h3>
+                                </li>
+                                <li>
+                                    <div class="services-details__points__icon"><span class="icon-marketing"></span></div>
+                                    <h3 class="services-details__points__title">Mobile<br> Responsive</h3>
+                                </li>
+                            </ul>
+                            <div class="services-details__benefit">
+                                <div class="row">
+                                    <div class="col-xl-6 col-lg-12 col-md-6">
+                                        <div class="services-details__benefit__img">
+                                            <img src="/assets/services-details-benefit-img-w_iwWpMO.jpg" alt="ogency">
+                                        </div>
+                                    </div>
+                                    <div class="col-xl-6 col-lg-12 col-md-6">
+                                        <div class="services-details__benefit__content">
+                                            <h3 class="services-details__benefit__title">Our benefits</h3>
+                                            <p class="services-details__benefit__text">Get the best web design solutions from our expert team</p>
+                                            <ul class="services-details__benefit__lists list-unstyled">
+                                                <li><span class="fa fa-check-circle"></span>Modern Design</li>
+                                                <li><span class="fa fa-check-circle"></span>UX/UI Optimization</li>
+                                                <li><span class="fa fa-check-circle"></span>Brand Consistency</li>
+                                                <li><span class="fa fa-check-circle"></span>24/7 Support</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Include centralized footer -->
+        <div id="footer-container"></div>
+        <script>
+            fetch('footer.html')
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('footer-container').innerHTML = data;
+                });
+        </script>
+
+    </div><!-- /.page-wrapper -->
+
+    <!-- back-to-top-start -->
+    <a href="#" class="scroll-top">
+        <svg class="scroll-top__circle" width="100%" height="100%" viewBox="-1 -1 102 102">
+            <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98" />
+        </svg>
+    </a>
+    <!-- back-to-top-end -->
+
+
+    <script src="assets/vendors/jquery/jquery-3.5.1.min.js"></script>
+    <script src="assets/vendors/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/vendors/bootstrap-select/bootstrap-select.min.js"></script>
+    <script src="assets/vendors/jquery-ui/jquery-ui.js"></script>
+    <script src="assets/vendors/jarallax/jarallax.min.js"></script>
+    <script src="assets/vendors/jquery-ajaxchimp/jquery.ajaxchimp.min.js"></script>
+    <script src="assets/vendors/jquery-appear/jquery.appear.min.js"></script>
+    <script src="assets/vendors/jquery-circle-progress/jquery.circle-progress.min.js"></script>
+    <script src="assets/vendors/jquery-magnific-popup/jquery.magnific-popup.min.js"></script>
+    <script src="assets/vendors/jquery-validate/jquery.validate.min.js"></script>
+    <script src="assets/vendors/nouislider/nouislider.min.js"></script>
+    <script src="assets/vendors/odometer/odometer.min.js"></script>
+    <script src="assets/vendors/tiny-slider/tiny-slider.min.js"></script>
+    <script src="assets/vendors/owl-carousel/owl.carousel.min.js"></script>
+    <script src="assets/vendors/wnumb/wNumb.min.js"></script>
+    <script src="assets/vendors/jquery-circleType/jquery.circleType.js"></script>
+    <script src="assets/vendors/jquery-lettering/jquery.lettering.min.js"></script>
+    <script src="assets/vendors/wow/wow.js"></script>
+    <script src="assets/vendors/isotope/isotope.js"></script>
+    <script src="assets/vendors/countdown/countdown.min.js"></script>
+    <!-- template js -->
+    <script src="assets/js/ogency.js"></script>
+
+    <!-- Service Details JavaScript -->
+    <script>
+        function scrollToService(serviceId) {
+            event.preventDefault();
+            
+            // Hide all service detail sections
+            var allSections = document.querySelectorAll('.services-details');
+            allSections.forEach(function(section) {
+                section.style.display = 'none';
+            });
+            
+            // Show the selected service detail section
+            var targetSection = document.getElementById(serviceId);
+            if (targetSection) {
+                targetSection.style.display = 'block';
+                
+                // Smooth scroll to the section
+                setTimeout(function() {
+                    targetSection.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }, 100);
+            }
+        }
+        
+        function showService(serviceId) {
+            event.preventDefault();
+            
+            // Hide all service detail sections
+            var allSections = document.querySelectorAll('.services-details');
+            allSections.forEach(function(section) {
+                section.style.display = 'none';
+            });
+            
+            // Show the selected service detail section
+            var targetSection = document.getElementById(serviceId);
+            if (targetSection) {
+                targetSection.style.display = 'block';
+                
+                // Smooth scroll to the section
+                setTimeout(function() {
+                    targetSection.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }, 100);
+            }
+        }
+    </script>
+</body>
+</html>

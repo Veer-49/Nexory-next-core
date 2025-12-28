@@ -11,18 +11,11 @@ export default defineConfig({
         index: './index.html',
         about: './about.html',
         contact: './contact.html',
-        apps: './apps-development.html',
-        digital: './digital-marketing.html',
         faq: './faq.html',
-        graphic: './graphic-designing.html',
         privacy: './privacy-policy.html',
         projects: './projects.html',
-        services: './services-carousel-2.html',
-        terms: './terms&condition.html',
-        webApplication: './web-application.html',
-        webDesigning: './web-designing.html',
-        webDevelopment: './web-development.html',
-        websiteDevelopment: './website-development.html'
+        services: './services.html',
+        terms: './terms&condition.html'
       }
     },
     assetsDir: 'assets',
