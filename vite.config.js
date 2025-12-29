@@ -1,5 +1,6 @@
 import { defineConfig } from 'vite'
-import { readFileSync, writeFileSync } from 'fs'
+import { copyFileSync, mkdirSync, existsSync } from 'fs'
+import { join } from 'path'
 
 export default defineConfig({
   root: '.',
@@ -29,44 +30,40 @@ export default defineConfig({
   },
   plugins: [
     {
-      name: 'embed-header-footer',
+      name: 'copy-assets',
       writeBundle() {
         const fs = require('fs')
         const path = require('path')
         
-        // Read header and footer content
-        const headerContent = fs.readFileSync('header.html', 'utf8')
-        const footerContent = fs.readFileSync('footer.html', 'utf8')
-        
-        // List of HTML files to process
-        const htmlFiles = [
-          'index.html', 'about.html', 'contact.html', 'faq.html',
-          'privacy-policy.html', 'projects.html', 'services.html', 
-          'terms&condition.html'
-        ]
-        
-        htmlFiles.forEach(file => {
-          const filePath = path.join('dist', file)
-          if (fs.existsSync(filePath)) {
-            let content = fs.readFileSync(filePath, 'utf8')
-            
-            // Replace header container with actual header content
-            content = content.replace(
-              /<div id="header-container"><\/div>[\s\S]*?<\/script>/,
-              headerContent
-            )
-            
-            // Replace footer container with actual footer content
-            content = content.replace(
-              /<div id="footer-container"><\/div>[\s\S]*?<\/script>/,
-              footerContent
-            )
-            
-            // Write the modified content back
-            fs.writeFileSync(filePath, content)
-            console.log(`Embedded header/footer in ${file}`)
+        const copyDir = (src, dest) => {
+          if (!fs.existsSync(dest)) {
+            fs.mkdirSync(dest, { recursive: true })
           }
-        })
+          if (fs.existsSync(src)) {
+            const entries = fs.readdirSync(src, { withFileTypes: true })
+            for (const entry of entries) {
+              const srcPath = path.join(src, entry.name)
+              const destPath = path.join(dest, entry.name)
+              if (entry.isDirectory()) {
+                copyDir(srcPath, destPath)
+              } else {
+                fs.copyFileSync(srcPath, destPath)
+              }
+            }
+          }
+        }
+        
+        // Copy assets directories
+        copyDir('assets/vendors', 'dist/assets/vendors')
+        copyDir('assets/js', 'dist/assets/js')
+        
+        // Copy header and footer files
+        if (fs.existsSync('header.html')) {
+          fs.copyFileSync('header.html', 'dist/header.html')
+        }
+        if (fs.existsSync('footer.html')) {
+          fs.copyFileSync('footer.html', 'dist/footer.html')
+        }
       }
     }
   ]
