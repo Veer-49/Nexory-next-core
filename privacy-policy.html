@@ -48,6 +48,7 @@
                     // Re-initialize sticky header after dynamic load
                     if (window.$ && window.$.fn) {
                         initializeStickyHeader();
+                        initializeMobileMenu();
                     }
                 });
             
@@ -64,6 +65,22 @@
                     let mobileNavContainer = document.querySelector(".mobile-nav__container");
                     mobileNavContainer.innerHTML = navContent;
                 }
+            }
+            
+            // Function to initialize mobile menu
+            function initializeMobileMenu() {
+                // Wait a bit for dynamic content to fully load
+                setTimeout(function() {
+                    if ($(".mobile-nav__toggler").length) {
+                        $(".mobile-nav__toggler").off("click").on("click", function (e) {
+                            e.preventDefault();
+                            $(".mobile-nav__wrapper").toggleClass("expanded");
+                            $("body").toggleClass("locked");
+                            console.log("Mobile menu clicked");
+                        });
+                        console.log("Mobile menu initialized");
+                    }
+                }, 100);
             }
         </script>
         <section class="page-header">

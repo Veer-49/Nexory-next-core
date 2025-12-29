@@ -48,6 +48,7 @@
                     // Re-initialize sticky header after dynamic load
                     if (window.$ && window.$.fn) {
                         initializeStickyHeader();
+                        initializeMobileMenu();
                     }
                 });
             
@@ -63,6 +64,44 @@
                     let navContent = document.querySelector(".main-menu__nav").innerHTML;
                     let mobileNavContainer = document.querySelector(".mobile-nav__container");
                     mobileNavContainer.innerHTML = navContent;
+                }
+            }
+            
+            // Function to initialize mobile menu
+            function initializeMobileMenu() {
+                // Wait a bit for dynamic content to fully load
+                setTimeout(function() {
+                    if ($(".mobile-nav__toggler").length) {
+                        $(".mobile-nav__toggler").off("click").on("click", function (e) {
+                            e.preventDefault();
+                            $(".mobile-nav__wrapper").toggleClass("expanded");
+                            $("body").toggleClass("locked");
+                            console.log("Mobile menu clicked");
+                        });
+                        console.log("Mobile menu initialized");
+                    }
+                    
+                    // Initialize mobile sticky header functionality
+                    initializeMobileStickyHeader();
+                }, 100);
+            }
+            
+            // Function to initialize mobile sticky header
+            function initializeMobileStickyHeader() {
+                if ($(window).width() < 1200) {
+                    $(window).on('scroll.mobileSticky', function() {
+                        var mobileHeaderScrollPos = 100;
+                        var mainHeader = $(".main-header");
+                        if ($(window).scrollTop() > mobileHeaderScrollPos) {
+                            if (!mainHeader.hasClass("mobile-sticky")) {
+                                mainHeader.addClass("mobile-sticky");
+                            }
+                        } else if ($(this).scrollTop() <= mobileHeaderScrollPos) {
+                            if (mainHeader.hasClass("mobile-sticky")) {
+                                mainHeader.removeClass("mobile-sticky");
+                            }
+                        }
+                    });
                 }
             }
         </script>

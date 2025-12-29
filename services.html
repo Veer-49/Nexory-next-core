@@ -48,6 +48,7 @@
                     // Re-initialize sticky header after dynamic load
                     if (window.$ && window.$.fn) {
                         initializeStickyHeader();
+                        initializeMobileMenu();
                     }
                 });
             
@@ -63,6 +64,44 @@
                     let navContent = document.querySelector(".main-menu__nav").innerHTML;
                     let mobileNavContainer = document.querySelector(".mobile-nav__container");
                     mobileNavContainer.innerHTML = navContent;
+                }
+            }
+            
+            // Function to initialize mobile menu
+            function initializeMobileMenu() {
+                // Wait a bit for dynamic content to fully load
+                setTimeout(function() {
+                    if ($(".mobile-nav__toggler").length) {
+                        $(".mobile-nav__toggler").off("click").on("click", function (e) {
+                            e.preventDefault();
+                            $(".mobile-nav__wrapper").toggleClass("expanded");
+                            $("body").toggleClass("locked");
+                            console.log("Mobile menu clicked");
+                        });
+                        console.log("Mobile menu initialized");
+                    }
+                    
+                    // Initialize mobile sticky header functionality
+                    initializeMobileStickyHeader();
+                }, 100);
+            }
+            
+            // Function to initialize mobile sticky header
+            function initializeMobileStickyHeader() {
+                if ($(window).width() < 1200) {
+                    $(window).on('scroll.mobileSticky', function() {
+                        var mobileHeaderScrollPos = 100;
+                        var mainHeader = $(".main-header");
+                        if ($(window).scrollTop() > mobileHeaderScrollPos) {
+                            if (!mainHeader.hasClass("mobile-sticky")) {
+                                mainHeader.addClass("mobile-sticky");
+                            }
+                        } else if ($(this).scrollTop() <= mobileHeaderScrollPos) {
+                            if (mainHeader.hasClass("mobile-sticky")) {
+                                mainHeader.removeClass("mobile-sticky");
+                            }
+                        }
+                    });
                 }
             }
         </script>
@@ -83,208 +122,184 @@
             <div class="container">
                 <div class="service-grid">
                     <div class="item">
-                        <div class="service-three__item">
-                            <div class="service-three__item__thumb">
-                                <img src="assets/images/service/services-3-1.jpg" alt="ogency" />
-                            </div><!-- /.service-image -->
-                            <div class="service-three__item__normal">
-                                <h3 class="service-three__item__normal__title">Web Development</h3>
-                            </div><!-- /.service-normal-content -->
-                            <div class="service-three__item__hover">
-                                <h3 class="service-three__item__hover__title">
-                                    <a href="web-development.html">Web Development</a>
-                                </h3><!-- /.service-title -->
-                                <p class="service-three__item__hover__text">Professional web development services for modern businesses.</p><!-- /.service-content -->
-                                <a class="service-three__item__hover__btn" href="#web-development-details" onclick="scrollToService('web-development-details')">Read More<span class="icon-down-right"></span></a><!-- /.service-read-more -->
-                            </div><!-- /.service-hover-content -->
-                        </div><!-- /.service-card-three -->
+                        <div class="flip-card">
+                            <div class="flip-card-inner">
+                                <div class="flip-card-front">
+                                    <img src="assets/images/service/services-3-1.jpg" alt="Web Development" />
+                                    <h3>Web Development</h3>
+                                </div>
+                                <div class="flip-card-back">
+                                    <h3>Web Development</h3>
+                                    <p>Professional web development services for modern businesses.</p>
+                                    <a class="service-three__item__hover__btn" href="#web-development-details" onclick="scrollToService('web-development-details')">Read More<span class="icon-down-right"></span></a>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                     <div class="item">
-                        <div class="service-three__item">
-                            <div class="service-three__item__thumb">
-                                <img src="assets/images/service/services-3-2.jpg" alt="ogency" />
-                            </div><!-- /.service-image -->
-                            <div class="service-three__item__normal">
-                                <h3 class="service-three__item__normal__title">Android App Development</h3>
-                            </div><!-- /.service-normal-content -->
-                            <div class="service-three__item__hover">
-                                <h3 class="service-three__item__hover__title">
-                                    <a href="android-development.html">Android App Development</a>
-                                </h3><!-- /.service-title -->
-                                <p class="service-three__item__hover__text">Native Android app development for all devices.</p><!-- /.service-content -->
-                                <a class="service-three__item__hover__btn" href="#android-development-details" onclick="scrollToService('android-development-details')">Read More<span class="icon-down-right"></span></a><!-- /.service-read-more -->
-                            </div><!-- /.service-hover-content -->
-                        </div><!-- /.service-card-three -->
+                        <div class="flip-card">
+                            <div class="flip-card-inner">
+                                <div class="flip-card-front">
+                                    <img src="assets/images/service/services-3-2.jpg" alt="Android App Development" />
+                                    <h3>Android App Development</h3>
+                                </div>
+                                <div class="flip-card-back">
+                                    <h3>Android App Development</h3>
+                                    <p>Native Android app development for all devices.</p>
+                                    <a class="service-three__item__hover__btn" href="#android-development-details" onclick="scrollToService('android-development-details')">Read More<span class="icon-down-right"></span></a>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                     <div class="item">
-                        <div class="service-three__item">
-                            <div class="service-three__item__thumb">
-                                <img src="assets/images/service/services-3-3.jpg" alt="ogency" />
-                            </div><!-- /.service-image -->
-                            <div class="service-three__item__normal">
-                                <h3 class="service-three__item__normal__title">IOS App Development</h3>
-                            </div><!-- /.service-normal-content -->
-                            <div class="service-three__item__hover">
-                                <h3 class="service-three__item__hover__title">
-                                    <a href="ios-development.html">IOS App Development</a>
-                                </h3><!-- /.service-title -->
-                                <p class="service-three__item__hover__text">Native iOS app development for iPhone and iPad.</p><!-- /.service-content -->
-                                <a class="service-three__item__hover__btn" href="#ios-development-details" onclick="scrollToService('ios-development-details')">Read More<span class="icon-down-right"></span></a><!-- /.service-read-more -->
-                            </div><!-- /.service-hover-content -->
-                        </div><!-- /.service-card-three -->
+                        <div class="flip-card">
+                            <div class="flip-card-inner">
+                                <div class="flip-card-front">
+                                    <img src="assets/images/service/services-3-3.jpg" alt="IOS App Development" />
+                                    <h3>IOS App Development</h3>
+                                </div>
+                                <div class="flip-card-back">
+                                    <h3>IOS App Development</h3>
+                                    <p>Native iOS app development for iPhone and iPad.</p>
+                                    <a class="service-three__item__hover__btn" href="#ios-development-details" onclick="scrollToService('ios-development-details')">Read More<span class="icon-down-right"></span></a>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                     <div class="item">
-                        <div class="service-three__item">
-                            <div class="service-three__item__thumb">
-                                <img src="assets/images/service/services-3-4.jpg" alt="ogency" />
-                            </div><!-- /.service-image -->
-                            <div class="service-three__item__normal">
-                                <h3 class="service-three__item__normal__title">AI Integration</h3>
-                            </div><!-- /.service-normal-content -->
-                            <div class="service-three__item__hover">
-                                <h3 class="service-three__item__hover__title">
-                                    <a href="ai-integration.html">AI Integration</a>
-                                </h3><!-- /.service-title -->
-                                <p class="service-three__item__hover__text">Cutting-edge AI solutions for your business needs.</p><!-- /.service-content -->
-                                <a class="service-three__item__hover__btn" href="#ai-integration-details" onclick="scrollToService('ai-integration-details')">Read More<span class="icon-down-right"></span></a><!-- /.service-read-more -->
-                            </div><!-- /.service-hover-content -->
-                        </div><!-- /.service-card-three -->
+                        <div class="flip-card">
+                            <div class="flip-card-inner">
+                                <div class="flip-card-front">
+                                    <img src="assets/images/service/services-3-4.jpg" alt="AI Integration" />
+                                    <h3>AI Integration</h3>
+                                </div>
+                                <div class="flip-card-back">
+                                    <h3>AI Integration</h3>
+                                    <p>Cutting-edge AI solutions for your business needs.</p>
+                                    <a class="service-three__item__hover__btn" href="#ai-integration-details" onclick="scrollToService('ai-integration-details')">Read More<span class="icon-down-right"></span></a>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                     <div class="item">
-                        <div class="service-three__item">
-                            <div class="service-three__item__thumb">
-                                <img src="assets/images/service/services-3-1.jpg" alt="ogency" />
-                            </div><!-- /.service-image -->
-                            <div class="service-three__item__normal">
-                                <h3 class="service-three__item__normal__title">Digital Marketing</h3>
-                            </div><!-- /.service-normal-content -->
-                            <div class="service-three__item__hover">
-                                <h3 class="service-three__item__hover__title">
-                                    <a href="digital-marketing.html">Digital Marketing</a>
-                                </h3><!-- /.service-title -->
-                                <p class="service-three__item__hover__text">Comprehensive digital marketing strategies.</p><!-- /.service-content -->
-                                <a class="service-three__item__hover__btn" href="#digital-marketing-details" onclick="scrollToService('digital-marketing-details')">Read More<span class="icon-down-right"></span></a><!-- /.service-read-more -->
-                            </div><!-- /.service-hover-content -->
-                        </div><!-- /.service-card-three -->
+                        <div class="flip-card">
+                            <div class="flip-card-inner">
+                                <div class="flip-card-front">
+                                    <img src="assets/images/service/services-3-1.jpg" alt="Digital Marketing" />
+                                    <h3>Digital Marketing</h3>
+                                </div>
+                                <div class="flip-card-back">
+                                    <h3>Digital Marketing</h3>
+                                    <p>Comprehensive digital marketing strategies.</p>
+                                    <a class="service-three__item__hover__btn" href="#digital-marketing-details" onclick="scrollToService('digital-marketing-details')">Read More<span class="icon-down-right"></span></a>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                     <div class="item">
-                        <div class="service-three__item">
-                            <div class="service-three__item__thumb">
-                                <img src="assets/images/service/services-3-2.jpg" alt="ogency" />
-                            </div><!-- /.service-image -->
-                            <div class="service-three__item__normal">
-                                <h3 class="service-three__item__normal__title">E-Commerce</h3>
-                            </div><!-- /.service-normal-content -->
-                            <div class="service-three__item__hover">
-                                <h3 class="service-three__item__hover__title">
-                                    <a href="e-commerce.html">E-Commerce</a>
-                                </h3><!-- /.service-title -->
-                                <p class="service-three__item__hover__text">Complete e-commerce solutions for online stores.</p><!-- /.service-content -->
-                                <a class="service-three__item__hover__btn" href="#e-commerce-details" onclick="scrollToService('e-commerce-details')">Read More<span class="icon-down-right"></span></a><!-- /.service-read-more -->
-                            </div><!-- /.service-hover-content -->
-                        </div><!-- /.service-card-three -->
+                        <div class="flip-card">
+                            <div class="flip-card-inner">
+                                <div class="flip-card-front">
+                                    <img src="assets/images/service/services-3-2.jpg" alt="E-Commerce" />
+                                    <h3>E-Commerce</h3>
+                                </div>
+                                <div class="flip-card-back">
+                                    <h3>E-Commerce</h3>
+                                    <p>Complete e-commerce solutions for online stores.</p>
+                                    <a class="service-three__item__hover__btn" href="#e-commerce-details" onclick="scrollToService('e-commerce-details')">Read More<span class="icon-down-right"></span></a>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                     <div class="item">
-                        <div class="service-three__item">
-                            <div class="service-three__item__thumb">
-                                <img src="assets/images/service/services-3-3.jpg" alt="ogency" />
-                            </div><!-- /.service-image -->
-                            <div class="service-three__item__normal">
-                                <h3 class="service-three__item__normal__title">Payment Integration</h3>
-                            </div><!-- /.service-normal-content -->
-                            <div class="service-three__item__hover">
-                                <h3 class="service-three__item__hover__title">
-                                    <a href="payment-integration.html">Payment Integration</a>
-                                </h3><!-- /.service-title -->
-                                <p class="service-three__item__hover__text">Secure payment gateway integration services.</p><!-- /.service-content -->
-                                <a class="service-three__item__hover__btn" href="#payment-integration-details" onclick="scrollToService('payment-integration-details')">Read More<span class="icon-down-right"></span></a><!-- /.service-read-more -->
-                            </div><!-- /.service-hover-content -->
-                        </div><!-- /.service-card-three -->
+                        <div class="flip-card">
+                            <div class="flip-card-inner">
+                                <div class="flip-card-front">
+                                    <img src="assets/images/service/services-3-3.jpg" alt="Payment Integration" />
+                                    <h3>Payment Integration</h3>
+                                </div>
+                                <div class="flip-card-back">
+                                    <h3>Payment Integration</h3>
+                                    <p>Secure payment gateway integration services.</p>
+                                    <a class="service-three__item__hover__btn" href="#payment-integration-details" onclick="scrollToService('payment-integration-details')">Read More<span class="icon-down-right"></span></a>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                     <div class="item">
-                        <div class="service-three__item">
-                            <div class="service-three__item__thumb">
-                                <img src="assets/images/service/services-3-4.jpg" alt="ogency" />
-                            </div><!-- /.service-image -->
-                            <div class="service-three__item__normal">
-                                <h3 class="service-three__item__normal__title">CMS Web Development</h3>
-                            </div><!-- /.service-normal-content -->
-                            <div class="service-three__item__hover">
-                                <h3 class="service-three__item__hover__title">
-                                    <a href="cms-development.html">CMS Web Development</a>
-                                </h3><!-- /.service-title -->
-                                <p class="service-three__item__hover__text">Custom CMS development for easy content management.</p><!-- /.service-content -->
-                                <a class="service-three__item__hover__btn" href="#cms-development-details" onclick="scrollToService('cms-development-details')">Read More<span class="icon-down-right"></span></a><!-- /.service-read-more -->
-                            </div><!-- /.service-hover-content -->
-                        </div><!-- /.service-card-three -->
+                        <div class="flip-card">
+                            <div class="flip-card-inner">
+                                <div class="flip-card-front">
+                                    <img src="assets/images/service/services-3-4.jpg" alt="CMS Web Development" />
+                                    <h3>CMS Web Development</h3>
+                                </div>
+                                <div class="flip-card-back">
+                                    <h3>CMS Web Development</h3>
+                                    <p>Custom CMS development for easy content management.</p>
+                                    <a class="service-three__item__hover__btn" href="#cms-development-details" onclick="scrollToService('cms-development-details')">Read More<span class="icon-down-right"></span></a>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                     <div class="item">
-                        <div class="service-three__item">
-                            <div class="service-three__item__thumb">
-                                <img src="assets/images/service/services-3-1.jpg" alt="ogency" />
-                            </div><!-- /.service-image -->
-                            <div class="service-three__item__normal">
-                                <h3 class="service-three__item__normal__title">Web Hosting</h3>
-                            </div><!-- /.service-normal-content -->
-                            <div class="service-three__item__hover">
-                                <h3 class="service-three__item__hover__title">
-                                    <a href="web-hosting.html">Web Hosting</a>
-                                </h3><!-- /.service-title -->
-                                <p class="service-three__item__hover__text">Reliable and secure web hosting solutions.</p><!-- /.service-content -->
-                                <a class="service-three__item__hover__btn" href="#web-hosting-details" onclick="scrollToService('web-hosting-details')">Read More<span class="icon-down-right"></span></a><!-- /.service-read-more -->
-                            </div><!-- /.service-hover-content -->
-                        </div><!-- /.service-card-three -->
+                        <div class="flip-card">
+                            <div class="flip-card-inner">
+                                <div class="flip-card-front">
+                                    <img src="assets/images/service/services-3-1.jpg" alt="Web Hosting" />
+                                    <h3>Web Hosting</h3>
+                                </div>
+                                <div class="flip-card-back">
+                                    <h3>Web Hosting</h3>
+                                    <p>Reliable and secure web hosting solutions.</p>
+                                    <a class="service-three__item__hover__btn" href="#web-hosting-details" onclick="scrollToService('web-hosting-details')">Read More<span class="icon-down-right"></span></a>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                     <div class="item">
-                        <div class="service-three__item">
-                            <div class="service-three__item__thumb">
-                                <img src="assets/images/service/services-3-2.jpg" alt="ogency" />
-                            </div><!-- /.service-image -->
-                            <div class="service-three__item__normal">
-                                <h3 class="service-three__item__normal__title">Email Automation</h3>
-                            </div><!-- /.service-normal-content -->
-                            <div class="service-three__item__hover">
-                                <h3 class="service-three__item__hover__title">
-                                    <a href="email-automation.html">Email Automation</a>
-                                </h3><!-- /.service-title -->
-                                <p class="service-three__item__hover__text">Automated email marketing campaigns.</p><!-- /.service-content -->
-                                <a class="service-three__item__hover__btn" href="#email-automation-details" onclick="scrollToService('email-automation-details')">Read More<span class="icon-down-right"></span></a><!-- /.service-read-more -->
-                            </div><!-- /.service-hover-content -->
-                        </div><!-- /.service-card-three -->
+                        <div class="flip-card">
+                            <div class="flip-card-inner">
+                                <div class="flip-card-front">
+                                    <img src="assets/images/service/services-3-2.jpg" alt="Email Automation" />
+                                    <h3>Email Automation</h3>
+                                </div>
+                                <div class="flip-card-back">
+                                    <h3>Email Automation</h3>
+                                    <p>Automated email marketing campaigns.</p>
+                                    <a class="service-three__item__hover__btn" href="#email-automation-details" onclick="scrollToService('email-automation-details')">Read More<span class="icon-down-right"></span></a>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                     <div class="item">
-                        <div class="service-three__item">
-                            <div class="service-three__item__thumb">
-                                <img src="assets/images/service/services-3-3.jpg" alt="ogency" />
-                            </div><!-- /.service-image -->
-                            <div class="service-three__item__normal">
-                                <h3 class="service-three__item__normal__title">Influencer Marketing</h3>
-                            </div><!-- /.service-normal-content -->
-                            <div class="service-three__item__hover">
-                                <h3 class="service-three__item__hover__title">
-                                    <a href="influencer-marketing.html">Influencer Marketing</a>
-                                </h3><!-- /.service-title -->
-                                <p class="service-three__item__hover__text">Strategic influencer marketing campaigns.</p><!-- /.service-content -->
-                                <a class="service-three__item__hover__btn" href="#influencer-marketing-details" onclick="scrollToService('influencer-marketing-details')">Read More<span class="icon-down-right"></span></a><!-- /.service-read-more -->
-                            </div><!-- /.service-hover-content -->
-                        </div><!-- /.service-card-three -->
+                        <div class="flip-card">
+                            <div class="flip-card-inner">
+                                <div class="flip-card-front">
+                                    <img src="assets/images/service/services-3-3.jpg" alt="Influencer Marketing" />
+                                    <h3>Influencer Marketing</h3>
+                                </div>
+                                <div class="flip-card-back">
+                                    <h3>Influencer Marketing</h3>
+                                    <p>Strategic influencer marketing campaigns.</p>
+                                    <a class="service-three__item__hover__btn" href="#influencer-marketing-details" onclick="scrollToService('influencer-marketing-details')">Read More<span class="icon-down-right"></span></a>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                     <div class="item">
-                        <div class="service-three__item">
-                            <div class="service-three__item__thumb">
-                                <img src="assets/images/service/services-3-1.jpg" alt="ogency" />
-                            </div><!-- /.service-image -->
-                            <div class="service-three__item__normal">
-                                <h3 class="service-three__item__normal__title">Web Design</h3>
-                            </div><!-- /.service-normal-content -->
-                            <div class="service-three__item__hover">
-                                <h3 class="service-three__item__hover__title">
-                                    <a href="web-designing.html">Web Design</a>
-                                </h3><!-- /.service-title -->
-                                <p class="service-three__item__hover__text">Creative and responsive web design solutions.</p><!-- /.service-content -->
-                                <a class="service-three__item__hover__btn" href="#web-design-details" onclick="scrollToService('web-design-details')">Read More<span class="icon-down-right"></span></a><!-- /.service-read-more -->
-                            </div><!-- /.service-hover-content -->
-                        </div><!-- /.service-card-three -->
+                        <div class="flip-card">
+                            <div class="flip-card-inner">
+                                <div class="flip-card-front">
+                                    <img src="assets/images/service/services-3-1.jpg" alt="Web Design" />
+                                    <h3>Web Design</h3>
+                                </div>
+                                <div class="flip-card-back">
+                                    <h3>Web Design</h3>
+                                    <p>Creative and responsive web design solutions.</p>
+                                    <a class="service-three__item__hover__btn" href="#web-design-details" onclick="scrollToService('web-design-details')">Read More<span class="icon-down-right"></span></a>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

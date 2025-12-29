@@ -99,7 +99,7 @@
   right: 0;
   bottom: 0;
   display: flex;
-  align-items: flex-end;
+  align-items: center;
   padding: 40px;
   opacity: 0;
   transition: all 600ms cubic-bezier(0.4, 0, 0.2, 1);
@@ -119,13 +119,14 @@
 }
 
 .project-showcase__content {
-  transform: translateY(30px);
+  transform: translateY(-10px);
   transition: all 600ms cubic-bezier(0.4, 0, 0.2, 1);
   transition-delay: 100ms;
+  text-align: center;
 }
 
 .project-showcase__item.animate-in:hover .project-showcase__content {
-  transform: translateY(0);
+  transform: translateY(-20px);
 }
 
 .project-showcase__cats {
@@ -183,9 +184,7 @@
 }
 
 .project-showcase__link {
-  position: absolute;
-  top: 40px;
-  right: 40px;
+  position: relative;
   width: 60px;
   height: 60px;
   background: rgba(255, 255, 255, 0.1);
@@ -201,6 +200,7 @@
   transform: scale(0.8);
   transition: all 500ms cubic-bezier(0.4, 0, 0.2, 1);
   transition-delay: 400ms;
+  margin: 20px auto 0;
 }
 
 .project-showcase__item.animate-in:hover .project-showcase__link {
@@ -270,34 +270,73 @@
   }
   
   .project-showcase__image {
-    height: 400px;
+    height: auto;
+    min-height: 300px;
+    overflow: visible;
   }
   
   .project-showcase__item:nth-child(odd) .project-showcase__image img {
-    max-width: 40%;
+    position: relative;
+    left: 0;
+    width: 100%;
+    height: auto;
+    max-width: 100%;
+    transform: none;
+    display: block;
   }
   
   .project-showcase__item:nth-child(even) .project-showcase__image img {
-    max-width: 40%;
+    position: relative;
+    right: 0;
+    width: 100%;
+    height: auto;
+    max-width: 100%;
+    transform: none;
+    display: block;
   }
   
   .project-showcase__overlay {
+    position: relative;
     padding: 25px;
+    justify-content: flex-start;
+    background: rgba(0, 0, 0, 0.9);
+    opacity: 1;
   }
   
-  .project-showcase__title {
-    font-size: 24px;
+  .project-showcase__item:nth-child(odd) .project-showcase__overlay {
+    background: rgba(0, 0, 0, 0.9);
+  }
+  
+  .project-showcase__item:nth-child(even) .project-showcase__overlay {
+    background: rgba(0, 0, 0, 0.9);
+  }
+  
+  .project-showcase__content {
+    transform: translateY(0);
+    max-width: 100%;
+    opacity: 1;
+    text-align: left;
   }
   
   .project-showcase__cats {
+    opacity: 1;
+    transform: translateY(0);
     font-size: 12px;
+  }
+  
+  .project-showcase__title {
+    opacity: 1;
+    transform: translateY(0);
+    font-size: 24px;
   }
   
   .project-showcase__link {
     width: 50px;
     height: 50px;
-    top: 25px;
-    right: 25px;
+    opacity: 1;
+    transform: scale(1);
+    margin: 20px auto 0;
+    position: relative;
   }
   
   .project-showcase__link span {
@@ -315,42 +354,45 @@
   }
   
   .project-showcase__image {
-    height: 300px;
-  }
-  
-  .project-showcase__item:nth-child(odd) .project-showcase__image img {
-    position: relative;
-    left: 0;
-    max-width: 100%;
-    transform: none;
-  }
-  
-  .project-showcase__item:nth-child(even) .project-showcase__image img {
-    position: relative;
-    right: 0;
-    max-width: 100%;
-    transform: none;
+    height: auto;
+    min-height: 250px;
+    overflow: visible;
   }
   
   .project-showcase__overlay {
+    position: relative;
     padding: 20px;
     justify-content: flex-start;
+    background: rgba(0, 0, 0, 0.9);
+    opacity: 1;
   }
   
-  .project-showcase__title {
-    font-size: 20px;
+  .project-showcase__content {
+    transform: translateY(0);
+    opacity: 1;
+    text-align: left;
   }
   
   .project-showcase__cats {
+    opacity: 1;
+    transform: translateY(0);
     font-size: 11px;
     letter-spacing: 1px;
+  }
+  
+  .project-showcase__title {
+    opacity: 1;
+    transform: translateY(0);
+    font-size: 20px;
   }
   
   .project-showcase__link {
     width: 45px;
     height: 45px;
-    top: 20px;
-    right: 20px;
+    opacity: 1;
+    transform: scale(1);
+    margin: 20px auto 0;
+    position: relative;
   }
   
   .project-showcase__link span {
@@ -676,51 +718,69 @@
   }
   
   .service-showcase__image {
-    height: 400px;
+    height: auto;
+    min-height: 300px;
+    overflow: visible;
   }
   
   .service-showcase__item:nth-child(odd) .service-showcase__image img {
     position: relative;
     left: 0;
+    width: 100%;
+    height: auto;
     max-width: 100%;
     transform: none;
+    display: block;
   }
   
   .service-showcase__item:nth-child(even) .service-showcase__image img {
     position: relative;
     right: 0;
+    width: 100%;
+    height: auto;
     max-width: 100%;
     transform: none;
+    display: block;
   }
   
   .service-showcase__overlay {
+    position: relative;
     padding: 25px;
     justify-content: flex-start;
-    background: rgba(0, 0, 0, 0.7);
+    background: rgba(0, 0, 0, 0.9);
+    opacity: 1;
   }
   
   .service-showcase__item:nth-child(odd) .service-showcase__overlay {
-    background: rgba(0, 0, 0, 0.7);
+    background: rgba(0, 0, 0, 0.9);
   }
   
   .service-showcase__item:nth-child(even) .service-showcase__overlay {
-    background: rgba(0, 0, 0, 0.7);
-  }
-  
-  .service-showcase__title {
-    font-size: 24px;
-  }
-  
-  .service-showcase__cats {
-    font-size: 12px;
-  }
-  
-  .service-showcase__description {
-    font-size: 14px;
+    background: rgba(0, 0, 0, 0.9);
   }
   
   .service-showcase__content {
+    transform: translateY(0);
     max-width: 100%;
+    opacity: 1;
+  }
+  
+  .service-showcase__cats {
+    opacity: 1;
+    transform: translateY(0);
+    font-size: 12px;
+  }
+  
+  .service-showcase__title {
+    opacity: 1;
+    transform: translateY(0);
+    font-size: 24px;
+  }
+  
+  .service-showcase__description {
+    opacity: 1;
+    transform: translateY(0);
+    font-size: 14px;
   }
   
   .service-showcase__link {
@@ -728,6 +788,8 @@
     height: 50px;
     top: 25px;
     right: 25px;
+    opacity: 1;
+    transform: scale(1);
   }
   
   .service-showcase__link span {
@@ -745,23 +807,39 @@
   }
   
   .service-showcase__image {
-    height: 300px;
+    height: auto;
+    min-height: 250px;
+    overflow: visible;
   }
   
   .service-showcase__overlay {
+    position: relative;
     padding: 20px;
+    background: rgba(0, 0, 0, 0.9);
+    opacity: 1;
   }
   
-  .service-showcase__title {
-    font-size: 20px;
+  .service-showcase__content {
+    transform: translateY(0);
+    opacity: 1;
   }
   
   .service-showcase__cats {
+    opacity: 1;
+    transform: translateY(0);
     font-size: 11px;
     letter-spacing: 1px;
   }
   
+  .service-showcase__title {
+    opacity: 1;
+    transform: translateY(0);
+    font-size: 20px;
+  }
+  
   .service-showcase__description {
+    opacity: 1;
+    transform: translateY(0);
     font-size: 13px;
   }
   
@@ -770,6 +848,8 @@
     height: 45px;
     top: 20px;
     right: 20px;
+    opacity: 1;
+    transform: scale(1);
   }
   
   .service-showcase__link span {
