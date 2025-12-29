@@ -467,22 +467,6 @@
         stricky.removeClass("stricky-fixed");
       }
     }
-    
-    // Mobile sticky header functionality
-    if ($(window).width() < 1200) {
-      var mobileHeaderScrollPos = 100;
-      var mainHeader = $(".main-header");
-      if ($(window).scrollTop() > mobileHeaderScrollPos) {
-        if (!mainHeader.hasClass("mobile-sticky")) {
-          mainHeader.addClass("mobile-sticky");
-        }
-      } else if ($(this).scrollTop() <= mobileHeaderScrollPos) {
-        if (mainHeader.hasClass("mobile-sticky")) {
-          mainHeader.removeClass("mobile-sticky");
-        }
-      }
-    }
-    
     OnePageMenuScroll();
   });
 
