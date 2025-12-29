@@ -1528,6 +1528,7 @@ h6 {
   overflow: hidden;
   z-index: 2;
   position: relative;
+  border-radius: 50px;
 }
 
 .ogency-btn::after {
@@ -3066,7 +3067,7 @@ h6 {
   position: absolute;
   top: 0;
   right: -1px;
-  border-radius: 0;
+  border-radius: 50px;
 }
 
 .search-popup__content .ogency-btn::after {
@@ -3955,6 +3956,7 @@ h6 {
   background-color: var(--ogency-base);
   color: var(--ogency-white);
   padding: 15px 35px;
+  border-radius: 50px;
 }
 
 .hero-banner__btn-primary:hover {
@@ -3966,6 +3968,7 @@ h6 {
   color: var(--ogency-white);
   border: 2px solid var(--ogency-white);
   padding: 13px 35px;
+  border-radius: 50px;
 }
 
 .hero-banner__btn-secondary:hover {
@@ -9165,7 +9168,7 @@ h6 {
   cursor: pointer;
   overflow: hidden;
   text-transform: capitalize;
-  border-radius: 0px;
+  border-radius: 50px;
   transition: all 0.5s linear;
   z-index: 1;
 }
