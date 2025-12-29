@@ -1,4 +1,5 @@
 import { defineConfig } from 'vite'
+import { copyFileSync } from 'fs'
 
 export default defineConfig({
   root: '.',
@@ -13,7 +14,9 @@ export default defineConfig({
         privacy: './privacy-policy.html',
         projects: './projects.html',
         services: './services.html',
-        terms: './terms&condition.html'
+        terms: './terms&condition.html',
+        header: './header.html',
+        footer: './footer.html'
       }
     },
     assetsDir: 'assets',
@@ -25,5 +28,15 @@ export default defineConfig({
     port: 3000,
     open: true,
     historyApiFallback: true
-  }
+  },
+  plugins: [
+    {
+      name: 'copy-header-footer',
+      writeBundle() {
+        // Copy header and footer files to dist root
+        copyFileSync('header.html', 'dist/header.html')
+        copyFileSync('footer.html', 'dist/footer.html')
+      }
+    }
+  ]
 })
