@@ -1531,6 +1531,533 @@ h6 {
   border-radius: 50px;
 }
 
+/* Special animation for Get in Touch button */
+.main-menu__right .ogency-btn[href="contact.html"] {
+  position: relative;
+  transition: all 0.4s ease;
+  background: #4facfe !important;
+}
+
+.main-menu__right .ogency-btn[href="contact.html"]::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: #000;
+  background-image: 
+    radial-gradient(2px 2px at 20% 30%, #fff, transparent),
+    radial-gradient(2px 2px at 60% 70%, #fff, transparent),
+    radial-gradient(1px 1px at 50% 50%, #fff, transparent),
+    radial-gradient(1px 1px at 80% 10%, #fff, transparent),
+    radial-gradient(2px 2px at 90% 60%, #fff, transparent),
+    radial-gradient(1px 1px at 30% 80%, #fff, transparent),
+    radial-gradient(1px 1px at 70% 40%, #fff, transparent),
+    radial-gradient(3px 3px at 15% 80%, #fff, transparent),
+    radial-gradient(2px 2px at 85% 20%, #fff, transparent),
+    radial-gradient(1px 1px at 40% 60%, #fff, transparent),
+    radial-gradient(1px 1px at 75% 85%, #fff, transparent);
+  background-size: 300% 300%;
+  border-radius: 50px;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  z-index: -1;
+}
+
+.main-menu__right .ogency-btn[href="contact.html"]:hover {
+  transform: scale(1.3);
+  color: var(--ogency-white);
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+}
+
+.main-menu__right .ogency-btn[href="contact.html"]:hover::before {
+  opacity: 1;
+  animation: galaxyStars 4s ease infinite;
+}
+
+/* Override original ogency-btn::after for Get in Touch button */
+.main-menu__right .ogency-btn[href="contact.html"]::after {
+  content: "";
+  position: absolute;
+  top: -40px;
+  left: -40px;
+  right: -40px;
+  bottom: -40px;
+  pointer-events: none;
+  z-index: 1;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+/* Create 3D ribbon shapes and code symbols like the image */
+/* Removed conflicting styles - symbols now in ::after */
+
+/* Restore galaxy background */
+.main-menu__right .ogency-btn[href="contact.html"]::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: #000;
+  background-image: 
+    radial-gradient(2px 2px at 20% 30%, #fff, transparent),
+    radial-gradient(2px 2px at 60% 70%, #fff, transparent),
+    radial-gradient(1px 1px at 50% 50%, #fff, transparent),
+    radial-gradient(1px 1px at 80% 10%, #fff, transparent),
+    radial-gradient(2px 2px at 90% 60%, #fff, transparent),
+    radial-gradient(1px 1px at 30% 80%, #fff, transparent),
+    radial-gradient(1px 1px at 70% 40%, #fff, transparent),
+    radial-gradient(3px 3px at 15% 80%, #fff, transparent),
+    radial-gradient(2px 2px at 85% 20%, #fff, transparent),
+    radial-gradient(1px 1px at 40% 60%, #fff, transparent),
+    radial-gradient(1px 1px at 75% 85%, #fff, transparent);
+  background-size: 300% 300%;
+  border-radius: 50px;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  z-index: -1;
+}
+
+.main-menu__right .ogency-btn[href="contact.html"]:hover::before {
+  opacity: 1;
+  animation: galaxyStars 4s ease infinite;
+}
+
+.main-menu__right .ogency-btn[href="contact.html"]:hover {
+  transform: scale(1.3);
+  color: var(--ogency-white);
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+}
+
+@keyframes galaxyStars {
+  0% {
+    background-position: 0% 0%;
+    background-size: 300% 300%;
+  }
+  25% {
+    background-position: 100% 0%;
+    background-size: 350% 350%;
+  }
+  50% {
+    background-position: 100% 100%;
+    background-size: 400% 400%;
+  }
+  75% {
+    background-position: 0% 100%;
+    background-size: 350% 350%;
+  }
+  100% {
+    background-position: 0% 0%;
+    background-size: 300% 300%;
+  }
+}
+
+/* Contact Overlay Styles */
+.contact-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 9999;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  transform: scale(0.8);
+  perspective: 1000px;
+}
+
+.contact-overlay.active {
+  opacity: 1;
+  visibility: visible;
+  transform: scale(1);
+}
+
+.contact-overlay__galaxy {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #000;
+  background-image: 
+    radial-gradient(1px 1px at 5% 5%, #fff, transparent),
+    radial-gradient(1px 1px at 10% 15%, #fff, transparent),
+    radial-gradient(1px 1px at 15% 8%, #fff, transparent),
+    radial-gradient(1px 1px at 20% 25%, #fff, transparent),
+    radial-gradient(1px 1px at 25% 12%, #fff, transparent),
+    radial-gradient(1px 1px at 30% 30%, #fff, transparent),
+    radial-gradient(1px 1px at 35% 18%, #fff, transparent),
+    radial-gradient(1px 1px at 40% 35%, #fff, transparent),
+    radial-gradient(1px 1px at 45% 22%, #fff, transparent),
+    radial-gradient(1px 1px at 50% 40%, #fff, transparent),
+    radial-gradient(1px 1px at 55% 28%, #fff, transparent),
+    radial-gradient(1px 1px at 60% 45%, #fff, transparent),
+    radial-gradient(1px 1px at 65% 32%, #fff, transparent),
+    radial-gradient(1px 1px at 70% 50%, #fff, transparent),
+    radial-gradient(1px 1px at 75% 38%, #fff, transparent),
+    radial-gradient(1px 1px at 80% 55%, #fff, transparent),
+    radial-gradient(1px 1px at 85% 42%, #fff, transparent),
+    radial-gradient(1px 1px at 90% 60%, #fff, transparent),
+    radial-gradient(1px 1px at 95% 48%, #fff, transparent),
+    radial-gradient(1px 1px at 8% 65%, #fff, transparent),
+    radial-gradient(1px 1px at 18% 70%, #fff, transparent),
+    radial-gradient(1px 1px at 28% 75%, #fff, transparent),
+    radial-gradient(1px 1px at 38% 80%, #fff, transparent),
+    radial-gradient(1px 1px at 48% 85%, #fff, transparent),
+    radial-gradient(1px 1px at 58% 90%, #fff, transparent),
+    radial-gradient(1px 1px at 68% 95%, #fff, transparent),
+    radial-gradient(1px 1px at 78% 88%, #fff, transparent),
+    radial-gradient(1px 1px at 88% 78%, #fff, transparent),
+    radial-gradient(1px 1px at 98% 68%, #fff, transparent),
+    radial-gradient(1px 1px at 12% 52%, #fff, transparent),
+    radial-gradient(1px 1px at 22% 58%, #fff, transparent),
+    radial-gradient(1px 1px at 32% 62%, #fff, transparent),
+    radial-gradient(1px 1px at 42% 68%, #fff, transparent),
+    radial-gradient(1px 1px at 52% 72%, #fff, transparent),
+    radial-gradient(1px 1px at 62% 78%, #fff, transparent),
+    radial-gradient(1px 1px at 72% 82%, #fff, transparent),
+    radial-gradient(1px 1px at 82% 88%, #fff, transparent),
+    radial-gradient(1px 1px at 92% 92%, #fff, transparent),
+    radial-gradient(2px 2px at 15% 45%, #fff, transparent),
+    radial-gradient(2px 2px at 35% 65%, #fff, transparent),
+    radial-gradient(2px 2px at 55% 25%, #fff, transparent),
+    radial-gradient(2px 2px at 75% 55%, #fff, transparent),
+    radial-gradient(2px 2px at 25% 85%, #fff, transparent),
+    radial-gradient(2px 2px at 85% 35%, #fff, transparent),
+    radial-gradient(2px 2px at 45% 15%, #fff, transparent),
+    radial-gradient(2px 2px at 65% 75%, #fff, transparent),
+    radial-gradient(3px 3px at 50% 50%, #fff, transparent),
+    radial-gradient(2.5px 2.5px at 25% 25%, #fff, transparent),
+    radial-gradient(2.5px 2.5px at 75% 75%, #fff, transparent),
+    radial-gradient(1.5px 1.5px at 40% 20%, #fff, transparent),
+    radial-gradient(1.5px 1.5px at 60% 80%, #fff, transparent),
+    radial-gradient(1.5px 1.5px at 20% 60%, #fff, transparent),
+    radial-gradient(1.5px 1.5px at 80% 40%, #fff, transparent);
+  background-size: 100% 100%;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  z-index: 1;
+}
+
+.contact-overlay__content {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  z-index: 10;
+  transform-style: preserve-3d;
+}
+
+.contact-overlay__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 40px 60px 20px;
+  transform: translateZ(50px);
+}
+
+.contact-overlay__title {
+  font-size: 3.5rem;
+  font-weight: 700;
+  color: #fff;
+  margin: 0;
+  opacity: 0;
+  transform: translateX(-100px) translateY(-50px) scale(0.5);
+  transition: all 1.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+  text-shadow: 0 0 30px rgba(255, 255, 255, 0.8),
+               0 0 60px rgba(79, 172, 254, 0.6),
+               0 0 90px rgba(0, 242, 254, 0.4);
+}
+
+.contact-overlay__title.animate-in {
+  opacity: 1;
+  transform: translateX(0) translateY(0) scale(1);
+}
+
+.contact-overlay__close {
+  background: rgba(255, 255, 255, 0.1);
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+  color: #fff;
+  transform: translateZ(30px);
+}
+
+.contact-overlay__close:hover {
+  background: rgba(255, 255, 255, 0.2);
+  border-color: rgba(255, 255, 255, 0.4);
+  transform: translateZ(40px) scale(1.1) rotate(90deg);
+  box-shadow: 0 0 30px rgba(255, 255, 255, 0.5);
+}
+
+.contact-overlay__form-container {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px 60px 60px;
+  transform-style: preserve-3d;
+}
+
+.contact-overlay__form {
+  width: 100%;
+  max-width: 800px;
+  transform: translateZ(20px);
+}
+
+.contact-overlay__row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+  margin-bottom: 30px;
+  transform-style: preserve-3d;
+}
+
+.contact-overlay__field {
+  position: relative;
+  transform: translateZ(10px);
+  transition: transform 0.3s ease;
+}
+
+.contact-overlay__field:hover {
+  transform: translateZ(20px);
+}
+
+.contact-overlay__field--full {
+  grid-column: 1 / -1;
+}
+
+.contact-overlay__field input,
+.contact-overlay__field textarea,
+.contact-overlay__field select {
+  width: 100%;
+  padding: 20px 15px 10px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  border-radius: 15px;
+  color: #fff;
+  font-size: 16px;
+  font-family: inherit;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+  outline: none;
+}
+
+.contact-overlay__field input:focus,
+.contact-overlay__field textarea:focus,
+.contact-overlay__field select:focus {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(79, 172, 254, 0.6);
+  box-shadow: 0 0 30px rgba(79, 172, 254, 0.3);
+  transform: translateZ(10px);
+}
+
+.contact-overlay__field input::placeholder,
+.contact-overlay__field textarea::placeholder {
+  color: transparent;
+}
+
+.contact-overlay__field label {
+  position: absolute;
+  left: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 16px;
+  pointer-events: none;
+  transition: all 0.3s ease;
+  background: linear-gradient(to bottom, transparent 40%, rgba(0, 0, 0, 0.8) 40%, rgba(0, 0, 0, 0.8) 60%, transparent 60%);
+  padding: 0 5px;
+}
+
+.contact-overlay__field input:focus + label,
+.contact-overlay__field input:not(:placeholder-shown) + label,
+.contact-overlay__field textarea:focus + label,
+.contact-overlay__field textarea:not(:placeholder-shown) + label,
+.contact-overlay__field select:focus + label,
+.contact-overlay__field select:valid + label {
+  top: 10px;
+  font-size: 12px;
+  color: #4facfe;
+  transform: translateY(0);
+}
+
+.contact-overlay__field select {
+  appearance: none;
+  cursor: pointer;
+}
+
+.contact-overlay__field select option {
+  background: #1a1a2e;
+  color: #fff;
+}
+
+.contact-overlay__field-border {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(90deg, #4facfe, #00f2fe);
+  transition: width 0.3s ease;
+  border-radius: 1px;
+}
+
+.contact-overlay__field input:focus ~ .contact-overlay__field-border,
+.contact-overlay__field textarea:focus ~ .contact-overlay__field-border,
+.contact-overlay__field select:focus ~ .contact-overlay__field-border {
+  width: calc(100% - 30px);
+}
+
+.contact-overlay__actions {
+  display: flex;
+  justify-content: center;
+  margin-top: 40px;
+  transform: translateZ(30px);
+}
+
+.contact-overlay__submit {
+  background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+  border: none;
+  border-radius: 50px;
+  padding: 18px 40px;
+  color: #fff;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  box-shadow: 0 10px 30px rgba(79, 172, 254, 0.3);
+  transform-style: preserve-3d;
+  position: relative;
+  overflow: hidden;
+}
+
+.contact-overlay__submit::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  transition: left 0.5s ease;
+}
+
+.contact-overlay__submit:hover {
+  transform: translateZ(20px) translateY(-3px) scale(1.05);
+  box-shadow: 0 15px 40px rgba(79, 172, 254, 0.4);
+}
+
+.contact-overlay__submit:hover::before {
+  left: 100%;
+}
+
+.contact-overlay__submit.success {
+  background: linear-gradient(135deg, #00c851 0%, #00ff00 100%);
+  animation: successPulse 0.6s ease;
+}
+
+@keyframes successPulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .contact-overlay__header {
+    padding: 30px 30px 15px;
+  }
+  
+  .contact-overlay__title {
+    font-size: 2.5rem;
+  }
+  
+  .contact-overlay__close {
+    width: 50px;
+    height: 50px;
+  }
+  
+  .contact-overlay__form-container {
+    padding: 15px 30px 40px;
+  }
+  
+  .contact-overlay__row {
+    grid-template-columns: 1fr;
+    gap: 20px;
+    margin-bottom: 20px;
+  }
+  
+  .contact-overlay__field input,
+  .contact-overlay__field textarea,
+  .contact-overlay__field select {
+    padding: 15px 12px 8px;
+    font-size: 14px;
+  }
+  
+  .contact-overlay__field label {
+    font-size: 14px;
+    left: 12px;
+  }
+  
+  .contact-overlay__submit {
+    padding: 15px 30px;
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  .contact-overlay__title {
+    font-size: 2rem;
+  }
+  
+  .contact-overlay__header {
+    padding: 20px 20px 10px;
+  }
+  
+  .contact-overlay__form-container {
+    padding: 10px 20px 30px;
+  }
+  
+  .contact-overlay__row {
+    gap: 15px;
+    margin-bottom: 15px;
+  }
+}
+
+/* 3D Transform Enhancements */
+.contact-overlay.active .contact-overlay__content {
+  animation: contentFloat 6s ease-in-out infinite;
+}
+
+@keyframes contentFloat {
+  0%, 100% { transform: translateY(0) rotateX(0); }
+  50% { transform: translateY(-10px) rotateX(1deg); }
+}
+
+/* Smooth scroll prevention */
+.contact-overlay.active ~ * {
+  pointer-events: none;
+}
+
+.contact-overlay.active {
+  pointer-events: all;
+}
+
 .ogency-btn::after {
   content: "";
   position: absolute;

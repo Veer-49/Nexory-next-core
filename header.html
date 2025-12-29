@@ -23,7 +23,7 @@
                         <path d="M3 18Q6 16,9 18T15 18T21 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
                     </svg>
                 </a><!-- /.mobile menu btn -->
-                <a href="contact.html" class="ogency-btn">Get in Touch</a>
+                <a href="contact.html" class="ogency-btn" data-symbols="</> < /> { }">Get in Touch</a>
             </div><!-- /.main-menu__right -->
         </div><!-- /.container -->
     </nav>
@@ -66,6 +66,71 @@
     <!-- /.mobile-nav__content -->
 </div>
 <!-- /.mobile-nav__wrapper -->
+
+<!-- Full Screen Contact Overlay -->
+<div id="contactOverlay" class="contact-overlay">
+    <div class="contact-overlay__galaxy"></div>
+    <div class="contact-overlay__content">
+        <div class="contact-overlay__header">
+            <h2 class="contact-overlay__title">Get in Touch</h2>
+            <button class="contact-overlay__close" id="closeContact">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M18 6L6 18M6 6L18 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                </svg>
+            </button>
+        </div>
+        <div class="contact-overlay__form-container">
+            <form class="contact-overlay__form" id="contactForm">
+                <div class="contact-overlay__row">
+                    <div class="contact-overlay__field">
+                        <input type="text" id="name" name="name" required>
+                        <label for="name">Your Name</label>
+                        <div class="contact-overlay__field-border"></div>
+                    </div>
+                    <div class="contact-overlay__field">
+                        <input type="email" id="email" name="email" required>
+                        <label for="email">Email Address</label>
+                        <div class="contact-overlay__field-border"></div>
+                    </div>
+                </div>
+                <div class="contact-overlay__row">
+                    <div class="contact-overlay__field">
+                        <input type="tel" id="phone" name="phone" required>
+                        <label for="phone">Phone Number</label>
+                        <div class="contact-overlay__field-border"></div>
+                    </div>
+                    <div class="contact-overlay__field">
+                        <select id="service" name="service" required>
+                            <option value="">Select Service</option>
+                            <option value="web-design">Web Design</option>
+                            <option value="web-development">Web Development</option>
+                            <option value="app-development">App Development</option>
+                            <option value="debug-fix">Debug & Fix</option>
+                            <option value="other">Other</option>
+                        </select>
+                        <label for="service">Service</label>
+                        <div class="contact-overlay__field-border"></div>
+                    </div>
+                </div>
+                <div class="contact-overlay__row">
+                    <div class="contact-overlay__field contact-overlay__field--full">
+                        <textarea id="message" name="message" rows="5" required></textarea>
+                        <label for="message">Your Message</label>
+                        <div class="contact-overlay__field-border"></div>
+                    </div>
+                </div>
+                <div class="contact-overlay__actions">
+                    <button type="submit" class="contact-overlay__submit">
+                        <span>Send Message</span>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M22 2L11 13M22 2L15 22L11 13L2 9L22 2Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
 
 <!-- Search Popup -->
 <div class="search-popup">
