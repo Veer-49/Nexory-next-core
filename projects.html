@@ -26,6 +26,64 @@
 
     <!-- template styles -->
     <link rel="stylesheet" href="assets/css/ogency.css" />
+    
+    <!-- Floating Buttons CSS -->
+    <style>
+        .floating-buttons {
+            position: fixed;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 1000;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        
+        .floating-btn {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            transition: all 0.3s ease;
+            font-size: 20px;
+        }
+        
+        .whatsapp-btn {
+            background-color: #25D366;
+            color: white;
+        }
+        
+        .whatsapp-btn:hover {
+            background-color: #25D366;
+        }
+        
+        .call-btn {
+            background-color: #007bff;
+            color: white;
+        }
+        
+        .call-btn:hover {
+            background-color: #007bff;
+        }
+        
+        @media (max-width: 768px) {
+            .floating-buttons {
+                right: 15px;
+                gap: 10px;
+            }
+            
+            .floating-btn {
+                width: 45px;
+                height: 45px;
+                font-size: 18px;
+            }
+        }
+    </style>
 </head>
 
 <body class="custom-cursor">
@@ -110,48 +168,48 @@
                     </div>
                     
                     <!-- Right Side - Scroll Reveal Images (60%) -->
-                    <div class="col-lg-7 col-md-12 project-images-section">
+                   <div class="col-lg-7 col-md-12 project-images-section">
                         <div class="project-images-scroll">
                             <div class="project-image-item" data-project="1">
                                 <div class="project-image-wrapper">
-                                    <img src="assets/images/project/project-2-2.jpg" alt="Asus marketing">
+                                    <img src="/assets/images/project/henil.png" alt="Henil Construction">
                                     <div class="project-image-overlay">
                                         <div class="project-image-content">
-                                            <h4><a href="project-details.html">Asus marketing</a></h4>
-                                            <p>Digital, Agency</p>
+                                            <h4><a href="https://henilconstruction.com/">Henil Construction</a></h4>
+                                            <p>Web Development</p>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                             <div class="project-image-item" data-project="2">
                                 <div class="project-image-wrapper">
-                                    <img src="assets/images/project/project-2-3.jpg" alt="Brand Identity">
+                                    <img src="assets/images/project/wpf.png" alt="White Pearl Finance">
                                     <div class="project-image-overlay">
                                         <div class="project-image-content">
-                                            <h4><a href="project-details.html">Brand Identity</a></h4>
-                                            <p>Branding, Design</p>
+                                            <h4><a href="https://www.whitepearlfinance.com/">White Pearl Finance</a></h4>
+                                            <p>Web Design</p>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                             <div class="project-image-item" data-project="3">
                                 <div class="project-image-wrapper">
-                                    <img src="assets/images/project/project-2-4.jpg" alt="E-commerce Platform">
+                                    <img src="assets/images/project/adrise.png" alt="Adrise Media">
                                     <div class="project-image-overlay">
                                         <div class="project-image-content">
-                                            <h4><a href="project-details.html">E-commerce Platform</a></h4>
-                                            <p>Web Development, UI/UX</p>
+                                            <h4><a href="project-details.html">Adrise Media</a></h4>
+                                            <p>Web Development</p>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                             <div class="project-image-item" data-project="4">
                                 <div class="project-image-wrapper">
-                                    <img src="assets/images/project/project-2-5.jpg" alt="Mobile App Design">
+                                    <img src="assets/images/project/pitchpioneer.png" alt="Pitch Pioneer">
                                     <div class="project-image-overlay">
                                         <div class="project-image-content">
-                                            <h4><a href="project-details.html">Mobile App Design</a></h4>
-                                            <p>Mobile, Design</p>
+                                            <h4><a href="project-details.html">Pitch Pioneer</a></h4>
+                                            <p>Mobile, AI Intigration</p>
                                         </div>
                                     </div>
                                 </div>
@@ -520,6 +578,16 @@
             document.head.appendChild(style);
         });
     </script>
+
+    <!-- Floating WhatsApp and Call Buttons -->
+    <div class="floating-buttons">
+        <a href="https://wa.me/917972278890" target="_blank" class="floating-btn whatsapp-btn" title="Chat on WhatsApp">
+            <i class="fab fa-whatsapp"></i>
+        </a>
+        <a href="tel:+917972278890" class="floating-btn call-btn" title="Call Now">
+            <i class="fas fa-phone"></i>
+        </a>
+    </div>
 
 </body>
 </html>

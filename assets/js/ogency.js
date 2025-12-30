@@ -920,10 +920,111 @@
       }
     });
   }
+
+// Initialize testimonial carousel when DOM is ready
+if ($('#testimonial-modern__carousel').length) {
+initTestimonialCarousel();
+}
+
+// How We Work Timeline Scroll Animation
+function initTimelineAnimation() {
+const timelineItems = $('.how-we-work__item');
+const timelineLine = $('.how-we-work__line');
+const timeline = $('.how-we-work__timeline');
+const svgPath = timelineLine.find('path');
   
-  // Initialize testimonial carousel when DOM is ready
-  if ($('#testimonial-modern__carousel').length) {
-    initTestimonialCarousel();
-  }
+if (timelineItems.length === 0) return;
+  
+// Function to check if element is in viewport
+function isInViewport(element) {
+const rect = element[0].getBoundingClientRect();
+const windowHeight = $(window).height();
+const windowTop = $(window).scrollTop();
+const elementTop = element.offset().top;
+  
+// Trigger when element is 20% visible from bottom
+return (elementTop - windowTop) < (windowHeight * 0.8);
+}
+
+// Function to update SVG path drawing based on scroll
+function updatePathDrawing() {
+if (!isInViewport(timeline)) return;
+  
+let maxVisibleIndex = -1;
+const timelineHeight = timeline.height();
+const itemHeight = timelineHeight / timelineItems.length;
+  
+// Find the furthest visible item
+timelineItems.each(function(index) {
+const item = $(this);
+if (isInViewport(item)) {
+maxVisibleIndex = index;
+}
+});
+
+// Calculate path length based on visible items
+if (maxVisibleIndex >= 0) {
+// Calculate how much of the path should be drawn
+const totalPathLength = 1000; // Total stroke-dasharray value
+const itemsCount = timelineItems.length;
+const visibleItems = maxVisibleIndex + 1;
+  
+// Calculate the percentage of path to draw
+const pathPercentage = (visibleItems / itemsCount);
+const pathLength = totalPathLength * pathPercentage;
+  
+// Apply the stroke-dashoffset for progressive drawing
+svgPath.css({
+'stroke-dashoffset': totalPathLength - pathLength,
+'transition': 'stroke-dashoffset 0.5s ease-out'
+});
+
+// Update line height for clipping
+const targetHeight = ((maxVisibleIndex + 1) * itemHeight) + (itemHeight / 2);
+const percentageHeight = (targetHeight / timelineHeight) * 100;
+  
+timelineLine.css({
+'height': percentageHeight + '%',
+'transition': 'height 0.5s ease-out'
+});
+}
+}
+
+// Function to animate individual items
+function animateTimelineItems() {
+timelineItems.each(function(index) {
+const item = $(this);
+if (isInViewport(item) && !item.hasClass('animated')) {
+// Add animation class with staggered delay
+setTimeout(function() {
+item.addClass('animated');
+}, index * 200);
+}
+});
+}
+
+// Initialize path with full dash offset (hidden)
+svgPath.css('stroke-dashoffset', 1000);
+  
+// Initial check on page load
+updatePathDrawing();
+animateTimelineItems();
+  
+// Check on scroll
+$(window).on('scroll', function() {
+updatePathDrawing();
+animateTimelineItems();
+});
+  
+// Also update on resize for responsive behavior
+$(window).on('resize', function() {
+updatePathDrawing();
+});
+}
+
+// Initialize timeline animation when DOM is ready
+if ($('.how-we-work__timeline').length) {
+initTimelineAnimation();
+}
 
 })(jQuery);

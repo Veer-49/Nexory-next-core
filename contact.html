@@ -26,6 +26,89 @@
 
     <!-- template styles -->
     <link rel="stylesheet" href="assets/css/ogency.css" />
+    
+    <!-- Floating Buttons CSS -->
+    <style>
+        .floating-buttons {
+            position: fixed;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 1000;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        
+        .floating-btn {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            transition: all 0.3s ease;
+            font-size: 20px;
+        }
+        
+        .whatsapp-btn {
+            background-color: #25D366;
+            color: white;
+        }
+        
+        .whatsapp-btn:hover {
+            background-color: #25D366;
+        }
+        
+        .call-btn {
+            background-color: #007bff;
+            color: white;
+        }
+        
+        .call-btn:hover {
+            background-color: #007bff;
+        }
+        
+        /* Contact Info Card Customizations */
+        .contact-info .contact-info__wrapper .contact-info__item {
+            min-height: 50px !important;
+            padding: 5px 0 0 60px !important;
+            width: 100% !important;
+            max-width: 320px !important;
+            margin-bottom: 15px !important;
+        }
+        
+        .contact-info .contact-info__wrapper .contact-info__item__icon {
+            width: 45px !important;
+            height: 45px !important;
+        }
+        
+        .contact-info .contact-info__wrapper .contact-info__item__title {
+            font-size: 16px !important;
+            line-height: 22px !important;
+            margin: 0 0 2px !important;
+        }
+        
+        .contact-info .contact-info__wrapper .contact-info__item__text {
+            font-size: 14px !important;
+            line-height: 18px !important;
+        }
+        
+        @media (max-width: 768px) {
+            .floating-buttons {
+                right: 15px;
+                gap:5px;
+            }
+            
+            .floating-btn {
+                width: 45px;
+                height: 45px;
+                font-size: 18px;
+            }
+        }
+    </style>
 </head>
 
 <body class="custom-cursor">
@@ -167,53 +250,44 @@
                         <div class="result"></div>
                     </div>
                 </div>
-            </div>
-        </section>
-        <!--Contact End-->
-
-        <!--Contact Info Start-->
-        <section class="contact-info">
-            <div class="container">
-                <div class="contact-info__wrapper">
-                    <div class="row">
-                        <div class="col-xl-4 col-md-6">
-                            <div class="contact-info__item">
-                                <div class="contact-info__item__icon"><span class="icon-place"></span></div>
-                                <h3 class="contact-info__item__title">Address</h3>
-                                <p class="contact-info__item__text">
-                                    Vasai, Maharashtra<br> India
-                                </p>
+                <div class="contact-info">
+                    <div class="container"></div>
+                    <div class="contact-info__wrapper">
+                        <div class="row">
+                            <div class="col-xl-4 col-md-6">
+                                <div class="contact-info__item">
+                                    <div class="contact-info__item__icon"><span class="icon-place"></span></div>
+                                    <h3 class="contact-info__item__title">Address</h3>
+                                    <p class="contact-info__item__text">
+                                        Vasai, Maharashtra<br> India
+                                    </p>
+                                </div>
                             </div>
-                        </div>
-                        <div class="col-xl-4 col-md-6">
-                            <div class="contact-info__item">
-                                <div class="contact-info__item__icon"><span class="icon-phone"></span></div>
-                                <h3 class="contact-info__item__title">Contact</h3>
-                                <p class="contact-info__item__text">
-                                    <a href="mailto:needhelp@company.com">needhelp@company.com</a>
-                                    <a href="tel:+917972278890">+91 7972278890</a>
-                                </p>
+                            <div class="col-xl-4 col-md-6">
+                                <div class="contact-info__item">
+                                    <div class="contact-info__item__icon"><span class="icon-phone"></span></div>
+                                    <h3 class="contact-info__item__title">Contact</h3>
+                                    <p class="contact-info__item__text">
+                                        <a href="mailto:needhelp@company.com">needhelp@company.com</a>
+                                        <a href="tel:+917972278890">+91 7972278890</a>
+                                    </p>
+                                </div>
                             </div>
-                        </div>
-                        <div class="col-xl-4 col-md-7">
-                            <div class="contact-info__item">
-                                <div class="contact-info__item__icon"><span class="icon-schedule"></span></div>
-                                <h3 class="contact-info__item__title">Timing</h3>
-                                <p class="contact-info__item__text">
-                                    Mon - Sat: 8:00 am to 6:00 pm<br> Sunday: CLOSED
-                                </p>
+                            <div class="col-xl-4 col-md-7">
+                                <div class="contact-info__item">
+                                    <div class="contact-info__item__icon"><span class="icon-schedule"></span></div>
+                                    <h3 class="contact-info__item__title">Timing</h3>
+                                    <p class="contact-info__item__text">
+                                        Mon - Sat: 8:00 am to 6:00 pm<br> Sunday: CLOSED
+                                    </p>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
-        <!--Contact Info End-->
-        <!--Google Map Start-->
-        <section class="google-map">
-            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4562.753041141002!2d-118.80123790098536!3d34.152323469614075!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80e82469c2162619%3A0xba03efb7998eef6d!2sCostco+Wholesale!5e0!3m2!1sbn!2sbd!4v1562518641290!5m2!1sbn!2sbd" class="google-map__one" allowfullscreen></iframe>
-        </section>
-        <!--Google Map End-->
+        <!--Contact End-->
 
         <!-- Include centralized footer -->
         <div id="footer-container"></div>
@@ -227,6 +301,16 @@
 
     </div><!-- /.page-wrapper -->
 
+
+    <!-- Floating WhatsApp and Call Buttons -->
+    <div class="floating-buttons">
+        <a href="https://wa.me/917972278890" target="_blank" class="floating-btn whatsapp-btn" title="Chat on WhatsApp">
+            <i class="fab fa-whatsapp"></i>
+        </a>
+        <a href="tel:+917972278890" class="floating-btn call-btn" title="Call Now">
+            <i class="fas fa-phone"></i>
+        </a>
+    </div>
 
     <!-- back-to-top-start -->
     <a href="#" class="scroll-top">
