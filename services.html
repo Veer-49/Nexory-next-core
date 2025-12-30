@@ -26,6 +26,7 @@
 
     <!-- template styles -->
     <link rel="stylesheet" href="assets/css/ogency.css" />
+    <link rel="stylesheet" href="assets/css/project-showcase.css" />
 </head>
 
 <body class="custom-cursor">
@@ -118,192 +119,313 @@
                 <h2 class="page-header__title" data-text="Services">Services</h2><!-- /.page-title -->
             </div><!-- /.container -->
         </section><!-- /.page-header -->
-        <section class="service-page__grid">
+        <section class="service-showcase">
             <div class="container">
-                <div class="service-grid">
-                    <div class="item">
-                        <div class="flip-card">
-                            <div class="flip-card-inner">
-                                <div class="flip-card-front">
-                                    <img src="assets/images/service/services-3-1.jpg" alt="Web Development" />
-                                    <h3>Web Development</h3>
-                                </div>
-                                <div class="flip-card-back">
-                                    <h3>Web Development</h3>
-                                    <p>Professional web development services for modern businesses.</p>
-                                    <a class="service-three__item__hover__btn" href="#web-development-details" onclick="scrollToService('web-development-details')">Read More<span class="icon-down-right"></span></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="flip-card">
-                            <div class="flip-card-inner">
-                                <div class="flip-card-front">
-                                    <img src="assets/images/service/services-3-2.jpg" alt="Android App Development" />
-                                    <h3>Android App Development</h3>
-                                </div>
-                                <div class="flip-card-back">
-                                    <h3>Android App Development</h3>
-                                    <p>Native Android app development for all devices.</p>
-                                    <a class="service-three__item__hover__btn" href="#android-development-details" onclick="scrollToService('android-development-details')">Read More<span class="icon-down-right"></span></a>
+                <div class="section-title text-center">
+                    <h5 class="section-title__tagline section-title__tagline--has-dots">what we're offering</h5>
+                    <h2 class="section-title__title">Services we're providing<br> to our customers</h2>
+                </div>
+                
+                <div class="service-showcase__items">
+                    <div class="service-showcase__item">
+                        <div class="service-showcase__image">
+                            <img src="assets/images/service/services-2-1.jpg" alt="Web Development">
+                            <div class="service-showcase__overlay">
+                                <div class="service-showcase__content">
+                                    <p class="service-showcase__cats"><a href="#web-development-details">Development</a>, <a href="#web-development-details">Web</a></p>
+                                    <h3 class="service-showcase__title"><a href="#web-development-details" onclick="return showServiceDetails('web-development-details')">Web Development</a></h3>
+                                    <p class="service-showcase__description">Professional web development services for modern businesses. We create responsive, fast, and secure websites that drive results and enhance user experience.</p>
+                                    <a href="#web-development-details" class="service-showcase__read-more" onclick="return showServiceDetails('web-development-details')">Read More →</a>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="item">
-                        <div class="flip-card">
-                            <div class="flip-card-inner">
-                                <div class="flip-card-front">
-                                    <img src="assets/images/service/services-3-3.jpg" alt="IOS App Development" />
-                                    <h3>IOS App Development</h3>
-                                </div>
-                                <div class="flip-card-back">
-                                    <h3>IOS App Development</h3>
-                                    <p>Native iOS app development for iPhone and iPad.</p>
-                                    <a class="service-three__item__hover__btn" href="#ios-development-details" onclick="scrollToService('ios-development-details')">Read More<span class="icon-down-right"></span></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="flip-card">
-                            <div class="flip-card-inner">
-                                <div class="flip-card-front">
-                                    <img src="assets/images/service/services-3-4.jpg" alt="AI Integration" />
-                                    <h3>AI Integration</h3>
-                                </div>
-                                <div class="flip-card-back">
-                                    <h3>AI Integration</h3>
-                                    <p>Cutting-edge AI solutions for your business needs.</p>
-                                    <a class="service-three__item__hover__btn" href="#ai-integration-details" onclick="scrollToService('ai-integration-details')">Read More<span class="icon-down-right"></span></a>
+                    
+                    <div class="service-showcase__item">
+                        <div class="service-showcase__image">
+                            <img src="assets/images/service/services-2-2.jpg" alt="Android App Development">
+                            <div class="service-showcase__overlay">
+                                <div class="service-showcase__content">
+                                    <p class="service-showcase__cats"><a href="#android-development-details">Mobile</a>, <a href="#android-development-details">Android</a></p>
+                                    <h3 class="service-showcase__title"><a href="#android-development-details" onclick="return showServiceDetails('android-development-details')">Android App Development</a></h3>
+                                    <p class="service-showcase__description">Native Android app development for all devices. We build high-performance, user-friendly applications that meet your business needs.</p>
+                                    <a href="#android-development-details" class="service-showcase__read-more" onclick="return showServiceDetails('android-development-details')">Read More →</a>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="item">
-                        <div class="flip-card">
-                            <div class="flip-card-inner">
-                                <div class="flip-card-front">
-                                    <img src="assets/images/service/services-3-1.jpg" alt="Digital Marketing" />
-                                    <h3>Digital Marketing</h3>
-                                </div>
-                                <div class="flip-card-back">
-                                    <h3>Digital Marketing</h3>
-                                    <p>Comprehensive digital marketing strategies.</p>
-                                    <a class="service-three__item__hover__btn" href="#digital-marketing-details" onclick="scrollToService('digital-marketing-details')">Read More<span class="icon-down-right"></span></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="flip-card">
-                            <div class="flip-card-inner">
-                                <div class="flip-card-front">
-                                    <img src="assets/images/service/services-3-2.jpg" alt="E-Commerce" />
-                                    <h3>E-Commerce</h3>
-                                </div>
-                                <div class="flip-card-back">
-                                    <h3>E-Commerce</h3>
-                                    <p>Complete e-commerce solutions for online stores.</p>
-                                    <a class="service-three__item__hover__btn" href="#e-commerce-details" onclick="scrollToService('e-commerce-details')">Read More<span class="icon-down-right"></span></a>
+                    
+                    <div class="service-showcase__item">
+                        <div class="service-showcase__image">
+                            <img src="assets/images/service/services-2-3.jpg" alt="IOS App Development">
+                            <div class="service-showcase__overlay">
+                                <div class="service-showcase__content">
+                                    <p class="service-showcase__cats"><a href="#ios-development-details">Mobile</a>, <a href="#ios-development-details">iOS</a></p>
+                                    <h3 class="service-showcase__title"><a href="#ios-development-details" onclick="return showServiceDetails('ios-development-details')">IOS App Development</a></h3>
+                                    <p class="service-showcase__description">Native iOS app development for iPhone and iPad. We create stunning, high-performance apps that deliver exceptional user experiences.</p>
+                                    <a href="#ios-development-details" class="service-showcase__read-more" onclick="return showServiceDetails('ios-development-details')">Read More →</a>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="item">
-                        <div class="flip-card">
-                            <div class="flip-card-inner">
-                                <div class="flip-card-front">
-                                    <img src="assets/images/service/services-3-3.jpg" alt="Payment Integration" />
-                                    <h3>Payment Integration</h3>
-                                </div>
-                                <div class="flip-card-back">
-                                    <h3>Payment Integration</h3>
-                                    <p>Secure payment gateway integration services.</p>
-                                    <a class="service-three__item__hover__btn" href="#payment-integration-details" onclick="scrollToService('payment-integration-details')">Read More<span class="icon-down-right"></span></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="flip-card">
-                            <div class="flip-card-inner">
-                                <div class="flip-card-front">
-                                    <img src="assets/images/service/services-3-4.jpg" alt="CMS Web Development" />
-                                    <h3>CMS Web Development</h3>
-                                </div>
-                                <div class="flip-card-back">
-                                    <h3>CMS Web Development</h3>
-                                    <p>Custom CMS development for easy content management.</p>
-                                    <a class="service-three__item__hover__btn" href="#cms-development-details" onclick="scrollToService('cms-development-details')">Read More<span class="icon-down-right"></span></a>
+                    
+                    <div class="service-showcase__item">
+                        <div class="service-showcase__image">
+                            <img src="assets/images/service/services-2-4.jpg" alt="AI Integration">
+                            <div class="service-showcase__overlay">
+                                <div class="service-showcase__content">
+                                    <p class="service-showcase__cats"><a href="#ai-integration-details">AI</a>, <a href="#ai-integration-details">Integration</a></p>
+                                    <h3 class="service-showcase__title"><a href="#ai-integration-details" onclick="return showServiceDetails('ai-integration-details')">AI Integration</a></h3>
+                                    <p class="service-showcase__description">Cutting-edge AI solutions for your business needs. We implement intelligent automation and machine learning to transform your operations.</p>
+                                    <a href="#ai-integration-details" class="service-showcase__read-more" onclick="return showServiceDetails('ai-integration-details')">Read More →</a>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="item">
-                        <div class="flip-card">
-                            <div class="flip-card-inner">
-                                <div class="flip-card-front">
-                                    <img src="assets/images/service/services-3-1.jpg" alt="Web Hosting" />
-                                    <h3>Web Hosting</h3>
-                                </div>
-                                <div class="flip-card-back">
-                                    <h3>Web Hosting</h3>
-                                    <p>Reliable and secure web hosting solutions.</p>
-                                    <a class="service-three__item__hover__btn" href="#web-hosting-details" onclick="scrollToService('web-hosting-details')">Read More<span class="icon-down-right"></span></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="flip-card">
-                            <div class="flip-card-inner">
-                                <div class="flip-card-front">
-                                    <img src="assets/images/service/services-3-2.jpg" alt="Email Automation" />
-                                    <h3>Email Automation</h3>
-                                </div>
-                                <div class="flip-card-back">
-                                    <h3>Email Automation</h3>
-                                    <p>Automated email marketing campaigns.</p>
-                                    <a class="service-three__item__hover__btn" href="#email-automation-details" onclick="scrollToService('email-automation-details')">Read More<span class="icon-down-right"></span></a>
+                    
+                    <div class="service-showcase__item">
+                        <div class="service-showcase__image">
+                            <img src="assets/images/service/services-2-1.jpg" alt="Digital Marketing">
+                            <div class="service-showcase__overlay">
+                                <div class="service-showcase__content">
+                                    <p class="service-showcase__cats"><a href="#digital-marketing-details">Marketing</a>, <a href="#digital-marketing-details">Digital</a></p>
+                                    <h3 class="service-showcase__title"><a href="#digital-marketing-details" onclick="return showServiceDetails('digital-marketing-details')">Digital Marketing</a></h3>
+                                    <p class="service-showcase__description">Comprehensive digital marketing strategies. We drive growth through data-driven campaigns and innovative online marketing solutions.</p>
+                                    <a href="#digital-marketing-details" class="service-showcase__read-more" onclick="return showServiceDetails('digital-marketing-details')">Read More →</a>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="item">
-                        <div class="flip-card">
-                            <div class="flip-card-inner">
-                                <div class="flip-card-front">
-                                    <img src="assets/images/service/services-3-3.jpg" alt="Influencer Marketing" />
-                                    <h3>Influencer Marketing</h3>
-                                </div>
-                                <div class="flip-card-back">
-                                    <h3>Influencer Marketing</h3>
-                                    <p>Strategic influencer marketing campaigns.</p>
-                                    <a class="service-three__item__hover__btn" href="#influencer-marketing-details" onclick="scrollToService('influencer-marketing-details')">Read More<span class="icon-down-right"></span></a>
+                    
+                    <div class="service-showcase__item">
+                        <div class="service-showcase__image">
+                            <img src="assets/images/service/services-2-2.jpg" alt="E-Commerce">
+                            <div class="service-showcase__overlay">
+                                <div class="service-showcase__content">
+                                    <p class="service-showcase__cats"><a href="#e-commerce-details">E-Commerce</a>, <a href="#e-commerce-details">Online Store</a></p>
+                                    <h3 class="service-showcase__title"><a href="#e-commerce-details" onclick="return showServiceDetails('e-commerce-details')">E-Commerce</a></h3>
+                                    <p class="service-showcase__description">Complete e-commerce solutions for online stores. We build powerful, scalable platforms that drive sales and customer engagement.</p>
+                                    <a href="#e-commerce-details" class="service-showcase__read-more" onclick="return showServiceDetails('e-commerce-details')">Read More →</a>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="item">
-                        <div class="flip-card">
-                            <div class="flip-card-inner">
-                                <div class="flip-card-front">
-                                    <img src="assets/images/service/services-3-1.jpg" alt="Web Design" />
-                                    <h3>Web Design</h3>
+                    
+                    <div class="service-showcase__item">
+                        <div class="service-showcase__image">
+                            <img src="assets/images/service/services-2-3.jpg" alt="Payment Integration">
+                            <div class="service-showcase__overlay">
+                                <div class="service-showcase__content">
+                                    <p class="service-showcase__cats"><a href="#payment-integration-details">Payment</a>, <a href="#payment-integration-details">Integration</a></p>
+                                    <h3 class="service-showcase__title"><a href="#payment-integration-details" onclick="return showServiceDetails('payment-integration-details')">Payment Integration</a></h3>
+                                    <p class="service-showcase__description">Secure payment gateway integration services. We integrate reliable payment solutions for seamless online transactions.</p>
+                                    <a href="#payment-integration-details" class="service-showcase__read-more" onclick="return showServiceDetails('payment-integration-details')">Read More →</a>
                                 </div>
-                                <div class="flip-card-back">
-                                    <h3>Web Design</h3>
-                                    <p>Creative and responsive web design solutions.</p>
-                                    <a class="service-three__item__hover__btn" href="#web-design-details" onclick="scrollToService('web-design-details')">Read More<span class="icon-down-right"></span></a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="service-showcase__item">
+                        <div class="service-showcase__image">
+                            <img src="assets/images/service/services-2-4.jpg" alt="CMS Web Development">
+                            <div class="service-showcase__overlay">
+                                <div class="service-showcase__content">
+                                    <p class="service-showcase__cats"><a href="#cms-development-details">CMS</a>, <a href="#cms-development-details">Development</a></p>
+                                    <h3 class="service-showcase__title"><a href="#cms-development-details" onclick="return showServiceDetails('cms-development-details')">CMS Web Development</a></h3>
+                                    <p class="service-showcase__description">Custom CMS development for easy content management. We build scalable content management systems tailored to your needs.</p>
+                                    <a href="#cms-development-details" class="service-showcase__read-more" onclick="return showServiceDetails('cms-development-details')">Read More →</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="service-showcase__item">
+                        <div class="service-showcase__image">
+                            <img src="assets/images/service/services-2-1.jpg" alt="Web Hosting">
+                            <div class="service-showcase__overlay">
+                                <div class="service-showcase__content">
+                                    <p class="service-showcase__cats"><a href="#web-hosting-details">Hosting</a>, <a href="#web-hosting-details">Infrastructure</a></p>
+                                    <h3 class="service-showcase__title"><a href="#web-hosting-details" onclick="return showServiceDetails('web-hosting-details')">Web Hosting</a></h3>
+                                    <p class="service-showcase__description">Reliable and secure web hosting solutions. We provide fast, secure hosting with 99.9% uptime guarantee.</p>
+                                    <a href="#web-hosting-details" class="service-showcase__read-more" onclick="return showServiceDetails('web-hosting-details')">Read More →</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="service-showcase__item">
+                        <div class="service-showcase__image">
+                            <img src="assets/images/service/services-2-2.jpg" alt="Email Automation">
+                            <div class="service-showcase__overlay">
+                                <div class="service-showcase__content">
+                                    <p class="service-showcase__cats"><a href="#email-automation-details">Email</a>, <a href="#email-automation-details">Automation</a></p>
+                                    <h3 class="service-showcase__title"><a href="#email-automation-details" onclick="return showServiceDetails('email-automation-details')">Email Automation</a></h3>
+                                    <p class="service-showcase__description">Automated email marketing campaigns. We create targeted email campaigns that engage and convert your audience.</p>
+                                    <a href="#email-automation-details" class="service-showcase__read-more" onclick="return showServiceDetails('email-automation-details')">Read More →</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="service-showcase__item">
+                        <div class="service-showcase__image">
+                            <img src="assets/images/service/services-2-3.jpg" alt="Influencer Marketing">
+                            <div class="service-showcase__overlay">
+                                <div class="service-showcase__content">
+                                    <p class="service-showcase__cats"><a href="#influencer-marketing-details">Marketing</a>, <a href="#influencer-marketing-details">Influencer</a></p>
+                                    <h3 class="service-showcase__title"><a href="#influencer-marketing-details" onclick="return showServiceDetails('influencer-marketing-details')">Influencer Marketing</a></h3>
+                                    <p class="service-showcase__description">Strategic influencer marketing campaigns. We connect your brand with relevant influencers to reach your target audience.</p>
+                                    <a href="#influencer-marketing-details" class="service-showcase__read-more" onclick="return showServiceDetails('influencer-marketing-details')">Read More →</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="service-showcase__item">
+                        <div class="service-showcase__image">
+                            <img src="assets/images/service/services-2-4.jpg" alt="Web Design">
+                            <div class="service-showcase__overlay">
+                                <div class="service-showcase__content">
+                                    <p class="service-showcase__cats"><a href="#web-design-details">Design</a>, <a href="#web-design-details">UI/UX</a></p>
+                                    <h3 class="service-showcase__title"><a href="#web-design-details" onclick="return showServiceDetails('web-design-details')">Web Design</a></h3>
+                                    <p class="service-showcase__description">Creative and responsive web design solutions. We create beautiful, user-friendly designs that convert visitors into customers.</p>
+                                    <a href="#web-design-details" class="service-showcase__read-more" onclick="return showServiceDetails('web-design-details')">Read More →</a>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
+                <!-- ... -->
+                
+                <!-- Contact Us Button -->
+                <div class="service-showcase__contact-btn wow fadeInUp animated" data-wow-delay="400ms">
+                    <a href="contact.html" class="ogency-btn service-showcase__circular-btn">Contact Us</a>
+                </div>
             </div>
         </section>
+
+        <script>
+        // Service Showcase Animation
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialize scroll animations for service showcase items
+            const serviceItems = document.querySelectorAll('.service-showcase__item');
+            
+            const observerOptions = {
+                threshold: 0.2,
+                rootMargin: '0px 0px -50px 0px'
+            };
+            
+            const serviceObserver = new IntersectionObserver(function(entries) {
+                entries.forEach(function(entry) {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('animate-in');
+                    }
+                });
+            }, observerOptions);
+            
+            // Observe all service showcase items
+            serviceItems.forEach(item => {
+                serviceObserver.observe(item);
+            });
+            
+            console.log('Service showcase animations initialized');
+        });
+
+        // Function to show service details in card
+        function showServiceDetails(serviceId) {
+            console.log('showServiceDetails called with:', serviceId);
+            
+            // Find the clicked service item
+            const clickedItem = event.target.closest('.service-showcase__item');
+            console.log('Clicked item found:', clickedItem);
+            
+            if (!clickedItem) {
+                console.error('Could not find clicked item');
+                return false;
+            }
+            
+            const element = document.getElementById(serviceId);
+            console.log('Element found:', element);
+            
+            if (element) {
+                // Get the service detail content
+                const detailContent = element.querySelector('.container').innerHTML;
+                console.log('Detail content found:', detailContent);
+                
+                // Store original content for back button
+                if (!clickedItem.originalContent) {
+                    clickedItem.originalContent = clickedItem.innerHTML;
+                }
+                
+                // Replace the clicked item's content with service details
+                clickedItem.innerHTML = detailContent;
+                console.log('Service details loaded into clicked item');
+                
+                // Make the clicked item take full width
+                clickedItem.style.width = '100%';
+                clickedItem.style.height = 'auto';
+                clickedItem.style.margin = '0';
+                clickedItem.style.padding = '20px';
+                clickedItem.style.background = 'var(--ogency-black)';
+                clickedItem.style.borderRadius = '16px';
+                clickedItem.style.position = 'relative';
+                clickedItem.style.zIndex = '10';
+                console.log('Item expanded to full width');
+                
+                // Hide all other service items
+                document.querySelectorAll('.service-showcase__item').forEach((item, index) => {
+                    if (item !== clickedItem) {
+                        item.style.display = 'none';
+                    }
+                });
+                console.log('Other items hidden');
+                
+                // Scroll to the start of the expanded card (service detail section)
+                setTimeout(() => {
+                    clickedItem.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                    console.log('Scrolled to start of service detail section');
+                }, 100);
+                
+                console.log('Function completed successfully');
+                
+                // Stop any further propagation
+                return false;
+            } else {
+                console.error('Service element not found:', serviceId);
+            }
+        }
+
+        // Function to go back to service showcase
+        function backToServices() {
+            console.log('backToServices called');
+            
+            // Hide all service details
+            document.querySelectorAll('.services-details').forEach(detail => {
+                detail.style.display = 'none';
+            });
+            console.log('All service details hidden');
+            
+            // Show the service showcase section
+            const serviceShowcase = document.querySelector('.service-showcase');
+            if (serviceShowcase) {
+                serviceShowcase.style.display = 'flex';
+                console.log('Service showcase shown');
+            }
+            
+            // Scroll to top of services
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+            
+            // Clear URL hash
+            window.location.hash = '';
+            console.log('Back to services completed');
+        }
+        </script>
 
         <!-- Service Details Sections -->
         <section id="web-development-details" class="services-details" style="display: none;">
@@ -391,6 +513,9 @@
                                     </div>
                                 </div>
                             </div>
+                            <div class="services-details__back-btn">
+                                <button class="ogency-btn" onclick="backToServices()">← Back to Services</button>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -477,6 +602,9 @@
                                         </div>
                                     </div>
                                 </div>
+                            </div>
+                            <div class="services-details__back-btn">
+                                <button class="ogency-btn" onclick="backToServices()">← Back to Services</button>
                             </div>
                         </div>
                     </div>
