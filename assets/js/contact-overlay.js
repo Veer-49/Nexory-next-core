@@ -2,6 +2,32 @@
 document.addEventListener('DOMContentLoaded', function() {
     console.log('Contact overlay script loaded');
     
+    // Use MutationObserver to detect when header is loaded
+    const observer = new MutationObserver(function(mutations) {
+        mutations.forEach(function(mutation) {
+            if (mutation.type === 'childList') {
+                const getInTouchBtn = document.querySelector('.main-menu__right .ogency-btn[href="contact.html"]');
+                if (getInTouchBtn && !getInTouchBtn.hasAttribute('data-overlay-initialized')) {
+                    console.log('Header detected, initializing contact overlay');
+                    initializeContactOverlay();
+                    getInTouchBtn.setAttribute('data-overlay-initialized', 'true');
+                    observer.disconnect();
+                }
+            }
+        });
+    });
+    
+    // Start observing the document body for changes
+    observer.observe(document.body, {
+        childList: true,
+        subtree: true
+    });
+    
+    // Also check immediately in case header is already loaded
+    if (document.querySelector('.main-menu__right .ogency-btn[href="contact.html"]')) {
+        initializeContactOverlay();
+    }
+    
     // Wait for header to be loaded before initializing
     function initializeContactOverlay() {
         console.log('Initializing contact overlay...');
@@ -27,6 +53,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 e.preventDefault();
                 openContactOverlay();
             });
+            console.log('Contact overlay event listener attached successfully');
         } else {
             console.error('Get in touch button not found');
         }
@@ -97,25 +124,5 @@ document.addEventListener('DOMContentLoaded', function() {
                 }
             });
         }
-    }
-    
-    // Check if header is already loaded
-    if (document.querySelector('.main-menu__right .ogency-btn[href="contact.html"]')) {
-        initializeContactOverlay();
-    } else {
-        // Wait for header to be loaded - try multiple times
-        let attempts = 0;
-        const maxAttempts = 10;
-        const checkInterval = setInterval(() => {
-            attempts++;
-            if (document.querySelector('.main-menu__right .ogency-btn[href="contact.html"]')) {
-                clearInterval(checkInterval);
-                initializeContactOverlay();
-                console.log('Contact overlay initialized after header load');
-            } else if (attempts >= maxAttempts) {
-                clearInterval(checkInterval);
-                console.log('Contact overlay initialization failed - header not found');
-            }
-        }, 200);
     }
 });
