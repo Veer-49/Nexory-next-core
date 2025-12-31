@@ -99,71 +99,7 @@
     <div class="page-wrapper">
         <!-- Include centralized header -->
         <div id="header-container"></div>
-        <script>
-            fetch('header.html')
-                .then(response => response.text())
-                .then(data => {
-                    document.getElementById('header-container').innerHTML = data;
-                    // Re-initialize sticky header after dynamic load
-                    if (window.$ && window.$.fn) {
-                        initializeStickyHeader();
-                        initializeMobileMenu();
-                    }
-                });
-            
-            // Function to initialize sticky header
-            function initializeStickyHeader() {
-                if ($(".sticky-header__content").length) {
-                    let navContent = document.querySelector(".main-menu").innerHTML;
-                    let mobileNavContainer = document.querySelector(".sticky-header__content");
-                    mobileNavContainer.innerHTML = navContent;
-                }
-                
-                if ($(".main-menu__nav").length && $(".mobile-nav__container").length) {
-                    let navContent = document.querySelector(".main-menu__nav").innerHTML;
-                    let mobileNavContainer = document.querySelector(".mobile-nav__container");
-                    mobileNavContainer.innerHTML = navContent;
-                }
-            }
-            
-            // Function to initialize mobile menu
-            function initializeMobileMenu() {
-                // Wait a bit for dynamic content to fully load
-                setTimeout(function() {
-                    if ($(".mobile-nav__toggler").length) {
-                        $(".mobile-nav__toggler").off("click").on("click", function (e) {
-                            e.preventDefault();
-                            $(".mobile-nav__wrapper").toggleClass("expanded");
-                            $("body").toggleClass("locked");
-                            console.log("Mobile menu clicked");
-                        });
-                        console.log("Mobile menu initialized");
-                    }
-                    
-                    // Initialize mobile sticky header functionality
-                    initializeMobileStickyHeader();
-                }, 100);
-            }
-            
-            // Function to initialize mobile sticky header
-            function initializeMobileStickyHeader() {
-                if ($(window).width() < 1200) {
-                    $(window).on('scroll.mobileSticky', function() {
-                        var mobileHeaderScrollPos = 100;
-                        var mainHeader = $(".main-header");
-                        if ($(window).scrollTop() > mobileHeaderScrollPos) {
-                            if (!mainHeader.hasClass("mobile-sticky")) {
-                                mainHeader.addClass("mobile-sticky");
-                            }
-                        } else if ($(this).scrollTop() <= mobileHeaderScrollPos) {
-                            if (mainHeader.hasClass("mobile-sticky")) {
-                                mainHeader.removeClass("mobile-sticky");
-                            }
-                        }
-                    });
-                }
-            }
-        </script>
+        <script src="assets/js/header-init.js"></script>
         <section class="page-header">
             <div class="page-header__bg"></div>
             <!-- /.page-header__bg -->
