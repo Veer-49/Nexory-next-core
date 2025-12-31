@@ -49,130 +49,13 @@
 /* Homepage Service Section Custom Layout */
 /* Only affects the service section on the homepage (index.html) */
 
-/* Card Flip Animation Styles */
-.service-showcase__card-inner {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    text-align: center;
-    transition: transform 0.8s;
-    transform-style: preserve-3d;
-}
-
-.service-showcase__item:hover .service-showcase__card-inner {
-    transform: rotateY(180deg);
-}
-
-.service-showcase__card-front,
-.service-showcase__card-back {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    -webkit-backface-visibility: hidden;
-    backface-visibility: hidden;
-    border-radius: 16px;
-    overflow: hidden;
-}
-
-.service-showcase__card-front {
-    background: var(--ogency-black3);
-}
-
-.service-showcase__card-back {
-    background: linear-gradient(135deg, var(--ogency-base), rgba(var(--ogency-base-rgb), 0.8));
-    color: var(--ogency-white);
-    transform: rotateY(180deg);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 30px;
-}
-
-.service-showcase__back-content {
-    text-align: center;
-    width: 100%;
-}
-
-.service-showcase__back-content h3 {
-    font-size: 22px;
-    font-weight: 600;
-    margin-bottom: 15px;
-    color: var(--ogency-white);
-}
-
-.service-showcase__back-content .service-showcase__cats {
-    margin-bottom: 15px;
-}
-
-.service-showcase__back-content .service-showcase__cats a {
-    color: rgba(255, 255, 255, 0.8);
-    text-decoration: none;
-    font-size: 14px;
-    transition: color 0.3s ease;
-}
-
-.service-showcase__back-content .service-showcase__cats a:hover {
-    color: var(--ogency-white);
-}
-
-.service-showcase__back-content .service-showcase__description {
-    font-size: 15px;
-    line-height: 1.6;
-    margin-bottom: 20px;
-    color: rgba(255, 255, 255, 0.9);
-}
-
-.service-showcase__back-content .service-showcase__link {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 50px;
-    height: 50px;
-    background: rgba(255, 255, 255, 0.2);
-    border-radius: 50%;
-    color: var(--ogency-white);
-    text-decoration: none;
-    transition: all 0.3s ease;
-    border: 2px solid rgba(255, 255, 255, 0.3);
-}
-
-.service-showcase__back-content .service-showcase__link:hover {
-    background: rgba(255, 255, 255, 0.3);
-    transform: scale(1.1);
-}
-
-.service-showcase__title-overlay {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    background: linear-gradient(to top, rgba(0, 0, 0, 0.9), transparent);
-    padding: 20px;
-    transform: translateY(0);
-    transition: transform 0.3s ease;
-}
-
-.service-showcase__title-overlay h3 {
-    color: var(--ogency-white);
-    font-size: 18px;
-    font-weight: 600;
-    margin: 0;
-}
-
-/* Target only the service section on homepage - more specific selector */
-body.custom-cursor.page-wrapper-home .service-showcase,
-body.custom-cursor .page-wrapper .service-showcase:has(~ .slider-text-one) {
-    background-color: #000000 !important;
-    padding: 80px 0;
-}
-
-/* Horizontal grid layout for service items - homepage only with slider */
+/* Card Flip Animation Styles - Higher specificity to override project-showcase.css */
 body.custom-cursor.page-wrapper-home .service-showcase__items,
 body.custom-cursor .page-wrapper .service-showcase:has(~ .slider-text-one) .service-showcase__items {
     display: flex;
     flex-direction: row;
     gap: 30px;
-    margin-top: 50px;
+    margin-top: 60px;
     overflow-x: auto;
     scroll-snap-type: x mandatory;
     padding: 10px 0 30px 0;
@@ -204,32 +87,153 @@ body.custom-cursor .page-wrapper .service-showcase:has(~ .slider-text-one) .serv
     background: rgba(var(--ogency-base-rgb), 0.8);
 }
 
-/* Individual service item styling - theme-matched cards (homepage only) */
 body.custom-cursor.page-wrapper-home .service-showcase__item,
 body.custom-cursor .page-wrapper .service-showcase:has(~ .slider-text-one) .service-showcase__item {
-    background: transparent;
+    position: relative;
     border-radius: 16px;
     overflow: hidden;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
-    transition: transform 0.3s ease, box-shadow 0.3s ease, border 0.3s ease;
-    height: 400px;
-    margin-bottom: 0;
-    border: 1px solid rgba(var(--ogency-white-rgb), 0.1);
+    height: 350px;
+    cursor: pointer;
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
     flex: 0 0 auto;
     width: 300px;
     scroll-snap-align: start;
     perspective: 1000px;
 }
 
-/* Service item hover effect (homepage only) */
 body.custom-cursor.page-wrapper-home .service-showcase__item:hover,
 body.custom-cursor .page-wrapper .service-showcase:has(~ .slider-text-one) .service-showcase__item:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 30px rgba(30, 144, 255, 0.2);
-    border-color: var(--ogency-base);
+    transform: none !important;
+    box-shadow: none !important;
 }
 
-/* Service image container (homepage only) */
+body.custom-cursor.page-wrapper-home .service-showcase__card-inner,
+body.custom-cursor .page-wrapper .service-showcase:has(~ .slider-text-one) .service-showcase__card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.8s;
+    transform-style: preserve-3d;
+}
+
+body.custom-cursor.page-wrapper-home .service-showcase__item:hover .service-showcase__card-inner,
+body.custom-cursor .page-wrapper .service-showcase:has(~ .slider-text-one) .service-showcase__item:hover .service-showcase__card-inner {
+    transform: rotateY(180deg);
+}
+
+body.custom-cursor.page-wrapper-home .service-showcase__card-front,
+body.custom-cursor.page-wrapper-home .service-showcase__card-back,
+body.custom-cursor .page-wrapper .service-showcase:has(~ .slider-text-one) .service-showcase__card-front,
+body.custom-cursor .page-wrapper .service-showcase:has(~ .slider-text-one) .service-showcase__card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    border-radius: 16px;
+    overflow: hidden;
+}
+
+body.custom-cursor.page-wrapper-home .service-showcase__card-front,
+body.custom-cursor .page-wrapper .service-showcase:has(~ .slider-text-one) .service-showcase__card-front {
+    background: var(--ogency-black3);
+}
+
+body.custom-cursor.page-wrapper-home .service-showcase__card-back,
+body.custom-cursor .page-wrapper .service-showcase:has(~ .slider-text-one) .service-showcase__card-back {
+    background: linear-gradient(135deg, var(--ogency-base), rgba(var(--ogency-base-rgb), 0.8));
+    color: var(--ogency-white);
+    transform: rotateY(180deg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 30px;
+}
+
+body.custom-cursor.page-wrapper-home .service-showcase__back-content,
+body.custom-cursor .page-wrapper .service-showcase:has(~ .slider-text-one) .service-showcase__back-content {
+    text-align: center;
+    width: 100%;
+}
+
+body.custom-cursor.page-wrapper-home .service-showcase__back-content h3,
+body.custom-cursor .page-wrapper .service-showcase:has(~ .slider-text-one) .service-showcase__back-content h3 {
+    font-size: 22px;
+    font-weight: 600;
+    margin-bottom: 15px;
+    color: var(--ogency-white);
+}
+
+body.custom-cursor.page-wrapper-home .service-showcase__back-content .service-showcase__cats,
+body.custom-cursor .page-wrapper .service-showcase:has(~ .slider-text-one) .service-showcase__back-content .service-showcase__cats {
+    margin-bottom: 15px;
+}
+
+body.custom-cursor.page-wrapper-home .service-showcase__back-content .service-showcase__cats a,
+body.custom-cursor .page-wrapper .service-showcase:has(~ .slider-text-one) .service-showcase__back-content .service-showcase__cats a {
+    color: rgba(255, 255, 255, 0.8);
+    text-decoration: none;
+    font-size: 14px;
+    transition: color 0.3s ease;
+}
+
+body.custom-cursor.page-wrapper-home .service-showcase__back-content .service-showcase__cats a:hover,
+body.custom-cursor .page-wrapper .service-showcase:has(~ .slider-text-one) .service-showcase__back-content .service-showcase__cats a:hover {
+    color: var(--ogency-white);
+}
+
+body.custom-cursor.page-wrapper-home .service-showcase__back-content .service-showcase__description,
+body.custom-cursor .page-wrapper .service-showcase:has(~ .slider-text-one) .service-showcase__back-content .service-showcase__description {
+    font-size: 15px;
+    line-height: 1.6;
+    margin-bottom: 20px;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+body.custom-cursor.page-wrapper-home .service-showcase__back-content .service-showcase__link,
+body.custom-cursor .page-wrapper .service-showcase:has(~ .slider-text-one) .service-showcase__back-content .service-showcase__link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+    height: 50px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    color: var(--ogency-white);
+    text-decoration: none;
+    transition: all 0.3s ease;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+}
+
+body.custom-cursor.page-wrapper-home .service-showcase__back-content .service-showcase__link:hover,
+body.custom-cursor .page-wrapper .service-showcase:has(~ .slider-text-one) .service-showcase__back-content .service-showcase__link:hover {
+    background: rgba(255, 255, 255, 0.3);
+    transform: scale(1.1);
+}
+
+body.custom-cursor.page-wrapper-home .service-showcase__title-overlay,
+body.custom-cursor .page-wrapper .service-showcase:has(~ .slider-text-one) .service-showcase__title-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.9), transparent);
+    padding: 20px;
+    transform: translateY(0);
+    transition: transform 0.3s ease;
+}
+
+body.custom-cursor.page-wrapper-home .service-showcase__title-overlay h3,
+body.custom-cursor .page-wrapper .service-showcase:has(~ .slider-text-one) .service-showcase__title-overlay h3 {
+    color: var(--ogency-white);
+    font-size: 18px;
+    font-weight: 600;
+    margin: 0;
+}
+
 body.custom-cursor.page-wrapper-home .service-showcase__image,
 body.custom-cursor .page-wrapper .service-showcase:has(~ .slider-text-one) .service-showcase__image {
     position: relative;
@@ -238,21 +242,43 @@ body.custom-cursor .page-wrapper .service-showcase:has(~ .slider-text-one) .serv
     overflow: hidden;
 }
 
-/* Service image styling - original colors with theme colors (homepage only) */
 body.custom-cursor.page-wrapper-home .service-showcase__image img,
 body.custom-cursor .page-wrapper .service-showcase:has(~ .slider-text-one) .service-showcase__image img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    filter: brightness(1) contrast(1);
-    transition: filter 0.3s ease, transform 0.3s ease;
+    transition: transform 0.3s ease;
 }
 
-/* Image hover effect with slight zoom (homepage only) */
-body.custom-cursor.page-wrapper-home .service-showcase__card-front:hover .service-showcase__image img,
-body.custom-cursor .page-wrapper .service-showcase:has(~ .slider-text-one) .service-showcase__card-front:hover .service-showcase__image img {
-    filter: brightness(1.1) contrast(1.1);
-    transform: scale(1.05);
+/* Target only the service section on homepage - more specific selector */
+body.custom-cursor.page-wrapper-home .service-showcase,
+body.custom-cursor .page-wrapper .service-showcase:has(~ .slider-text-one) {
+    background-color: #000000 !important;
+    padding: 80px 0;
+}
+
+/* Mobile click-to-flip functionality */
+@media (max-width: 768px) {
+    body.custom-cursor.page-wrapper-home .service-showcase__item.flipped .service-showcase__card-inner,
+    body.custom-cursor .page-wrapper .service-showcase:has(~ .slider-text-one) .service-showcase__item.flipped .service-showcase__card-inner {
+        transform: rotateY(180deg);
+    }
+    
+    body.custom-cursor.page-wrapper-home .service-showcase__item,
+    body.custom-cursor .page-wrapper .service-showcase:has(~ .slider-text-one) .service-showcase__item {
+        cursor: pointer;
+    }
+    
+    /* Disable hover flip on mobile */
+    body.custom-cursor.page-wrapper-home .service-showcase__item:hover .service-showcase__card-inner,
+    body.custom-cursor .page-wrapper .service-showcase:has(~ .slider-text-one) .service-showcase__item:hover .service-showcase__card-inner {
+        transform: none;
+    }
+    
+    body.custom-cursor.page-wrapper-home .service-showcase__item.flipped:hover .service-showcase__card-inner,
+    body.custom-cursor .page-wrapper .service-showcase:has(~ .slider-text-one) .service-showcase__item.flipped:hover .service-showcase__card-inner {
+        transform: rotateY(180deg);
+    }
 }
 
 /* Hide overlay content for card layout (homepage only) */
