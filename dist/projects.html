@@ -3,31 +3,73 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Portfolio || Ogency || HTML Template For Creative Agency</title>
+    <title>Portfolio</title>
     
     <!-- fonts -->
     <link rel="preconnect" href="https://fonts.gstatic.com/" />
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap" rel="stylesheet" />
+
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    <!-- template styles -->
-
-  <link rel="stylesheet" crossorigin href="/assets/owl.theme.default-PTqRoNsN.css">
-  <link rel="stylesheet" crossorigin href="/assets/ogency-D6aS5aa1.css">
+    <!-- template styles -->
+    
+    <!-- Floating Buttons CSS -->
+    <style>
+        .floating-buttons {
+            position: fixed;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 1000;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        
+        .floating-btn {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            transition: all 0.3s ease;
+            font-size: 20px;
+        }
+        
+        .whatsapp-btn {
+            background-color: #25D366;
+            color: white;
+        }
+        
+        .whatsapp-btn:hover {
+            background-color: #25D366;
+        }
+        
+        .call-btn {
+            background-color: #007bff;
+            color: white;
+        }
+        
+        .call-btn:hover {
+            background-color: #007bff;
+        }
+        
+        @media (max-width: 768px) {
+            .floating-buttons {
+                right: 15px;
+                gap: 10px;
+            }
+            
+            .floating-btn {
+                width: 45px;
+                height: 45px;
+                font-size: 18px;
+            }
+        }
+    </style>
+  <link rel="stylesheet" crossorigin href="/assets/ogency-B5ny7Y4C.css">
 </head>
 
 <body class="custom-cursor">
@@ -41,92 +83,8 @@
     <!-- /.preloader -->
     <div class="page-wrapper">
         <!-- Include centralized header -->
-        <header class="main-header main-header-two">
-    <nav class="main-menu">
-        <div class="container-fluid">
-            <div class="main-menu__logo">
-                <a href="index.html">
-                    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACIAAAAiCAYAAAA6RwvCAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyBpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNSBXaW5kb3dzIiB4bXBNTTpJbnN0YW5jZUlEPSJ4bXAuaWlkOjUzRDU3OTczMUFGNDExRUU4M0QwRjU5N0I1N0Q4NDM3IiB4bXBNTTpEb2N1bWVudElEPSJ4bXAuZGlkOjUzRDU3OTc0MUFGNDExRUU4M0QwRjU5N0I1N0Q4NDM3Ij4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9InhtcC5paWQ6NTNENTc5NzExQUY0MTFFRTgzRDBGNTk3QjU3RDg0MzciIHN0UmVmOmRvY3VtZW50SUQ9InhtcC5kaWQ6NTNENTc5NzIxQUY0MTFFRTgzRDBGNTk3QjU3RDg0MzciLz4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+IDw/eHBhY2tldCBlbmQ9InIiPz5VqhmSAAADq0lEQVR42sxYTWgTQRTeXZpDeoiBglQkNBZqEQ8NiAheWhBBEEEQ1GNpvXkwB+nBS1vBcwMieCqxB70WLOJBIQcpKAhJoWB7qKkxtAiBTUFzCBi/J9/Q13E3SRNIHPjY2fl579vZb968XcfpsDQajRRQbByWvNOPIo4b/5bpXpNIKee+VY/3kkhWOU8DC+p+oRObboCTCC4pYJhN+8CO67oV9ssTF4ETwC7ak2yXthGgira4spegLWOvBGxiTF37HQggp0k4xggM1nDdAq6ShBT99BlgSfqolffAOBC17Cd4PSJuz1oNT5GoWwaiJPmQ91VgVfVneRWyJznWJlG3yDRdkcP35rqvQW6I5GTyaeAcu9eBMfQf8D4G3AN+WI6/AnuwdYCxN8J8DViOf2OwaEGcR1CPURsV1Ldxfa6Gf7DevUMSshqToivgidECH8hRumu5IjskIuUUYJ5YVuMW67tATo0zRUg/4+pVqRs/4HWUWhLBE+xTmPJ+z6C+QxKrSqRZjFtH36DSQQ1tv9C2jPo8x+ZwP4XrT7VyMm6/5fblMo7icp63F4C0IiGrkYIxP2Su3t5G1C+ADb66POaW2g1Ys8CciAtYUcFKzpZUm5HXDzgCPgI325mcUQa+kIiQ+sboGT9G9I1zTjGAkM/onLIJ5BrBZZZkLndxHEwCj4C1EB/iO+mq0OwoDWQYoMaUyN7aYbkNEiLmK2qniK9pak77LHiqQUS1KGcHkKEYD9TgWAcLoiOr7BaftuV8WlR9E5410e9xWlPVZ80u67LdliiuaQpTr0KtA0d6TpQCTlMO82qLF4xY8yHKXqPQuhWrCP5BE7HG7d2TDdn/xS627yZwl2TK1vadamVghsEniFAnAW2FRObC8tqwEJ9gPiEn6SXgdpch/inwySREQSHeC3mocV7LwH2SKrBthLHgb5yQ450YZH/6iAgdR7bqY5UUjbabs0oAu8jbbbDfYnuS6Z04+Q7cCUkDXprcVUiYleMrNanAusmBm+UjmvGeqpcZcaX/TQAJKddVgFzm8a9zkITyEU4ErF3loM70LkYDgs+EQ/1sqOgr4yaUuU0J75hvUkXJ8nRC3jQxci1i1yRltMZIzjrD7G1ELX2cKyLlHXMPmXtWgP46dRIJ0ohn56wqn4xYk2rUSIVilhXQuYXelq+4IjqyanulTj6wxPFWFx9Yw9TEULMPrGZByaNmjvvJmennR7iOosn/4bdErh//R+wfNW2dQ2HljwADAKZeq61gf9EEAAAAAElFTkSuQmCC" width="34" height="34" alt="Ogency">
-                </a>
-            </div><!-- /.main-menu__logo -->
-            <div class="main-menu__nav">
-                <ul class="main-menu__list">
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="about.html">About</a></li>
-                    <li><a href="services.html">Services</a></li>
-                    <li><a href="projects.html">Projects</a></li>
-                    <li><a href="contact.html">Contact</a></li>
-                </ul>
-            </div><!-- /.main-menu__nav -->
-            <div class="main-menu__right">
-                <a href="#" class="main-menu__toggler mobile-nav__toggler">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M3 6Q6 4,9 6T15 6T21 6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-                        <path d="M3 12Q6 10,9 12T15 12T21 12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-                        <path d="M3 18Q6 16,9 18T15 18T21 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-                    </svg>
-                </a><!-- /.mobile menu btn -->
-                <a href="contact.html" class="ogency-btn">Get in Touch</a>
-            </div><!-- /.main-menu__right -->
-        </div><!-- /.container -->
-    </nav>
-    <!-- /.main-menu -->
-</header><!-- /.main-header -->
-
-<div class="stricky-header stricked-menu main-menu main-header-two">
-    <div class="sticky-header__content"></div><!-- /.sticky-header__content -->
-</div><!-- /.stricky-header -->
-
-<!-- Mobile Navigation -->
-<div class="mobile-nav__wrapper">
-    <div class="mobile-nav__overlay mobile-nav__toggler"></div>
-    <!-- /.mobile-nav__overlay -->
-    <div class="mobile-nav__content">
-        <span class="mobile-nav__close mobile-nav__toggler"><i class="fa fa-times"></i></span>
-        <div class="logo-box">
-            <a href="index-3.html" aria-label="logo image"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACIAAAAiCAYAAAA6RwvCAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyBpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNSBXaW5kb3dzIiB4bXBNTTpJbnN0YW5jZUlEPSJ4bXAuaWlkOjUzRDU3OTczMUFGNDExRUU4M0QwRjU5N0I1N0Q4NDM3IiB4bXBNTTpEb2N1bWVudElEPSJ4bXAuZGlkOjUzRDU3OTc0MUFGNDExRUU4M0QwRjU5N0I1N0Q4NDM3Ij4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9InhtcC5paWQ6NTNENTc5NzExQUY0MTFFRTgzRDBGNTk3QjU3RDg0MzciIHN0UmVmOmRvY3VtZW50SUQ9InhtcC5kaWQ6NTNENTc5NzIxQUY0MTFFRTgzRDBGNTk3QjU3RDg0MzciLz4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+IDw/eHBhY2tldCBlbmQ9InIiPz5VqhmSAAADq0lEQVR42sxYTWgTQRTeXZpDeoiBglQkNBZqEQ8NiAheWhBBEEEQ1GNpvXkwB+nBS1vBcwMieCqxB70WLOJBIQcpKAhJoWB7qKkxtAiBTUFzCBi/J9/Q13E3SRNIHPjY2fl579vZb968XcfpsDQajRRQbByWvNOPIo4b/5bpXpNIKee+VY/3kkhWOU8DC+p+oRObboCTCC4pYJhN+8CO67oV9ssTF4ETwC7ak2yXthGgira4spegLWOvBGxiTF37HQggp0k4xggM1nDdAq6ShBT99BlgSfqolffAOBC17Cd4PSJuz1oNT5GoWwaiJPmQ91VgVfVneRWyJznWJlG3yDRdkcP35rqvQW6I5GTyaeAcu9eBMfQf8D4G3AN+WI6/AnuwdYCxN8J8DViOf2OwaEGcR1CPURsV1Ldxfa6Gf7DevUMSshqToivgidECH8hRumu5IjskIuUUYJ5YVuMW67tATo0zRUg/4+pVqRs/4HWUWhLBE+xTmPJ+z6C+QxKrSqRZjFtH36DSQQ1tv9C2jPo8x+ZwP4XrT7VyMm6/5fblMo7icp63F4C0IiGrkYIxP2Su3t5G1C+ADb66POaW2g1Ys8CciAtYUcFKzpZUm5HXDzgCPgI325mcUQa+kIiQ+sboGT9G9I1zTjGAkM/onLIJ5BrBZZZkLndxHEwCj4C1EB/iO+mq0OwoDWQYoMaUyN7aYbkNEiLmK2qniK9pak77LHiqQUS1KGcHkKEYD9TgWAcLoiOr7BaftuV8WlR9E5410e9xWlPVZ80u67LdliiuaQpTr0KtA0d6TpQCTlMO82qLF4xY8yHKXqPQuhWrCP5BE7HG7d2TDdn/xS627yZwl2TK1vadamVghsEniFAnAW2FRObC8tqwEJ9gPiEn6SXgdpch/inwySREQSHeC3mocV7LwH2SKrBthLHgb5yQ450YZH/6iAgdR7bqY5UUjbabs0oAu8jbbbDfYnuS6Z04+Q7cCUkDXprcVUiYleMrNanAusmBm+UjmvGeqpcZcaX/TQAJKddVgFzm8a9zkITyEU4ErF3loM70LkYDgs+EQ/1sqOgr4yaUuU0J75hvUkXJ8nRC3jQxci1i1yRltMZIzjrD7G1ELX2cKyLlHXMPmXtWgP46dRIJ0ohn56wqn4xYk2rUSIVilhXQuYXelq+4IjqyanulTj6wxPFWFx9Yw9TEULMPrGZByaNmjvvJmennR7iOosn/4bdErh//R+wfNW2dQ2HljwADAKZeq61gf9EEAAAAAElFTkSuQmCC" width="36" alt="ogency" /></a>
-        </div>
-        <!-- /.logo-box -->
-        <div class="mobile-nav__container"></div>
-        <!-- /.mobile-nav__container -->
-        <ul class="mobile-nav__contact list-unstyled">
-            <li>
-                <i class="fas fa-envelope"></i>
-                <a href="mailto:help@company.com">help@company.com</a>
-            </li>
-            <li>
-                <i class="icon-phone-call"></i>
-                <a href="tel:+917972278890">7972278890</a>
-            </li>
-        </ul><!-- /.mobile-nav__contact -->
-        <div class="mobile-nav__social">
-            <a href="https://twitter.com/"><i class="fab fa-twitter"></i></a>
-            <a href="https://www.facebook.com/"><i class="fab fa-facebook"></i></a>
-            <a href="https://www.pinterest.com/"><i class="fab fa-pinterest-p"></i></a>
-            <a href="https://www.instagram.com/"><i class="fab fa-instagram"></i></a>
-        </div><!-- /.mobile-nav__social -->
-    </div>
-    <!-- /.mobile-nav__content -->
-</div>
-<!-- /.mobile-nav__wrapper -->
-
-<!-- Search Popup -->
-<div class="search-popup">
-    <div class="search-popup__overlay search-toggler"></div>
-    <!-- /.search-popup__overlay -->
-    <div class="search-popup__content">
-        <form action="#">
-            <label for="search" class="sr-only">search here</label><!-- /.sr-only -->
-            <input type="text" id="search" placeholder="Search Here..." />
-            <button type="submit" aria-label="search submit" class="ogency-btn">
-                <i class="icon-magnifying-glass"></i>
-            </button>
-        </form>
-    </div>
-    <!-- /.search-popup__content -->
-</div>
-<!-- /.search-popup -->
-
+        <div id="header-container"></div>
+        <script src="assets/js/header-init.js"></script>
         <section class="page-header">
             <div class="page-header__bg"></div>
             <!-- /.page-header__bg -->
@@ -134,7 +92,7 @@
             <!-- /.page-header__bg -->
             <div class="container">
                 <ul class="page-header__breadcrumb list-unstyled">
-                    <li><a href="index-2.html">Home</a></li>
+                    <li><a href="index.html">Home</a></li>
                     <li><span>Portfolio</span></li>
                 </ul><!-- /.page-breadcrumb list-unstyled -->
                 <h2 class="page-header__title" data-text="Portfolio">Portfolio</h2><!-- /.page-title -->
@@ -154,70 +112,70 @@
                     </div>
                     
                     <!-- Right Side - Scroll Reveal Images (60%) -->
-                    <div class="col-lg-7 col-md-12 project-images-section">
+                   <div class="col-lg-7 col-md-12 project-images-section">
                         <div class="project-images-scroll">
                             <div class="project-image-item" data-project="1">
                                 <div class="project-image-wrapper">
-                                    <img src="/assets/images/project/henil.png" alt="Henil Construction">
+                                    <img src="/assets/henil-CN_F3Crf.png" alt="Henil Construction">
                                     <div class="project-image-overlay">
                                         <div class="project-image-content">
                                             <h4><a href="https://henilconstruction.com/">Henil Construction</a></h4>
-                                            <p>Web Development</p>
+                                            <p>CMS Web Development</p>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                             <div class="project-image-item" data-project="2">
                                 <div class="project-image-wrapper">
-                                    <img src="/assets/project-2-3-DaRSXEhq.jpg" alt="Brand Identity">
+                                    <img src="/assets/wpf-DhWzpEJd.png" alt="White Pearl Finance">
                                     <div class="project-image-overlay">
                                         <div class="project-image-content">
-                                            <h4><a href="project-details.html">Brand Identity</a></h4>
-                                            <p>Branding, Design</p>
+                                            <h4><a href="https://www.whitepearlfinance.com/">White Pearl Finance</a></h4>
+                                            <p>Web Design</p>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                             <div class="project-image-item" data-project="3">
                                 <div class="project-image-wrapper">
-                                    <img src="/assets/project-2-4-L33WiIN2.jpg" alt="E-commerce Platform">
+                                    <img src="/assets/adrise-BeqprNUI.png" alt="Adrise Media">
                                     <div class="project-image-overlay">
                                         <div class="project-image-content">
-                                            <h4><a href="project-details.html">E-commerce Platform</a></h4>
-                                            <p>Web Development, UI/UX</p>
+                                            <h4><a href="project-details.html">Adrise Media</a></h4>
+                                            <p>Web Development</p>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                             <div class="project-image-item" data-project="4">
                                 <div class="project-image-wrapper">
-                                    <img src="/assets/project-2-5-ClTPwvIt.jpg" alt="Mobile App Design">
+                                    <img src="/assets/pitchpioneer-CQwPpCJB.png" alt="Pitch Pioneer">
                                     <div class="project-image-overlay">
                                         <div class="project-image-content">
-                                            <h4><a href="project-details.html">Mobile App Design</a></h4>
-                                            <p>Mobile, Design</p>
+                                            <h4><a href="project-details.html">Pitch Pioneer</a></h4>
+                                            <p>Mobile, AI Intigration</p>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                             <div class="project-image-item" data-project="5">
                                 <div class="project-image-wrapper">
-                                    <img src="/assets/project-2-1-D47dylcR.jpg" alt="Digital Campaign">
+                                    <img src="/assets/smartai-BlIKfO96.png" alt="Digital Campaign">
                                     <div class="project-image-overlay">
                                         <div class="project-image-content">
-                                            <h4><a href="project-details.html">Digital Campaign</a></h4>
-                                            <p>Marketing, Digital</p>
+                                            <h4><a href="project-details.html">Smart AI Hub</a></h4>
+                                            <p>AI Integration</p>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                             <div class="project-image-item" data-project="6">
                                 <div class="project-image-wrapper">
-                                    <img src="/assets/project-2-6-DkxbUr0Q.jpg" alt="UI Design">
+                                    <img src="/assets/mediatool-bj1M9j5l.png" alt="UI Design">
                                     <div class="project-image-overlay">
                                         <div class="project-image-content">
-                                            <h4><a href="project-details.html">UI Design</a></h4>
-                                            <p>Design, Interface</p>
+                                            <h4><a href="project-details.html">Media Tools</a></h4>
+                                            <p>Web Development</p>
                                         </div>
                                     </div>
                                 </div>
@@ -230,52 +188,14 @@
         <!-- Projects End -->
 
         <!-- Include centralized footer -->
-        <footer class="main-footer" style="background-image: url(/assets/footer-bg-1-DMuCcDBU.png);">
-            <div class="container">
-                <div class="main-footer__top wow fadeInUp animated" data-wow-delay="100ms">
-                    <a href="index-3.html" class="main-footer__logo">
-                        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADcAAAA3CAYAAACo29JGAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyBpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNSBXaW5kb3dzIiB4bXBNTTpJbnN0YW5jZUlEPSJ4bXAuaWlkOjM4NkQ0N0RCMUFGMzExRUU4OUI2RjJGMUY4Njk4M0NBIiB4bXBNTTpEb2N1bWVudElEPSJ4bXAuZGlkOjM4NkQ0N0RDMUFGMzExRUU4OUI2RjJGMUY4Njk4M0NBIj4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9InhtcC5paWQ6Mzg2RDQ3RDkxQUYzMTFFRTg5QjZGMkYxRjg2OTgzQ0EiIHN0UmVmOmRvY3VtZW50SUQ9InhtcC5kaWQ6Mzg2RDQ3REExQUYzMTFFRTg5QjZGMkYxRjg2OTgzQ0EiLz4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+IDw/eHBhY2tldCBlbmQ9InIiPz6VUv/KAAAGYUlEQVR42txa3WtcRRS/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" alt="ogency" width="55" height="55">
-                    </a><!-- /.footer-logo -->
-                    <div class="main-footer__social">
-                        <a href="https://twitter.com/"><i class="fab fa-twitter"></i></a>
-                        <a href="https://www.facebook.com/"><i class="fab fa-facebook"></i></a>
-                        <a href="https://www.pinterest.com/"><i class="fab fa-pinterest-p"></i></a>
-                        <a href="https://www.instagram.com/"><i class="fab fa-instagram"></i></a>
-                    </div><!-- /.footer-social -->
-                </div><!-- footer-top -->
-                <div class="row">
-                    <div class="col-lg-8 col-md-6 wow fadeInUp animated" data-wow-delay="200ms">
-                        <div class="main-footer__about">
-                            <p class="footer-widget__text">Let's start working together</p>
-                            <a href="mailto:help@company.com">help@company.com</a>
-                        </div><!-- /.footer-widget -->
-                    </div>
-                    <div class="col-lg-2 col-md-3 wow fadeInUp animated" data-wow-delay="300ms">
-                        <div class="main-footer__navmenu">
-                            <ul>
-                                <li><a href="index.html">Home</a></li>
-                                <li><a href="about.html">About</a></li>
-                                <li><a href="services.html">Services</a></li>
-                                <li><a href="projects.html">Our Projects</a></li>
-                                <li><a href="contact.html">Contact</a></li>
-                            </ul><!-- /.list-unstyled -->
-                        </div><!-- /.footer-widget -->
-                    </div>
-                    <div class="col-lg-2 col-md-3 wow fadeInUp animated" data-wow-delay="400ms">
-                        <div class="main-footer__navmenu">
-                            <ul>
-                                <li><a href="faq.html">Our Faqs</a></li>
-                                <li><a href="terms&condition.html">Terms and Comditions</a></li>
-                                <li><a href="privacy-policy.html">Privacy Policy</a></li>
-                                <li><a href="contact.html">Help</a></li>
-                            </ul><!-- /.list-unstyled -->
-                        </div><!-- /.footer-widget -->
-                    </div>
-                </div><!-- /.row -->
-                <p class="main-footer__copyright wow fadeInUp animated" data-wow-delay="500ms">© Copyright <span class="dynamic-year"></span><!-- /.dynamic-year --> by <a href="index.html">Ogency Template</a></p>
-            </div><!-- /.container -->
-        </footer><!-- /.main-footer -->
-
+        <div id="footer-container"></div>
+        <script>
+            fetch('footer.html')
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('footer-container').innerHTML = data;
+                });
+        </script>
 
     </div><!-- /.page-wrapper -->
 
@@ -311,6 +231,8 @@
     <script src="assets/vendors/countdown/countdown.min.js"></script>
     <!-- template js -->
     <script src="assets/js/ogency.js"></script>
+    <!-- Contact Overlay JavaScript -->
+    <script src="assets/js/contact-overlay.js"></script>
 
     <!-- Project Switcher Script -->
     <script>
@@ -601,8 +523,15 @@
         });
     </script>
 
+    <!-- Floating WhatsApp and Call Buttons -->
+    <div class="floating-buttons">
+        <a href="https://wa.me/917972278890" target="_blank" class="floating-btn whatsapp-btn" title="Chat on WhatsApp">
+            <i class="fab fa-whatsapp"></i>
+        </a>
+        <a href="tel:+917972278890" class="floating-btn call-btn" title="Call Now">
+            <i class="fas fa-phone"></i>
+        </a>
+    </div>
+
 </body>
-
-
-<!-- Mirrored from bracketweb.com/ogency-html-main/projects.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 15 Dec 2025 12:02:11 GMT -->
 </html>

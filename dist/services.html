@@ -8,26 +8,69 @@
     <!-- fonts -->
     <link rel="preconnect" href="https://fonts.gstatic.com/" />
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap" rel="stylesheet" />
+
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    <!-- template styles -->
-
-  <link rel="stylesheet" crossorigin href="/assets/owl.theme.default-PTqRoNsN.css">
-  <link rel="stylesheet" crossorigin href="/assets/ogency-D6aS5aa1.css">
+    <!-- template styles -->
+    
+    <!-- Floating Buttons CSS -->
+    <style>
+        .floating-buttons {
+            position: fixed;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 1000;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        
+        .floating-btn {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            transition: all 0.3s ease;
+            font-size: 20px;
+        }
+        
+        .whatsapp-btn {
+            background-color: #25D366;
+            color: white;
+        }
+        
+        .whatsapp-btn:hover {
+            background-color: #25D366;
+        }
+        
+        .call-btn {
+            background-color: #007bff;
+            color: white;
+        }
+        
+        .call-btn:hover {
+            background-color: #007bff;
+        }
+        
+        @media (max-width: 768px) {
+            .floating-buttons {
+                right: 15px;
+                gap: 10px;
+            }
+            
+            .floating-btn {
+                width: 45px;
+                height: 45px;
+                font-size: 18px;
+            }
+        }
+    </style>
+  <link rel="stylesheet" crossorigin href="/assets/ogency-B5ny7Y4C.css">
+  <link rel="stylesheet" crossorigin href="/assets/project-showcase-BEk-mqyT.css">
 </head>
 
 <body class="custom-cursor">
@@ -41,92 +84,8 @@
     <!-- /.preloader -->
     <div class="page-wrapper">
         <!-- Include centralized header -->
-        <header class="main-header main-header-two">
-    <nav class="main-menu">
-        <div class="container-fluid">
-            <div class="main-menu__logo">
-                <a href="index.html">
-                    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACIAAAAiCAYAAAA6RwvCAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyBpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNSBXaW5kb3dzIiB4bXBNTTpJbnN0YW5jZUlEPSJ4bXAuaWlkOjUzRDU3OTczMUFGNDExRUU4M0QwRjU5N0I1N0Q4NDM3IiB4bXBNTTpEb2N1bWVudElEPSJ4bXAuZGlkOjUzRDU3OTc0MUFGNDExRUU4M0QwRjU5N0I1N0Q4NDM3Ij4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9InhtcC5paWQ6NTNENTc5NzExQUY0MTFFRTgzRDBGNTk3QjU3RDg0MzciIHN0UmVmOmRvY3VtZW50SUQ9InhtcC5kaWQ6NTNENTc5NzIxQUY0MTFFRTgzRDBGNTk3QjU3RDg0MzciLz4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+IDw/eHBhY2tldCBlbmQ9InIiPz5VqhmSAAADq0lEQVR42sxYTWgTQRTeXZpDeoiBglQkNBZqEQ8NiAheWhBBEEEQ1GNpvXkwB+nBS1vBcwMieCqxB70WLOJBIQcpKAhJoWB7qKkxtAiBTUFzCBi/J9/Q13E3SRNIHPjY2fl579vZb968XcfpsDQajRRQbByWvNOPIo4b/5bpXpNIKee+VY/3kkhWOU8DC+p+oRObboCTCC4pYJhN+8CO67oV9ssTF4ETwC7ak2yXthGgira4spegLWOvBGxiTF37HQggp0k4xggM1nDdAq6ShBT99BlgSfqolffAOBC17Cd4PSJuz1oNT5GoWwaiJPmQ91VgVfVneRWyJznWJlG3yDRdkcP35rqvQW6I5GTyaeAcu9eBMfQf8D4G3AN+WI6/AnuwdYCxN8J8DViOf2OwaEGcR1CPURsV1Ldxfa6Gf7DevUMSshqToivgidECH8hRumu5IjskIuUUYJ5YVuMW67tATo0zRUg/4+pVqRs/4HWUWhLBE+xTmPJ+z6C+QxKrSqRZjFtH36DSQQ1tv9C2jPo8x+ZwP4XrT7VyMm6/5fblMo7icp63F4C0IiGrkYIxP2Su3t5G1C+ADb66POaW2g1Ys8CciAtYUcFKzpZUm5HXDzgCPgI325mcUQa+kIiQ+sboGT9G9I1zTjGAkM/onLIJ5BrBZZZkLndxHEwCj4C1EB/iO+mq0OwoDWQYoMaUyN7aYbkNEiLmK2qniK9pak77LHiqQUS1KGcHkKEYD9TgWAcLoiOr7BaftuV8WlR9E5410e9xWlPVZ80u67LdliiuaQpTr0KtA0d6TpQCTlMO82qLF4xY8yHKXqPQuhWrCP5BE7HG7d2TDdn/xS627yZwl2TK1vadamVghsEniFAnAW2FRObC8tqwEJ9gPiEn6SXgdpch/inwySREQSHeC3mocV7LwH2SKrBthLHgb5yQ450YZH/6iAgdR7bqY5UUjbabs0oAu8jbbbDfYnuS6Z04+Q7cCUkDXprcVUiYleMrNanAusmBm+UjmvGeqpcZcaX/TQAJKddVgFzm8a9zkITyEU4ErF3loM70LkYDgs+EQ/1sqOgr4yaUuU0J75hvUkXJ8nRC3jQxci1i1yRltMZIzjrD7G1ELX2cKyLlHXMPmXtWgP46dRIJ0ohn56wqn4xYk2rUSIVilhXQuYXelq+4IjqyanulTj6wxPFWFx9Yw9TEULMPrGZByaNmjvvJmennR7iOosn/4bdErh//R+wfNW2dQ2HljwADAKZeq61gf9EEAAAAAElFTkSuQmCC" width="34" height="34" alt="Ogency">
-                </a>
-            </div><!-- /.main-menu__logo -->
-            <div class="main-menu__nav">
-                <ul class="main-menu__list">
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="about.html">About</a></li>
-                    <li><a href="services.html">Services</a></li>
-                    <li><a href="projects.html">Projects</a></li>
-                    <li><a href="contact.html">Contact</a></li>
-                </ul>
-            </div><!-- /.main-menu__nav -->
-            <div class="main-menu__right">
-                <a href="#" class="main-menu__toggler mobile-nav__toggler">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M3 6Q6 4,9 6T15 6T21 6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-                        <path d="M3 12Q6 10,9 12T15 12T21 12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-                        <path d="M3 18Q6 16,9 18T15 18T21 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-                    </svg>
-                </a><!-- /.mobile menu btn -->
-                <a href="contact.html" class="ogency-btn">Get in Touch</a>
-            </div><!-- /.main-menu__right -->
-        </div><!-- /.container -->
-    </nav>
-    <!-- /.main-menu -->
-</header><!-- /.main-header -->
-
-<div class="stricky-header stricked-menu main-menu main-header-two">
-    <div class="sticky-header__content"></div><!-- /.sticky-header__content -->
-</div><!-- /.stricky-header -->
-
-<!-- Mobile Navigation -->
-<div class="mobile-nav__wrapper">
-    <div class="mobile-nav__overlay mobile-nav__toggler"></div>
-    <!-- /.mobile-nav__overlay -->
-    <div class="mobile-nav__content">
-        <span class="mobile-nav__close mobile-nav__toggler"><i class="fa fa-times"></i></span>
-        <div class="logo-box">
-            <a href="index-3.html" aria-label="logo image"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACIAAAAiCAYAAAA6RwvCAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyBpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNSBXaW5kb3dzIiB4bXBNTTpJbnN0YW5jZUlEPSJ4bXAuaWlkOjUzRDU3OTczMUFGNDExRUU4M0QwRjU5N0I1N0Q4NDM3IiB4bXBNTTpEb2N1bWVudElEPSJ4bXAuZGlkOjUzRDU3OTc0MUFGNDExRUU4M0QwRjU5N0I1N0Q4NDM3Ij4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9InhtcC5paWQ6NTNENTc5NzExQUY0MTFFRTgzRDBGNTk3QjU3RDg0MzciIHN0UmVmOmRvY3VtZW50SUQ9InhtcC5kaWQ6NTNENTc5NzIxQUY0MTFFRTgzRDBGNTk3QjU3RDg0MzciLz4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+IDw/eHBhY2tldCBlbmQ9InIiPz5VqhmSAAADq0lEQVR42sxYTWgTQRTeXZpDeoiBglQkNBZqEQ8NiAheWhBBEEEQ1GNpvXkwB+nBS1vBcwMieCqxB70WLOJBIQcpKAhJoWB7qKkxtAiBTUFzCBi/J9/Q13E3SRNIHPjY2fl579vZb968XcfpsDQajRRQbByWvNOPIo4b/5bpXpNIKee+VY/3kkhWOU8DC+p+oRObboCTCC4pYJhN+8CO67oV9ssTF4ETwC7ak2yXthGgira4spegLWOvBGxiTF37HQggp0k4xggM1nDdAq6ShBT99BlgSfqolffAOBC17Cd4PSJuz1oNT5GoWwaiJPmQ91VgVfVneRWyJznWJlG3yDRdkcP35rqvQW6I5GTyaeAcu9eBMfQf8D4G3AN+WI6/AnuwdYCxN8J8DViOf2OwaEGcR1CPURsV1Ldxfa6Gf7DevUMSshqToivgidECH8hRumu5IjskIuUUYJ5YVuMW67tATo0zRUg/4+pVqRs/4HWUWhLBE+xTmPJ+z6C+QxKrSqRZjFtH36DSQQ1tv9C2jPo8x+ZwP4XrT7VyMm6/5fblMo7icp63F4C0IiGrkYIxP2Su3t5G1C+ADb66POaW2g1Ys8CciAtYUcFKzpZUm5HXDzgCPgI325mcUQa+kIiQ+sboGT9G9I1zTjGAkM/onLIJ5BrBZZZkLndxHEwCj4C1EB/iO+mq0OwoDWQYoMaUyN7aYbkNEiLmK2qniK9pak77LHiqQUS1KGcHkKEYD9TgWAcLoiOr7BaftuV8WlR9E5410e9xWlPVZ80u67LdliiuaQpTr0KtA0d6TpQCTlMO82qLF4xY8yHKXqPQuhWrCP5BE7HG7d2TDdn/xS627yZwl2TK1vadamVghsEniFAnAW2FRObC8tqwEJ9gPiEn6SXgdpch/inwySREQSHeC3mocV7LwH2SKrBthLHgb5yQ450YZH/6iAgdR7bqY5UUjbabs0oAu8jbbbDfYnuS6Z04+Q7cCUkDXprcVUiYleMrNanAusmBm+UjmvGeqpcZcaX/TQAJKddVgFzm8a9zkITyEU4ErF3loM70LkYDgs+EQ/1sqOgr4yaUuU0J75hvUkXJ8nRC3jQxci1i1yRltMZIzjrD7G1ELX2cKyLlHXMPmXtWgP46dRIJ0ohn56wqn4xYk2rUSIVilhXQuYXelq+4IjqyanulTj6wxPFWFx9Yw9TEULMPrGZByaNmjvvJmennR7iOosn/4bdErh//R+wfNW2dQ2HljwADAKZeq61gf9EEAAAAAElFTkSuQmCC" width="36" alt="ogency" /></a>
-        </div>
-        <!-- /.logo-box -->
-        <div class="mobile-nav__container"></div>
-        <!-- /.mobile-nav__container -->
-        <ul class="mobile-nav__contact list-unstyled">
-            <li>
-                <i class="fas fa-envelope"></i>
-                <a href="mailto:help@company.com">help@company.com</a>
-            </li>
-            <li>
-                <i class="icon-phone-call"></i>
-                <a href="tel:+917972278890">7972278890</a>
-            </li>
-        </ul><!-- /.mobile-nav__contact -->
-        <div class="mobile-nav__social">
-            <a href="https://twitter.com/"><i class="fab fa-twitter"></i></a>
-            <a href="https://www.facebook.com/"><i class="fab fa-facebook"></i></a>
-            <a href="https://www.pinterest.com/"><i class="fab fa-pinterest-p"></i></a>
-            <a href="https://www.instagram.com/"><i class="fab fa-instagram"></i></a>
-        </div><!-- /.mobile-nav__social -->
-    </div>
-    <!-- /.mobile-nav__content -->
-</div>
-<!-- /.mobile-nav__wrapper -->
-
-<!-- Search Popup -->
-<div class="search-popup">
-    <div class="search-popup__overlay search-toggler"></div>
-    <!-- /.search-popup__overlay -->
-    <div class="search-popup__content">
-        <form action="#">
-            <label for="search" class="sr-only">search here</label><!-- /.sr-only -->
-            <input type="text" id="search" placeholder="Search Here..." />
-            <button type="submit" aria-label="search submit" class="ogency-btn">
-                <i class="icon-magnifying-glass"></i>
-            </button>
-        </form>
-    </div>
-    <!-- /.search-popup__content -->
-</div>
-<!-- /.search-popup -->
-
+        <div id="header-container"></div>
+        <script src="assets/js/header-init.js"></script>
         <section class="page-header">
             <div class="page-header__bg"></div>
             <!-- /.page-header__bg -->
@@ -134,198 +93,319 @@
             <!-- /.page-header__bg -->
             <div class="container">
                 <ul class="page-header__breadcrumb list-unstyled">
-                    <li><a href="index-2.html">Home</a></li>
+                    <li><a href="index.html">Home</a></li>
                     <li><span>Services</span></li>
                 </ul><!-- /.page-breadcrumb list-unstyled -->
                 <h2 class="page-header__title" data-text="Services">Services</h2><!-- /.page-title -->
             </div><!-- /.container -->
         </section><!-- /.page-header -->
-        <section class="service-page__grid">
+        <section class="service-showcase">
             <div class="container">
-                <div class="service-grid">
-                    <div class="item">
-                        <div class="flip-card">
-                            <div class="flip-card-inner">
-                                <div class="flip-card-front">
-                                    <img src="/assets/services-3-1-DdLKgVZu.jpg" alt="Web Development" />
-                                    <h3>Web Development</h3>
-                                </div>
-                                <div class="flip-card-back">
-                                    <h3>Web Development</h3>
-                                    <p>Professional web development services for modern businesses.</p>
-                                    <a class="service-three__item__hover__btn" href="#web-development-details" onclick="scrollToService('web-development-details')">Read More<span class="icon-down-right"></span></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="flip-card">
-                            <div class="flip-card-inner">
-                                <div class="flip-card-front">
-                                    <img src="/assets/services-3-2-DJ9xKJbG.jpg" alt="Android App Development" />
-                                    <h3>Android App Development</h3>
-                                </div>
-                                <div class="flip-card-back">
-                                    <h3>Android App Development</h3>
-                                    <p>Native Android app development for all devices.</p>
-                                    <a class="service-three__item__hover__btn" href="#android-development-details" onclick="scrollToService('android-development-details')">Read More<span class="icon-down-right"></span></a>
+                <div class="section-title text-center">
+                    <h5 class="section-title__tagline section-title__tagline--has-dots">what we're offering</h5>
+                    <h2 class="section-title__title">Services we're providing<br> to our customers</h2>
+                </div>
+                
+                <div class="service-showcase__items">
+                    <div class="service-showcase__item">
+                        <div class="service-showcase__image">
+                            <img src="/assets/services-2-1-CLSLkawm.jpg" alt="Web Development">
+                            <div class="service-showcase__overlay">
+                                <div class="service-showcase__content">
+                                    <p class="service-showcase__cats"><a href="#web-development-details">Development</a>, <a href="#web-development-details">Web</a></p>
+                                    <h3 class="service-showcase__title"><a href="#web-development-details" onclick="return showServiceDetails('web-development-details')">Web Development</a></h3>
+                                    <p class="service-showcase__description">Professional web development services for modern businesses. We create responsive, fast, and secure websites that drive results and enhance user experience.</p>
+                                    <a href="#web-development-details" class="service-showcase__read-more" onclick="return showServiceDetails('web-development-details')">Read More →</a>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="item">
-                        <div class="flip-card">
-                            <div class="flip-card-inner">
-                                <div class="flip-card-front">
-                                    <img src="/assets/services-3-3-CYG4hueB.jpg" alt="IOS App Development" />
-                                    <h3>IOS App Development</h3>
-                                </div>
-                                <div class="flip-card-back">
-                                    <h3>IOS App Development</h3>
-                                    <p>Native iOS app development for iPhone and iPad.</p>
-                                    <a class="service-three__item__hover__btn" href="#ios-development-details" onclick="scrollToService('ios-development-details')">Read More<span class="icon-down-right"></span></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="flip-card">
-                            <div class="flip-card-inner">
-                                <div class="flip-card-front">
-                                    <img src="/assets/services-3-4-DYWKbUs5.jpg" alt="AI Integration" />
-                                    <h3>AI Integration</h3>
-                                </div>
-                                <div class="flip-card-back">
-                                    <h3>AI Integration</h3>
-                                    <p>Cutting-edge AI solutions for your business needs.</p>
-                                    <a class="service-three__item__hover__btn" href="#ai-integration-details" onclick="scrollToService('ai-integration-details')">Read More<span class="icon-down-right"></span></a>
+                    
+                    <div class="service-showcase__item">
+                        <div class="service-showcase__image">
+                            <img src="/assets/services-2-2-l6ylgZiQ.jpg" alt="Android App Development">
+                            <div class="service-showcase__overlay">
+                                <div class="service-showcase__content">
+                                    <p class="service-showcase__cats"><a href="#android-development-details">Mobile</a>, <a href="#android-development-details">Android</a></p>
+                                    <h3 class="service-showcase__title"><a href="#android-development-details" onclick="return showServiceDetails('android-development-details')">Android App Development</a></h3>
+                                    <p class="service-showcase__description">Native Android app development for all devices. We build high-performance, user-friendly applications that meet your business needs.</p>
+                                    <a href="#android-development-details" class="service-showcase__read-more" onclick="return showServiceDetails('android-development-details')">Read More →</a>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="item">
-                        <div class="flip-card">
-                            <div class="flip-card-inner">
-                                <div class="flip-card-front">
-                                    <img src="/assets/services-3-1-DdLKgVZu.jpg" alt="Digital Marketing" />
-                                    <h3>Digital Marketing</h3>
-                                </div>
-                                <div class="flip-card-back">
-                                    <h3>Digital Marketing</h3>
-                                    <p>Comprehensive digital marketing strategies.</p>
-                                    <a class="service-three__item__hover__btn" href="#digital-marketing-details" onclick="scrollToService('digital-marketing-details')">Read More<span class="icon-down-right"></span></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="flip-card">
-                            <div class="flip-card-inner">
-                                <div class="flip-card-front">
-                                    <img src="/assets/services-3-2-DJ9xKJbG.jpg" alt="E-Commerce" />
-                                    <h3>E-Commerce</h3>
-                                </div>
-                                <div class="flip-card-back">
-                                    <h3>E-Commerce</h3>
-                                    <p>Complete e-commerce solutions for online stores.</p>
-                                    <a class="service-three__item__hover__btn" href="#e-commerce-details" onclick="scrollToService('e-commerce-details')">Read More<span class="icon-down-right"></span></a>
+                    
+                    <div class="service-showcase__item">
+                        <div class="service-showcase__image">
+                            <img src="/assets/services-2-3-BxtUwJbj.jpg" alt="IOS App Development">
+                            <div class="service-showcase__overlay">
+                                <div class="service-showcase__content">
+                                    <p class="service-showcase__cats"><a href="#ios-development-details">Mobile</a>, <a href="#ios-development-details">iOS</a></p>
+                                    <h3 class="service-showcase__title"><a href="#ios-development-details" onclick="return showServiceDetails('ios-development-details')">IOS App Development</a></h3>
+                                    <p class="service-showcase__description">Native iOS app development for iPhone and iPad. We create stunning, high-performance apps that deliver exceptional user experiences.</p>
+                                    <a href="#ios-development-details" class="service-showcase__read-more" onclick="return showServiceDetails('ios-development-details')">Read More →</a>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="item">
-                        <div class="flip-card">
-                            <div class="flip-card-inner">
-                                <div class="flip-card-front">
-                                    <img src="/assets/services-3-3-CYG4hueB.jpg" alt="Payment Integration" />
-                                    <h3>Payment Integration</h3>
-                                </div>
-                                <div class="flip-card-back">
-                                    <h3>Payment Integration</h3>
-                                    <p>Secure payment gateway integration services.</p>
-                                    <a class="service-three__item__hover__btn" href="#payment-integration-details" onclick="scrollToService('payment-integration-details')">Read More<span class="icon-down-right"></span></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="flip-card">
-                            <div class="flip-card-inner">
-                                <div class="flip-card-front">
-                                    <img src="/assets/services-3-4-DYWKbUs5.jpg" alt="CMS Web Development" />
-                                    <h3>CMS Web Development</h3>
-                                </div>
-                                <div class="flip-card-back">
-                                    <h3>CMS Web Development</h3>
-                                    <p>Custom CMS development for easy content management.</p>
-                                    <a class="service-three__item__hover__btn" href="#cms-development-details" onclick="scrollToService('cms-development-details')">Read More<span class="icon-down-right"></span></a>
+                    
+                    <div class="service-showcase__item">
+                        <div class="service-showcase__image">
+                            <img src="assets/images/service/services-2-4.jpg" alt="AI Integration">
+                            <div class="service-showcase__overlay">
+                                <div class="service-showcase__content">
+                                    <p class="service-showcase__cats"><a href="#ai-integration-details">AI</a>, <a href="#ai-integration-details">Integration</a></p>
+                                    <h3 class="service-showcase__title"><a href="#ai-integration-details" onclick="return showServiceDetails('ai-integration-details')">AI Integration</a></h3>
+                                    <p class="service-showcase__description">Cutting-edge AI solutions for your business needs. We implement intelligent automation and machine learning to transform your operations.</p>
+                                    <a href="#ai-integration-details" class="service-showcase__read-more" onclick="return showServiceDetails('ai-integration-details')">Read More →</a>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="item">
-                        <div class="flip-card">
-                            <div class="flip-card-inner">
-                                <div class="flip-card-front">
-                                    <img src="/assets/services-3-1-DdLKgVZu.jpg" alt="Web Hosting" />
-                                    <h3>Web Hosting</h3>
-                                </div>
-                                <div class="flip-card-back">
-                                    <h3>Web Hosting</h3>
-                                    <p>Reliable and secure web hosting solutions.</p>
-                                    <a class="service-three__item__hover__btn" href="#web-hosting-details" onclick="scrollToService('web-hosting-details')">Read More<span class="icon-down-right"></span></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="flip-card">
-                            <div class="flip-card-inner">
-                                <div class="flip-card-front">
-                                    <img src="/assets/services-3-2-DJ9xKJbG.jpg" alt="Email Automation" />
-                                    <h3>Email Automation</h3>
-                                </div>
-                                <div class="flip-card-back">
-                                    <h3>Email Automation</h3>
-                                    <p>Automated email marketing campaigns.</p>
-                                    <a class="service-three__item__hover__btn" href="#email-automation-details" onclick="scrollToService('email-automation-details')">Read More<span class="icon-down-right"></span></a>
+                    
+                    <div class="service-showcase__item">
+                        <div class="service-showcase__image">
+                            <img src="/assets/services-2-1-CLSLkawm.jpg" alt="Digital Marketing">
+                            <div class="service-showcase__overlay">
+                                <div class="service-showcase__content">
+                                    <p class="service-showcase__cats"><a href="#digital-marketing-details">Marketing</a>, <a href="#digital-marketing-details">Digital</a></p>
+                                    <h3 class="service-showcase__title"><a href="#digital-marketing-details" onclick="return showServiceDetails('digital-marketing-details')">Digital Marketing</a></h3>
+                                    <p class="service-showcase__description">Comprehensive digital marketing strategies. We drive growth through data-driven campaigns and innovative online marketing solutions.</p>
+                                    <a href="#digital-marketing-details" class="service-showcase__read-more" onclick="return showServiceDetails('digital-marketing-details')">Read More →</a>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="item">
-                        <div class="flip-card">
-                            <div class="flip-card-inner">
-                                <div class="flip-card-front">
-                                    <img src="/assets/services-3-3-CYG4hueB.jpg" alt="Influencer Marketing" />
-                                    <h3>Influencer Marketing</h3>
-                                </div>
-                                <div class="flip-card-back">
-                                    <h3>Influencer Marketing</h3>
-                                    <p>Strategic influencer marketing campaigns.</p>
-                                    <a class="service-three__item__hover__btn" href="#influencer-marketing-details" onclick="scrollToService('influencer-marketing-details')">Read More<span class="icon-down-right"></span></a>
+                    
+                    <div class="service-showcase__item">
+                        <div class="service-showcase__image">
+                            <img src="/assets/services-2-2-l6ylgZiQ.jpg" alt="E-Commerce">
+                            <div class="service-showcase__overlay">
+                                <div class="service-showcase__content">
+                                    <p class="service-showcase__cats"><a href="#e-commerce-details">E-Commerce</a>, <a href="#e-commerce-details">Online Store</a></p>
+                                    <h3 class="service-showcase__title"><a href="#e-commerce-details" onclick="return showServiceDetails('e-commerce-details')">E-Commerce</a></h3>
+                                    <p class="service-showcase__description">Complete e-commerce solutions for online stores. We build powerful, scalable platforms that drive sales and customer engagement.</p>
+                                    <a href="#e-commerce-details" class="service-showcase__read-more" onclick="return showServiceDetails('e-commerce-details')">Read More →</a>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="item">
-                        <div class="flip-card">
-                            <div class="flip-card-inner">
-                                <div class="flip-card-front">
-                                    <img src="/assets/services-3-1-DdLKgVZu.jpg" alt="Web Design" />
-                                    <h3>Web Design</h3>
+                    
+                    <div class="service-showcase__item">
+                        <div class="service-showcase__image">
+                            <img src="/assets/services-2-3-BxtUwJbj.jpg" alt="Payment Integration">
+                            <div class="service-showcase__overlay">
+                                <div class="service-showcase__content">
+                                    <p class="service-showcase__cats"><a href="#payment-integration-details">Payment</a>, <a href="#payment-integration-details">Integration</a></p>
+                                    <h3 class="service-showcase__title"><a href="#payment-integration-details" onclick="return showServiceDetails('payment-integration-details')">Payment Integration</a></h3>
+                                    <p class="service-showcase__description">Secure payment gateway integration services. We integrate reliable payment solutions for seamless online transactions.</p>
+                                    <a href="#payment-integration-details" class="service-showcase__read-more" onclick="return showServiceDetails('payment-integration-details')">Read More →</a>
                                 </div>
-                                <div class="flip-card-back">
-                                    <h3>Web Design</h3>
-                                    <p>Creative and responsive web design solutions.</p>
-                                    <a class="service-three__item__hover__btn" href="#web-design-details" onclick="scrollToService('web-design-details')">Read More<span class="icon-down-right"></span></a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="service-showcase__item">
+                        <div class="service-showcase__image">
+                            <img src="assets/images/service/services-2-4.jpg" alt="CMS Web Development">
+                            <div class="service-showcase__overlay">
+                                <div class="service-showcase__content">
+                                    <p class="service-showcase__cats"><a href="#cms-development-details">CMS</a>, <a href="#cms-development-details">Development</a></p>
+                                    <h3 class="service-showcase__title"><a href="#cms-development-details" onclick="return showServiceDetails('cms-development-details')">CMS Web Development</a></h3>
+                                    <p class="service-showcase__description">Custom CMS development for easy content management. We build scalable content management systems tailored to your needs.</p>
+                                    <a href="#cms-development-details" class="service-showcase__read-more" onclick="return showServiceDetails('cms-development-details')">Read More →</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="service-showcase__item">
+                        <div class="service-showcase__image">
+                            <img src="/assets/services-2-1-CLSLkawm.jpg" alt="Web Hosting">
+                            <div class="service-showcase__overlay">
+                                <div class="service-showcase__content">
+                                    <p class="service-showcase__cats"><a href="#web-hosting-details">Hosting</a>, <a href="#web-hosting-details">Infrastructure</a></p>
+                                    <h3 class="service-showcase__title"><a href="#web-hosting-details" onclick="return showServiceDetails('web-hosting-details')">Web Hosting</a></h3>
+                                    <p class="service-showcase__description">Reliable and secure web hosting solutions. We provide fast, secure hosting with 99.9% uptime guarantee.</p>
+                                    <a href="#web-hosting-details" class="service-showcase__read-more" onclick="return showServiceDetails('web-hosting-details')">Read More →</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="service-showcase__item">
+                        <div class="service-showcase__image">
+                            <img src="/assets/services-2-2-l6ylgZiQ.jpg" alt="Email Automation">
+                            <div class="service-showcase__overlay">
+                                <div class="service-showcase__content">
+                                    <p class="service-showcase__cats"><a href="#email-automation-details">Email</a>, <a href="#email-automation-details">Automation</a></p>
+                                    <h3 class="service-showcase__title"><a href="#email-automation-details" onclick="return showServiceDetails('email-automation-details')">Email Automation</a></h3>
+                                    <p class="service-showcase__description">Automated email marketing campaigns. We create targeted email campaigns that engage and convert your audience.</p>
+                                    <a href="#email-automation-details" class="service-showcase__read-more" onclick="return showServiceDetails('email-automation-details')">Read More →</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="service-showcase__item">
+                        <div class="service-showcase__image">
+                            <img src="/assets/services-2-3-BxtUwJbj.jpg" alt="Influencer Marketing">
+                            <div class="service-showcase__overlay">
+                                <div class="service-showcase__content">
+                                    <p class="service-showcase__cats"><a href="#influencer-marketing-details">Marketing</a>, <a href="#influencer-marketing-details">Influencer</a></p>
+                                    <h3 class="service-showcase__title"><a href="#influencer-marketing-details" onclick="return showServiceDetails('influencer-marketing-details')">Influencer Marketing</a></h3>
+                                    <p class="service-showcase__description">Strategic influencer marketing campaigns. We connect your brand with relevant influencers to reach your target audience.</p>
+                                    <a href="#influencer-marketing-details" class="service-showcase__read-more" onclick="return showServiceDetails('influencer-marketing-details')">Read More →</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="service-showcase__item">
+                        <div class="service-showcase__image">
+                            <img src="assets/images/service/services-2-4.jpg" alt="Web Design">
+                            <div class="service-showcase__overlay">
+                                <div class="service-showcase__content">
+                                    <p class="service-showcase__cats"><a href="#web-design-details">Design</a>, <a href="#web-design-details">UI/UX</a></p>
+                                    <h3 class="service-showcase__title"><a href="#web-design-details" onclick="return showServiceDetails('web-design-details')">Web Design</a></h3>
+                                    <p class="service-showcase__description">Creative and responsive web design solutions. We create beautiful, user-friendly designs that convert visitors into customers.</p>
+                                    <a href="#web-design-details" class="service-showcase__read-more" onclick="return showServiceDetails('web-design-details')">Read More →</a>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
+                <!-- ... -->
+                
+                <!-- Contact Us Button -->
+                <div class="service-showcase__contact-btn wow fadeInUp animated" data-wow-delay="400ms">
+                    <a href="contact.html" class="ogency-btn service-showcase__circular-btn">Contact Us</a>
+                </div>
             </div>
         </section>
+
+        <script>
+        // Service Showcase Animation
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialize scroll animations for service showcase items
+            const serviceItems = document.querySelectorAll('.service-showcase__item');
+            
+            const observerOptions = {
+                threshold: 0.2,
+                rootMargin: '0px 0px -50px 0px'
+            };
+            
+            const serviceObserver = new IntersectionObserver(function(entries) {
+                entries.forEach(function(entry) {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('animate-in');
+                    }
+                });
+            }, observerOptions);
+            
+            // Observe all service showcase items
+            serviceItems.forEach(item => {
+                serviceObserver.observe(item);
+            });
+            
+            console.log('Service showcase animations initialized');
+        });
+
+        // Function to show service details in card
+        function showServiceDetails(serviceId) {
+            console.log('showServiceDetails called with:', serviceId);
+            
+            // Find the clicked service item
+            const clickedItem = event.target.closest('.service-showcase__item');
+            console.log('Clicked item found:', clickedItem);
+            
+            if (!clickedItem) {
+                console.error('Could not find clicked item');
+                return false;
+            }
+            
+            const element = document.getElementById(serviceId);
+            console.log('Element found:', element);
+            
+            if (element) {
+                // Get the service detail content
+                const detailContent = element.querySelector('.container').innerHTML;
+                console.log('Detail content found:', detailContent);
+                
+                // Store original content for back button
+                if (!clickedItem.originalContent) {
+                    clickedItem.originalContent = clickedItem.innerHTML;
+                }
+                
+                // Replace the clicked item's content with service details
+                clickedItem.innerHTML = detailContent;
+                console.log('Service details loaded into clicked item');
+                
+                // Make the clicked item take full width
+                clickedItem.style.width = '100%';
+                clickedItem.style.height = 'auto';
+                clickedItem.style.margin = '0';
+                clickedItem.style.padding = '20px';
+                clickedItem.style.background = 'var(--ogency-black)';
+                clickedItem.style.borderRadius = '16px';
+                clickedItem.style.position = 'relative';
+                clickedItem.style.zIndex = '10';
+                console.log('Item expanded to full width');
+                
+                // Hide all other service items
+                document.querySelectorAll('.service-showcase__item').forEach((item, index) => {
+                    if (item !== clickedItem) {
+                        item.style.display = 'none';
+                    }
+                });
+                console.log('Other items hidden');
+                
+                // Scroll to the start of the expanded card (service detail section)
+                setTimeout(() => {
+                    clickedItem.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                    console.log('Scrolled to start of service detail section');
+                }, 100);
+                
+                console.log('Function completed successfully');
+                
+                // Stop any further propagation
+                return false;
+            } else {
+                console.error('Service element not found:', serviceId);
+            }
+        }
+
+        // Function to go back to service showcase
+        function backToServices() {
+            console.log('backToServices called');
+            
+            // Hide all service details
+            document.querySelectorAll('.services-details').forEach(detail => {
+                detail.style.display = 'none';
+            });
+            console.log('All service details hidden');
+            
+            // Show the service showcase section
+            const serviceShowcase = document.querySelector('.service-showcase');
+            if (serviceShowcase) {
+                serviceShowcase.style.display = 'flex';
+                console.log('Service showcase shown');
+            }
+            
+            // Scroll to top of services
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+            
+            // Clear URL hash
+            window.location.hash = '';
+            console.log('Back to services completed');
+        }
+        </script>
 
         <!-- Service Details Sections -->
         <section id="web-development-details" class="services-details" style="display: none;">
@@ -413,6 +493,9 @@
                                     </div>
                                 </div>
                             </div>
+                            <div class="services-details__back-btn">
+                                <button class="ogency-btn" onclick="backToServices()">← Back to Services</button>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -499,6 +582,9 @@
                                         </div>
                                     </div>
                                 </div>
+                            </div>
+                            <div class="services-details__back-btn">
+                                <button class="ogency-btn" onclick="backToServices()">← Back to Services</button>
                             </div>
                         </div>
                     </div>
@@ -1377,52 +1463,14 @@
         </section>
 
         <!-- Include centralized footer -->
-        <footer class="main-footer" style="background-image: url(/assets/footer-bg-1-DMuCcDBU.png);">
-            <div class="container">
-                <div class="main-footer__top wow fadeInUp animated" data-wow-delay="100ms">
-                    <a href="index-3.html" class="main-footer__logo">
-                        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADcAAAA3CAYAAACo29JGAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyBpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNSBXaW5kb3dzIiB4bXBNTTpJbnN0YW5jZUlEPSJ4bXAuaWlkOjM4NkQ0N0RCMUFGMzExRUU4OUI2RjJGMUY4Njk4M0NBIiB4bXBNTTpEb2N1bWVudElEPSJ4bXAuZGlkOjM4NkQ0N0RDMUFGMzExRUU4OUI2RjJGMUY4Njk4M0NBIj4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9InhtcC5paWQ6Mzg2RDQ3RDkxQUYzMTFFRTg5QjZGMkYxRjg2OTgzQ0EiIHN0UmVmOmRvY3VtZW50SUQ9InhtcC5kaWQ6Mzg2RDQ3REExQUYzMTFFRTg5QjZGMkYxRjg2OTgzQ0EiLz4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+IDw/eHBhY2tldCBlbmQ9InIiPz6VUv/KAAAGYUlEQVR42txa3WtcRRS/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" alt="ogency" width="55" height="55">
-                    </a><!-- /.footer-logo -->
-                    <div class="main-footer__social">
-                        <a href="https://twitter.com/"><i class="fab fa-twitter"></i></a>
-                        <a href="https://www.facebook.com/"><i class="fab fa-facebook"></i></a>
-                        <a href="https://www.pinterest.com/"><i class="fab fa-pinterest-p"></i></a>
-                        <a href="https://www.instagram.com/"><i class="fab fa-instagram"></i></a>
-                    </div><!-- /.footer-social -->
-                </div><!-- footer-top -->
-                <div class="row">
-                    <div class="col-lg-8 col-md-6 wow fadeInUp animated" data-wow-delay="200ms">
-                        <div class="main-footer__about">
-                            <p class="footer-widget__text">Let's start working together</p>
-                            <a href="mailto:help@company.com">help@company.com</a>
-                        </div><!-- /.footer-widget -->
-                    </div>
-                    <div class="col-lg-2 col-md-3 wow fadeInUp animated" data-wow-delay="300ms">
-                        <div class="main-footer__navmenu">
-                            <ul>
-                                <li><a href="index.html">Home</a></li>
-                                <li><a href="about.html">About</a></li>
-                                <li><a href="services.html">Services</a></li>
-                                <li><a href="projects.html">Our Projects</a></li>
-                                <li><a href="contact.html">Contact</a></li>
-                            </ul><!-- /.list-unstyled -->
-                        </div><!-- /.footer-widget -->
-                    </div>
-                    <div class="col-lg-2 col-md-3 wow fadeInUp animated" data-wow-delay="400ms">
-                        <div class="main-footer__navmenu">
-                            <ul>
-                                <li><a href="faq.html">Our Faqs</a></li>
-                                <li><a href="terms&condition.html">Terms and Comditions</a></li>
-                                <li><a href="privacy-policy.html">Privacy Policy</a></li>
-                                <li><a href="contact.html">Help</a></li>
-                            </ul><!-- /.list-unstyled -->
-                        </div><!-- /.footer-widget -->
-                    </div>
-                </div><!-- /.row -->
-                <p class="main-footer__copyright wow fadeInUp animated" data-wow-delay="500ms">© Copyright <span class="dynamic-year"></span><!-- /.dynamic-year --> by <a href="index.html">Ogency Template</a></p>
-            </div><!-- /.container -->
-        </footer><!-- /.main-footer -->
-
+        <div id="footer-container"></div>
+        <script>
+            fetch('footer.html')
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('footer-container').innerHTML = data;
+                });
+        </script>
 
     </div><!-- /.page-wrapper -->
 
@@ -1457,6 +1505,8 @@
     <script src="assets/vendors/countdown/countdown.min.js"></script>
     <!-- template js -->
     <script src="assets/js/ogency.js"></script>
+    <!-- Contact Overlay JavaScript -->
+    <script src="assets/js/contact-overlay.js"></script>
 
     <!-- Service Details JavaScript -->
     <script>
@@ -1508,5 +1558,14 @@
             }
         }
     </script>
+    <!-- Floating WhatsApp and Call Buttons -->
+    <div class="floating-buttons">
+        <a href="https://wa.me/917972278890" target="_blank" class="floating-btn whatsapp-btn" title="Chat on WhatsApp">
+            <i class="fab fa-whatsapp"></i>
+        </a>
+        <a href="tel:+917972278890" class="floating-btn call-btn" title="Call Now">
+            <i class="fas fa-phone"></i>
+        </a>
+    </div>
 </body>
 </html>
