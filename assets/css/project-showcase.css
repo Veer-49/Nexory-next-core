@@ -649,7 +649,7 @@
 .service-showcase__item:hover .service-showcase__description {
   opacity: 1;
   transform: translateY(0);
-  max-height: 100px;
+  max-height: 200px;
 }
 
 .service-showcase__read-more {
