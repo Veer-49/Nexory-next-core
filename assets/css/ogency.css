@@ -1812,8 +1812,8 @@ body.custom-cursor .page-wrapper .service-showcase:has(~ .slider-text-one) .serv
 :root {
   --ogency-font: 'Plus Jakarta Sans', sans-serif;
   --heading-font: 'Plus Jakarta Sans', sans-serif;
-  --ogency-color: #5d5d5d;
-  --ogency-color-rgb: 93, 93, 93;
+  --ogency-color: #B8C1CC;
+  --ogency-color-rgb: 184, 193, 204;
   --ogency-base: #1e90ff;
   --ogency-base-rgb: 30, 144, 255;
   --ogency-black: #000000;
@@ -1822,7 +1822,7 @@ body.custom-cursor .page-wrapper .service-showcase:has(~ .slider-text-one) .serv
   --ogency-black2-rgb: 16, 16, 16;
   --ogency-black3: #1a1a1a;
   --ogency-black3-rgb: 26, 26, 26;
-  --ogency-white: #ffffff;
+  --ogency-white: #FFFFFF;
   --ogency-white-rgb: 255, 255, 255;
 }
 
