@@ -84,6 +84,27 @@
                 font-size: 18px;
             }
         }
+        
+        /* Remove hover effects from about agency stats and keep blue */
+        .fact-one__item__count .count-box,
+        .fact-one__item__count .count-text {
+            color: #007bff !important;
+            -webkit-text-fill-color: #007bff !important;
+            -webkit-text-stroke-color: #007bff !important;
+            transition: none !important;
+        }
+        
+        .fact-one__item__count .count-box:hover,
+        .fact-one__item__count .count-box:hover .count-text {
+            transform: none !important;
+            color: #007bff !important;
+            -webkit-text-fill-color: #007bff !important;
+            -webkit-text-stroke-color: #007bff !important;
+        }
+        
+        .fact-one__item:hover .fact-one__item__icon span {
+            transform: scale(1) !important;
+        }
     </style>
 </head>
 
