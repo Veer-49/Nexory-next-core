@@ -8008,7 +8008,6 @@ h6 {
 
 .team-one__item__image {
   position: relative;
-  background-color: var(--ogency-black);
 }
 
 .team-one__item__image::after {
@@ -8028,7 +8027,6 @@ h6 {
 .team-one__item__image img {
   width: 100%;
   height: auto;
-  mix-blend-mode: luminosity;
 }
 
 .team-one__item:hover .team-one__item__image::after {
@@ -8044,11 +8042,9 @@ h6 {
 }
 
 .team-one__item__content {
-  background-color: var(--ogency-black);
   margin: -64px 20px 0 0;
   position: relative;
-  z-index: 2;
-  padding: 33px 30px 0;
+  padding-left: 30px;
 }
 
 @media (min-width: 1200px) and (max-width: 1400px) {
