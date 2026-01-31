@@ -1145,56 +1145,22 @@
     <script src="assets/js/ogency.js"></script>
     <!-- Contact Overlay JavaScript -->
     <script src="assets/js/contact-overlay.js"></script>
-
-    <!-- Service Details JavaScript -->
+    <!-- Service Cards Mobile Flip JavaScript -->
+    <script src="assets/js/service-cards.js"></script>
+    <!-- Project Showcase Scroll Animations -->
+    <script src="assets/js/project-showcase.js"></script>
+    <!-- Fix Bootstrap Select Version Issue -->
     <script>
-        function scrollToService(serviceId) {
-            event.preventDefault();
-            
-            // Hide all service detail sections
-            var allSections = document.querySelectorAll('.services-details');
-            allSections.forEach(function(section) {
-                section.style.display = 'none';
-            });
-            
-            // Show the selected service detail section
-            var targetSection = document.getElementById(serviceId);
-            if (targetSection) {
-                targetSection.style.display = 'block';
+        // Wait for DOM to be ready and Bootstrap to be loaded
+        $(document).ready(function() {
+            // Set Bootstrap version for bootstrap-select
+            if (typeof $.fn.selectpicker !== 'undefined') {
+                $.fn.selectpicker.Constructor.BootstrapVersion = '5';
                 
-                // Smooth scroll to the section
-                setTimeout(function() {
-                    targetSection.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }, 100);
+                // Re-initialize selectpickers after setting version
+                $('.selectpicker').selectpicker('refresh');
             }
-        }
-        
-        function showService(serviceId) {
-            event.preventDefault();
-            
-            // Hide all service detail sections
-            var allSections = document.querySelectorAll('.services-details');
-            allSections.forEach(function(section) {
-                section.style.display = 'none';
-            });
-            
-            // Show the selected service detail section
-            var targetSection = document.getElementById(serviceId);
-            if (targetSection) {
-                targetSection.style.display = 'block';
-                
-                // Smooth scroll to the section
-                setTimeout(function() {
-                    targetSection.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }, 100);
-            }
-        }
+        });
     </script>
     <!-- Floating WhatsApp and Call Buttons -->
     <div class="floating-buttons">

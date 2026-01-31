@@ -415,7 +415,7 @@
         <!--Testimonial End-->
         <div class="client-carousel client-carousel--about">
             <div class="container">
-                <h5 class="client-carousel__tilte"><span>1K+ Brands Trust Us</span></h5><!-- section-title -->
+                <h5 class="client-carousel__tilte"><span>Trusting Partners</span></h5><!-- section-title -->
                 <div class="client-carousel__one ogency-owl__carousel owl-theme owl-carousel" data-owl-options='{
             "items": 5,
             "margin": 120,
@@ -535,8 +535,18 @@
     <script src="assets/js/ogency.js"></script>
     <!-- Contact Overlay JavaScript -->
     <script src="assets/js/contact-overlay.js"></script>
+    <!-- Fix Bootstrap Select Version Issue -->
+    <script>
+        // Wait for DOM to be ready and Bootstrap to be loaded
+        $(document).ready(function() {
+            // Set Bootstrap version for bootstrap-select
+            if (typeof $.fn.selectpicker !== 'undefined') {
+                $.fn.selectpicker.Constructor.BootstrapVersion = '5';
+                
+                // Re-initialize selectpickers after setting version
+                $('.selectpicker').selectpicker('refresh');
+            }
+        });
+    </script>
 </body>
-
-
-<!-- Mirrored from bracketweb.com/ogency-html-main/about.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 15 Dec 2025 12:02:00 GMT -->
 </html>
