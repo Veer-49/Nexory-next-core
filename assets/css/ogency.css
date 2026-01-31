@@ -12302,6 +12302,7 @@ h6 {
 .services-details__banner__image img {
   height: 100%;
   object-fit: cover;
+  mix-blend-mode: normal;
 }
 
 .services-details__banner__icon {
