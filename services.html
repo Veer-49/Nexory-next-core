@@ -84,6 +84,33 @@
                 font-size: 18px;
             }
         }
+        
+        /* Service Details Thumbnail - Smaller Size */
+        .services-details__thumb {
+            position: relative;
+            background-color: var(--ogency-black2);
+            margin-bottom: 15px;
+            max-height: 500px;
+            overflow: hidden;
+            border-radius: 8px;
+        }
+        
+        .services-details__thumb img {
+            width: 100%;
+            height: 500px;
+            object-fit: cover;
+            mix-blend-mode: normal;
+        }
+        
+        /* Remove banner background shape */
+        .services-details__banner__shape {
+            display: none !important;
+        }
+        
+        /* Make "Are you looking for" text blue */
+        .services-details__banner__title {
+            color: #007bff !important;
+        }
     </style>
 </head>
 
@@ -137,7 +164,7 @@
                     
                     <div class="service-showcase__item">
                         <div class="service-showcase__image">
-                            <img src="assets/images/service/android1.png" alt="Android App Development">
+                            <img src="assets/images/service/android2.png" alt="Android App Development">
                             <div class="service-showcase__overlay">
                                 <div class="service-showcase__content">
                                     <p class="service-showcase__cats"><a href="#android-development-details">Mobile</a>, <a href="#android-development-details">Android</a></p>
@@ -151,7 +178,7 @@
                     
                     <div class="service-showcase__item">
                         <div class="service-showcase__image">
-                            <img src="assets/images/service/ios1.png" alt="IOS App Development">
+                            <img src="assets/images/service/ios2.png" alt="IOS App Development">
                             <div class="service-showcase__overlay">
                                 <div class="service-showcase__content">
                                     <p class="service-showcase__cats"><a href="#ios-development-details">Mobile</a>, <a href="#ios-development-details">iOS</a></p>
@@ -179,7 +206,7 @@
                     
                     <div class="service-showcase__item">
                         <div class="service-showcase__image">
-                            <img src="assets/images/service/services-2-1.jpg" alt="Digital Marketing">
+                            <img src="assets/images/service/digital1.png" alt="Digital Marketing">
                             <div class="service-showcase__overlay">
                                 <div class="service-showcase__content">
                                     <p class="service-showcase__cats"><a href="#digital-marketing-details">Marketing</a>, <a href="#digital-marketing-details">Digital</a></p>
@@ -207,7 +234,7 @@
                     
                     <div class="service-showcase__item">
                         <div class="service-showcase__image">
-                            <img src="assets/images/service/services-2-3.jpg" alt="Payment Integration">
+                            <img src="assets/images/service/payment1.png" alt="Payment Integration">
                             <div class="service-showcase__overlay">
                                 <div class="service-showcase__content">
                                     <p class="service-showcase__cats"><a href="#payment-integration-details">Payment</a>, <a href="#payment-integration-details">Integration</a></p>
@@ -221,7 +248,7 @@
                     
                     <div class="service-showcase__item">
                         <div class="service-showcase__image">
-                            <img src="assets/images/service/services-2-4.jpg" alt="CMS Web Development">
+                            <img src="assets/images/service/cms1.png" alt="CMS Web Development">
                             <div class="service-showcase__overlay">
                                 <div class="service-showcase__content">
                                     <p class="service-showcase__cats"><a href="#cms-development-details">CMS</a>, <a href="#cms-development-details">Development</a></p>
@@ -235,7 +262,7 @@
                     
                     <div class="service-showcase__item">
                         <div class="service-showcase__image">
-                            <img src="assets/images/service/services-2-1.jpg" alt="Web Hosting">
+                            <img src="assets/images/service/webhosting1.png" alt="Web Hosting">
                             <div class="service-showcase__overlay">
                                 <div class="service-showcase__content">
                                     <p class="service-showcase__cats"><a href="#web-hosting-details">Hosting</a>, <a href="#web-hosting-details">Infrastructure</a></p>
@@ -249,7 +276,7 @@
                     
                     <div class="service-showcase__item">
                         <div class="service-showcase__image">
-                            <img src="assets/images/service/services-2-2.jpg" alt="Email Automation">
+                            <img src="assets/images/service/email1.png" alt="Email Automation">
                             <div class="service-showcase__overlay">
                                 <div class="service-showcase__content">
                                     <p class="service-showcase__cats"><a href="#email-automation-details">Email</a>, <a href="#email-automation-details">Automation</a></p>
@@ -263,13 +290,27 @@
                     
                     <div class="service-showcase__item">
                         <div class="service-showcase__image">
-                            <img src="assets/images/service/services-2-3.jpg" alt="Web Design">
+                            <img src="assets/images/service/webdesign1.png" alt="Web Design">
                             <div class="service-showcase__overlay">
                                 <div class="service-showcase__content">
                                     <p class="service-showcase__cats"><a href="#web-design-details">Design</a>, <a href="#web-design-details">UI/UX</a></p>
                                     <h3 class="service-showcase__title"><a href="#web-design-details" onclick="return showServiceDetails('web-design-details')">Web Design</a></h3>
                                     <p class="service-showcase__description">We design visually appealing, user-centric websites that combine creativity with usability, helping brands communicate clearly and convert visitors into customers.</p>
                                     <a href="#web-design-details" class="service-showcase__read-more" onclick="return showServiceDetails('web-design-details')">Read More →</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="service-showcase__item">
+                        <div class="service-showcase__image">
+                            <img src="assets/images/service/seo.png" alt="SEO Development">
+                            <div class="service-showcase__overlay">
+                                <div class="service-showcase__content">
+                                    <p class="service-showcase__cats"><a href="#seo-development-details">SEO</a>, <a href="#seo-development-details">Optimization</a></p>
+                                    <h3 class="service-showcase__title"><a href="#seo-development-details" onclick="return showServiceDetails('seo-development-details')">SEO Development</a></h3>
+                                    <p class="service-showcase__description">We optimize websites to rank higher on search engines, attract the right audience, and generate consistent, organic growth through data-driven SEO strategies.</p>
+                                    <a href="#seo-development-details" class="service-showcase__read-more" onclick="return showServiceDetails('seo-development-details')">Read More →</a>
                                 </div>
                             </div>
                         </div>
@@ -426,11 +467,12 @@
                                     <li><a href="#" onclick="showService('web-hosting-details')">Web Hosting</a></li>
                                     <li><a href="#" onclick="showService('email-automation-details')">Email Automation</a></li>
                                     <li><a href="#" onclick="showService('web-design-details')">Web Design</a></li>
+                                    <li><a href="#" onclick="showService('seo-development-details')">SEO Development</a></li>
                                 </ul>
                             </div>
                             <div class="services-details__banner">
                                 <div class="services-details__banner__shape"></div>
-                                <div class="services-details__banner__image"><img src="assets/images/resources/banner-author.png" alt="ogency"></div>
+                                <div class="services-details__banner__image"><img src="assets/images/gallery/unnamed.jpg" alt="ogency"></div>
                                 <div class="services-details__banner__icon"><span class="icon-mobile-development"></span></div>
                                 <h3 class="services-details__banner__title">Are you looking for<br> a application development</h3>
                                 <a class="ogency-btn" href="contact.html">Contact</a>
@@ -439,7 +481,7 @@
                     </div>
                     <div class="col-xl-8 col-lg-7">
                         <div class="services-details__content">
-                            <div class="services-details__thumb"><img src="assets/images/service/service-details-development.jpg" alt="ogency"></div>
+                            <div class="services-details__thumb"><img src="assets/images/service/webdev2.png" alt="ogency"></div>
                             <h3 class="services-details__content__title">Web Development</h3>
                             <p class="services-details__content__text">
                                 We build custom websites that combine clean design, strong engineering, and business-focused functionality. Whether you need a corporate website, a dynamic web application, or a conversion-driven landing page, our solutions are designed to perform reliably in real-world conditions.
@@ -507,11 +549,12 @@
                                     <li><a href="#" onclick="showService('web-hosting-details')">Web Hosting</a></li>
                                     <li><a href="#" onclick="showService('email-automation-details')">Email Automation</a></li>
                                     <li><a href="#" onclick="showService('web-design-details')">Web Design</a></li>
+                                    <li><a href="#" onclick="showService('seo-development-details')">SEO Development</a></li>
                                 </ul>
                             </div>
                             <div class="services-details__banner">
                                 <div class="services-details__banner__shape"></div>
-                                <div class="services-details__banner__image"><img src="assets/images/resources/banner-author.png" alt="ogency"></div>
+                                <div class="services-details__banner__image"><img src="assets/images/gallery/unnamed.jpg" alt="ogency"></div>
                                 <div class="services-details__banner__icon"><span class="icon-mobile-development"></span></div>
                                 <h3 class="services-details__banner__title">Are you looking for<br> Android app development</h3>
                                 <a class="ogency-btn" href="contact.html">Contact</a>
@@ -520,7 +563,7 @@
                     </div>
                     <div class="col-xl-8 col-lg-7">
                         <div class="services-details__content">
-                            <div class="services-details__thumb"><img src="assets/images/service/service-details-app.jpg" alt="ogency"></div>
+                            <div class="services-details__thumb"><img src="assets/images/service/android1.png" alt="ogency"></div>
                             <h3 class="services-details__content__title">Android App Development</h3>
                             <p class="services-details__content__text">
                                 We build Android applications that combine clean architecture, modern UI, and reliable performance. From business apps and on-demand platforms to custom enterprise solutions, our Android development process focuses on usability, stability, and scalability.
@@ -588,11 +631,12 @@
                                     <li><a href="#" onclick="showService('web-hosting-details')">Web Hosting</a></li>
                                     <li><a href="#" onclick="showService('email-automation-details')">Email Automation</a></li>
                                     <li><a href="#" onclick="showService('web-design-details')">Web Design</a></li>
+                                    <li><a href="#" onclick="showService('seo-development-details')">SEO Development</a></li>
                                 </ul>
                             </div>
                             <div class="services-details__banner">
                                 <div class="services-details__banner__shape"></div>
-                                <div class="services-details__banner__image"><img src="assets/images/resources/banner-author.png" alt="ogency"></div>
+                                <div class="services-details__banner__image"><img src="assets/images/gallery/unnamed.jpg" alt="ogency"></div>
                                 <div class="services-details__banner__icon"><span class="icon-mobile-development"></span></div>
                                 <h3 class="services-details__banner__title">Are you looking for<br> iOS app development</h3>
                                 <a class="ogency-btn" href="contact.html">Contact</a>
@@ -601,7 +645,7 @@
                     </div>
                     <div class="col-xl-8 col-lg-7">
                         <div class="services-details__content">
-                            <div class="services-details__thumb"><img src="assets/images/service/service-details-app.jpg" alt="ogency"></div>
+                            <div class="services-details__thumb"><img src="assets/images/service/ios1.png" alt="ogency"></div>
                             <h3 class="services-details__content__title">iOS App Development</h3>
                             <p class="services-details__content__text">
                                 We build iOS applications that combine precision engineering, refined design, and reliable performance. From consumer apps to business and enterprise solutions, our focus is on creating products that feel smooth, responsive, and intuitive within the Apple ecosystem.
@@ -665,11 +709,12 @@
                                     <li><a href="#" onclick="showService('web-hosting-details')">Web Hosting</a></li>
                                     <li><a href="#" onclick="showService('email-automation-details')">Email Automation</a></li>
                                     <li><a href="#" onclick="showService('web-design-details')">Web Design</a></li>
+                                    <li><a href="#" onclick="showService('seo-development-details')">SEO Development</a></li>
                                 </ul>
                             </div>
                             <div class="services-details__banner">
                                 <div class="services-details__banner__shape"></div>
-                                <div class="services-details__banner__image"><img src="assets/images/resources/banner-author.png" alt="ogency"></div>
+                                <div class="services-details__banner__image"><img src="assets/images/gallery/unnamed.jpg" alt="ogency"></div>
                                 <div class="services-details__banner__icon"><span class="icon-mobile-development"></span></div>
                                 <h3 class="services-details__banner__title">Are you looking for<br> AI integration solutions</h3>
                                 <a class="ogency-btn" href="contact.html">Contact</a>
@@ -678,7 +723,7 @@
                     </div>
                     <div class="col-xl-8 col-lg-7">
                         <div class="services-details__content">
-                            <div class="services-details__thumb"><img src="assets/images/service/service-details-development.jpg" alt="ogency"></div>
+                            <div class="services-details__thumb"><img src="assets/images/service/ai2.png" alt="ogency"></div>
                             <h3 class="services-details__content__title">AI Integration</h3>
                             <p class="services-details__content__text">
                                 We help businesses enhance their digital products by integrating practical, reliable AI solutions that deliver measurable value. From automation and intelligent features to data-driven insights, our AI integrations are designed to work seamlessly within your existing web and mobile systems.
@@ -739,11 +784,12 @@
                                     <li><a href="#" onclick="showService('web-hosting-details')">Web Hosting</a></li>
                                     <li><a href="#" onclick="showService('email-automation-details')">Email Automation</a></li>
                                     <li><a href="#" onclick="showService('web-design-details')">Web Design</a></li>
+                                    <li><a href="#" onclick="showService('seo-development-details')">SEO Development</a></li>
                                 </ul>
                             </div>
                             <div class="services-details__banner">
                                 <div class="services-details__banner__shape"></div>
-                                <div class="services-details__banner__image"><img src="assets/images/resources/banner-author.png" alt="ogency"></div>
+                                <div class="services-details__banner__image"><img src="assets/images/gallery/unnamed.jpg" alt="ogency"></div>
                                 <div class="services-details__banner__icon"><span class="icon-mobile-development"></span></div>
                                 <h3 class="services-details__banner__title">Are you looking for<br> digital marketing</h3>
                                 <a class="ogency-btn" href="contact.html">Contact</a>
@@ -752,7 +798,7 @@
                     </div>
                     <div class="col-xl-8 col-lg-7">
                         <div class="services-details__content">
-                            <div class="services-details__thumb"><img src="assets/images/service/service-details-development.jpg" alt="ogency"></div>
+                            <div class="services-details__thumb"><img src="assets/images/service/digital2.png" alt="ogency"></div>
                             <h3 class="services-details__content__title">Digital Marketing</h3>
                             <p class="services-details__content__text">
                                 We provide result-oriented digital marketing services designed to increase reach, improve engagement, and drive consistent growth. Our approach focuses on understanding your audience, choosing the right channels, and executing strategies that deliver measurable outcomes.
@@ -816,11 +862,12 @@
                                     <li><a href="#" onclick="showService('web-hosting-details')">Web Hosting</a></li>
                                     <li><a href="#" onclick="showService('email-automation-details')">Email Automation</a></li>
                                     <li><a href="#" onclick="showService('web-design-details')">Web Design</a></li>
+                                    <li><a href="#" onclick="showService('seo-development-details')">SEO Development</a></li>
                                 </ul>
                             </div>
                             <div class="services-details__banner">
                                 <div class="services-details__banner__shape"></div>
-                                <div class="services-details__banner__image"><img src="assets/images/resources/banner-author.png" alt="ogency"></div>
+                                <div class="services-details__banner__image"><img src="assets/images/gallery/unnamed.jpg" alt="ogency"></div>
                                 <div class="services-details__banner__icon"><span class="icon-mobile-development"></span></div>
                                 <h3 class="services-details__banner__title">Are you looking for<br> e-commerce solutions</h3>
                                 <a class="ogency-btn" href="contact.html">Contact</a>
@@ -829,7 +876,7 @@
                     </div>
                     <div class="col-xl-8 col-lg-7">
                         <div class="services-details__content">
-                            <div class="services-details__thumb"><img src="assets/images/service/service-details-development.jpg" alt="ogency"></div>
+                            <div class="services-details__thumb"><img src="assets/images/service/ecomm2.png" alt="ogency"></div>
                             <h3 class="services-details__content__title">E-Commerce</h3>
                             <p class="services-details__content__text">
                                 We build e-commerce solutions that combine clean design, strong performance, and conversion-focused functionality. From product catalogs to checkout and order management, every element is designed to create smooth buying experiences and drive sales.
@@ -894,11 +941,12 @@
                                     <li><a href="#" onclick="showService('web-hosting-details')">Web Hosting</a></li>
                                     <li><a href="#" onclick="showService('email-automation-details')">Email Automation</a></li>
                                     <li><a href="#" onclick="showService('web-design-details')">Web Design</a></li>
+                                    <li><a href="#" onclick="showService('seo-development-details')">SEO Development</a></li>
                                 </ul>
                             </div>
                             <div class="services-details__banner">
                                 <div class="services-details__banner__shape"></div>
-                                <div class="services-details__banner__image"><img src="assets/images/resources/banner-author.png" alt="ogency"></div>
+                                <div class="services-details__banner__image"><img src="assets/images/gallery/unnamed.jpg" alt="ogency"></div>
                                 <div class="services-details__banner__icon"><span class="icon-mobile-development"></span></div>
                                 <h3 class="services-details__banner__title">Are you looking for<br> CMS development</h3>
                                 <a class="ogency-btn" href="contact.html">Contact</a>
@@ -907,7 +955,7 @@
                     </div>
                     <div class="col-xl-8 col-lg-7">
                         <div class="services-details__content">
-                            <div class="services-details__thumb"><img src="assets/images/service/service-details-development.jpg" alt="ogency"></div>
+                            <div class="services-details__thumb"><img src="assets/images/service/cms2.png" alt="ogency"></div>
                             <h3 class="services-details__content__title">CMS Web Development</h3>
                             <p class="services-details__content__text">
                                 We build custom CMS solutions that give businesses complete control over their content without compromising performance or security. Whether it's a website, e-commerce platform, or web application, our CMS solutions are designed to be intuitive, flexible, and scalable.
@@ -971,11 +1019,12 @@
                                     <li><a href="#" onclick="showService('web-hosting-details')">Web Hosting</a></li>
                                     <li><a href="#" onclick="showService('email-automation-details')">Email Automation</a></li>
                                     <li><a href="#" onclick="showService('web-design-details')">Web Design</a></li>
+                                    <li><a href="#" onclick="showService('seo-development-details')">SEO Development</a></li>
                                 </ul>
                             </div>
                             <div class="services-details__banner">
                                 <div class="services-details__banner__shape"></div>
-                                <div class="services-details__banner__image"><img src="assets/images/resources/banner-author.png" alt="ogency"></div>
+                                <div class="services-details__banner__image"><img src="assets/images/gallery/unnamed.jpg" alt="ogency"></div>
                                 <div class="services-details__banner__icon"><span class="icon-mobile-development"></span></div>
                                 <h3 class="services-details__banner__title">Are you looking for<br> payment integration</h3>
                                 <a class="ogency-btn" href="contact.html">Contact</a>
@@ -984,7 +1033,7 @@
                     </div>
                     <div class="col-xl-8 col-lg-7">
                         <div class="services-details__content">
-                            <div class="services-details__thumb"><img src="assets/images/service/service-details-development.jpg" alt="ogency"></div>
+                            <div class="services-details__thumb"><img src="assets/images/service/payment2.png" alt="ogency"></div>
                             <h3 class="services-details__content__title">Payment Integration</h3>
                             <p class="services-details__content__text">
                                 We provide secure, scalable payment integration solutions that enable smooth and reliable transactions across web and mobile platforms. From online payments to subscriptions and automated billing, our integrations are designed to be fast, compliant, and easy to manage.
@@ -1048,11 +1097,12 @@
                                     <li><a href="#" onclick="showService('web-hosting-details')">Web Hosting</a></li>
                                     <li><a href="#" onclick="showService('email-automation-details')">Email Automation</a></li>
                                     <li><a href="#" onclick="showService('web-design-details')">Web Design</a></li>
+                                    <li><a href="#" onclick="showService('seo-development-details')">SEO Development</a></li>
                                 </ul>
                             </div>
                             <div class="services-details__banner">
                                 <div class="services-details__banner__shape"></div>
-                                <div class="services-details__banner__image"><img src="assets/images/resources/banner-author.png" alt="ogency"></div>
+                                <div class="services-details__banner__image"><img src="assets/images/gallery/unnamed.jpg" alt="ogency"></div>
                                 <div class="services-details__banner__icon"><span class="icon-mobile-development"></span></div>
                                 <h3 class="services-details__banner__title">Are you looking for<br> web hosting</h3>
                                 <a class="ogency-btn" href="contact.html">Contact</a>
@@ -1061,7 +1111,7 @@
                     </div>
                     <div class="col-xl-8 col-lg-7">
                         <div class="services-details__content">
-                            <div class="services-details__thumb"><img src="assets/images/service/service-details-development.jpg" alt="ogency"></div>
+                            <div class="services-details__thumb"><img src="assets/images/service/webhosting2.png" alt="ogency"></div>
                             <h3 class="services-details__content__title">Web Hosting</h3>
                             <p class="services-details__content__text">
                                 We offer high-performance web hosting solutions tailored to the needs of modern websites and web applications. Our hosting services are built to deliver speed, security, and reliability, allowing businesses to focus on growth without worrying about infrastructure.
@@ -1125,11 +1175,12 @@
                                     <li><a href="#" onclick="showService('web-hosting-details')">Web Hosting</a></li>
                                     <li><a href="#" onclick="showService('email-automation-details')">Email Automation</a></li>
                                     <li><a href="#" onclick="showService('web-design-details')">Web Design</a></li>
+                                    <li><a href="#" onclick="showService('seo-development-details')">SEO Development</a></li>
                                 </ul>
                             </div>
                             <div class="services-details__banner">
                                 <div class="services-details__banner__shape"></div>
-                                <div class="services-details__banner__image"><img src="assets/images/resources/banner-author.png" alt="ogency"></div>
+                                <div class="services-details__banner__image"><img src="assets/images/gallery/unnamed.jpg" alt="ogency"></div>
                                 <div class="services-details__banner__icon"><span class="icon-mobile-development"></span></div>
                                 <h3 class="services-details__banner__title">Are you looking for<br> email automation</h3>
                                 <a class="ogency-btn" href="contact.html">Contact</a>
@@ -1138,7 +1189,7 @@
                     </div>
                     <div class="col-xl-8 col-lg-7">
                         <div class="services-details__content">
-                            <div class="services-details__thumb"><img src="assets/images/service/service-details-development.jpg" alt="ogency"></div>
+                            <div class="services-details__thumb"><img src="assets/images/service/email2.png" alt="ogency"></div>
                             <h3 class="services-details__content__title">Email Automation</h3>
                             <p class="services-details__content__text">
                                 We build intelligent email automation systems that streamline communication, improve engagement, and support business growth. From onboarding sequences to transactional and marketing emails, our solutions are designed to deliver timely, relevant messages automatically.
@@ -1205,11 +1256,12 @@
                                     <li><a href="#" onclick="showService('web-hosting-details')">Web Hosting</a></li>
                                     <li><a href="#" onclick="showService('email-automation-details')">Email Automation</a></li>
                                     <li><a href="#" onclick="showService('web-design-details')">Web Design</a></li>
+                                    <li><a href="#" onclick="showService('seo-development-details')">SEO Development</a></li>
                                 </ul>
                             </div>
                             <div class="services-details__banner">
                                 <div class="services-details__banner__shape"></div>
-                                <div class="services-details__banner__image"><img src="assets/images/resources/banner-author.png" alt="ogency"></div>
+                                <div class="services-details__banner__image"><img src="assets/images/gallery/unnamed.jpg" alt="ogency"></div>
                                 <div class="services-details__banner__icon"><span class="icon-mobile-development"></span></div>
                                 <h3 class="services-details__banner__title">Are you looking for<br> web design</h3>
                                 <a class="ogency-btn" href="contact.html">Contact</a>
@@ -1218,7 +1270,7 @@
                     </div>
                     <div class="col-xl-8 col-lg-7">
                         <div class="services-details__content">
-                            <div class="services-details__thumb"><img src="assets/images/service/service-details-development.jpg" alt="ogency"></div>
+                            <div class="services-details__thumb"><img src="assets/images/service/webdesign2.png" alt="ogency"></div>
                             <h3 class="services-details__content__title">Web Design</h3>
                             <p class="services-details__content__text">
                                 We create modern, clean, and intuitive web designs that reflect your brand identity and deliver meaningful user experiences. Our design process focuses on clarity, usability, and consistency — ensuring your website not only looks great but also feels easy to use.
@@ -1262,6 +1314,91 @@
                 </div>
             </div>
         </section>
+
+        <!-- SEO Development Details -->
+        <section id="seo-development-details" class="services-details" style="display: none;">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-4 col-lg-5">
+                        <div class="services-details__sidebar">
+                            <div class="services-details__services-list">
+                                <ul class="services-details__services list-unstyled">
+                                    <li><a href="#" onclick="showService('web-development-details')">Web Development</a></li>
+                                    <li><a href="#" onclick="showService('android-development-details')">Android App Development</a></li>
+                                    <li><a href="#" onclick="showService('ios-development-details')">IOS App Development</a></li>
+                                    <li><a href="#" onclick="showService('ai-integration-details')">AI Integration</a></li>
+                                    <li><a href="#" onclick="showService('digital-marketing-details')">Digital Marketing</a></li>
+                                    <li><a href="#" onclick="showService('e-commerce-details')">E-Commerce</a></li>
+                                    <li><a href="#" onclick="showService('payment-integration-details')">Payment Integration</a></li>
+                                    <li><a href="#" onclick="showService('cms-development-details')">CMS Web Development</a></li>
+                                    <li><a href="#" onclick="showService('web-hosting-details')">Web Hosting</a></li>
+                                    <li><a href="#" onclick="showService('email-automation-details')">Email Automation</a></li>
+                                    <li><a href="#" onclick="showService('web-design-details')">Web Design</a></li>
+                                    <li><a href="#" onclick="showService('seo-development-details')">SEO Development</a></li>
+                                </ul>
+                            </div>
+                            <div class="services-details__banner">
+                                <div class="services-details__banner__shape"></div>
+                                <div class="services-details__banner__image"><img src="assets/images/gallery/unnamed.jpg" alt="ogency"></div>
+                                <div class="services-details__banner__icon"><span class="icon-mobile-development"></span></div>
+                                <h3 class="services-details__banner__title">Are you looking for<br> SEO development services</h3>
+                                <a class="ogency-btn" href="contact.html">Contact</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-8 col-lg-7">
+                        <div class="services-details__content">
+                            <div class="services-details__thumb"><img src="assets/images/service/seo2.png" alt="SEO Development"></div>
+                            <h3 class="services-details__content__title">SEO (Search Engine Optimization)</h3>
+                            <p class="services-details__content__text">
+                                We deliver comprehensive SEO solutions that improve your website's visibility, increase organic traffic, and drive measurable business results. Our approach combines technical optimization, high-quality content, and smart link strategies to help your website rank for the keywords that matter most.
+                            </p>
+                            <p class="services-details__content__text">
+                                From site structure and speed to content relevance and authority, every part of your website is optimized to perform better in search results and provide a strong user experience.
+                            </p>
+                            
+                            <h4 class="services-details__content__title-two">What We Offer</h4>
+                            <ul class="services-details__benefit__lists list-unstyled">
+                                <li><span class="fa fa-check-circle"></span>In-depth SEO audit and strategy planning</li>
+                                <li><span class="fa fa-check-circle"></span>Keyword research and search intent mapping</li>
+                                <li><span class="fa fa-check-circle"></span>On-page SEO (titles, meta tags, content optimization)</li>
+                                <li><span class="fa fa-check-circle"></span>Technical SEO (site speed, indexing, crawlability)</li>
+                                <li><span class="fa fa-check-circle"></span>Content strategy and SEO copywriting guidance</li>
+                                <li><span class="fa fa-check-circle"></span>Internal linking and site architecture optimization</li>
+                                <li><span class="fa fa-check-circle"></span>High-quality backlink and authority building</li>
+                                <li><span class="fa fa-check-circle"></span>Ongoing tracking, reporting, and performance improvements</li>
+                            </ul>
+                            
+                            <h3 class="services-details__content__title-three">Our Approach</h3>
+                            <p class="services-details__content__text">
+                                We start by analyzing your current website, competitors, and target keywords. Based on real data, we create a structured SEO roadmap and implement optimizations step by step, continuously monitoring rankings and traffic to refine the strategy over time.
+                            </p>
+                            
+                            <h4 class="services-details__content__title-two">Why Choose Us for SEO?</h4>
+                            <ul class="services-details__benefit__lists list-unstyled">
+                                <li><span class="fa fa-check-circle"></span>Data-driven, long-term ranking strategies</li>
+                                <li><span class="fa fa-check-circle"></span>Technical and content SEO combined</li>
+                                <li><span class="fa fa-check-circle"></span>Focus on qualified traffic, not vanity metrics</li>
+                                <li><span class="fa fa-check-circle"></span>Transparent reporting and clear progress tracking</li>
+                                <li><span class="fa fa-check-circle"></span>SEO aligned with your website and business goals</li>
+                            </ul>
+                            
+                            <h4 class="services-details__content__title-two">Who This Is For</h4>
+                            <ul class="services-details__benefit__lists list-unstyled">
+                                <li><span class="fa fa-check-circle"></span>Businesses wanting more organic website traffic</li>
+                                <li><span class="fa fa-check-circle"></span>Startups building long-term online visibility</li>
+                                <li><span class="fa fa-check-circle"></span>Brands looking to rank for competitive keywords</li>
+                            </ul>
+                            
+                      </div>
+                            
+                            <div class="services-details__back-btn">
+                                <button class="ogency-btn" onclick="backToServices()">← Back to Services</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
         <!-- Include centralized footer -->
         <div id="footer-container"></div>
