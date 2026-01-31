@@ -8042,6 +8042,7 @@ h6 {
 }
 
 .team-one__item__content {
+  background-color: var(--ogency-black);
   margin: -64px 20px 0 0;
   position: relative;
   padding-left: 30px;
