@@ -430,24 +430,42 @@
         function backToServices() {
             console.log('backToServices called');
             
-            // Hide all service details
-            document.querySelectorAll('.services-details').forEach(detail => {
-                detail.style.display = 'none';
+            // Find all service items that were modified
+            document.querySelectorAll('.service-showcase__item').forEach(item => {
+                // Check if this item has original content stored
+                if (item.originalContent) {
+                    // Restore the original content
+                    item.innerHTML = item.originalContent;
+                    console.log('Restored original content for item');
+                }
+                
+                // Reset all the inline styles
+                item.style.width = '';
+                item.style.height = '';
+                item.style.margin = '';
+                item.style.padding = '';
+                item.style.background = '';
+                item.style.borderRadius = '';
+                item.style.position = '';
+                item.style.zIndex = '';
+                item.style.display = '';
+                item.style.flexDirection = '';
             });
-            console.log('All service details hidden');
             
-            // Show the service showcase section
+            // Show all service items
+            document.querySelectorAll('.service-showcase__item').forEach(item => {
+                item.style.display = '';
+            });
+            
+            // Scroll to top of services section
             const serviceShowcase = document.querySelector('.service-showcase');
             if (serviceShowcase) {
-                serviceShowcase.style.display = 'flex';
-                console.log('Service showcase shown');
+                serviceShowcase.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+                console.log('Scrolled to service showcase');
             }
-            
-            // Scroll to top of services
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
-            });
             
             // Clear URL hash
             window.location.hash = '';
@@ -459,33 +477,7 @@
         <section id="web-development-details" class="services-details" style="display: none;">
             <div class="container">
                 <div class="row">
-                    <div class="col-xl-4 col-lg-5">
-                        <div class="services-details__sidebar">
-                            <div class="services-details__services-list">
-                                <ul class="services-details__services list-unstyled">
-                                    <li><a href="#" onclick="showService('web-development-details')">Web Development</a></li>
-                                    <li><a href="#" onclick="showService('android-development-details')">Android App Development</a></li>
-                                    <li><a href="#" onclick="showService('ios-development-details')">IOS App Development</a></li>
-                                    <li><a href="#" onclick="showService('ai-integration-details')">AI Integration</a></li>
-                                    <li><a href="#" onclick="showService('digital-marketing-details')">Digital Marketing</a></li>
-                                    <li><a href="#" onclick="showService('e-commerce-details')">E-Commerce</a></li>
-                                    <li><a href="#" onclick="showService('payment-integration-details')">Payment Integration</a></li>
-                                    <li><a href="#" onclick="showService('cms-development-details')">CMS Web Development</a></li>
-                                    <li><a href="#" onclick="showService('web-hosting-details')">Web Hosting</a></li>
-                                    <li><a href="#" onclick="showService('email-automation-details')">Email Automation</a></li>
-                                    <li><a href="#" onclick="showService('web-design-details')">Web Design</a></li>
-                                    <li><a href="#" onclick="showService('seo-development-details')">SEO Development</a></li>
-                                </ul>
-                            </div>
-                            <div class="services-details__banner">
-                                <div class="services-details__banner__image"><img src="assets/images/gallery/unnamed.jpg" alt="ogency"></div>
-                                <div class="services-details__banner__icon"><span class="icon-mobile-development"></span></div>
-                                <h3 class="services-details__banner__title">Are you looking for<br> a application development</h3>
-                                <a class="ogency-btn" href="contact.html">Contact</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-8 col-lg-7">
+                    <div class="col-xl-12 col-lg-12">
                         <div class="services-details__content">
                             <div class="services-details__thumb"><img src="assets/images/service/webdev2.png" alt="ogency"></div>
                             <h3 class="services-details__content__title">Web Development</h3>
@@ -540,33 +532,7 @@
         <section id="android-development-details" class="services-details" style="display: none;">
             <div class="container">
                 <div class="row">
-                    <div class="col-xl-4 col-lg-5">
-                        <div class="services-details__sidebar">
-                            <div class="services-details__services-list">
-                                <ul class="services-details__services list-unstyled">
-                                    <li><a href="#" onclick="showService('web-development-details')">Web Development</a></li>
-                                    <li><a href="#" onclick="showService('android-development-details')">Android App Development</a></li>
-                                    <li><a href="#" onclick="showService('ios-development-details')">IOS App Development</a></li>
-                                    <li><a href="#" onclick="showService('ai-integration-details')">AI Integration</a></li>
-                                    <li><a href="#" onclick="showService('digital-marketing-details')">Digital Marketing</a></li>
-                                    <li><a href="#" onclick="showService('e-commerce-details')">E-Commerce</a></li>
-                                    <li><a href="#" onclick="showService('payment-integration-details')">Payment Integration</a></li>
-                                    <li><a href="#" onclick="showService('cms-development-details')">CMS Web Development</a></li>
-                                    <li><a href="#" onclick="showService('web-hosting-details')">Web Hosting</a></li>
-                                    <li><a href="#" onclick="showService('email-automation-details')">Email Automation</a></li>
-                                    <li><a href="#" onclick="showService('web-design-details')">Web Design</a></li>
-                                    <li><a href="#" onclick="showService('seo-development-details')">SEO Development</a></li>
-                                </ul>
-                            </div>
-                            <div class="services-details__banner">
-                                <div class="services-details__banner__image"><img src="assets/images/gallery/unnamed.jpg" alt="ogency"></div>
-                                <div class="services-details__banner__icon"><span class="icon-mobile-development"></span></div>
-                                <h3 class="services-details__banner__title">Are you looking for<br> Android app development</h3>
-                                <a class="ogency-btn" href="contact.html">Contact</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-8 col-lg-7">
+                    <div class="col-xl-12 col-lg-12">
                         <div class="services-details__content">
                             <div class="services-details__thumb"><img src="assets/images/service/android1.png" alt="ogency"></div>
                             <h3 class="services-details__content__title">Android App Development</h3>
@@ -621,33 +587,7 @@
         <section id="ios-development-details" class="services-details" style="display: none;">
             <div class="container">
                 <div class="row">
-                    <div class="col-xl-4 col-lg-5">
-                        <div class="services-details__sidebar">
-                            <div class="services-details__services-list">
-                                <ul class="services-details__services list-unstyled">
-                                    <li><a href="#" onclick="showService('web-development-details')">Web Development</a></li>
-                                    <li><a href="#" onclick="showService('android-development-details')">Android App Development</a></li>
-                                    <li><a href="#" onclick="showService('ios-development-details')">IOS App Development</a></li>
-                                    <li><a href="#" onclick="showService('ai-integration-details')">AI Integration</a></li>
-                                    <li><a href="#" onclick="showService('digital-marketing-details')">Digital Marketing</a></li>
-                                    <li><a href="#" onclick="showService('e-commerce-details')">E-Commerce</a></li>
-                                    <li><a href="#" onclick="showService('payment-integration-details')">Payment Integration</a></li>
-                                    <li><a href="#" onclick="showService('cms-development-details')">CMS Web Development</a></li>
-                                    <li><a href="#" onclick="showService('web-hosting-details')">Web Hosting</a></li>
-                                    <li><a href="#" onclick="showService('email-automation-details')">Email Automation</a></li>
-                                    <li><a href="#" onclick="showService('web-design-details')">Web Design</a></li>
-                                    <li><a href="#" onclick="showService('seo-development-details')">SEO Development</a></li>
-                                </ul>
-                            </div>
-                            <div class="services-details__banner">
-                                <div class="services-details__banner__image"><img src="assets/images/gallery/unnamed.jpg" alt="ogency"></div>
-                                <div class="services-details__banner__icon"><span class="icon-mobile-development"></span></div>
-                                <h3 class="services-details__banner__title">Are you looking for<br> iOS app development</h3>
-                                <a class="ogency-btn" href="contact.html">Contact</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-8 col-lg-7">
+                    <div class="col-xl-12 col-lg-12">
                         <div class="services-details__content">
                             <div class="services-details__thumb"><img src="assets/images/service/ios1.png" alt="ogency"></div>
                             <h3 class="services-details__content__title">iOS App Development</h3>
@@ -698,33 +638,7 @@
         <section id="ai-integration-details" class="services-details" style="display: none;">
             <div class="container">
                 <div class="row">
-                    <div class="col-xl-4 col-lg-5">
-                        <div class="services-details__sidebar">
-                            <div class="services-details__services-list">
-                                <ul class="services-details__services list-unstyled">
-                                    <li><a href="#" onclick="showService('web-development-details')">Web Development</a></li>
-                                    <li><a href="#" onclick="showService('android-development-details')">Android App Development</a></li>
-                                    <li><a href="#" onclick="showService('ios-development-details')">IOS App Development</a></li>
-                                    <li><a href="#" onclick="showService('ai-integration-details')">AI Integration</a></li>
-                                    <li><a href="#" onclick="showService('digital-marketing-details')">Digital Marketing</a></li>
-                                    <li><a href="#" onclick="showService('e-commerce-details')">E-Commerce</a></li>
-                                    <li><a href="#" onclick="showService('payment-integration-details')">Payment Integration</a></li>
-                                    <li><a href="#" onclick="showService('cms-development-details')">CMS Web Development</a></li>
-                                    <li><a href="#" onclick="showService('web-hosting-details')">Web Hosting</a></li>
-                                    <li><a href="#" onclick="showService('email-automation-details')">Email Automation</a></li>
-                                    <li><a href="#" onclick="showService('web-design-details')">Web Design</a></li>
-                                    <li><a href="#" onclick="showService('seo-development-details')">SEO Development</a></li>
-                                </ul>
-                            </div>
-                            <div class="services-details__banner">
-                                <div class="services-details__banner__image"><img src="assets/images/gallery/unnamed.jpg" alt="ogency"></div>
-                                <div class="services-details__banner__icon"><span class="icon-mobile-development"></span></div>
-                                <h3 class="services-details__banner__title">Are you looking for<br> AI integration solutions</h3>
-                                <a class="ogency-btn" href="contact.html">Contact</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-8 col-lg-7">
+                    <div class="col-xl-12 col-lg-12">
                         <div class="services-details__content">
                             <div class="services-details__thumb"><img src="assets/images/service/ai2.png" alt="ogency"></div>
                             <h3 class="services-details__content__title">AI Integration</h3>
@@ -772,33 +686,7 @@
         <section id="digital-marketing-details" class="services-details" style="display: none;">
             <div class="container">
                 <div class="row">
-                    <div class="col-xl-4 col-lg-5">
-                        <div class="services-details__sidebar">
-                            <div class="services-details__services-list">
-                                <ul class="services-details__services list-unstyled">
-                                    <li><a href="#" onclick="showService('web-development-details')">Web Development</a></li>
-                                    <li><a href="#" onclick="showService('android-development-details')">Android App Development</a></li>
-                                    <li><a href="#" onclick="showService('ios-development-details')">IOS App Development</a></li>
-                                    <li><a href="#" onclick="showService('ai-integration-details')">AI Integration</a></li>
-                                    <li><a href="#" onclick="showService('digital-marketing-details')">Digital Marketing</a></li>
-                                    <li><a href="#" onclick="showService('e-commerce-details')">E-Commerce</a></li>
-                                    <li><a href="#" onclick="showService('payment-integration-details')">Payment Integration</a></li>
-                                    <li><a href="#" onclick="showService('cms-development-details')">CMS Web Development</a></li>
-                                    <li><a href="#" onclick="showService('web-hosting-details')">Web Hosting</a></li>
-                                    <li><a href="#" onclick="showService('email-automation-details')">Email Automation</a></li>
-                                    <li><a href="#" onclick="showService('web-design-details')">Web Design</a></li>
-                                    <li><a href="#" onclick="showService('seo-development-details')">SEO Development</a></li>
-                                </ul>
-                            </div>
-                            <div class="services-details__banner">
-                                <div class="services-details__banner__image"><img src="assets/images/gallery/unnamed.jpg" alt="ogency"></div>
-                                <div class="services-details__banner__icon"><span class="icon-mobile-development"></span></div>
-                                <h3 class="services-details__banner__title">Are you looking for<br> digital marketing</h3>
-                                <a class="ogency-btn" href="contact.html">Contact</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-8 col-lg-7">
+                    <div class="col-xl-12 col-lg-12">
                         <div class="services-details__content">
                             <div class="services-details__thumb"><img src="assets/images/service/digital2.png" alt="ogency"></div>
                             <h3 class="services-details__content__title">Digital Marketing</h3>
@@ -849,33 +737,7 @@
         <section id="e-commerce-details" class="services-details" style="display: none;">
             <div class="container">
                 <div class="row">
-                    <div class="col-xl-4 col-lg-5">
-                        <div class="services-details__sidebar">
-                            <div class="services-details__services-list">
-                                <ul class="services-details__services list-unstyled">
-                                    <li><a href="#" onclick="showService('web-development-details')">Web Development</a></li>
-                                    <li><a href="#" onclick="showService('android-development-details')">Android App Development</a></li>
-                                    <li><a href="#" onclick="showService('ios-development-details')">IOS App Development</a></li>
-                                    <li><a href="#" onclick="showService('ai-integration-details')">AI Integration</a></li>
-                                    <li><a href="#" onclick="showService('digital-marketing-details')">Digital Marketing</a></li>
-                                    <li><a href="#" onclick="showService('e-commerce-details')">E-Commerce</a></li>
-                                    <li><a href="#" onclick="showService('payment-integration-details')">Payment Integration</a></li>
-                                    <li><a href="#" onclick="showService('cms-development-details')">CMS Web Development</a></li>
-                                    <li><a href="#" onclick="showService('web-hosting-details')">Web Hosting</a></li>
-                                    <li><a href="#" onclick="showService('email-automation-details')">Email Automation</a></li>
-                                    <li><a href="#" onclick="showService('web-design-details')">Web Design</a></li>
-                                    <li><a href="#" onclick="showService('seo-development-details')">SEO Development</a></li>
-                                </ul>
-                            </div>
-                            <div class="services-details__banner">
-                                <div class="services-details__banner__image"><img src="assets/images/gallery/unnamed.jpg" alt="ogency"></div>
-                                <div class="services-details__banner__icon"><span class="icon-mobile-development"></span></div>
-                                <h3 class="services-details__banner__title">Are you looking for<br> e-commerce solutions</h3>
-                                <a class="ogency-btn" href="contact.html">Contact</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-8 col-lg-7">
+                    <div class="col-xl-12 col-lg-12">
                         <div class="services-details__content">
                             <div class="services-details__thumb"><img src="assets/images/service/ecomm2.png" alt="ogency"></div>
                             <h3 class="services-details__content__title">E-Commerce</h3>
@@ -927,33 +789,7 @@
         <section id="cms-development-details" class="services-details" style="display: none;">
             <div class="container">
                 <div class="row">
-                    <div class="col-xl-4 col-lg-5">
-                        <div class="services-details__sidebar">
-                            <div class="services-details__services-list">
-                                <ul class="services-details__services list-unstyled">
-                                    <li><a href="#" onclick="showService('web-development-details')">Web Development</a></li>
-                                    <li><a href="#" onclick="showService('android-development-details')">Android App Development</a></li>
-                                    <li><a href="#" onclick="showService('ios-development-details')">IOS App Development</a></li>
-                                    <li><a href="#" onclick="showService('ai-integration-details')">AI Integration</a></li>
-                                    <li><a href="#" onclick="showService('digital-marketing-details')">Digital Marketing</a></li>
-                                    <li><a href="#" onclick="showService('e-commerce-details')">E-Commerce</a></li>
-                                    <li><a href="#" onclick="showService('payment-integration-details')">Payment Integration</a></li>
-                                    <li><a href="#" onclick="showService('cms-development-details')">CMS Web Development</a></li>
-                                    <li><a href="#" onclick="showService('web-hosting-details')">Web Hosting</a></li>
-                                    <li><a href="#" onclick="showService('email-automation-details')">Email Automation</a></li>
-                                    <li><a href="#" onclick="showService('web-design-details')">Web Design</a></li>
-                                    <li><a href="#" onclick="showService('seo-development-details')">SEO Development</a></li>
-                                </ul>
-                            </div>
-                            <div class="services-details__banner">
-                                <div class="services-details__banner__image"><img src="assets/images/gallery/unnamed.jpg" alt="ogency"></div>
-                                <div class="services-details__banner__icon"><span class="icon-mobile-development"></span></div>
-                                <h3 class="services-details__banner__title">Are you looking for<br> CMS development</h3>
-                                <a class="ogency-btn" href="contact.html">Contact</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-8 col-lg-7">
+                    <div class="col-xl-12 col-lg-12">
                         <div class="services-details__content">
                             <div class="services-details__thumb"><img src="assets/images/service/cms2.png" alt="ogency"></div>
                             <h3 class="services-details__content__title">CMS Web Development</h3>
@@ -1004,33 +840,7 @@
         <section id="payment-integration-details" class="services-details" style="display: none;">
             <div class="container">
                 <div class="row">
-                    <div class="col-xl-4 col-lg-5">
-                        <div class="services-details__sidebar">
-                            <div class="services-details__services-list">
-                                <ul class="services-details__services list-unstyled">
-                                    <li><a href="#" onclick="showService('web-development-details')">Web Development</a></li>
-                                    <li><a href="#" onclick="showService('android-development-details')">Android App Development</a></li>
-                                    <li><a href="#" onclick="showService('ios-development-details')">IOS App Development</a></li>
-                                    <li><a href="#" onclick="showService('ai-integration-details')">AI Integration</a></li>
-                                    <li><a href="#" onclick="showService('digital-marketing-details')">Digital Marketing</a></li>
-                                    <li><a href="#" onclick="showService('e-commerce-details')">E-Commerce</a></li>
-                                    <li><a href="#" onclick="showService('payment-integration-details')">Payment Integration</a></li>
-                                    <li><a href="#" onclick="showService('cms-development-details')">CMS Web Development</a></li>
-                                    <li><a href="#" onclick="showService('web-hosting-details')">Web Hosting</a></li>
-                                    <li><a href="#" onclick="showService('email-automation-details')">Email Automation</a></li>
-                                    <li><a href="#" onclick="showService('web-design-details')">Web Design</a></li>
-                                    <li><a href="#" onclick="showService('seo-development-details')">SEO Development</a></li>
-                                </ul>
-                            </div>
-                            <div class="services-details__banner">
-                                <div class="services-details__banner__image"><img src="assets/images/gallery/unnamed.jpg" alt="ogency"></div>
-                                <div class="services-details__banner__icon"><span class="icon-mobile-development"></span></div>
-                                <h3 class="services-details__banner__title">Are you looking for<br> payment integration</h3>
-                                <a class="ogency-btn" href="contact.html">Contact</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-8 col-lg-7">
+                    <div class="col-xl-12 col-lg-12">
                         <div class="services-details__content">
                             <div class="services-details__thumb"><img src="assets/images/service/payment2.png" alt="ogency"></div>
                             <h3 class="services-details__content__title">Payment Integration</h3>
@@ -1081,33 +891,7 @@
         <section id="web-hosting-details" class="services-details" style="display: none;">
             <div class="container">
                 <div class="row">
-                    <div class="col-xl-4 col-lg-5">
-                        <div class="services-details__sidebar">
-                            <div class="services-details__services-list">
-                                <ul class="services-details__services list-unstyled">
-                                    <li><a href="#" onclick="showService('web-development-details')">Web Development</a></li>
-                                    <li><a href="#" onclick="showService('android-development-details')">Android App Development</a></li>
-                                    <li><a href="#" onclick="showService('ios-development-details')">IOS App Development</a></li>
-                                    <li><a href="#" onclick="showService('ai-integration-details')">AI Integration</a></li>
-                                    <li><a href="#" onclick="showService('digital-marketing-details')">Digital Marketing</a></li>
-                                    <li><a href="#" onclick="showService('e-commerce-details')">E-Commerce</a></li>
-                                    <li><a href="#" onclick="showService('payment-integration-details')">Payment Integration</a></li>
-                                    <li><a href="#" onclick="showService('cms-development-details')">CMS Web Development</a></li>
-                                    <li><a href="#" onclick="showService('web-hosting-details')">Web Hosting</a></li>
-                                    <li><a href="#" onclick="showService('email-automation-details')">Email Automation</a></li>
-                                    <li><a href="#" onclick="showService('web-design-details')">Web Design</a></li>
-                                    <li><a href="#" onclick="showService('seo-development-details')">SEO Development</a></li>
-                                </ul>
-                            </div>
-                            <div class="services-details__banner">
-                                <div class="services-details__banner__image"><img src="assets/images/gallery/unnamed.jpg" alt="ogency"></div>
-                                <div class="services-details__banner__icon"><span class="icon-mobile-development"></span></div>
-                                <h3 class="services-details__banner__title">Are you looking for<br> web hosting</h3>
-                                <a class="ogency-btn" href="contact.html">Contact</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-8 col-lg-7">
+                    <div class="col-xl-12 col-lg-12">
                         <div class="services-details__content">
                             <div class="services-details__thumb"><img src="assets/images/service/webhosting2.png" alt="ogency"></div>
                             <h3 class="services-details__content__title">Web Hosting</h3>
@@ -1158,33 +942,7 @@
         <section id="email-automation-details" class="services-details" style="display: none;">
             <div class="container">
                 <div class="row">
-                    <div class="col-xl-4 col-lg-5">
-                        <div class="services-details__sidebar">
-                            <div class="services-details__services-list">
-                                <ul class="services-details__services list-unstyled">
-                                    <li><a href="#" onclick="showService('web-development-details')">Web Development</a></li>
-                                    <li><a href="#" onclick="showService('android-development-details')">Android App Development</a></li>
-                                    <li><a href="#" onclick="showService('ios-development-details')">IOS App Development</a></li>
-                                    <li><a href="#" onclick="showService('ai-integration-details')">AI Integration</a></li>
-                                    <li><a href="#" onclick="showService('digital-marketing-details')">Digital Marketing</a></li>
-                                    <li><a href="#" onclick="showService('e-commerce-details')">E-Commerce</a></li>
-                                    <li><a href="#" onclick="showService('payment-integration-details')">Payment Integration</a></li>
-                                    <li><a href="#" onclick="showService('cms-development-details')">CMS Web Development</a></li>
-                                    <li><a href="#" onclick="showService('web-hosting-details')">Web Hosting</a></li>
-                                    <li><a href="#" onclick="showService('email-automation-details')">Email Automation</a></li>
-                                    <li><a href="#" onclick="showService('web-design-details')">Web Design</a></li>
-                                    <li><a href="#" onclick="showService('seo-development-details')">SEO Development</a></li>
-                                </ul>
-                            </div>
-                            <div class="services-details__banner">
-                                <div class="services-details__banner__image"><img src="assets/images/gallery/unnamed.jpg" alt="ogency"></div>
-                                <div class="services-details__banner__icon"><span class="icon-mobile-development"></span></div>
-                                <h3 class="services-details__banner__title">Are you looking for<br> email automation</h3>
-                                <a class="ogency-btn" href="contact.html">Contact</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-8 col-lg-7">
+                    <div class="col-xl-12 col-lg-12">
                         <div class="services-details__content">
                             <div class="services-details__thumb"><img src="assets/images/service/email2.png" alt="ogency"></div>
                             <h3 class="services-details__content__title">Email Automation</h3>
@@ -1238,33 +996,7 @@
         <section id="web-design-details" class="services-details" style="display: none;">
             <div class="container">
                 <div class="row">
-                    <div class="col-xl-4 col-lg-5">
-                        <div class="services-details__sidebar">
-                            <div class="services-details__services-list">
-                                <ul class="services-details__services list-unstyled">
-                                    <li><a href="#" onclick="showService('web-development-details')">Web Development</a></li>
-                                    <li><a href="#" onclick="showService('android-development-details')">Android App Development</a></li>
-                                    <li><a href="#" onclick="showService('ios-development-details')">IOS App Development</a></li>
-                                    <li><a href="#" onclick="showService('ai-integration-details')">AI Integration</a></li>
-                                    <li><a href="#" onclick="showService('digital-marketing-details')">Digital Marketing</a></li>
-                                    <li><a href="#" onclick="showService('e-commerce-details')">E-Commerce</a></li>
-                                    <li><a href="#" onclick="showService('payment-integration-details')">Payment Integration</a></li>
-                                    <li><a href="#" onclick="showService('cms-development-details')">CMS Web Development</a></li>
-                                    <li><a href="#" onclick="showService('web-hosting-details')">Web Hosting</a></li>
-                                    <li><a href="#" onclick="showService('email-automation-details')">Email Automation</a></li>
-                                    <li><a href="#" onclick="showService('web-design-details')">Web Design</a></li>
-                                    <li><a href="#" onclick="showService('seo-development-details')">SEO Development</a></li>
-                                </ul>
-                            </div>
-                            <div class="services-details__banner">
-                                <div class="services-details__banner__image"><img src="assets/images/gallery/unnamed.jpg" alt="ogency"></div>
-                                <div class="services-details__banner__icon"><span class="icon-mobile-development"></span></div>
-                                <h3 class="services-details__banner__title">Are you looking for<br> web design</h3>
-                                <a class="ogency-btn" href="contact.html">Contact</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-8 col-lg-7">
+                    <div class="col-xl-12 col-lg-12">
                         <div class="services-details__content">
                             <div class="services-details__thumb"><img src="assets/images/service/webdesign2.png" alt="ogency"></div>
                             <h3 class="services-details__content__title">Web Design</h3>
@@ -1315,33 +1047,7 @@
         <section id="seo-development-details" class="services-details" style="display: none;">
             <div class="container">
                 <div class="row">
-                    <div class="col-xl-4 col-lg-5">
-                        <div class="services-details__sidebar">
-                            <div class="services-details__services-list">
-                                <ul class="services-details__services list-unstyled">
-                                    <li><a href="#" onclick="showService('web-development-details')">Web Development</a></li>
-                                    <li><a href="#" onclick="showService('android-development-details')">Android App Development</a></li>
-                                    <li><a href="#" onclick="showService('ios-development-details')">IOS App Development</a></li>
-                                    <li><a href="#" onclick="showService('ai-integration-details')">AI Integration</a></li>
-                                    <li><a href="#" onclick="showService('digital-marketing-details')">Digital Marketing</a></li>
-                                    <li><a href="#" onclick="showService('e-commerce-details')">E-Commerce</a></li>
-                                    <li><a href="#" onclick="showService('payment-integration-details')">Payment Integration</a></li>
-                                    <li><a href="#" onclick="showService('cms-development-details')">CMS Web Development</a></li>
-                                    <li><a href="#" onclick="showService('web-hosting-details')">Web Hosting</a></li>
-                                    <li><a href="#" onclick="showService('email-automation-details')">Email Automation</a></li>
-                                    <li><a href="#" onclick="showService('web-design-details')">Web Design</a></li>
-                                    <li><a href="#" onclick="showService('seo-development-details')">SEO Development</a></li>
-                                </ul>
-                            </div>
-                            <div class="services-details__banner">
-                                <div class="services-details__banner__image"><img src="assets/images/gallery/unnamed.jpg" alt="ogency"></div>
-                                <div class="services-details__banner__icon"><span class="icon-mobile-development"></span></div>
-                                <h3 class="services-details__banner__title">Are you looking for<br> SEO development services</h3>
-                                <a class="ogency-btn" href="contact.html">Contact</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-8 col-lg-7">
+                    <div class="col-xl-12 col-lg-12">
                         <div class="services-details__content">
                             <div class="services-details__thumb"><img src="assets/images/service/seo2.png" alt="SEO Development"></div>
                             <h3 class="services-details__content__title">SEO (Search Engine Optimization)</h3>
@@ -1385,8 +1091,6 @@
                                 <li><span class="fa fa-check-circle"></span>Brands looking to rank for competitive keywords</li>
                             </ul>
                             
-                      </div>
-                            
                             <div class="services-details__back-btn">
                                 <button class="ogency-btn" onclick="backToServices()">← Back to Services</button>
                             </div>
@@ -1394,6 +1098,7 @@
                     </div>
                 </div>
             </div>
+        </section>
 
         <!-- Include centralized footer -->
         <div id="footer-container"></div>
