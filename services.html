@@ -368,8 +368,14 @@
             console.log('Element found:', element);
             
             if (element) {
-                // Get the service detail content
-                const detailContent = element.querySelector('.container').innerHTML;
+                // Get the service detail content - only the content section, not the sidebar
+                const contentSection = element.querySelector('.services-details__content');
+                if (!contentSection) {
+                    console.error('Content section not found');
+                    return false;
+                }
+                
+                const detailContent = contentSection.innerHTML;
                 console.log('Detail content found:', detailContent);
                 
                 // Store original content for back button
@@ -385,11 +391,13 @@
                 clickedItem.style.width = '100%';
                 clickedItem.style.height = 'auto';
                 clickedItem.style.margin = '0';
-                clickedItem.style.padding = '20px';
+                clickedItem.style.padding = '40px 20px';
                 clickedItem.style.background = 'var(--ogency-black)';
-                clickedItem.style.borderRadius = '16px';
+                clickedItem.style.borderRadius = '0';
                 clickedItem.style.position = 'relative';
                 clickedItem.style.zIndex = '10';
+                clickedItem.style.display = 'flex';
+                clickedItem.style.flexDirection = 'column';
                 console.log('Item expanded to full width');
                 
                 // Hide all other service items
