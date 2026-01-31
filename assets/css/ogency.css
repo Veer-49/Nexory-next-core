@@ -12270,10 +12270,10 @@ h6 {
 
 .services-details__banner {
   position: relative;
-  background-color: var(--ogency-base);
   margin: 0 0 30px;
   overflow: hidden;
   padding: 40px;
+  height: 363px;
 }
 
 @media (max-width: 767px) {
