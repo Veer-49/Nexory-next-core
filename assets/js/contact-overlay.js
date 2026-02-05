@@ -64,14 +64,14 @@
                     
                     submitBtn.innerHTML = '✓ Message Sent!';
                     submitBtn.disabled = true;
-                    submitBtn.style.background = 'linear-gradient(135deg, #00d084 0%, #00f2fe 100%)';
+                    submitBtn.classList.add('submit-success');
                     
                     // Reset form after delay
                     setTimeout(() => {
                         contactForm.reset();
                         submitBtn.innerHTML = originalText;
                         submitBtn.disabled = false;
-                        submitBtn.style.background = '';
+                        submitBtn.classList.remove('submit-success');
                         closeOverlay();
                     }, 2000);
                 }
