@@ -23,7 +23,7 @@
                         <path d="M3 18Q6 16,9 18T15 18T21 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
                     </svg>
                 </a><!-- /.mobile menu btn -->
-                <a href="contact.html" class="ogency-btn" data-symbols="</> < /> { }">Get in Touch</a>
+                <a href="#" class="ogency-btn get-in-touch-btn" data-symbols="</> < /> { }">Get in Touch</a>
             </div><!-- /.main-menu__right -->
         </div><!-- /.container -->
     </nav>
@@ -72,72 +72,59 @@
 <!-- /.mobile-nav__wrapper -->
 
 <!-- Full Screen Contact Overlay -->
-<div id="contactOverlay" class="contact-overlay">
-    <div class="contact-overlay__galaxy"></div>
-    <div class="contact-overlay__content">
-        <div class="contact-overlay__header">
-            <h2 class="contact-overlay__title">Get in Touch</h2>
-            <button class="contact-overlay__close" id="closeContact">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M18 6L6 18M6 6L18 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-                </svg>
-            </button>
+<div id="contactOverlay" class="contact-overlay-new">
+    <div class="contact-overlay-new__bg"></div>
+    <div class="contact-overlay-new__wrapper">
+        <div class="contact-overlay-new__close" id="closeContact">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M18 6L6 18M6 6L18 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            </svg>
         </div>
-        <div class="contact-overlay__form-container">
-            <form class="contact-overlay__form" id="contactForm">
-                <div class="contact-overlay__row">
-                    <div class="contact-overlay__field">
-                        <input type="text" id="name" name="name" required>
-                        <label for="name">Your Name</label>
-                        <div class="contact-overlay__field-border"></div>
-                    </div>
-                    <div class="contact-overlay__field">
-                        <input type="email" id="email" name="email" required>
-                        <label for="email">Email Address</label>
-                        <div class="contact-overlay__field-border"></div>
-                    </div>
+        <div class="contact-overlay-new__inner">
+            <h2 class="contact-overlay-new__title">Get in Touch</h2>
+            <p class="contact-overlay-new__subtitle">Let's discuss your project</p>
+            
+            <form class="contact-overlay-new__form" id="contactForm">
+                <div class="form-group">
+                    <input type="text" id="name" name="name" placeholder="Your Name" required>
                 </div>
-                <div class="contact-overlay__row">
-                    <div class="contact-overlay__field">
-                        <input type="tel" id="phone" name="phone" required>
-                        <label for="phone">Phone Number</label>
-                        <div class="contact-overlay__field-border"></div>
-                    </div>
-                    <div class="contact-overlay__field">
-                        <select id="service" name="service" required>
-                            <option value="">Select Service</option>
-                            <option value="web-development">Web Development</option>
-                            <option value="android-development">Android App Development</option>
-                            <option value="ios-development">IOS App Development</option>
-                            <option value="ai-integration">AI Integration</option>
-                            <option value="digital-marketing">Digital Marketing</option>
-                            <option value="e-commerce">E-Commerce</option>
-                            <option value="payment-integration">Payment Integration</option>
-                            <option value="cms-development">CMS Web Development</option>
-                            <option value="web-hosting">Web Hosting</option>
-                            <option value="email-automation">Email Automation</option>
-                            <option value="web-design">Web Design</option>
-                            <option value="seo-development">SEO Development</option>
-                        </select>
-                        <label for="service">Service</label>
-                        <div class="contact-overlay__field-border"></div>
-                    </div>
+                
+                <div class="form-group">
+                    <input type="email" id="email" name="email" placeholder="Your Email" required>
                 </div>
-                <div class="contact-overlay__row">
-                    <div class="contact-overlay__field contact-overlay__field--full">
-                        <textarea id="message" name="message" rows="5" required></textarea>
-                        <label for="message">Your Message</label>
-                        <div class="contact-overlay__field-border"></div>
-                    </div>
+                
+                <div class="form-group">
+                    <input type="tel" id="phone" name="phone" placeholder="Phone Number" required>
                 </div>
-                <div class="contact-overlay__actions">
-                    <button type="submit" class="contact-overlay__submit">
-                        <span>Send Message</span>
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M22 2L11 13M22 2L15 22L11 13L2 9L22 2Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                        </svg>
-                    </button>
+                
+                <div class="form-group">
+                    <select id="service" name="service" required>
+                        <option value="">Select a Service</option>
+                        <option value="web-development">Web Development</option>
+                        <option value="android-development">Android App Development</option>
+                        <option value="ios-development">iOS App Development</option>
+                        <option value="ai-integration">AI Integration</option>
+                        <option value="digital-marketing">Digital Marketing</option>
+                        <option value="e-commerce">E-Commerce</option>
+                        <option value="payment-integration">Payment Integration</option>
+                        <option value="cms-development">CMS Web Development</option>
+                        <option value="web-hosting">Web Hosting</option>
+                        <option value="email-automation">Email Automation</option>
+                        <option value="web-design">Web Design</option>
+                        <option value="seo-development">SEO Development</option>
+                    </select>
                 </div>
+                
+                <div class="form-group">
+                    <textarea id="message" name="message" placeholder="Your Message" rows="4" required></textarea>
+                </div>
+                
+                <button type="submit" class="contact-overlay-new__btn">
+                    Send Message
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M22 2L11 13M22 2L15 22L11 13L2 9L22 2Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </button>
             </form>
         </div>
     </div>
@@ -159,3 +146,4 @@
     <!-- /.search-popup__content -->
 </div>
 <!-- /.search-popup -->
+<script src="assets/js/contact-overlay.js"></script>

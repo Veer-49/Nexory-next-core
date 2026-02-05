@@ -2068,316 +2068,301 @@ h6 {
 }
 
 /* Contact Overlay Styles */
-.contact-overlay {
+/* New Contact Overlay Form Design - Full Screen */
+.contact-overlay-new {
   position: fixed;
   top: 0;
   left: 0;
-  width: 100vw;
-  height: 100vh;
+  width: 100%;
+  height: 100%;
   z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   opacity: 0;
   visibility: hidden;
-  transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-  transform: scale(0.8);
-  perspective: 1000px;
+  transition: all 0.3s ease-out;
+  pointer-events: none;
+  background: linear-gradient(135deg, var(--ogency-black2) 0%, var(--ogency-black3) 100%);
 }
 
-.contact-overlay.active {
+.contact-overlay-new.active {
   opacity: 1;
   visibility: visible;
-  transform: scale(1);
+  pointer-events: auto;
 }
 
-.contact-overlay__galaxy {
+.contact-overlay-new__bg {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background: #000;
-  background-image: 
-    radial-gradient(1px 1px at 5% 5%, #fff, transparent),
-    radial-gradient(1px 1px at 10% 15%, #fff, transparent),
-    radial-gradient(1px 1px at 15% 8%, #fff, transparent),
-    radial-gradient(1px 1px at 20% 25%, #fff, transparent),
-    radial-gradient(1px 1px at 25% 12%, #fff, transparent),
-    radial-gradient(1px 1px at 30% 30%, #fff, transparent),
-    radial-gradient(1px 1px at 35% 18%, #fff, transparent),
-    radial-gradient(1px 1px at 40% 35%, #fff, transparent),
-    radial-gradient(1px 1px at 45% 22%, #fff, transparent),
-    radial-gradient(1px 1px at 50% 40%, #fff, transparent),
-    radial-gradient(1px 1px at 55% 28%, #fff, transparent),
-    radial-gradient(1px 1px at 60% 45%, #fff, transparent),
-    radial-gradient(1px 1px at 65% 32%, #fff, transparent),
-    radial-gradient(1px 1px at 70% 50%, #fff, transparent),
-    radial-gradient(1px 1px at 75% 38%, #fff, transparent),
-    radial-gradient(1px 1px at 80% 55%, #fff, transparent),
-    radial-gradient(1px 1px at 85% 42%, #fff, transparent),
-    radial-gradient(1px 1px at 90% 60%, #fff, transparent),
-    radial-gradient(1px 1px at 95% 48%, #fff, transparent),
-    radial-gradient(1px 1px at 8% 65%, #fff, transparent),
-    radial-gradient(1px 1px at 18% 70%, #fff, transparent),
-    radial-gradient(1px 1px at 28% 75%, #fff, transparent),
-    radial-gradient(1px 1px at 38% 80%, #fff, transparent),
-    radial-gradient(1px 1px at 48% 85%, #fff, transparent),
-    radial-gradient(1px 1px at 58% 90%, #fff, transparent),
-    radial-gradient(1px 1px at 68% 95%, #fff, transparent),
-    radial-gradient(1px 1px at 78% 88%, #fff, transparent),
-    radial-gradient(1px 1px at 88% 78%, #fff, transparent),
-    radial-gradient(1px 1px at 98% 68%, #fff, transparent),
-    radial-gradient(1px 1px at 12% 52%, #fff, transparent),
-    radial-gradient(1px 1px at 22% 58%, #fff, transparent),
-    radial-gradient(1px 1px at 32% 62%, #fff, transparent),
-    radial-gradient(1px 1px at 42% 68%, #fff, transparent),
-    radial-gradient(1px 1px at 52% 72%, #fff, transparent),
-    radial-gradient(1px 1px at 62% 78%, #fff, transparent),
-    radial-gradient(1px 1px at 72% 82%, #fff, transparent),
-    radial-gradient(1px 1px at 82% 88%, #fff, transparent),
-    radial-gradient(1px 1px at 92% 92%, #fff, transparent),
-    radial-gradient(2px 2px at 15% 45%, #fff, transparent),
-    radial-gradient(2px 2px at 35% 65%, #fff, transparent),
-    radial-gradient(2px 2px at 55% 25%, #fff, transparent),
-    radial-gradient(2px 2px at 75% 55%, #fff, transparent),
-    radial-gradient(2px 2px at 25% 85%, #fff, transparent),
-    radial-gradient(2px 2px at 85% 35%, #fff, transparent),
-    radial-gradient(2px 2px at 45% 15%, #fff, transparent),
-    radial-gradient(2px 2px at 65% 75%, #fff, transparent),
-    radial-gradient(3px 3px at 50% 50%, #fff, transparent),
-    radial-gradient(2.5px 2.5px at 25% 25%, #fff, transparent),
-    radial-gradient(2.5px 2.5px at 75% 75%, #fff, transparent),
-    radial-gradient(1.5px 1.5px at 40% 20%, #fff, transparent),
-    radial-gradient(1.5px 1.5px at 60% 80%, #fff, transparent),
-    radial-gradient(1.5px 1.5px at 20% 60%, #fff, transparent),
-    radial-gradient(1.5px 1.5px at 80% 40%, #fff, transparent);
-  background-size: 100% 100%;
-  transform: translateZ(0);
-  backface-visibility: hidden;
-  z-index: 1;
+  background: transparent;
+  backdrop-filter: blur(0px);
+  display: none;
 }
 
-.contact-overlay__content {
+.contact-overlay-new__wrapper {
   position: relative;
-  width: 100%;
-  height: 100%;
+  width: 95%;
+  max-width: 800px;
+  height: 100vh;
+  background: transparent;
+  border: none;
+  border-radius: 0;
+  padding: 60px 60px 40px 60px;
+  box-shadow: none;
+  animation: slideUp 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+  overflow: hidden;
   display: flex;
   flex-direction: column;
-  z-index: 10;
-  transform-style: preserve-3d;
 }
 
-.contact-overlay__header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 40px 60px 20px;
-  transform: translateZ(50px);
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
-.contact-overlay__title {
-  font-size: 3.5rem;
-  font-weight: 700;
-  color: #fff;
-  margin: 0;
-  opacity: 0;
-  transform: translateX(-100px) translateY(-50px) scale(0.5);
-  transition: all 1.2s cubic-bezier(0.34, 1.56, 0.64, 1);
-  text-shadow: 0 0 30px rgba(255, 255, 255, 0.8),
-               0 0 60px rgba(79, 172, 254, 0.6),
-               0 0 90px rgba(0, 242, 254, 0.4);
-}
-
-.contact-overlay__title.animate-in {
-  opacity: 1;
-  transform: translateX(0) translateY(0) scale(1);
-}
-
-.contact-overlay__close {
-  background: rgba(255, 255, 255, 0.1);
-  border: 2px solid rgba(255, 255, 255, 0.2);
-  border-radius: 50%;
-  width: 60px;
-  height: 60px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.contact-overlay-new__close {
+  position: fixed;
+  top: 40px;
+  right: 40px;
+  width: 50px;
+  height: 50px;
+  border: none;
+  background: rgba(var(--ogency-base-rgb), 0.1);
+  color: var(--ogency-white);
   cursor: pointer;
-  transition: all 0.3s ease;
-  backdrop-filter: blur(10px);
-  color: #fff;
-  transform: translateZ(30px);
-}
-
-.contact-overlay__close:hover {
-  background: rgba(255, 255, 255, 0.2);
-  border-color: rgba(255, 255, 255, 0.4);
-  transform: translateZ(40px) scale(1.1) rotate(90deg);
-  box-shadow: 0 0 30px rgba(255, 255, 255, 0.5);
-}
-
-.contact-overlay__form-container {
-  flex: 1;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 20px 60px 60px;
-  transform-style: preserve-3d;
+  transition: all 0.3s ease;
+  border-radius: 50%;
+  border: 2px solid rgba(var(--ogency-base-rgb), 0.3);
+  z-index: 10000;
 }
 
-.contact-overlay__form {
-  width: 100%;
-  max-width: 800px;
-  transform: translateZ(20px);
+.contact-overlay-new__close:hover {
+  background: rgba(var(--ogency-base-rgb), 0.3);
+  transform: rotate(90deg);
+  border-color: rgba(var(--ogency-base-rgb), 0.6);
 }
 
-.contact-overlay__row {
+.contact-overlay-new__title {
+  font-size: 3.2rem;
+  font-weight: 700;
+  color: var(--ogency-white);
+  margin: 0 0 8px 0;
+  text-align: center;
+  text-shadow: 0 0 30px rgba(var(--ogency-base-rgb), 0.3);
+}
+
+.contact-overlay-new__subtitle {
+  font-size: 1.1rem;
+  color: var(--ogency-color);
+  text-align: center;
+  margin: 0 0 25px 0;
+}
+
+.contact-overlay-new__form {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 30px;
-  margin-bottom: 30px;
-  transform-style: preserve-3d;
+  gap: 18px;
+  max-width: 100%;
+  flex: 1;
+  overflow-y: auto;
+  padding-right: 10px;
 }
 
-.contact-overlay__field {
-  position: relative;
-  transform: translateZ(10px);
-  transition: transform 0.3s ease;
+.contact-overlay-new__form::-webkit-scrollbar {
+  width: 6px;
 }
 
-.contact-overlay__field:hover {
-  transform: translateZ(20px);
+.contact-overlay-new__form::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 10px;
 }
 
-.contact-overlay__field--full {
+.contact-overlay-new__form::-webkit-scrollbar-thumb {
+  background: rgba(79, 172, 254, 0.3);
+  border-radius: 10px;
+}
+
+.contact-overlay-new__form::-webkit-scrollbar-thumb:hover {
+  background: rgba(79, 172, 254, 0.5);
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.form-group:nth-last-child(2),
+.form-group:nth-last-child(1) {
   grid-column: 1 / -1;
 }
 
-.contact-overlay__field input,
-.contact-overlay__field textarea,
-.contact-overlay__field select {
+.contact-overlay-new__form input,
+.contact-overlay-new__form select,
+.contact-overlay-new__form textarea {
   width: 100%;
-  padding: 20px 15px 10px;
-  background: rgba(255, 255, 255, 0.05);
-  border: 2px solid rgba(255, 255, 255, 0.1);
-  border-radius: 15px;
-  color: #fff;
-  font-size: 16px;
+  padding: 13px 16px;
+  background: rgba(var(--ogency-white-rgb), 0.08);
+  border: 1.5px solid rgba(var(--ogency-base-rgb), 0.3);
+  border-radius: 12px;
+  color: var(--ogency-white);
+  font-size: 15px;
   font-family: inherit;
   transition: all 0.3s ease;
-  backdrop-filter: blur(10px);
+  box-sizing: border-box;
+}
+
+.contact-overlay-new__form textarea {
+  resize: none;
+  min-height: 80px;
+  max-height: 100px;
+}
+
+.contact-overlay-new__form input::placeholder,
+.contact-overlay-new__form textarea::placeholder {
+  color: rgba(var(--ogency-white-rgb), 0.5);
+}
+
+.contact-overlay-new__form input:focus,
+.contact-overlay-new__form select:focus,
+.contact-overlay-new__form textarea:focus {
+  background: rgba(var(--ogency-base-rgb), 0.1);
+  border-color: var(--ogency-base);
+  box-shadow: 0 0 20px rgba(var(--ogency-base-rgb), 0.4);
   outline: none;
 }
 
-.contact-overlay__field input:focus,
-.contact-overlay__field textarea:focus,
-.contact-overlay__field select:focus {
-  background: rgba(255, 255, 255, 0.1);
-  border-color: rgba(79, 172, 254, 0.6);
-  box-shadow: 0 0 30px rgba(79, 172, 254, 0.3);
-  transform: translateZ(10px);
-}
-
-.contact-overlay__field input::placeholder,
-.contact-overlay__field textarea::placeholder {
-  color: transparent;
-}
-
-.contact-overlay__field label {
-  position: absolute;
-  left: 15px;
-  top: 50%;
-  transform: translateY(-50%);
-  color: rgba(255, 255, 255, 0.7);
-  font-size: 16px;
-  pointer-events: none;
-  transition: all 0.3s ease;
-  background: linear-gradient(to bottom, transparent 40%, rgba(0, 0, 0, 0.8) 40%, rgba(0, 0, 0, 0.8) 60%, transparent 60%);
-  padding: 0 5px;
-}
-
-.contact-overlay__field input:focus + label,
-.contact-overlay__field input:not(:placeholder-shown) + label,
-.contact-overlay__field textarea:focus + label,
-.contact-overlay__field textarea:not(:placeholder-shown) + label,
-.contact-overlay__field select:focus + label,
-.contact-overlay__field select:valid + label {
-  top: 10px;
-  font-size: 12px;
-  color: #4facfe;
-  transform: translateY(0);
-}
-
-.contact-overlay__field select {
+.contact-overlay-new__form select {
   appearance: none;
   cursor: pointer;
+  padding-right: 40px;
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='rgba(30,144,255,0.6)' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  background-size: 18px;
+  background-color: rgba(var(--ogency-white-rgb), 0.08);
 }
 
-.contact-overlay__field select option {
-  background: #1a1a2e;
-  color: #fff;
+.contact-overlay-new__form select::-ms-expand {
+  display: none;
 }
 
-.contact-overlay__field-border {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 0;
-  height: 2px;
-  background: linear-gradient(90deg, #4facfe, #00f2fe);
-  transition: width 0.3s ease;
-  border-radius: 1px;
+.contact-overlay-new__form select option {
+  background: var(--ogency-black3);
+  color: var(--ogency-white);
+  padding: 10px;
 }
 
-.contact-overlay__field input:focus ~ .contact-overlay__field-border,
-.contact-overlay__field textarea:focus ~ .contact-overlay__field-border,
-.contact-overlay__field select:focus ~ .contact-overlay__field-border {
-  width: calc(100% - 30px);
-}
-
-.contact-overlay__actions {
-  display: flex;
-  justify-content: center;
-  margin-top: 40px;
-  transform: translateZ(30px);
-}
-
-.contact-overlay__submit {
-  background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
-  border: none;
-  border-radius: 50px;
-  padding: 18px 40px;
-  color: #fff;
+.contact-overlay-new__btn {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 10px !important;
+  -webkit-appearance: none;
+  appearance: none;
+  border: none !important;
+  outline: none !important;
+  background-color: var(--ogency-base) !important;
+  color: var(--ogency-white) !important;
   font-size: 16px;
-  font-weight: 600;
+  font-weight: 800;
+  font-family: var(--ogency-font);
+  padding: 16px 50px 17px !important;
+  transition: 500ms;
+  z-index: 2;
+  border-radius: 50px;
   cursor: pointer;
-  transition: all 0.3s ease;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  box-shadow: 0 10px 30px rgba(79, 172, 254, 0.3);
-  transform-style: preserve-3d;
-  position: relative;
-  overflow: hidden;
-}
-
-.contact-overlay__submit::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: -100%;
+  grid-column: 1 / -1;
   width: 100%;
-  height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
-  transition: left 0.5s ease;
+  margin-top: 15px;
 }
 
-.contact-overlay__submit:hover {
-  transform: translateZ(20px) translateY(-3px) scale(1.05);
-  box-shadow: 0 15px 40px rgba(79, 172, 254, 0.4);
+.contact-overlay-new__btn:hover {
+  background-color: #1a7acc !important;
 }
 
-.contact-overlay__submit:hover::before {
-  left: 100%;
+.contact-overlay-new__btn::before {
+  display: none !important;
 }
+
+.contact-overlay-new__btn:hover::before {
+  display: none !important;
+}
+
+@media (max-width: 768px) {
+  .contact-overlay-new {
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+  }
+  
+  .contact-overlay-new__wrapper {
+    width: 95%;
+    max-width: 100%;
+    height: 100vh;
+    padding: 50px 20px 30px 20px;
+    max-height: 100vh;
+  }
+  
+  .contact-overlay-new__close {
+    top: 20px;
+    right: 20px;
+    width: 45px;
+    height: 45px;
+  }
+  
+  .contact-overlay-new__title {
+    font-size: 2rem;
+    margin: 0 0 5px 0;
+  }
+  
+  .contact-overlay-new__subtitle {
+    font-size: 0.95rem;
+    margin: 0 0 18px 0;
+  }
+  
+  .contact-overlay-new__form {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+  
+  .form-group:nth-last-child(2),
+  .form-group:nth-last-child(1) {
+    grid-column: 1;
+  }
+  
+  .contact-overlay-new__form input,
+  .contact-overlay-new__form select,
+  .contact-overlay-new__form textarea {
+    padding: 12px 14px;
+    font-size: 14px;
+  }
+  
+  .contact-overlay-new__form textarea {
+    min-height: 70px;
+    max-height: 90px;
+  }
+  
+  .contact-overlay-new__btn {
+    padding: 13px 30px;
+    font-size: 15px;
+    margin-top: 10px;
+  }
+}
+
 
 .contact-overlay__submit.success {
   background: linear-gradient(135deg, #00c851 0%, #00ff00 100%);
