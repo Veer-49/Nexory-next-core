@@ -2288,10 +2288,32 @@ h6 {
   grid-column: 1 / -1;
   width: 100%;
   margin-top: 15px;
+  position: relative;
+}
+
+.contact-overlay-new__btn::after {
+  content: "";
+  position: absolute;
+  height: 0%;
+  left: 50%;
+  top: 50%;
+  width: 150%;
+  -webkit-transition: all 0.3s ease;
+  -o-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+  z-index: -1;
+  background: var(--ogency-white);
+  -webkit-transform: translateX(-50%) translateY(-50%) rotate(-25deg);
+  transform: translateX(-50%) translateY(-50%) rotate(-25deg);
+}
+
+.contact-overlay-new__btn:hover::after {
+  height: 450%;
+  transition: all 1s ease 0s;
 }
 
 .contact-overlay-new__btn:hover {
-  background-color: #1a7acc !important;
+  color: var(--ogency-base) !important;
 }
 
 .contact-overlay-new__btn::before {
