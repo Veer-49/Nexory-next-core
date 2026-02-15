@@ -11,6 +11,7 @@ export default defineConfig({
         index: './index.html',
         about: './about.html',
         billing: './billing.html',
+        leads: './leads.html',
         contact: './contact.html',
         faq: './faq.html',
         privacy: './privacy-policy.html',
