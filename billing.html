@@ -737,35 +737,85 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
     <script>
-        // Password Protection
-        const BILLING_PASSWORD = "billing123";
+        // Password Protection with API
+        const API_ENDPOINT = '/api/auth';
         
-        // Always show password modal on page load
+        // Check if user has valid token
+        function hasValidToken() {
+            const token = localStorage.getItem('authToken');
+            if (!token) return false;
+            
+            try {
+                const decoded = JSON.parse(atob(token));
+                return decoded.authenticated && decoded.expires > new Date().getTime();
+            } catch (e) {
+                return false;
+            }
+        }
+        
+        // Always show password modal on page load if not authenticated
         window.addEventListener('DOMContentLoaded', function() {
-            document.getElementById('passwordModal').classList.remove('hidden');
-            document.getElementById('passwordInput').focus();
+            if (!hasValidToken()) {
+                document.getElementById('passwordModal').classList.remove('hidden');
+                document.getElementById('passwordInput').focus();
+            } else {
+                document.getElementById('passwordModal').classList.add('hidden');
+            }
+            document.getElementById('billDate').valueAsDate = new Date();
         });
         
-        // Verify password function
-        function verifyPassword() {
+        // Verify password with API
+        async function verifyPassword() {
             const password = document.getElementById('passwordInput').value;
             const errorMsg = document.getElementById('passwordError');
+            const btn = event.target;
             
-            if (password === BILLING_PASSWORD) {
-                document.getElementById('passwordModal').classList.add('hidden');
-                document.getElementById('passwordInput').value = '';
-                errorMsg.classList.remove('show');
-            } else {
+            if (!password) {
+                errorMsg.textContent = 'Please enter a password';
                 errorMsg.classList.add('show');
-                document.getElementById('passwordInput').value = '';
-                document.getElementById('passwordInput').focus();
+                return;
+            }
+            
+            try {
+                btn.disabled = true;
+                btn.textContent = 'Verifying...';
+                
+                const response = await fetch(API_ENDPOINT, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ password })
+                });
+                
+                const data = await response.json();
+                
+                if (data.success) {
+                    localStorage.setItem('authToken', data.token);
+                    document.getElementById('passwordModal').classList.add('hidden');
+                    document.getElementById('passwordInput').value = '';
+                    errorMsg.classList.remove('show');
+                } else {
+                    errorMsg.textContent = 'Incorrect password. Please try again.';
+                    errorMsg.classList.add('show');
+                    document.getElementById('passwordInput').value = '';
+                    document.getElementById('passwordInput').focus();
+                }
+            } catch (error) {
+                console.error('Auth error:', error);
+                errorMsg.textContent = 'Connection error. Please try again.';
+                errorMsg.classList.add('show');
+            } finally {
+                btn.disabled = false;
+                btn.textContent = 'Unlock';
             }
         }
         
         // Handle Enter key press
         function handlePasswordKeypress(event) {
             if (event.key === 'Enter') {
-                verifyPassword();
+                // Create a dummy event for verifyPassword
+                event.target.form.querySelector('.btn-unlock').click();
             }
         }
         
