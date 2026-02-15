@@ -349,12 +349,123 @@
                 gap: 20px;
             }
         }
+
+        /* Password Protection Modal */
+        .password-modal {
+            display: flex;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            z-index: 9999;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .password-modal.hidden {
+            display: none;
+        }
+
+        .password-modal-content {
+            background: linear-gradient(135deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.05) 100%);
+            border: 2px solid rgba(0,123,255,0.5);
+            border-radius: 20px;
+            padding: 50px;
+            max-width: 400px;
+            width: 90%;
+            text-align: center;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 20px 60px rgba(0,123,255,0.3);
+        }
+
+        .password-modal-content h2 {
+            color: var(--ogency-white);
+            font-size: 32px;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        .password-modal-content p {
+            color: rgba(255,255,255,0.7);
+            margin-bottom: 30px;
+            font-size: 16px;
+        }
+
+        .password-input-group {
+            margin-bottom: 25px;
+        }
+
+        .password-input-group input {
+            width: 100%;
+            background: rgba(255,255,255,0.05);
+            border: 2px solid rgba(255,255,255,0.2);
+            color: var(--ogency-white);
+            padding: 15px;
+            border-radius: 10px;
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+
+        .password-input-group input:focus {
+            outline: none;
+            background: rgba(255,255,255,0.08);
+            border-color: var(--ogency-base);
+            box-shadow: 0 0 0 3px rgba(0,123,255,0.2);
+        }
+
+        .password-input-group input::placeholder {
+            color: rgba(255,255,255,0.4);
+        }
+
+        .btn-unlock {
+            background: linear-gradient(135deg, var(--ogency-base) 0%, #0056b3 100%);
+            color: var(--ogency-white);
+            border: none;
+            border-radius: 10px;
+            padding: 12px 40px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 25px rgba(0,123,255,0.3);
+        }
+
+        .btn-unlock:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 15px 35px rgba(0,123,255,0.4);
+        }
+
+        .password-error {
+            color: #ff6b6b;
+            margin-top: 15px;
+            display: none;
+            font-size: 14px;
+        }
+
+        .password-error.show {
+            display: block;
+        }
     </style>
 </head>
 
 <body class="custom-cursor">
     <div class="custom-cursor__cursor"></div>
     <div class="custom-cursor__cursor-two"></div>
+
+    <!-- Password Protection Modal -->
+    <div class="password-modal" id="passwordModal">
+        <div class="password-modal-content">
+            <h2>🔒 Billing Access</h2>
+            <p>Enter the password to access the billing system</p>
+            <div class="password-input-group">
+                <input type="password" id="passwordInput" placeholder="Enter password" onkeypress="handlePasswordKeypress(event)">
+            </div>
+            <button class="btn-unlock" onclick="verifyPassword()">Unlock</button>
+            <div class="password-error" id="passwordError">Incorrect password. Please try again.</div>
+        </div>
+    </div>
 
     <div class="page-wrapper">
         <!-- Include centralized header -->
@@ -626,6 +737,38 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
     <script>
+        // Password Protection
+        const BILLING_PASSWORD = "billing123";
+        
+        // Always show password modal on page load
+        window.addEventListener('DOMContentLoaded', function() {
+            document.getElementById('passwordModal').classList.remove('hidden');
+            document.getElementById('passwordInput').focus();
+        });
+        
+        // Verify password function
+        function verifyPassword() {
+            const password = document.getElementById('passwordInput').value;
+            const errorMsg = document.getElementById('passwordError');
+            
+            if (password === BILLING_PASSWORD) {
+                document.getElementById('passwordModal').classList.add('hidden');
+                document.getElementById('passwordInput').value = '';
+                errorMsg.classList.remove('show');
+            } else {
+                errorMsg.classList.add('show');
+                document.getElementById('passwordInput').value = '';
+                document.getElementById('passwordInput').focus();
+            }
+        }
+        
+        // Handle Enter key press
+        function handlePasswordKeypress(event) {
+            if (event.key === 'Enter') {
+                verifyPassword();
+            }
+        }
+        
         // Set today's date as default
         document.getElementById('billDate').valueAsDate = new Date();
         
