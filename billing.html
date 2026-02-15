@@ -1,0 +1,952 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Billing - Create & Download Bills</title>
+    
+    <!-- fonts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com/" />
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap" rel="stylesheet" />
+
+    <link rel="stylesheet" href="assets/vendors/bootstrap/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="assets/vendors/bootstrap-select/bootstrap-select.min.css" />
+    <link rel="stylesheet" href="assets/vendors/jquery-ui/jquery-ui.css" />
+    <link rel="stylesheet" href="assets/vendors/animate/animate.min.css" />
+    <link rel="stylesheet" href="assets/vendors/fontawesome/css/all.min.css" />
+    <link rel="stylesheet" href="assets/vendors/ogency-icons/style.css" />
+    <link rel="stylesheet" href="assets/vendors/jarallax/jarallax.css" />
+    <link rel="stylesheet" href="assets/vendors/jquery-magnific-popup/jquery.magnific-popup.css" />
+    <link rel="stylesheet" href="assets/vendors/nouislider/nouislider.min.css" />
+    <link rel="stylesheet" href="assets/vendors/nouislider/nouislider.pips.css" />
+    <link rel="stylesheet" href="assets/vendors/odometer/odometer.min.css" />
+    <link rel="stylesheet" href="assets/vendors/tiny-slider/tiny-slider.min.css" />
+    <link rel="stylesheet" href="assets/vendors/owl-carousel/assets/owl.carousel.min.css" />
+    <link rel="stylesheet" href="assets/vendors/owl-carousel/assets/owl.theme.default.min.css" />
+
+    <!-- template styles -->
+    <link rel="stylesheet" href="assets/css/ogency.css" />
+    <link rel="stylesheet" href="assets/css/project-showcase.css" />
+    
+    <!-- Billing Page Specific CSS -->
+    <style>
+        .billing-page {
+            background-color: var(--ogency-black);
+            min-height: 100vh;
+            padding: 120px 0 80px;
+        }
+        
+        .billing-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .billing-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        
+        .billing-header h1 {
+            color: var(--ogency-white);
+            font-size: 48px;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+        
+        .billing-header p {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 18px;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .billing-form-wrapper {
+            background: linear-gradient(135deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.02) 100%);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 20px;
+            padding: 40px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+        }
+        
+        .form-section {
+            margin-bottom: 40px;
+        }
+        
+        .form-section-title {
+            color: var(--ogency-white);
+            font-size: 24px;
+            font-weight: 600;
+            margin-bottom: 25px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--ogency-base);
+        }
+        
+        .form-group {
+            margin-bottom: 25px;
+        }
+        
+        .form-group label {
+            color: var(--ogency-white);
+            font-weight: 500;
+            margin-bottom: 8px;
+            display: block;
+        }
+        
+        .form-control {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.2);
+            color: var(--ogency-white);
+            border-radius: 10px;
+            padding: 12px 15px;
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+        
+        .form-control option {
+            background: var(--ogency-black);
+            color: var(--ogency-white);
+        }
+        
+        .form-control:focus option {
+            background: var(--ogency-black);
+            color: var(--ogency-white);
+        }
+        
+        .form-control:focus {
+            background: rgba(255,255,255,0.08);
+            border-color: var(--ogency-base);
+            color: var(--ogency-white);
+            box-shadow: 0 0 0 0.2rem rgba(0,123,255,0.25);
+        }
+        
+        .form-control::placeholder {
+            color: rgba(255,255,255,0.4);
+        }
+        
+        .items-table {
+            background: rgba(255,255,255,0.02);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        
+        .items-table table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        
+        .items-table th {
+            background: rgba(0,123,255,0.2);
+            color: var(--ogency-white);
+            padding: 15px;
+            text-align: left;
+            font-weight: 600;
+            border-bottom: 2px solid var(--ogency-base);
+        }
+        
+        .items-table td {
+            padding: 15px;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            color: var(--ogency-white);
+        }
+        
+        .items-table input {
+            background: rgba(255,255,255,0.1);
+            border: 1px solid rgba(255,255,255,0.2);
+            color: var(--ogency-white);
+            border-radius: 5px;
+            padding: 8px 12px;
+            width: 100%;
+        }
+        
+        .btn-add-item {
+            background: var(--ogency-base);
+            color: var(--ogency-white);
+            border: none;
+            border-radius: 10px;
+            padding: 12px 25px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 15px;
+        }
+        
+        .btn-add-item:hover {
+            background: #0056b3;
+            transform: translateY(-2px);
+        }
+        
+        .btn-remove-item {
+            background: #dc3545;
+            color: var(--ogency-white);
+            border: none;
+            border-radius: 5px;
+            padding: 5px 10px;
+            cursor: pointer;
+            font-size: 12px;
+        }
+        
+        .btn-remove-item:hover {
+            background: #c82333;
+        }
+        
+        .totals-section {
+            background: rgba(0,123,255,0.1);
+            border-radius: 10px;
+            padding: 25px;
+            margin-top: 30px;
+        }
+        
+        .total-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+            color: var(--ogency-white);
+        }
+        
+        .total-row.grand-total {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--ogency-base);
+            border-top: 2px solid var(--ogency-base);
+            padding-top: 15px;
+            margin-top: 20px;
+        }
+        
+        .action-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            margin-top: 40px;
+        }
+        
+        .btn-generate {
+            background: linear-gradient(135deg, var(--ogency-base) 0%, #0056b3 100%);
+            color: var(--ogency-white);
+            border: none;
+            border-radius: 50px;
+            padding: 15px 40px;
+            font-size: 18px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 25px rgba(0,123,255,0.3);
+        }
+        
+        .btn-generate:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 35px rgba(0,123,255,0.4);
+        }
+        
+        .btn-reset {
+            background: transparent;
+            color: var(--ogency-white);
+            border: 2px solid rgba(255,255,255,0.3);
+            border-radius: 50px;
+            padding: 15px 40px;
+            font-size: 18px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-reset:hover {
+            background: rgba(255,255,255,0.1);
+            border-color: var(--ogency-white);
+        }
+        
+        .preview-section {
+            display: none;
+            background: rgba(255,255,255,0.05);
+            border-radius: 15px;
+            padding: 30px;
+            margin-top: 40px;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        .preview-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .preview-header h2 {
+            color: var(--ogency-white);
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+        
+        .bill-preview {
+            background: var(--ogency-white);
+            color: var(--ogency-black);
+            border-radius: 10px;
+            padding: 40px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .bill-header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid #eee;
+        }
+        
+        .bill-header h3 {
+            font-size: 28px;
+            color: var(--ogency-black);
+            margin-bottom: 10px;
+        }
+        
+        .bill-info {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 30px;
+        }
+        
+        .bill-info-column {
+            flex: 1;
+        }
+        
+        .bill-info h4 {
+            font-size: 16px;
+            color: #666;
+            margin-bottom: 10px;
+        }
+        
+        .bill-info p {
+            margin: 5px 0;
+            font-size: 14px;
+        }
+        
+        @media (max-width: 768px) {
+            .billing-page {
+                padding: 80px 0 60px;
+            }
+            
+            .billing-header h1 {
+                font-size: 36px;
+            }
+            
+            .billing-form-wrapper {
+                padding: 25px;
+            }
+            
+            .action-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .btn-generate, .btn-reset {
+                width: 100%;
+                max-width: 300px;
+            }
+            
+            .bill-info {
+                flex-direction: column;
+                gap: 20px;
+            }
+        }
+    </style>
+</head>
+
+<body class="custom-cursor">
+    <div class="custom-cursor__cursor"></div>
+    <div class="custom-cursor__cursor-two"></div>
+
+    <div class="page-wrapper">
+        <!-- Include centralized header -->
+        <div id="header-container"></div>
+        <script src="assets/js/header-init.js"></script>
+        
+        <!-- Billing Page Start -->
+        <section class="billing-page">
+            <div class="billing-container">
+                <div class="billing-header">
+                    <h1>Create & Download Bills</h1>
+                    <p>Generate professional bills and invoices for your clients with our easy-to-use billing system</p>
+                </div>
+                
+                <div class="billing-form-wrapper">
+                    <form id="billingForm">
+                        <!-- Bill Details Section -->
+                        <div class="form-section">
+                            <h3 class="form-section-title">Bill Details</h3>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="billNumber">Bill Number</label>
+                                        <input type="text" class="form-control" id="billNumber" placeholder="e.g., BILL-001" required>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="billDate">Bill Date</label>
+                                        <input type="date" class="form-control" id="billDate" required>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="dueDate">Due Date</label>
+                                        <input type="date" class="form-control" id="dueDate" required>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="paymentMethod">Payment Method</label>
+                                        <select class="form-control" id="paymentMethod">
+                                            <option value="">Select Payment Method</option>
+                                            <option value="cash">Cash</option>
+                                            <option value="bank-transfer">Bank Transfer</option>
+                                            <option value="check">Check</option>
+                                            <option value="credit-card">Credit Card</option>
+                                            <option value="paypal">PayPal</option>
+                                            <option value="other">Other</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Your Business Details Section -->
+                        <div class="form-section">
+                            <h3 class="form-section-title">Your Business Details</h3>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="businessName">Business Name</label>
+                                        <input type="text" class="form-control" id="businessName" placeholder="Your Business Name" required>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="businessEmail">Business Email</label>
+                                        <input type="email" class="form-control" id="businessEmail" placeholder="business@example.com" required>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="businessPhone">Business Phone</label>
+                                        <input type="tel" class="form-control" id="businessPhone" placeholder="+1 234 567 8900" required>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="businessAddress">Business Address</label>
+                                        <input type="text" class="form-control" id="businessAddress" placeholder="123 Business St, City, State" required>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Client Details Section -->
+                        <div class="form-section">
+                            <h3 class="form-section-title">Client Details</h3>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="clientName">Client Name</label>
+                                        <input type="text" class="form-control" id="clientName" placeholder="Client Name" required>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="clientEmail">Client Email</label>
+                                        <input type="email" class="form-control" id="clientEmail" placeholder="client@example.com">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="clientPhone">Client Phone</label>
+                                        <input type="tel" class="form-control" id="clientPhone" placeholder="+1 234 567 8900">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="clientAddress">Client Address</label>
+                                        <input type="text" class="form-control" id="clientAddress" placeholder="123 Client St, City, State">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Items Section -->
+                        <div class="form-section">
+                            <h3 class="form-section-title">Bill Items</h3>
+                            <div class="items-table">
+                                <table id="itemsTable">
+                                    <thead>
+                                        <tr>
+                                            <th>Item Description</th>
+                                            <th>Quantity</th>
+                                            <th>Unit Price</th>
+                                            <th>Total</th>
+                                            <th>Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="itemsTableBody">
+                                        <tr class="item-row">
+                                            <td>
+                                                <select class="form-control item-description" style="width: 100%;" required>
+                                                    <option value="">Select a service...</option>
+                                                    <optgroup label="Available Services">
+                                                        <option value="Web Development">Web Development</option>
+                                                        <option value="Android App Development">Android App Development</option>
+                                                        <option value="iOS App Development">iOS App Development</option>
+                                                        <option value="AI Integration">AI Integration</option>
+                                                        <option value="Digital Marketing">Digital Marketing</option>
+                                                        <option value="E-Commerce">E-Commerce</option>
+                                                        <option value="Payment Integration">Payment Integration</option>
+                                                        <option value="CMS Web Development">CMS Web Development</option>
+                                                        <option value="Web Hosting">Web Hosting</option>
+                                                        <option value="Email Automation">Email Automation</option>
+                                                        <option value="Web Design">Web Design</option>
+                                                        <option value="SEO Development">SEO Development</option>
+                                                    </optgroup>
+                                                </select>
+                                            </td>
+                                            <td><input type="number" class="item-quantity" placeholder="1" min="1" value="1" required></td>
+                                            <td><input type="number" class="item-price" placeholder="0.00" min="0" step="0.01" required></td>
+                                            <td class="item-total">0.00</td>
+                                            <td><button type="button" class="btn-remove-item" onclick="removeItem(this)">Remove</button></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <button type="button" class="btn-add-item" onclick="addItem()">
+                                <i class="fas fa-plus"></i> Add Item
+                            </button>
+                        </div>
+                        
+                        <!-- Totals Section -->
+                        <div class="totals-section">
+                            <div class="total-row">
+                                <span>Subtotal:</span>
+                                <span id="subtotal">₹0.00</span>
+                            </div>
+                            <div class="total-row">
+                                <span>Tax (%):</span>
+                                <input type="number" id="taxRate" class="form-control" style="width: 100px; text-align: right;" placeholder="0" min="0" max="100" value="0">
+                            </div>
+                            <div class="total-row">
+                                <span>Tax Amount:</span>
+                                <span id="taxAmount">₹0.00</span>
+                            </div>
+                            <div class="total-row">
+                                <span>Discount (%):</span>
+                                <input type="number" id="discountRate" class="form-control" style="width: 100px; text-align: right;" placeholder="0" min="0" max="100" value="0">
+                            </div>
+                            <div class="total-row">
+                                <span>Discount Amount:</span>
+                                <span id="discountAmount">₹0.00</span>
+                            </div>
+                            <div class="total-row grand-total">
+                                <span>Grand Total:</span>
+                                <span id="grandTotal">₹0.00</span>
+                            </div>
+                        </div>
+                        
+                        <!-- Notes Section -->
+                        <div class="form-section">
+                            <h3 class="form-section-title">Additional Notes</h3>
+                            <div class="form-group">
+                                <label for="notes">Notes</label>
+                                <textarea class="form-control" id="notes" rows="4" placeholder="Add any additional notes or terms..."></textarea>
+                            </div>
+                        </div>
+                        
+                        <!-- Action Buttons -->
+                        <div class="action-buttons">
+                            <button type="button" class="btn-generate" onclick="generateBill()">
+                                <i class="fas fa-file-invoice"></i> Generate Bill
+                            </button>
+                            <button type="button" class="btn-reset" onclick="resetForm()">
+                                <i class="fas fa-redo"></i> Reset Form
+                            </button>
+                        </div>
+                    </form>
+                </div>
+                
+                <!-- Preview Section -->
+                <div class="preview-section" id="previewSection">
+                    <div class="preview-header">
+                        <h2>Bill Preview</h2>
+                        <p>Review your bill before downloading</p>
+                    </div>
+                    <div class="bill-preview" id="billPreview">
+                        <!-- Bill content will be generated here -->
+                    </div>
+                    <div class="action-buttons">
+                        <button type="button" class="btn-generate" onclick="downloadPDF()">
+                            <i class="fas fa-download"></i> Download PDF
+                        </button>
+                        <button type="button" class="btn-reset" onclick="editBill()">
+                            <i class="fas fa-edit"></i> Edit Bill
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Billing Page End -->
+        
+        <!-- Include centralized footer -->
+        <div id="footer-container"></div>
+        <script>
+            // Load footer
+            fetch('footer.html')
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('footer-container').innerHTML = data;
+                });
+        </script>
+    </div>
+
+    <!-- Vendor JS -->
+    <script src="assets/vendors/jquery/jquery-3.6.0.min.js"></script>
+    <script src="assets/vendors/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/vendors/bootstrap-select/bootstrap-select.min.js"></script>
+    <script src="assets/vendors/jquery-ui/jquery-ui.js"></script>
+    <script src="assets/vendors/countdown/countdown.min.js"></script>
+    <script src="assets/vendors/waypoints/waypoints.min.js"></script>
+    <script src="assets/vendors/odometer/odometer.min.js"></script>
+    <script src="assets/vendors/owl-carousel/owl.carousel.min.js"></script>
+    <script src="assets/vendors/tiny-slider/tiny-slider.min.js"></script>
+    <script src="assets/vendors/wow/wow.js"></script>
+    <script src="assets/vendors/jquery-localize/jquery.localize.js"></script>
+    <script src="assets/vendors/jquery-magnific-popup/jquery.magnific-popup.min.js"></script>
+    <script src="assets/vendors/jarallax/jarallax.min.js"></script>
+    <script src="assets/vendors/nouislider/nouislider.min.js"></script>
+
+    <!-- Template JS -->
+    <script src="assets/js/ogency.js"></script>
+    
+    <!-- Billing Page JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script>
+        // Set today's date as default
+        document.getElementById('billDate').valueAsDate = new Date();
+        
+        // Add item function
+        function addItem() {
+            const tbody = document.getElementById('itemsTableBody');
+            const newRow = document.createElement('tr');
+            newRow.className = 'item-row';
+            newRow.innerHTML = `
+                <td>
+                                                <select class="form-control item-description" style="width: 100%;" required>
+                                                    <option value="">Select a service...</option>
+                                                    <optgroup label="Available Services">
+                                                        <option value="Web Development">Web Development</option>
+                                                        <option value="Android App Development">Android App Development</option>
+                                                        <option value="iOS App Development">iOS App Development</option>
+                                                        <option value="AI Integration">AI Integration</option>
+                                                        <option value="Digital Marketing">Digital Marketing</option>
+                                                        <option value="E-Commerce">E-Commerce</option>
+                                                        <option value="Payment Integration">Payment Integration</option>
+                                                        <option value="CMS Web Development">CMS Web Development</option>
+                                                        <option value="Web Hosting">Web Hosting</option>
+                                                        <option value="Email Automation">Email Automation</option>
+                                                        <option value="Web Design">Web Design</option>
+                                                        <option value="SEO Development">SEO Development</option>
+                                                    </optgroup>
+                                                </select>
+                                            </td>
+                <td><input type="number" class="item-quantity" placeholder="1" min="1" value="1" required></td>
+                <td><input type="number" class="item-price" placeholder="0.00" min="0" step="0.01" required></td>
+                <td class="item-total">0.00</td>
+                <td><button type="button" class="btn-remove-item" onclick="removeItem(this)">Remove</button></td>
+            `;
+            tbody.appendChild(newRow);
+            
+            // Add event listeners to new inputs and selects
+            newRow.querySelectorAll('input, select').forEach(input => {
+                input.addEventListener('input', calculateTotals);
+                input.addEventListener('change', calculateTotals);
+            });
+        }
+        
+        // Remove item function
+        function removeItem(button) {
+            const row = button.closest('tr');
+            row.remove();
+            calculateTotals();
+        }
+        
+        // Calculate totals function
+        function calculateTotals() {
+            let subtotal = 0;
+            
+            // Calculate subtotal from items
+            document.querySelectorAll('.item-row').forEach(row => {
+                const quantity = parseFloat(row.querySelector('.item-quantity').value) || 0;
+                const price = parseFloat(row.querySelector('.item-price').value) || 0;
+                const total = quantity * price;
+                row.querySelector('.item-total').textContent = total.toFixed(2);
+                subtotal += total;
+            });
+            
+            // Get tax and discount rates
+            const taxRate = parseFloat(document.getElementById('taxRate').value) || 0;
+            const discountRate = parseFloat(document.getElementById('discountRate').value) || 0;
+            
+            // Calculate tax and discount amounts
+            const taxAmount = subtotal * (taxRate / 100);
+            const discountAmount = subtotal * (discountRate / 100);
+            
+            // Calculate grand total
+            const grandTotal = subtotal + taxAmount - discountAmount;
+            
+            // Update display
+            document.getElementById('subtotal').textContent = `₹${subtotal.toFixed(2)}`;
+            document.getElementById('taxAmount').textContent = `₹${taxAmount.toFixed(2)}`;
+            document.getElementById('discountAmount').textContent = `₹${discountAmount.toFixed(2)}`;
+            document.getElementById('grandTotal').textContent = `₹${grandTotal.toFixed(2)}`;
+        }
+        
+        // Add event listeners for calculations
+        document.querySelectorAll('.item-quantity, .item-price').forEach(input => {
+            input.addEventListener('input', calculateTotals);
+        });
+        
+        document.querySelectorAll('.item-description').forEach(select => {
+            select.addEventListener('change', calculateTotals);
+        });
+        
+        document.getElementById('taxRate').addEventListener('input', calculateTotals);
+        document.getElementById('discountRate').addEventListener('input', calculateTotals);
+        
+        // Generate bill function
+        function generateBill() {
+            const form = document.getElementById('billingForm');
+            if (!form.checkValidity()) {
+                form.reportValidity();
+                return;
+            }
+            
+            // Get form data
+            const billData = {
+                billNumber: document.getElementById('billNumber').value,
+                billDate: document.getElementById('billDate').value,
+                dueDate: document.getElementById('dueDate').value,
+                paymentMethod: document.getElementById('paymentMethod').value,
+                businessName: document.getElementById('businessName').value,
+                businessEmail: document.getElementById('businessEmail').value,
+                businessPhone: document.getElementById('businessPhone').value,
+                businessAddress: document.getElementById('businessAddress').value,
+                clientName: document.getElementById('clientName').value,
+                clientEmail: document.getElementById('clientEmail').value,
+                clientPhone: document.getElementById('clientPhone').value,
+                clientAddress: document.getElementById('clientAddress').value,
+                notes: document.getElementById('notes').value,
+                subtotal: document.getElementById('subtotal').textContent,
+                taxAmount: document.getElementById('taxAmount').textContent,
+                discountAmount: document.getElementById('discountAmount').textContent,
+                grandTotal: document.getElementById('grandTotal').textContent
+            };
+            
+            // Get items
+            const items = [];
+            document.querySelectorAll('.item-row').forEach(row => {
+                const description = row.querySelector('.item-description').value;
+                const quantity = row.querySelector('.item-quantity').value;
+                const price = row.querySelector('.item-price').value;
+                const total = row.querySelector('.item-total').textContent;
+                
+                if (description && quantity && price) {
+                    items.push({ description, quantity, price, total });
+                }
+            });
+            
+            // Generate bill preview
+            generateBillPreview(billData, items);
+            
+            // Show preview section
+            document.getElementById('previewSection').style.display = 'block';
+            
+            // Scroll to preview
+            document.getElementById('previewSection').scrollIntoView({ behavior: 'smooth' });
+        }
+        
+        // Generate bill preview function
+        function generateBillPreview(billData, items) {
+            const previewHTML = `
+                <div class="bill-header">
+                    <h3>INVOICE</h3>
+                    <p><strong>${billData.businessName}</strong></p>
+                    <p>${billData.businessAddress}</p>
+                    <p>${billData.businessEmail} | ${billData.businessPhone}</p>
+                </div>
+                
+                <div class="bill-info">
+                    <div class="bill-info-column">
+                        <h4>Bill To:</h4>
+                        <p><strong>${billData.clientName}</strong></p>
+                        <p>${billData.clientAddress || 'N/A'}</p>
+                        <p>${billData.clientEmail || 'N/A'}</p>
+                        <p>${billData.clientPhone || 'N/A'}</p>
+                    </div>
+                    <div class="bill-info-column" style="text-align: right;">
+                        <h4>Bill Details:</h4>
+                        <p><strong>Bill Number:</strong> ${billData.billNumber}</p>
+                        <p><strong>Bill Date:</strong> ${billData.billDate}</p>
+                        <p><strong>Due Date:</strong> ${billData.dueDate}</p>
+                        <p><strong>Payment Method:</strong> ${billData.paymentMethod || 'N/A'}</p>
+                    </div>
+                </div>
+                
+                <table style="width: 100%; border-collapse: collapse; margin-bottom: 20px;">
+                    <thead>
+                        <tr style="background: #f5f5f5;">
+                            <th style="padding: 12px; text-align: left; border: 1px solid #ddd;">Item Description</th>
+                            <th style="padding: 12px; text-align: center; border: 1px solid #ddd;">Quantity</th>
+                            <th style="padding: 12px; text-align: right; border: 1px solid #ddd;">Unit Price</th>
+                            <th style="padding: 12px; text-align: right; border: 1px solid #ddd;">Total</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        ${items.map(item => `
+                            <tr>
+                                <td style="padding: 12px; border: 1px solid #ddd;">${item.description}</td>
+                                <td style="padding: 12px; text-align: center; border: 1px solid #ddd;">${item.quantity}</td>
+                                <td style="padding: 12px; text-align: right; border: 1px solid #ddd;">₹${parseFloat(item.price).toFixed(2)}</td>
+                                <td style="padding: 12px; text-align: right; border: 1px solid #ddd;">₹${parseFloat(item.total).toFixed(2)}</td>
+                            </tr>
+                        `).join('')}
+                    </tbody>
+                </table>
+                
+                <div style="text-align: right; margin-bottom: 20px;">
+                    <p><strong>Subtotal:</strong> ${billData.subtotal}</p>
+                    <p><strong>Tax Amount:</strong> ${billData.taxAmount}</p>
+                    <p><strong>Discount Amount:</strong> ${billData.discountAmount}</p>
+                    <p style="font-size: 18px; font-weight: bold; color: #007bff;"><strong>Grand Total:</strong> ${billData.grandTotal}</p>
+                </div>
+                
+                ${billData.notes ? `
+                    <div style="margin-top: 30px; padding: 20px; background: #f9f9f9; border-radius: 5px;">
+                        <h4>Notes:</h4>
+                        <p>${billData.notes}</p>
+                    </div>
+                ` : ''}
+                
+                <div style="margin-top: 30px; text-align: center; font-size: 12px; color: #666;">
+                    <p>Thank you for your business!</p>
+                    <p>Generated on ${new Date().toLocaleDateString()}</p>
+                </div>
+            `;
+            
+            document.getElementById('billPreview').innerHTML = previewHTML;
+        }
+        
+        // Download PDF function
+        async function downloadPDF() {
+            const { jsPDF } = window.jspdf;
+            const element = document.getElementById('billPreview');
+            
+            try {
+                // Create canvas from element
+                const canvas = await html2canvas(element, {
+                    scale: 2,
+                    useCORS: true,
+                    allowTaint: true
+                });
+                
+                // Get image data
+                const imgData = canvas.toDataURL('image/png');
+                
+                // Create PDF
+                const pdf = new jsPDF('p', 'mm', 'a4');
+                const imgWidth = 210;
+                const pageHeight = 297;
+                const imgHeight = (canvas.height * imgWidth) / canvas.width;
+                let heightLeft = imgHeight;
+                let position = 0;
+                
+                // Add image to PDF
+                pdf.addImage(imgData, 'PNG', 0, position, imgWidth, imgHeight);
+                heightLeft -= pageHeight;
+                
+                while (heightLeft >= 0) {
+                    position = heightLeft - imgHeight;
+                    pdf.addPage();
+                    pdf.addImage(imgData, 'PNG', 0, position, imgWidth, imgHeight);
+                    heightLeft -= pageHeight;
+                }
+                
+                // Download PDF
+                const billNumber = document.getElementById('billNumber').value;
+                pdf.save(`${billNumber}.pdf`);
+                
+            } catch (error) {
+                console.error('Error generating PDF:', error);
+                alert('Error generating PDF. Please try again.');
+            }
+        }
+        
+        // Edit bill function
+        function editBill() {
+            document.getElementById('previewSection').style.display = 'none';
+            document.getElementById('billingForm').scrollIntoView({ behavior: 'smooth' });
+        }
+        
+        // Reset form function
+        function resetForm() {
+            if (confirm('Are you sure you want to reset the form? All data will be lost.')) {
+                document.getElementById('billingForm').reset();
+                document.getElementById('previewSection').style.display = 'none';
+                
+                // Reset items table to single row
+                const tbody = document.getElementById('itemsTableBody');
+                tbody.innerHTML = `
+                    <tr class="item-row">
+                        <td>
+                                                <select class="form-control item-description" style="width: 100%;" required>
+                                                    <option value="">Select a service...</option>
+                                                    <optgroup label="Available Services">
+                                                        <option value="Web Development">Web Development</option>
+                                                        <option value="Android App Development">Android App Development</option>
+                                                        <option value="iOS App Development">iOS App Development</option>
+                                                        <option value="AI Integration">AI Integration</option>
+                                                        <option value="Digital Marketing">Digital Marketing</option>
+                                                        <option value="E-Commerce">E-Commerce</option>
+                                                        <option value="Payment Integration">Payment Integration</option>
+                                                        <option value="CMS Web Development">CMS Web Development</option>
+                                                        <option value="Web Hosting">Web Hosting</option>
+                                                        <option value="Email Automation">Email Automation</option>
+                                                        <option value="Web Design">Web Design</option>
+                                                        <option value="SEO Development">SEO Development</option>
+                                                    </optgroup>
+                                                </select>
+                                            </td>
+                        <td><input type="number" class="item-quantity" placeholder="1" min="1" value="1" required></td>
+                        <td><input type="number" class="item-price" placeholder="0.00" min="0" step="0.01" required></td>
+                        <td class="item-total">0.00</td>
+                        <td><button type="button" class="btn-remove-item" onclick="removeItem(this)">Remove</button></td>
+                    </tr>
+                `;
+                
+                // Re-add event listeners
+                document.querySelectorAll('.item-quantity, .item-price').forEach(input => {
+                    input.addEventListener('input', calculateTotals);
+                });
+                
+                document.querySelectorAll('.item-description').forEach(select => {
+                    select.addEventListener('change', calculateTotals);
+                });
+                
+                // Reset totals
+                calculateTotals();
+                
+                // Reset date to today
+                document.getElementById('billDate').valueAsDate = new Date();
+            }
+        }
+        
+        // Initialize calculations on page load
+        calculateTotals();
+    </script>
+</body>
+</html>
