@@ -774,6 +774,9 @@
         function generateBillPreview(billData, items) {
             const previewHTML = `
                 <div class="bill-header">
+                    <div style="margin-bottom: 20px;">
+                        <img src="assets/images/logo/logo.png" alt="Company Logo" style="max-height: 60px; object-fit: contain;">
+                    </div>
                     <h3>INVOICE</h3>
                     <p><strong>${billData.businessName}</strong></p>
                     <p>${billData.businessAddress}</p>

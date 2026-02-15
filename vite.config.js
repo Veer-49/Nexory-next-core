@@ -10,6 +10,7 @@ export default defineConfig({
       input: {
         index: './index.html',
         about: './about.html',
+        billing: './billing.html',
         contact: './contact.html',
         faq: './faq.html',
         privacy: './privacy-policy.html',
