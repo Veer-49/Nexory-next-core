@@ -59,6 +59,7 @@ export default defineConfig({
         copyDir('assets/vendors', 'dist/assets/vendors')
         copyDir('assets/js', 'dist/assets/js')
         copyDir('assets/images', 'dist/assets/images')
+        copyDir('assets/css', 'dist/assets/css')
         
         // Copy header and footer files
         if (fs.existsSync('header.html')) {
