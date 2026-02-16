@@ -8,25 +8,9 @@
     <!-- fonts -->
     <link rel="preconnect" href="https://fonts.gstatic.com/" />
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap" rel="stylesheet" />
+
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    <!-- template styles -->
-
-
+    <!-- template styles -->
     
     <!-- Floating Buttons CSS -->
     <style>
@@ -85,6 +69,27 @@
             }
         }
         
+        /* Remove hover effects from about agency stats and keep blue */
+        .fact-one__item__count .count-box,
+        .fact-one__item__count .count-text {
+            color: #007bff !important;
+            -webkit-text-fill-color: #007bff !important;
+            -webkit-text-stroke-color: #007bff !important;
+            transition: none !important;
+        }
+        
+        .fact-one__item__count .count-box:hover,
+        .fact-one__item__count .count-box:hover .count-text {
+            transform: none !important;
+            color: #007bff !important;
+            -webkit-text-fill-color: #007bff !important;
+            -webkit-text-stroke-color: #007bff !important;
+        }
+        
+        .fact-one__item:hover .fact-one__item__icon span {
+            transform: scale(1) !important;
+        }
+        
         /* Client Carousel Logo Fixes */
         .client-carousel .client-carousel__one .client-carousel__one__item img {
             opacity: 1 !important;
@@ -100,8 +105,8 @@
             transform: none !important;
         }
     </style>
-  <link rel="stylesheet" crossorigin href="/assets/ogency-B5ny7Y4C.css">
-  <link rel="stylesheet" crossorigin href="/assets/project-showcase-BEk-mqyT.css">
+  <link rel="stylesheet" crossorigin href="/assets/ogency-D6W8In7n.css">
+  <link rel="stylesheet" crossorigin href="/assets/project-showcase-ClDCzcQK.css">
 </head>
 
 <body class="custom-cursor">
@@ -114,7 +119,7 @@
         <div id="header-container"></div>
         <script src="assets/js/header-init.js"></script>
         <!--Hero Banner Start-->
-        <section class="hero-banner" style="background-image: url(/assets/hero-2-1-wgnJSD6o.png);">
+        <section class="hero-banner" style="background-image: url(assets/images/backgrounds/hero-2-1.png);">
             <!-- Minimal Background Animation -->
             <div class="minimal-background">
                 <div class="grid-lines">
@@ -160,9 +165,14 @@
                         <div class="col-lg-8">
                             <div class="hero-banner__left-content">
                                 <h5 class="hero-banner__welcome">Welcome</h5>
-                                <h1 class="hero-banner__title">What we do is</h1>
-                                <h5 class="hero-banner__subtitle"><span class="word-animate word-fade">Design.</span> <span class="word-animate word-slide">Develop.</span> <span class="word-animate word-glitch">Debug.</span> <span class="word-animate word-glow">Deliver.</span></h5>
-                                <p class="hero-banner__description">from fixing critical issues to building scalable, user-focused digital products.</p>
+                                <h1 class="hero-banner__title">What we do</h1>
+                                <h5 class="hero-banner__subtitle">
+                                    <span class="word-animate word-fade">Design.</span>
+                                    <span class="word-animate word-slide">Build.</span>
+                                    <span class="word-animate word-glitch">Scale.</span>
+                                    <span class="word-animate word-glow">Automate.</span>
+                                </h5>
+                                <p class="hero-banner__description">Web, mobile, AI, and e-commerce solutions engineered for performance and real business growth.</p>
                                 <div class="hero-banner__buttons">
                                     <a href="contact.html" class="ogency-btn hero-banner__btn-primary">Get Started</a>
                                     <a href="projects.html" class="ogency-btn hero-banner__btn-secondary">View Our Work</a>
@@ -181,9 +191,7 @@
                                         <p class="hero-banner__stat-label">Client Satisfaction</p>
                                     </div>
                                 </div>
-                                <div class="hero-banner__image">
-                                    <img src="/assets/hero-2-2-CWTThb2b.png" alt="Ogency Agency">
-                                </div>
+                               
                             </div>
                         </div>
                     </div>
@@ -192,7 +200,7 @@
         </section>
         <!--Hero Banner End-->
         <!-- About Start -->
-        <section class="about-two" style="background-image: url(/assets/about-bg-1-D9L_j6g6.png);">
+        <section class="about-two" style="background-image: url(assets/images/backgrounds/about-bg-1.png);">
             <div class="container">
                 <div class="row">
                     <div class="col-lg-6 wow fadeInUp animated" data-wow-delay="200ms">
@@ -200,17 +208,17 @@
                             <!-- about content left -->
                             <div class="section-title">
                                 <h5 class="section-title__tagline section-title__tagline--has-dots">about the agency</h5>
-                                <h2 class="section-title__title">We Build, Fix & Improve Digital Products That Matter</h2>
+                                <h2 class="section-title__title">Helping Businesses Grow with Web, App & AI Solutions</h2>
                             </div><!-- section-title -->
-                            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN8AAAAfCAYAAABnERiYAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyBpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNSBXaW5kb3dzIiB4bXBNTTpJbnN0YW5jZUlEPSJ4bXAuaWlkOjY5RThDQzdBMEU2QzExRUU5MEFGRjU0MEVFOENDQ0FBIiB4bXBNTTpEb2N1bWVudElEPSJ4bXAuZGlkOjY5RThDQzdCMEU2QzExRUU5MEFGRjU0MEVFOENDQ0FBIj4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9InhtcC5paWQ6NjlFOENDNzgwRTZDMTFFRTkwQUZGNTQwRUU4Q0NDQUEiIHN0UmVmOmRvY3VtZW50SUQ9InhtcC5kaWQ6NjlFOENDNzkwRTZDMTFFRTkwQUZGNTQwRUU4Q0NDQUEiLz4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+IDw/eHBhY2tldCBlbmQ9InIiPz45OaKnAAAJJElEQVR42uxdXWgUVxSe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" alt="ogency" width="223" />
+                            <img src="/assets/signature-CJ43qfwh.png" alt="ogency" width="100" />
                             <p class="about-two__left--text">Veer Momaya -Founder</p>
                         </div><!-- about content left -->
                     </div>
                     <div class="col-lg-6 wow fadeInUp animated" data-wow-delay="400ms">
                         <div class="about-two__right">
                             <!-- about content right-->
-                            <p class="about-two__right--text">We are a web and app development startup focused on solving real problems through clean code, thoughtful design, and reliable solutions. From fixing bugs and improving performance to designing and building complete digital products, we help startups and growing businesses turn ideas into scalable, user-friendly experiences.</p>
-                            <blockquote class="about-two__right--quote">We believe great digital products are built by fixing problems at the core, designing with purpose, and delivering solutions that work reliably in the real world.</blockquote>
+                            <p class="about-two__right--text">We are a web and app development startup delivering end-to-end digital solutions, including websites, mobile apps, iOS development, AI integration, e-commerce platforms, CMS, hosting, and automation systems. From improving existing products to building complete digital experiences from scratch, we help startups and growing businesses create scalable, secure, and user-friendly solutions.</p>
+                            <blockquote class="about-two__right--quote">We believe powerful digital products are built through clean engineering, smart automation, thoughtful design, and systems that scale reliably in real-world use.</blockquote>
                         </div><!-- about content right-->
                         <div class="row">
                             <div class="col-md-6">
@@ -257,7 +265,7 @@
                         <div class="service-showcase__card-inner">
                             <div class="service-showcase__card-front">
                                 <div class="service-showcase__image">
-                                    <img src="/assets/services-2-1-CLSLkawm.jpg" alt="Web Development">
+                                    <img src="/assets/webdev-CEJooSGc.png" alt="Web Development">
                                     <div class="service-showcase__title-overlay">
                                         <h3>Web Development</h3>
                                     </div>
@@ -266,11 +274,11 @@
                             <div class="service-showcase__card-back">
                                 <div class="service-showcase__back-content">
                                     <h3>Web Development</h3>
-                                    <p class="service-showcase__cats"><a href="services.html">Development</a>, <a href="services.html">Web</a></p>
-                                    <p class="service-showcase__description">Professional web development services for modern businesses. We create responsive, fast, and secure websites.</p>
-                                    <a href="services.html" class="service-showcase__link">
-                                        <span class="icon-right-arrow"></span>
-                                    </a>
+                                    
+                                    <p class="service-showcase__description">Websites That Perform, Scale, and Convert<br>High-performance, responsive, and secure websites built to support real business growth.</p>
+                                    <div class="service-showcase__read-more-container">
+                                        <a href="services.html" class="service-showcase__read-more-link">Read More</a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -280,7 +288,7 @@
                         <div class="service-showcase__card-inner">
                             <div class="service-showcase__card-front">
                                 <div class="service-showcase__image">
-                                    <img src="/assets/services-2-2-l6ylgZiQ.jpg" alt="Android App Development">
+                                    <img src="/assets/android-C-EsDQ83.png" alt="Android App Development">
                                     <div class="service-showcase__title-overlay">
                                         <h3>Android App Development</h3>
                                     </div>
@@ -290,10 +298,10 @@
                                 <div class="service-showcase__back-content">
                                     <h3>Android App Development</h3>
                                     <p class="service-showcase__cats"><a href="services.html">Mobile</a>, <a href="services.html">Android</a></p>
-                                    <p class="service-showcase__description">Native Android app development for all devices. We build high-performance, user-friendly applications.</p>
-                                    <a href="services.html" class="service-showcase__link">
-                                        <span class="icon-right-arrow"></span>
-                                    </a>
+                                    <p class="service-showcase__description">Powerful Android Apps Built to Perform<br>High-performance, scalable Android applications designed for real-world business needs.</p>
+                                    <div class="service-showcase__read-more-container">
+                                        <a href="services.html" class="service-showcase__read-more-link">Read More</a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -303,7 +311,7 @@
                         <div class="service-showcase__card-inner">
                             <div class="service-showcase__card-front">
                                 <div class="service-showcase__image">
-                                    <img src="/assets/services-2-3-BxtUwJbj.jpg" alt="iOS App Development">
+                                    <img src="/assets/ios-7KbLUJ3d.png" alt="iOS App Development">
                                     <div class="service-showcase__title-overlay">
                                         <h3>iOS App Development</h3>
                                     </div>
@@ -312,11 +320,11 @@
                             <div class="service-showcase__card-back">
                                 <div class="service-showcase__back-content">
                                     <h3>iOS App Development</h3>
-                                    <p class="service-showcase__cats"><a href="services.html">Mobile</a>, <a href="services.html">iOS</a></p>
-                                    <p class="service-showcase__description">Native iOS app development for iPhone and iPad. We create stunning, high-performance apps.</p>
-                                    <a href="services.html" class="service-showcase__link">
-                                        <span class="icon-right-arrow"></span>
-                                    </a>
+                                    
+                                    <p class="service-showcase__description">Elegant iOS Apps Built for Performance<br>Secure, scalable, and high-quality iOS applications crafted for the Apple ecosystem.</p>
+                                    <div class="service-showcase__read-more-container">
+                                        <a href="services.html" class="service-showcase__read-more-link">Read More</a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -326,7 +334,7 @@
                         <div class="service-showcase__card-inner">
                             <div class="service-showcase__card-front">
                                 <div class="service-showcase__image">
-                                    <img src="assets/images/service/services-2-4.jpg" alt="AI Integration">
+                                    <img src="/assets/ai-B-lxp_8t.png" alt="AI Integration">
                                     <div class="service-showcase__title-overlay">
                                         <h3>AI Integration</h3>
                                     </div>
@@ -335,11 +343,11 @@
                             <div class="service-showcase__card-back">
                                 <div class="service-showcase__back-content">
                                     <h3>AI Integration</h3>
-                                    <p class="service-showcase__cats"><a href="services.html">AI</a>, <a href="services.html">Integration</a></p>
-                                    <p class="service-showcase__description">Cutting-edge AI solutions for your business needs. We implement intelligent automation and machine learning.</p>
-                                    <a href="services.html" class="service-showcase__link">
-                                        <span class="icon-right-arrow"></span>
-                                    </a>
+                                    
+                                    <p class="service-showcase__description">Smart AI Integration for Smarter Products<br>Practical AI solutions that automate workflows, enhance features, and improve decision-making.</p>
+                                    <div class="service-showcase__read-more-container">
+                                        <a href="services.html" class="service-showcase__read-more-link">Read More</a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -349,7 +357,7 @@
                         <div class="service-showcase__card-inner">
                             <div class="service-showcase__card-front">
                                 <div class="service-showcase__image">
-                                    <img src="/assets/services-2-1-CLSLkawm.jpg" alt="Digital Marketing">
+                                    <img src="/assets/digital-D5fM3D50.png" alt="Digital Marketing">
                                     <div class="service-showcase__title-overlay">
                                         <h3>Digital Marketing</h3>
                                     </div>
@@ -358,11 +366,11 @@
                             <div class="service-showcase__card-back">
                                 <div class="service-showcase__back-content">
                                     <h3>Digital Marketing</h3>
-                                    <p class="service-showcase__cats"><a href="services.html">Marketing</a>, <a href="services.html">Digital</a></p>
-                                    <p class="service-showcase__description">Comprehensive digital marketing strategies. We drive growth through data-driven campaigns.</p>
-                                    <a href="services.html" class="service-showcase__link">
-                                        <span class="icon-right-arrow"></span>
-                                    </a>
+                                    
+                                    <p class="service-showcase__description">Data-Driven Digital Marketing That Converts<br>Strategic marketing solutions focused on traffic, engagement, and measurable business growth.</p>
+                                    <div class="service-showcase__read-more-container">
+                                        <a href="services.html" class="service-showcase__read-more-link">Read More</a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -372,7 +380,7 @@
                         <div class="service-showcase__card-inner">
                             <div class="service-showcase__card-front">
                                 <div class="service-showcase__image">
-                                    <img src="/assets/services-2-2-l6ylgZiQ.jpg" alt="E-Commerce">
+                                    <img src="/assets/ecomm-DLbMoac_.png" alt="E-Commerce">
                                     <div class="service-showcase__title-overlay">
                                         <h3>E-Commerce</h3>
                                     </div>
@@ -381,11 +389,11 @@
                             <div class="service-showcase__card-back">
                                 <div class="service-showcase__back-content">
                                     <h3>E-Commerce</h3>
-                                    <p class="service-showcase__cats"><a href="services.html">E-Commerce</a>, <a href="services.html">Online Store</a></p>
-                                    <p class="service-showcase__description">Complete e-commerce solutions for online stores. We build powerful, scalable platforms.</p>
-                                    <a href="services.html" class="service-showcase__link">
-                                        <span class="icon-right-arrow"></span>
-                                    </a>
+                                    
+                                    <p class="service-showcase__description">E-Commerce Stores Built to Sell<br>High-performance online stores designed for conversions, security, and scalable growth.</p>
+                                    <div class="service-showcase__read-more-container">
+                                        <a href="services.html" class="service-showcase__read-more-link">Read More</a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -395,7 +403,7 @@
                         <div class="service-showcase__card-inner">
                             <div class="service-showcase__card-front">
                                 <div class="service-showcase__image">
-                                    <img src="/assets/services-2-3-BxtUwJbj.jpg" alt="Payment Integration">
+                                    <img src="/assets/payment-B3hd1i2O.png" alt="Payment Integration">
                                     <div class="service-showcase__title-overlay">
                                         <h3>Payment Integration</h3>
                                     </div>
@@ -405,10 +413,10 @@
                                 <div class="service-showcase__back-content">
                                     <h3>Payment Integration</h3>
                                     <p class="service-showcase__cats"><a href="services.html">Payment</a>, <a href="services.html">Integration</a></p>
-                                    <p class="service-showcase__description">Secure payment gateway integration services. We integrate reliable payment solutions.</p>
-                                    <a href="services.html" class="service-showcase__link">
-                                        <span class="icon-right-arrow"></span>
-                                    </a>
+                                    <p class="service-showcase__description">Secure Payment Integration That Just Works<br>Fast, reliable, and secure payment solutions for web, mobile, and e-commerce platforms.</p>
+                                    <div class="service-showcase__read-more-container">
+                                        <a href="services.html" class="service-showcase__read-more-link">Read More</a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -418,7 +426,7 @@
                         <div class="service-showcase__card-inner">
                             <div class="service-showcase__card-front">
                                 <div class="service-showcase__image">
-                                    <img src="assets/images/service/services-2-4.jpg" alt="CMS Web Development">
+                                    <img src="/assets/cms-CGp9EfEY.png" alt="CMS Web Development">
                                     <div class="service-showcase__title-overlay">
                                         <h3>CMS Web Development</h3>
                                     </div>
@@ -427,11 +435,11 @@
                             <div class="service-showcase__card-back">
                                 <div class="service-showcase__back-content">
                                     <h3>CMS Web Development</h3>
-                                    <p class="service-showcase__cats"><a href="services.html">CMS</a>, <a href="services.html">Development</a></p>
-                                    <p class="service-showcase__description">Custom CMS development for easy content management. We build scalable content management systems.</p>
-                                    <a href="services.html" class="service-showcase__link">
-                                        <span class="icon-right-arrow"></span>
-                                    </a>
+                                    
+                                    <p class="service-showcase__description">Powerful CMS Solutions You Control<br>Flexible, easy-to-manage content systems built for speed, security, and scalability.</p>
+                                    <div class="service-showcase__read-more-container">
+                                        <a href="services.html" class="service-showcase__read-more-link">Read More</a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -441,7 +449,7 @@
                         <div class="service-showcase__card-inner">
                             <div class="service-showcase__card-front">
                                 <div class="service-showcase__image">
-                                    <img src="/assets/services-2-1-CLSLkawm.jpg" alt="Web Hosting">
+                                    <img src="/assets/webhosting-t-Ie8XZx.png" alt="Web Hosting">
                                     <div class="service-showcase__title-overlay">
                                         <h3>Web Hosting</h3>
                                     </div>
@@ -451,10 +459,10 @@
                                 <div class="service-showcase__back-content">
                                     <h3>Web Hosting</h3>
                                     <p class="service-showcase__cats"><a href="services.html">Hosting</a>, <a href="services.html">Infrastructure</a></p>
-                                    <p class="service-showcase__description">Reliable and secure web hosting solutions. We provide fast, secure hosting with 99.9% uptime guarantee.</p>
-                                    <a href="services.html" class="service-showcase__link">
-                                        <span class="icon-right-arrow"></span>
-                                    </a>
+                                    <p class="service-showcase__description">Fast & Reliable Web Hosting Solutions<br>Secure, high-performance hosting designed to keep your website running smoothly.</p>
+                                    <div class="service-showcase__read-more-container">
+                                        <a href="services.html" class="service-showcase__read-more-link">Read More</a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -464,7 +472,7 @@
                         <div class="service-showcase__card-inner">
                             <div class="service-showcase__card-front">
                                 <div class="service-showcase__image">
-                                    <img src="/assets/services-2-2-l6ylgZiQ.jpg" alt="Email Automation">
+                                    <img src="/assets/email-DSVN1IKJ.png" alt="Email Automation">
                                     <div class="service-showcase__title-overlay">
                                         <h3>Email Automation</h3>
                                     </div>
@@ -473,44 +481,22 @@
                             <div class="service-showcase__card-back">
                                 <div class="service-showcase__back-content">
                                     <h3>Email Automation</h3>
-                                    <p class="service-showcase__cats"><a href="services.html">Email</a>, <a href="services.html">Automation</a></p>
-                                    <p class="service-showcase__description">Automated email marketing campaigns. We create targeted email campaigns that engage and convert.</p>
-                                    <a href="services.html" class="service-showcase__link">
-                                        <span class="icon-right-arrow"></span>
-                                    </a>
+                                    
+                                    <p class="service-showcase__description">Automated Emails That Drive Action<br>Smart email workflows designed to engage users, nurture leads, and boost conversions.</p>
+                                    <div class="service-showcase__read-more-container">
+                                        <a href="services.html" class="service-showcase__read-more-link">Read More</a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                     
-                    <div class="service-showcase__item" data-service-title="Influencer">
-                        <div class="service-showcase__card-inner">
-                            <div class="service-showcase__card-front">
-                                <div class="service-showcase__image">
-                                    <img src="/assets/services-2-3-BxtUwJbj.jpg" alt="Influencer Marketing">
-                                    <div class="service-showcase__title-overlay">
-                                        <h3>Influencer Marketing</h3>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="service-showcase__card-back">
-                                <div class="service-showcase__back-content">
-                                    <h3>Influencer Marketing</h3>
-                                    <p class="service-showcase__cats"><a href="services.html">Marketing</a>, <a href="services.html">Influencer</a></p>
-                                    <p class="service-showcase__description">Strategic influencer marketing campaigns. We connect your brand with relevant influencers.</p>
-                                    <a href="services.html" class="service-showcase__link">
-                                        <span class="icon-right-arrow"></span>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
                     
                     <div class="service-showcase__item" data-service-title="Design">
                         <div class="service-showcase__card-inner">
                             <div class="service-showcase__card-front">
                                 <div class="service-showcase__image">
-                                    <img src="assets/images/service/services-2-4.jpg" alt="Web Design">
+                                    <img src="/assets/design-Dktoajhe.png" alt="Web Design">
                                     <div class="service-showcase__title-overlay">
                                         <h3>Web Design</h3>
                                     </div>
@@ -520,10 +506,33 @@
                                 <div class="service-showcase__back-content">
                                     <h3>Web Design</h3>
                                     <p class="service-showcase__cats"><a href="services.html">Design</a>, <a href="services.html">UI/UX</a></p>
-                                    <p class="service-showcase__description">Creative and responsive web design solutions. We create beautiful, user-friendly designs.</p>
-                                    <a href="services.html" class="service-showcase__link">
-                                        <span class="icon-right-arrow"></span>
-                                    </a>
+                                    <p class="service-showcase__description">Designs That Look Great and Work Better<br>Modern, user-focused web designs crafted to engage users and strengthen your brand.</p>
+                                    <div class="service-showcase__read-more-container">
+                                        <a href="services.html" class="service-showcase__read-more-link">Read More</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="service-showcase__item" data-service-title="SEO">
+                        <div class="service-showcase__card-inner">
+                            <div class="service-showcase__card-front">
+                                <div class="service-showcase__image">
+                                    <img src="/assets/seo1-LZvjNZWz.png" alt="SEO Development">
+                                    <div class="service-showcase__title-overlay">
+                                        <h3>SEO Development</h3>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="service-showcase__card-back">
+                                <div class="service-showcase__back-content">
+                                    <h3>SEO Development</h3>
+                                    <p class="service-showcase__cats"><a href="services.html">SEO</a>, <a href="services.html">Optimization</a></p>
+                                    <p class="service-showcase__description">SEO That Ranks, Reaches, and Converts<br>Search-optimized websites and content strategies built to increase visibility and drive qualified traffic.</p>
+                                    <div class="service-showcase__read-more-container">
+                                        <a href="services.html" class="service-showcase__read-more-link">Read More</a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -536,8 +545,8 @@
         <!-- Sliding Text Start-->
         <section class="slider-text-one">
             <div class="slider-text-one__animate-text">
-                <span>Web design <span>&</span> development agency.&nbsp;</span>
-                <span>Web design <span>&</span> development agency.&nbsp;</span>
+                <span>Web, App Design <span>&</span> development agency.&nbsp;</span>
+                <span>Web, App Design <span>&</span> development agency.&nbsp;</span>
             </div>
         </section>
         <!-- Sliding Text Start-->
@@ -548,35 +557,42 @@
                     <div class="col-lg-5 wow fadeInLeft animated" data-wow-delay="200ms">
                         <div class="section-title">
                             <h5 class="section-title__tagline section-title__tagline--has-dots">why choose us</h5>
-                            <h2 class="section-title__title">Providing the best services</h2>
+                            <h2 class="section-title__title">Providing the Best Digital Services</h2>
                         </div><!-- section-title -->
                         <div class="why-choose__box">
                             <div class="why-choose__box__icon">
                                 <span class="icon-tick"></span>
                             </div>
-                            <h3 class="why-choose__box__title">Problem-First Approach</h3>
-                            <p class="why-choose__box__text">We take time to understand your product, identify real issues, and fix problems at the root — not just surface-level symptoms.</p>
+                            <h3 class="why-choose__box__title">End-to-End Digital Expertise</h3>
+                            <p class="why-choose__box__text">From websites and mobile apps to AI integration, e-commerce, CMS, automation, and digital marketing — we handle the complete digital lifecycle under one roof.</p>
                         </div><!-- Why Choose Box -->
                         <div class="why-choose__box">
                             <div class="why-choose__box__icon">
                                 <span class="icon-tick"></span>
                             </div>
-                            <h3 class="why-choose__box__title">Clean, Reliable Execution</h3>
-                            <p class="why-choose__box__text">From code quality to design details, we focus on building stable, scalable, and maintainable web and app solutions.</p>
+                            <h3 class="why-choose__box__title">Scalable & Performance-Driven Solutions</h3>
+                            <p class="why-choose__box__text">We build web, mobile, and AI-powered systems that are fast, secure, and designed to scale as your business grows.</p>
+                        </div><!-- Why Choose Box -->
+                        <div class="why-choose__box">
+                            <div class="why-choose__box__icon">
+                               <span class="icon-tick"></span>
+                            </div>
+                            <h3 class="why-choose__box__title">Clean Code & Modern Technology</h3>
+                            <p class="why-choose__box__text">Our solutions are built using clean architecture, modern frameworks, and best practices to ensure long-term reliability and easy maintenance.</p>
                         </div><!-- Why Choose Box -->
                         <div class="why-choose__box">
                             <div class="why-choose__box__icon">
                                 <span class="icon-tick"></span>
                             </div>
                             <h3 class="why-choose__box__title">Direct & Transparent Communication</h3>
-                            <p class="why-choose__box__text">You work directly with the developer handling your project, ensuring clarity, faster decisions, and zero miscommunication.</p>
+                            <p class="why-choose__box__text">You work directly with the team building your product, ensuring clear communication, faster execution, and full project visibility.</p>
                         </div><!-- Why Choose Box -->
                     </div>
                     <div class="col-lg-7">
                         <div class="why-choose__image">
                             
                             <div class="why-choose__image__author wow fadeInRight animated" data-wow-delay="300ms">
-                                <img src="/assets/why-choose-1-2-BoHC9oqR.png" alt="ogency">
+                                <img src="/assets/4-yzTrNVb0.png" alt="ogency">
                             </div>
                             <!-- Contact Us Button -->
                             <div class="why-choose__contact-btn wow fadeInUp animated" data-wow-delay="400ms">
@@ -610,8 +626,8 @@
                                 </div>
                             </div>
                             <div class="how-we-work__content">
-                                <h3 class="how-we-work__title">Research</h3>
-                                <p class="how-we-work__description">We take the time to understand your goals, your industry, and your product inside out.</p>
+                                <h3 class="how-we-work__title">Discovery & Planning</h3>
+                                <p class="how-we-work__description">We understand your business goals, target users, and technical requirements to define the right strategy for your web, app, or AI solution.</p>
                             </div>
                         </div>
                         <div class="how-we-work__item wow fadeInUp animated" data-wow-delay="200ms">
@@ -622,8 +638,8 @@
                                 </div>
                             </div>
                             <div class="how-we-work__content">
-                                <h3 class="how-we-work__title">Wireframe</h3>
-                                <p class="how-we-work__description">From bold, modern layouts to intuitive user flows, our designers bring your brand to life with designs that resonate. You'll be part of the process every step of the way.</p>
+                                <h3 class="how-we-work__title">UX/UI & Wireframing</h3>
+                                <p class="how-we-work__description">We design intuitive user flows and modern interfaces that align with your brand and create smooth, engaging user experiences.</p>
                             </div>
                         </div>
                         <div class="how-we-work__item wow fadeInUp animated" data-wow-delay="300ms">
@@ -634,8 +650,8 @@
                                 </div>
                             </div>
                             <div class="how-we-work__content">
-                                <h3 class="how-we-work__title">Design and Prototype</h3>
-                                <p class="how-we-work__description">Once the design is finalized, our development team transforms it into a fully functional app. To elevate the user experience, we integrate smooth, responsive animations that guide users effortlessly as they navigate through the app.</p>
+                                <h3 class="how-we-work__title">Development & Integration</h3>
+                                <p class="how-we-work__description">Our team builds your product using clean, scalable code while integrating required systems such as AI, CMS, e-commerce, automation, and APIs.</p>
                             </div>
                         </div>
                         <div class="how-we-work__item wow fadeInUp animated" data-wow-delay="400ms">
@@ -646,8 +662,8 @@
                                 </div>
                             </div>
                             <div class="how-we-work__content">
-                                <h3 class="how-we-work__title">Development</h3>
-                                <p class="how-we-work__description">Your feedback shapes the process—we fine-tune the design to align with your vision.</p>
+                                <h3 class="how-we-work__title">Testing, Feedback & Launch</h3>
+                                <p class="how-we-work__description">We test thoroughly, refine based on your feedback, and ensure a stable, high-performance launch with ongoing support.</p>
                             </div>
                         </div>
                     </div>
@@ -669,8 +685,8 @@
                             <img src="/assets/henil-CN_F3Crf.png" alt="Asus marketing">
                             <div class="project-showcase__overlay">
                                 <div class="project-showcase__content">
-                                    <p class="project-showcase__cats"><a href="projects.html">Digital</a>, <a href="projects.html">Agency</a></p>
-                                    <h3 class="project-showcase__title"><a href="project-details.html">Asus marketing</a></h3>
+                                    <p class="project-showcase__cats"><a href="projects.html">B2B</a>, <a href="projects.html">Construction</a></p>
+                                    <h3 class="project-showcase__title"><a href="project-details.html">Henil Construction</a></h3>
                                     <a href="project-details.html" class="project-showcase__link">
                                         <span class="icon-right-arrow"></span>
                                     </a>
@@ -684,8 +700,8 @@
                             <img src="/assets/wpf-DhWzpEJd.png" alt="Asus marketing">
                             <div class="project-showcase__overlay">
                                 <div class="project-showcase__content">
-                                    <p class="project-showcase__cats"><a href="projects.html">Digital</a>, <a href="projects.html">Agency</a></p>
-                                    <h3 class="project-showcase__title"><a href="project-details.html">Asus marketing</a></h3>
+                                    <p class="project-showcase__cats"><a href="projects.html">Finance</a></p>
+                                    <h3 class="project-showcase__title"><a href="project-details.html">White Pearl Finance</a></h3>
                                     <a href="project-details.html" class="project-showcase__link">
                                         <span class="icon-right-arrow"></span>
                                     </a>
@@ -699,8 +715,8 @@
                             <img src="/assets/adrise-BeqprNUI.png" alt="Asus marketing">
                             <div class="project-showcase__overlay">
                                 <div class="project-showcase__content">
-                                    <p class="project-showcase__cats"><a href="projects.html">Digital</a>, <a href="projects.html">Agency</a></p>
-                                    <h3 class="project-showcase__title"><a href="project-details.html">Asus marketing</a></h3>
+                                    <p class="project-showcase__cats"><a href="projects.html">Web Development</a></p>
+                                    <h3 class="project-showcase__title"><a href="project-details.html">Adrise Media</a></h3>
                                     <a href="project-details.html" class="project-showcase__link">
                                         <span class="icon-right-arrow"></span>
                                     </a>
@@ -711,11 +727,11 @@
                     
                     <div class="project-showcase__item">
                         <div class="project-showcase__image">
-                            <img src="/assets/pitchpioneer-CQwPpCJB.png" alt="Asus marketing">
+                            <img src="/assets/pitchvora-Cn1ymV93.png" alt="Pitch Vora">
                             <div class="project-showcase__overlay">
                                 <div class="project-showcase__content">
-                                    <p class="project-showcase__cats"><a href="projects.html">Digital</a>, <a href="projects.html">Agency</a></p>
-                                    <h3 class="project-showcase__title"><a href="project-details.html">Asus marketing</a></h3>
+                                    <p class="project-showcase__cats"><a href="projects.html">IOS & Android. AI Integration</a></p>
+                                    <h3 class="project-showcase__title"><a href="project-details.html">Pitch Vora</a></h3>
                                     <a href="project-details.html" class="project-showcase__link">
                                         <span class="icon-right-arrow"></span>
                                     </a>
@@ -729,8 +745,8 @@
                             <img src="/assets/mediatool-bj1M9j5l.png" alt="Asus marketing">
                             <div class="project-showcase__overlay">
                                 <div class="project-showcase__content">
-                                    <p class="project-showcase__cats"><a href="projects.html">Digital</a>, <a href="projects.html">Agency</a></p>
-                                    <h3 class="project-showcase__title"><a href="project-details.html">Asus marketing</a></h3>
+                                    <p class="project-showcase__cats"><a href="projects.html">Web Development</a></p>
+                                    <h3 class="project-showcase__title"><a href="project-details.html">Media tool</a></h3>
                                     <a href="project-details.html" class="project-showcase__link">
                                         <span class="icon-right-arrow"></span>
                                     </a>
@@ -747,9 +763,10 @@
             </div>
         </section>
         <!-- Project End -->
-        <div class="client-carousel client-carousel--without-title">
+       <!--Testimonial End-->
+        <div class="client-carousel client-carousel--about">
             <div class="container">
-                <h5 class="client-carousel__tilte"><span>1K+ Brands Trust Us</span></h5><!-- section-title -->
+                <h5 class="client-carousel__tilte"><span>Our Trusting Partners</span></h5><!-- section-title -->
                 <div class="client-carousel__one ogency-owl__carousel owl-theme owl-carousel" data-owl-options='{
             "items": 5,
             "margin": 120,
@@ -787,43 +804,30 @@
             }
             }'>
                     <div class="client-carousel__one__item">
-                        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAHoAAAAXCAYAAADEM1tgAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyBpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNSBXaW5kb3dzIiB4bXBNTTpJbnN0YW5jZUlEPSJ4bXAuaWlkOkE1ODE3NUI0MENCNDExRUVBMUY5Rjc0MjA0MDU5MkU1IiB4bXBNTTpEb2N1bWVudElEPSJ4bXAuZGlkOkE1ODE3NUI1MENCNDExRUVBMUY5Rjc0MjA0MDU5MkU1Ij4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9InhtcC5paWQ6QTU4MTc1QjIwQ0I0MTFFRUExRjlGNzQyMDQwNTkyRTUiIHN0UmVmOmRvY3VtZW50SUQ9InhtcC5kaWQ6QTU4MTc1QjMwQ0I0MTFFRUExRjlGNzQyMDQwNTkyRTUiLz4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+IDw/eHBhY2tldCBlbmQ9InIiPz4LrvH0AAAGXElEQVR42uxaa2xVRRC+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" alt="ogency">
+                        <img src="/assets/Henil-BphB9ygB.png" alt="Henil">
                     </div><!-- /.owl-slide-item-->
                     <div class="client-carousel__one__item">
-                        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAHoAAAAXCAYAAADEM1tgAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyBpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNSBXaW5kb3dzIiB4bXBNTTpJbnN0YW5jZUlEPSJ4bXAuaWlkOkE1ODE3NUI0MENCNDExRUVBMUY5Rjc0MjA0MDU5MkU1IiB4bXBNTTpEb2N1bWVudElEPSJ4bXAuZGlkOkE1ODE3NUI1MENCNDExRUVBMUY5Rjc0MjA0MDU5MkU1Ij4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9InhtcC5paWQ6QTU4MTc1QjIwQ0I0MTFFRUExRjlGNzQyMDQwNTkyRTUiIHN0UmVmOmRvY3VtZW50SUQ9InhtcC5kaWQ6QTU4MTc1QjMwQ0I0MTFFRUExRjlGNzQyMDQwNTkyRTUiLz4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+IDw/eHBhY2tldCBlbmQ9InIiPz4LrvH0AAAGXElEQVR42uxaa2xVRRC+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" alt="ogency">
+                        <img src="/assets/logo-HYCG-Rae.png" alt="Adrise">
                     </div><!-- /.owl-slide-item-->
                     <div class="client-carousel__one__item">
-                        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAHoAAAAXCAYAAADEM1tgAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyBpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNSBXaW5kb3dzIiB4bXBNTTpJbnN0YW5jZUlEPSJ4bXAuaWlkOkE1ODE3NUI0MENCNDExRUVBMUY5Rjc0MjA0MDU5MkU1IiB4bXBNTTpEb2N1bWVudElEPSJ4bXAuZGlkOkE1ODE3NUI1MENCNDExRUVBMUY5Rjc0MjA0MDU5MkU1Ij4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9InhtcC5paWQ6QTU4MTc1QjIwQ0I0MTFFRUExRjlGNzQyMDQwNTkyRTUiIHN0UmVmOmRvY3VtZW50SUQ9InhtcC5kaWQ6QTU4MTc1QjMwQ0I0MTFFRUExRjlGNzQyMDQwNTkyRTUiLz4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+IDw/eHBhY2tldCBlbmQ9InIiPz4LrvH0AAAGXElEQVR42uxaa2xVRRC+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" alt="ogency">
+                        <img src="/assets/smartads-B7-NRixE.png" alt="smartads">
                     </div><!-- /.owl-slide-item-->
                     <div class="client-carousel__one__item">
-                        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAHoAAAAXCAYAAADEM1tgAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyBpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNSBXaW5kb3dzIiB4bXBNTTpJbnN0YW5jZUlEPSJ4bXAuaWlkOkE1ODE3NUI0MENCNDExRUVBMUY5Rjc0MjA0MDU5MkU1IiB4bXBNTTpEb2N1bWVudElEPSJ4bXAuZGlkOkE1ODE3NUI1MENCNDExRUVBMUY5Rjc0MjA0MDU5MkU1Ij4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9InhtcC5paWQ6QTU4MTc1QjIwQ0I0MTFFRUExRjlGNzQyMDQwNTkyRTUiIHN0UmVmOmRvY3VtZW50SUQ9InhtcC5kaWQ6QTU4MTc1QjMwQ0I0MTFFRUExRjlGNzQyMDQwNTkyRTUiLz4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+IDw/eHBhY2tldCBlbmQ9InIiPz4LrvH0AAAGXElEQVR42uxaa2xVRRC+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" alt="ogency">
+                        <img src="/assets/pv-BMfGKqNv.png" alt="Pitchvora">
                     </div><!-- /.owl-slide-item-->
                     <div class="client-carousel__one__item">
-                        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAHoAAAAXCAYAAADEM1tgAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyBpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNSBXaW5kb3dzIiB4bXBNTTpJbnN0YW5jZUlEPSJ4bXAuaWlkOkE1ODE3NUI0MENCNDExRUVBMUY5Rjc0MjA0MDU5MkU1IiB4bXBNTTpEb2N1bWVudElEPSJ4bXAuZGlkOkE1ODE3NUI1MENCNDExRUVBMUY5Rjc0MjA0MDU5MkU1Ij4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9InhtcC5paWQ6QTU4MTc1QjIwQ0I0MTFFRUExRjlGNzQyMDQwNTkyRTUiIHN0UmVmOmRvY3VtZW50SUQ9InhtcC5kaWQ6QTU4MTc1QjMwQ0I0MTFFRUExRjlGNzQyMDQwNTkyRTUiLz4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+IDw/eHBhY2tldCBlbmQ9InIiPz4LrvH0AAAGXElEQVR42uxaa2xVRRC+97aUvilUBHkUTfFVoiAUlYfyCMqjNBA1PiKiKCCoMaIxgKBGG4kx9YGa0GBsigpKI6JGFJUIARrREAmiSKJRSKxStRTBglDKdUa+m0wmu3v2nFL400m+3DN7Zmd3Z3bn7M7eeDKZjHXQWaGhhNWEbwk3Elrbs7F4h6PPCsUJJwU/ifBJezaYHlK+G2EwYRThQsKPhMc7/BaaEorPae8Gwzh6DmGZofwnwooO34UiDqP/EHLBH2r3EOIRujnMvEeYGjBDkyEnWDZ+WwhHPL9RaRY51pOH52bC8Qg6Ym2sk0nIgr3+JRx12ITt9bdw9FjCxgh9Yht2Qt+OwJZeIcTk5E0BTma62LNzpYRqdIgH2ojZzFiKz4GNpmIwa9Evph6ESug7ABwjrCFcYpgMa6FjegiDTkSdLYTO6t15hHmEH+DYAxgTT7Z9eNfFo43nCcuBKsIMMUaTDZejT4fQ3kFM7g8J442Rmle0A+8k/Wh+gJ5cwgZPXc8Y6seVTD6hyEPXDKGjTL3LDegzI13VuRnlCcLTSX8qVXq5/uGAOsNUna6ELZ7tse7LZH2pqDMhQ/DjQwzkG4excgzyuwiLCDMJFYT96v2bSkeaeHeMUKXkVxKqCQ2Gti6CDj0x5nk4Wk+OIpQvMrTDfViM8dQZ3heGcHQjoUDI97bIfUR4mbDK8n6cdnSGWCmmmexDaRZj/ankhhtkeOD3KLmJ6n0zyluFzEI1OVluutLTIN7vFOWtiBQuR+9VkzNVLtu4DYtE1y1R/djucPRcQp5AQsh2MtiaJ2m2ao/lphhk+0lHf43CFH9/BEfnGwZ7i2VF2FCh5OMGR6foRYeeN5RsV5QPVeWDHDp6Kdmr1ftiy5glrlU6ciyOHu7QUaN0XBfQ5vlKvjnl6AKD4VojOLoo4Lv6gEeo1LO3xOHoNIceHaavFO9aRPkmh45lIVe/Da2W8UhHl1nqZho+Dz5t3qHqDeZd9+3Ylx3Ebx+P3biJ8hTfS/FVHjp49/yV4K+xyK0IOO40OPp2r3geZeh3DEeWOYKf63l8TB0bCwiFhH7qqJcf0qYjFf+IZ72Vir+TOzYZzAD8DmpDWk/SQMU/62EsNkpPwV8uEgySNgToOaF4mW58i/C64O8ivKLkJym+xtIOZ7RGECbgWFMS0K+w5/er1Jj+8KzH4/2AMAX8iHTh4CmWlRkLoVxSYcTZ6NKRoqYImSg5mdjZ08AvMTha8tWGBAxHvEcxeaP2w4d6iOffDTZ20Q7h037pYvZnYHYWRnT0wYBB7UMbvsTyD1uiRdjoomm+cHQuVuJu8enqK2QfM+jeTrhClb+NSPMLEictyJRtRjiPQjIyZYWsK5M7Lenw/AUo2IqMSxRqVHy94i9FavB0zP5ErG30G2GPyJ49Jz5hTwq57wzf+1nKyS8RFiMbdrrpZ/F8DhbKcc+6E8Tz7gRiuaQos68eqUdJuwxhKBkC7U2zxHOZiAIzRfl9hnpPiOeNSHPanJzhac8TlvLNih/mObZsNRnXJ5AXbistNJT9hRCWIt/7Vt6xFp8BR9cpfgihvyrbaogkvQX/WkAbYwIuQYKil14stZ5j03uOmgRmY2UbjbbKUl4unjlMvhqgZxA2Wnz1ueAMXBU+KPh1yrEPGRxwEteLKbopYFWtd2xcpZ7rHX2cJvhzcQJw7UH4wuZuwb///6ITyY2GZDQqCTi8r1Py2wgDkTZMIN3KWaglSu4zSwqUqTzkZcRoz4SEpExLnRcM6chM1XYpcvKuy41aQ8aLM3gDCH1Um9uU7A7oyoRtMpDTN+W80/WlRqbK7frQWI8sDXfkS0v9JksWrkmkC/WlBtOtITNsZQ7ZWkP7axzyWZaxbDPcLrHuTwU/UujpH2DbHmr8dRa5o47yAtPtVUrhYg8Hc4K+b4g0YBwpUB9aCkdpHZLGeLTnuiaUKDD0oUuA/p6GGzdNFZCtckS/2Y763Q3tzva0YaW67LH+w6Qbjhvl2L3x94b/H/YF4V3C9xG/iznIIE2GXt6JH8Yx5nN8T/Zb6vL59ikciyo9dubFOAPvwp8akgGyCyDDCZS9HmPh/c3o2Kl/cA5BoqkeNlqN8zRTd+jcgz8YaCoi3BA79V+8OGzBKcxfHTYcBxuWwob8J46dhI+x19BH3dh/AgwAB8g3wkdL/lUAAAAASUVORK5CYII=" alt="ogency">
+                        <img src="/assets/wpf-SeVcOE4z.png" alt="White Pearl Finance">
                     </div><!-- /.owl-slide-item-->
                     <div class="client-carousel__one__item">
-                        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAHoAAAAXCAYAAADEM1tgAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyBpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNSBXaW5kb3dzIiB4bXBNTTpJbnN0YW5jZUlEPSJ4bXAuaWlkOkE1ODE3NUI0MENCNDExRUVBMUY5Rjc0MjA0MDU5MkU1IiB4bXBNTTpEb2N1bWVudElEPSJ4bXAuZGlkOkE1ODE3NUI1MENCNDExRUVBMUY5Rjc0MjA0MDU5MkU1Ij4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9InhtcC5paWQ6QTU4MTc1QjIwQ0I0MTFFRUExRjlGNzQyMDQwNTkyRTUiIHN0UmVmOmRvY3VtZW50SUQ9InhtcC5kaWQ6QTU4MTc1QjMwQ0I0MTFFRUExRjlGNzQyMDQwNTkyRTUiLz4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+IDw/eHBhY2tldCBlbmQ9InIiPz4LrvH0AAAGXElEQVR42uxaa2xVRRC+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" alt="ogency">
+                        <img src="/assets/adwait-00-etp4W.png" alt="adwait">
                     </div><!-- /.owl-slide-item-->
                     <div class="client-carousel__one__item">
-                        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAHoAAAAXCAYAAADEM1tgAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyBpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNSBXaW5kb3dzIiB4bXBNTTpJbnN0YW5jZUlEPSJ4bXAuaWlkOkE1ODE3NUI0MENCNDExRUVBMUY5Rjc0MjA0MDU5MkU1IiB4bXBNTTpEb2N1bWVudElEPSJ4bXAuZGlkOkE1ODE3NUI1MENCNDExRUVBMUY5Rjc0MjA0MDU5MkU1Ij4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9InhtcC5paWQ6QTU4MTc1QjIwQ0I0MTFFRUExRjlGNzQyMDQwNTkyRTUiIHN0UmVmOmRvY3VtZW50SUQ9InhtcC5kaWQ6QTU4MTc1QjMwQ0I0MTFFRUExRjlGNzQyMDQwNTkyRTUiLz4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+IDw/eHBhY2tldCBlbmQ9InIiPz4LrvH0AAAGXElEQVR42uxaa2xVRRC+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" alt="ogency">
+                        <img src="/assets/bharti-BCaVOHVD.png" alt="bharti">
                     </div><!-- /.owl-slide-item-->
-                    <div class="client-carousel__one__item">
-                        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAHoAAAAXCAYAAADEM1tgAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyBpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNSBXaW5kb3dzIiB4bXBNTTpJbnN0YW5jZUlEPSJ4bXAuaWlkOkE1ODE3NUI0MENCNDExRUVBMUY5Rjc0MjA0MDU5MkU1IiB4bXBNTTpEb2N1bWVudElEPSJ4bXAuZGlkOkE1ODE3NUI1MENCNDExRUVBMUY5Rjc0MjA0MDU5MkU1Ij4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9InhtcC5paWQ6QTU4MTc1QjIwQ0I0MTFFRUExRjlGNzQyMDQwNTkyRTUiIHN0UmVmOmRvY3VtZW50SUQ9InhtcC5kaWQ6QTU4MTc1QjMwQ0I0MTFFRUExRjlGNzQyMDQwNTkyRTUiLz4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+IDw/eHBhY2tldCBlbmQ9InIiPz4LrvH0AAAGXElEQVR42uxaa2xVRRC+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" alt="ogency">
-                    </div><!-- /.owl-slide-item-->
-                    <div class="client-carousel__one__item">
-                        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAHoAAAAXCAYAAADEM1tgAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyBpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNSBXaW5kb3dzIiB4bXBNTTpJbnN0YW5jZUlEPSJ4bXAuaWlkOkE1ODE3NUI0MENCNDExRUVBMUY5Rjc0MjA0MDU5MkU1IiB4bXBNTTpEb2N1bWVudElEPSJ4bXAuZGlkOkE1ODE3NUI1MENCNDExRUVBMUY5Rjc0MjA0MDU5MkU1Ij4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9InhtcC5paWQ6QTU4MTc1QjIwQ0I0MTFFRUExRjlGNzQyMDQwNTkyRTUiIHN0UmVmOmRvY3VtZW50SUQ9InhtcC5kaWQ6QTU4MTc1QjMwQ0I0MTFFRUExRjlGNzQyMDQwNTkyRTUiLz4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+IDw/eHBhY2tldCBlbmQ9InIiPz4LrvH0AAAGXElEQVR42uxaa2xVRRC+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" alt="ogency">
-                    </div><!-- /.owl-slide-item-->
-                    <div class="client-carousel__one__item">
-                        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAHoAAAAXCAYAAADEM1tgAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyBpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNSBXaW5kb3dzIiB4bXBNTTpJbnN0YW5jZUlEPSJ4bXAuaWlkOkE1ODE3NUI0MENCNDExRUVBMUY5Rjc0MjA0MDU5MkU1IiB4bXBNTTpEb2N1bWVudElEPSJ4bXAuZGlkOkE1ODE3NUI1MENCNDExRUVBMUY5Rjc0MjA0MDU5MkU1Ij4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9InhtcC5paWQ6QTU4MTc1QjIwQ0I0MTFFRUExRjlGNzQyMDQwNTkyRTUiIHN0UmVmOmRvY3VtZW50SUQ9InhtcC5kaWQ6QTU4MTc1QjMwQ0I0MTFFRUExRjlGNzQyMDQwNTkyRTUiLz4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+IDw/eHBhY2tldCBlbmQ9InIiPz4LrvH0AAAGXElEQVR42uxaa2xVRRC+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" alt="ogency">
-                    </div><!-- /.owl-slide-item-->
+                    
                 </div><!-- /.thm-owl__slider -->
             </div><!-- /.container -->
         </div><!-- /.client-carousel -->
-        <section class="divider-section">
-            <div class="container">
-                <div class="br-divider"></div>
-            </div>
-        </section>
         <!--Testimonial Start-->
         <section class="testimonial-modern">
             <div class="testimonial-modern__bg">
@@ -939,7 +943,7 @@
         <!--Testimonial End-->
         <!--Contact Start-->
         <section class="contact-one">
-            <div class="contact-one__bg" style="background-image: url(/assets/contact-bg-1-vxu9fam4.png);"></div>
+            <div class="contact-one__bg" style="background-image: url(assets/images/backgrounds/contact-bg-1.png);"></div>
             <div class="container">
                 <div class="row">
                     <div class="col-lg-6 wow fadeInLeft animated" data-wow-delay="200ms">
@@ -949,7 +953,7 @@
                                 <h2 class="section-title__title">Get in touch with us</h2>
                             </div><!-- section-title -->
                             <div class="contact-one__form-box">
-                                <form action="https://bracketweb.com/ogency-html-main/assets/inc/sendemail.php" class="contact-one__form contact-form-validated" novalidate="novalidate">
+                                <form action="#" class="contact-one__form contact-form-validated" novalidate="novalidate">
                                     <div class="row">
                                         <div class="col-md-6">
                                             <div class="contact-one__input-box">
@@ -970,9 +974,18 @@
                                             <div class="contact-one__input-box">
                                                 <select class="selectpicker" aria-label="Default select example">
                                                     <option selected>Select service</option>
-                                                    <option value="1">Select service 01</option>
-                                                    <option value="2">Select service 02</option>
-                                                    <option value="3">Select service 03</option>
+                                                    <option value="web-development">Web Development</option>
+                                                    <option value="android-development">Android App Development</option>
+                                                    <option value="ios-development">IOS App Development</option>
+                                                    <option value="ai-integration">AI Integration</option>
+                                                    <option value="digital-marketing">Digital Marketing</option>
+                                                    <option value="e-commerce">E-Commerce</option>
+                                                    <option value="payment-integration">Payment Integration</option>
+                                                    <option value="cms-development">CMS Web Development</option>
+                                                    <option value="web-hosting">Web Hosting</option>
+                                                    <option value="email-automation">Email Automation</option>
+                                                    <option value="web-design">Web Design</option>
+                                                    <option value="seo-development">SEO Development</option>
                                                 </select>
                                             </div>
                                         </div>
@@ -1015,9 +1028,6 @@
         </script>
 
     </div><!-- /.page-wrapper -->
-
-    <!-- Contact Overlay JavaScript -->
-    <script src="assets/js/contact-overlay.js"></script>
 
     <!-- Floating WhatsApp and Call Buttons -->
     <div class="floating-buttons">

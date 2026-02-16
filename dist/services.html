@@ -68,9 +68,36 @@
                 font-size: 18px;
             }
         }
+        
+        /* Service Details Thumbnail - Smaller Size */
+        .services-details__thumb {
+            position: relative !important;
+            margin-bottom: 15px !important;
+            max-height: 500px !important;
+            overflow: hidden !important;
+            border-radius: 8px !important;
+            background-color: transparent !important;
+        }
+        
+        .services-details__thumb img {
+            width: 100% !important;
+            height: 500px !important;
+            object-fit: cover !important;
+            mix-blend-mode: normal !important;
+        }
+        
+        /* Remove banner background shape */
+        .services-details__banner__shape {
+            display: none !important;
+        }
+        
+        /* Make "Are you looking for" text blue */
+        .services-details__banner__title {
+            color: #007bff !important;
+        }
     </style>
-  <link rel="stylesheet" crossorigin href="/assets/ogency-B5ny7Y4C.css">
-  <link rel="stylesheet" crossorigin href="/assets/project-showcase-BEk-mqyT.css">
+  <link rel="stylesheet" crossorigin href="/assets/ogency-D6W8In7n.css">
+  <link rel="stylesheet" crossorigin href="/assets/project-showcase-ClDCzcQK.css">
 </head>
 
 <body class="custom-cursor">
@@ -79,7 +106,7 @@
     <div class="custom-cursor__cursor-two"></div>
 
     <div class="preloader">
-        <div class="preloader__image" style="background-image: url(/assets/loader-D3C5i_gk.png);"></div>
+        <div class="preloader__image" style="background-image: url(assets/images/loader.png);"></div>
     </div>
     <!-- /.preloader -->
     <div class="page-wrapper">
@@ -89,7 +116,6 @@
         <section class="page-header">
             <div class="page-header__bg"></div>
             <!-- /.page-header__bg -->
-            <div class="page-header__overlay"></div>
             <!-- /.page-header__bg -->
             <div class="container">
                 <ul class="page-header__breadcrumb list-unstyled">
@@ -109,12 +135,12 @@
                 <div class="service-showcase__items">
                     <div class="service-showcase__item">
                         <div class="service-showcase__image">
-                            <img src="/assets/services-2-1-CLSLkawm.jpg" alt="Web Development">
+                            <img src="/assets/webdev1-Cq1J7u5P.png" alt="Web Development">
                             <div class="service-showcase__overlay">
                                 <div class="service-showcase__content">
                                     <p class="service-showcase__cats"><a href="#web-development-details">Development</a>, <a href="#web-development-details">Web</a></p>
                                     <h3 class="service-showcase__title"><a href="#web-development-details" onclick="return showServiceDetails('web-development-details')">Web Development</a></h3>
-                                    <p class="service-showcase__description">Professional web development services for modern businesses. We create responsive, fast, and secure websites that drive results and enhance user experience.</p>
+                                    <p class="service-showcase__description">We design and develop modern, high-performance websites that are fast, responsive, and secure. Our web solutions are built to scale, deliver seamless user experiences, and support long-term business goals.</p>
                                     <a href="#web-development-details" class="service-showcase__read-more" onclick="return showServiceDetails('web-development-details')">Read More →</a>
                                 </div>
                             </div>
@@ -123,12 +149,12 @@
                     
                     <div class="service-showcase__item">
                         <div class="service-showcase__image">
-                            <img src="/assets/services-2-2-l6ylgZiQ.jpg" alt="Android App Development">
+                            <img src="/assets/android2-TpQm5LUj.png" alt="Android App Development">
                             <div class="service-showcase__overlay">
                                 <div class="service-showcase__content">
                                     <p class="service-showcase__cats"><a href="#android-development-details">Mobile</a>, <a href="#android-development-details">Android</a></p>
                                     <h3 class="service-showcase__title"><a href="#android-development-details" onclick="return showServiceDetails('android-development-details')">Android App Development</a></h3>
-                                    <p class="service-showcase__description">Native Android app development for all devices. We build high-performance, user-friendly applications that meet your business needs.</p>
+                                    <p class="service-showcase__description">We design and develop custom Android applications that deliver smooth performance, intuitive user experiences, and scalable backend integration. Our apps are built to be secure, reliable, and ready to grow with your business.</p>
                                     <a href="#android-development-details" class="service-showcase__read-more" onclick="return showServiceDetails('android-development-details')">Read More →</a>
                                 </div>
                             </div>
@@ -137,12 +163,12 @@
                     
                     <div class="service-showcase__item">
                         <div class="service-showcase__image">
-                            <img src="/assets/services-2-3-BxtUwJbj.jpg" alt="IOS App Development">
+                            <img src="/assets/ios2-DU2ae49r.png" alt="IOS App Development">
                             <div class="service-showcase__overlay">
                                 <div class="service-showcase__content">
                                     <p class="service-showcase__cats"><a href="#ios-development-details">Mobile</a>, <a href="#ios-development-details">iOS</a></p>
                                     <h3 class="service-showcase__title"><a href="#ios-development-details" onclick="return showServiceDetails('ios-development-details')">IOS App Development</a></h3>
-                                    <p class="service-showcase__description">Native iOS app development for iPhone and iPad. We create stunning, high-performance apps that deliver exceptional user experiences.</p>
+                                    <p class="service-showcase__description">We design and develop custom iOS applications that deliver smooth performance, strong security, and intuitive user experiences. Our iOS solutions are built to scale and perform reliably across iPhone and iPad devices.</p>
                                     <a href="#ios-development-details" class="service-showcase__read-more" onclick="return showServiceDetails('ios-development-details')">Read More →</a>
                                 </div>
                             </div>
@@ -151,12 +177,12 @@
                     
                     <div class="service-showcase__item">
                         <div class="service-showcase__image">
-                            <img src="assets/images/service/services-2-4.jpg" alt="AI Integration">
+                            <img src="/assets/ai1-gfWjoyJ6.png" alt="AI Integration">
                             <div class="service-showcase__overlay">
                                 <div class="service-showcase__content">
                                     <p class="service-showcase__cats"><a href="#ai-integration-details">AI</a>, <a href="#ai-integration-details">Integration</a></p>
                                     <h3 class="service-showcase__title"><a href="#ai-integration-details" onclick="return showServiceDetails('ai-integration-details')">AI Integration</a></h3>
-                                    <p class="service-showcase__description">Cutting-edge AI solutions for your business needs. We implement intelligent automation and machine learning to transform your operations.</p>
+                                    <p class="service-showcase__description">We integrate AI capabilities into web and mobile applications to automate processes, enhance user experiences, and unlock data-driven insights. Our AI solutions are designed to be scalable, secure, and aligned with real business needs.</p>
                                     <a href="#ai-integration-details" class="service-showcase__read-more" onclick="return showServiceDetails('ai-integration-details')">Read More →</a>
                                 </div>
                             </div>
@@ -165,12 +191,12 @@
                     
                     <div class="service-showcase__item">
                         <div class="service-showcase__image">
-                            <img src="/assets/services-2-1-CLSLkawm.jpg" alt="Digital Marketing">
+                            <img src="/assets/digital1-C9uYBLAn.png" alt="Digital Marketing">
                             <div class="service-showcase__overlay">
                                 <div class="service-showcase__content">
                                     <p class="service-showcase__cats"><a href="#digital-marketing-details">Marketing</a>, <a href="#digital-marketing-details">Digital</a></p>
                                     <h3 class="service-showcase__title"><a href="#digital-marketing-details" onclick="return showServiceDetails('digital-marketing-details')">Digital Marketing</a></h3>
-                                    <p class="service-showcase__description">Comprehensive digital marketing strategies. We drive growth through data-driven campaigns and innovative online marketing solutions.</p>
+                                    <p class="service-showcase__description">We help businesses grow online through data-driven digital marketing strategies that increase visibility, attract the right audience, and convert visitors into customers.</p>
                                     <a href="#digital-marketing-details" class="service-showcase__read-more" onclick="return showServiceDetails('digital-marketing-details')">Read More →</a>
                                 </div>
                             </div>
@@ -179,12 +205,12 @@
                     
                     <div class="service-showcase__item">
                         <div class="service-showcase__image">
-                            <img src="/assets/services-2-2-l6ylgZiQ.jpg" alt="E-Commerce">
+                            <img src="/assets/ecomm1-DSQM9F9C.png" alt="E-Commerce">
                             <div class="service-showcase__overlay">
                                 <div class="service-showcase__content">
                                     <p class="service-showcase__cats"><a href="#e-commerce-details">E-Commerce</a>, <a href="#e-commerce-details">Online Store</a></p>
                                     <h3 class="service-showcase__title"><a href="#e-commerce-details" onclick="return showServiceDetails('e-commerce-details')">E-Commerce</a></h3>
-                                    <p class="service-showcase__description">Complete e-commerce solutions for online stores. We build powerful, scalable platforms that drive sales and customer engagement.</p>
+                                    <p class="service-showcase__description">We design and develop powerful e-commerce platforms that deliver seamless shopping experiences, secure payments, and scalable operations for growing businesses.</p>
                                     <a href="#e-commerce-details" class="service-showcase__read-more" onclick="return showServiceDetails('e-commerce-details')">Read More →</a>
                                 </div>
                             </div>
@@ -193,12 +219,12 @@
                     
                     <div class="service-showcase__item">
                         <div class="service-showcase__image">
-                            <img src="/assets/services-2-3-BxtUwJbj.jpg" alt="Payment Integration">
+                            <img src="/assets/payment1-hM5biKVa.png" alt="Payment Integration">
                             <div class="service-showcase__overlay">
                                 <div class="service-showcase__content">
                                     <p class="service-showcase__cats"><a href="#payment-integration-details">Payment</a>, <a href="#payment-integration-details">Integration</a></p>
                                     <h3 class="service-showcase__title"><a href="#payment-integration-details" onclick="return showServiceDetails('payment-integration-details')">Payment Integration</a></h3>
-                                    <p class="service-showcase__description">Secure payment gateway integration services. We integrate reliable payment solutions for seamless online transactions.</p>
+                                    <p class="service-showcase__description">We integrate secure and seamless payment systems into websites, mobile apps, and e-commerce platforms, ensuring smooth transactions and reliable payment experiences for users.</p>
                                     <a href="#payment-integration-details" class="service-showcase__read-more" onclick="return showServiceDetails('payment-integration-details')">Read More →</a>
                                 </div>
                             </div>
@@ -207,12 +233,12 @@
                     
                     <div class="service-showcase__item">
                         <div class="service-showcase__image">
-                            <img src="assets/images/service/services-2-4.jpg" alt="CMS Web Development">
+                            <img src="/assets/cms1-D6_F3KKs.png" alt="CMS Web Development">
                             <div class="service-showcase__overlay">
                                 <div class="service-showcase__content">
                                     <p class="service-showcase__cats"><a href="#cms-development-details">CMS</a>, <a href="#cms-development-details">Development</a></p>
                                     <h3 class="service-showcase__title"><a href="#cms-development-details" onclick="return showServiceDetails('cms-development-details')">CMS Web Development</a></h3>
-                                    <p class="service-showcase__description">Custom CMS development for easy content management. We build scalable content management systems tailored to your needs.</p>
+                                    <p class="service-showcase__description">We design and develop custom content management systems that make managing your website or application simple, efficient, and fully under your control.</p>
                                     <a href="#cms-development-details" class="service-showcase__read-more" onclick="return showServiceDetails('cms-development-details')">Read More →</a>
                                 </div>
                             </div>
@@ -221,12 +247,12 @@
                     
                     <div class="service-showcase__item">
                         <div class="service-showcase__image">
-                            <img src="/assets/services-2-1-CLSLkawm.jpg" alt="Web Hosting">
+                            <img src="/assets/webhosting1-CCp1F038.png" alt="Web Hosting">
                             <div class="service-showcase__overlay">
                                 <div class="service-showcase__content">
                                     <p class="service-showcase__cats"><a href="#web-hosting-details">Hosting</a>, <a href="#web-hosting-details">Infrastructure</a></p>
                                     <h3 class="service-showcase__title"><a href="#web-hosting-details" onclick="return showServiceDetails('web-hosting-details')">Web Hosting</a></h3>
-                                    <p class="service-showcase__description">Reliable and secure web hosting solutions. We provide fast, secure hosting with 99.9% uptime guarantee.</p>
+                                    <p class="service-showcase__description">We provide secure and reliable web hosting solutions optimized for performance, uptime, and scalability, ensuring your website or application runs smoothly at all times.</p>
                                     <a href="#web-hosting-details" class="service-showcase__read-more" onclick="return showServiceDetails('web-hosting-details')">Read More →</a>
                                 </div>
                             </div>
@@ -235,12 +261,12 @@
                     
                     <div class="service-showcase__item">
                         <div class="service-showcase__image">
-                            <img src="/assets/services-2-2-l6ylgZiQ.jpg" alt="Email Automation">
+                            <img src="/assets/email1-BoTd3236.png" alt="Email Automation">
                             <div class="service-showcase__overlay">
                                 <div class="service-showcase__content">
                                     <p class="service-showcase__cats"><a href="#email-automation-details">Email</a>, <a href="#email-automation-details">Automation</a></p>
                                     <h3 class="service-showcase__title"><a href="#email-automation-details" onclick="return showServiceDetails('email-automation-details')">Email Automation</a></h3>
-                                    <p class="service-showcase__description">Automated email marketing campaigns. We create targeted email campaigns that engage and convert your audience.</p>
+                                    <p class="service-showcase__description">We design and implement automated email systems that help businesses communicate at the right time, with the right message, without manual effort.</p>
                                     <a href="#email-automation-details" class="service-showcase__read-more" onclick="return showServiceDetails('email-automation-details')">Read More →</a>
                                 </div>
                             </div>
@@ -249,13 +275,13 @@
                     
                     <div class="service-showcase__item">
                         <div class="service-showcase__image">
-                            <img src="/assets/services-2-3-BxtUwJbj.jpg" alt="Influencer Marketing">
+                            <img src="/assets/webdesign1-Db8C2ByS.png" alt="Web Design">
                             <div class="service-showcase__overlay">
                                 <div class="service-showcase__content">
-                                    <p class="service-showcase__cats"><a href="#influencer-marketing-details">Marketing</a>, <a href="#influencer-marketing-details">Influencer</a></p>
-                                    <h3 class="service-showcase__title"><a href="#influencer-marketing-details" onclick="return showServiceDetails('influencer-marketing-details')">Influencer Marketing</a></h3>
-                                    <p class="service-showcase__description">Strategic influencer marketing campaigns. We connect your brand with relevant influencers to reach your target audience.</p>
-                                    <a href="#influencer-marketing-details" class="service-showcase__read-more" onclick="return showServiceDetails('influencer-marketing-details')">Read More →</a>
+                                    <p class="service-showcase__cats"><a href="#web-design-details">Design</a>, <a href="#web-design-details">UI/UX</a></p>
+                                    <h3 class="service-showcase__title"><a href="#web-design-details" onclick="return showServiceDetails('web-design-details')">Web Design</a></h3>
+                                    <p class="service-showcase__description">We design visually appealing, user-centric websites that combine creativity with usability, helping brands communicate clearly and convert visitors into customers.</p>
+                                    <a href="#web-design-details" class="service-showcase__read-more" onclick="return showServiceDetails('web-design-details')">Read More →</a>
                                 </div>
                             </div>
                         </div>
@@ -263,13 +289,13 @@
                     
                     <div class="service-showcase__item">
                         <div class="service-showcase__image">
-                            <img src="assets/images/service/services-2-4.jpg" alt="Web Design">
+                            <img src="/assets/seo-u763lKHi.png" alt="SEO Development">
                             <div class="service-showcase__overlay">
                                 <div class="service-showcase__content">
-                                    <p class="service-showcase__cats"><a href="#web-design-details">Design</a>, <a href="#web-design-details">UI/UX</a></p>
-                                    <h3 class="service-showcase__title"><a href="#web-design-details" onclick="return showServiceDetails('web-design-details')">Web Design</a></h3>
-                                    <p class="service-showcase__description">Creative and responsive web design solutions. We create beautiful, user-friendly designs that convert visitors into customers.</p>
-                                    <a href="#web-design-details" class="service-showcase__read-more" onclick="return showServiceDetails('web-design-details')">Read More →</a>
+                                    <p class="service-showcase__cats"><a href="#seo-development-details">SEO</a>, <a href="#seo-development-details">Optimization</a></p>
+                                    <h3 class="service-showcase__title"><a href="#seo-development-details" onclick="return showServiceDetails('seo-development-details')">SEO Development</a></h3>
+                                    <p class="service-showcase__description">We optimize websites to rank higher on search engines, attract the right audience, and generate consistent, organic growth through data-driven SEO strategies.</p>
+                                    <a href="#seo-development-details" class="service-showcase__read-more" onclick="return showServiceDetails('seo-development-details')">Read More →</a>
                                 </div>
                             </div>
                         </div>
@@ -328,8 +354,14 @@
             console.log('Element found:', element);
             
             if (element) {
-                // Get the service detail content
-                const detailContent = element.querySelector('.container').innerHTML;
+                // Get the service detail content - only the content section, not the sidebar
+                const contentSection = element.querySelector('.services-details__content');
+                if (!contentSection) {
+                    console.error('Content section not found');
+                    return false;
+                }
+                
+                const detailContent = contentSection.innerHTML;
                 console.log('Detail content found:', detailContent);
                 
                 // Store original content for back button
@@ -345,11 +377,13 @@
                 clickedItem.style.width = '100%';
                 clickedItem.style.height = 'auto';
                 clickedItem.style.margin = '0';
-                clickedItem.style.padding = '20px';
+                clickedItem.style.padding = '40px 20px';
                 clickedItem.style.background = 'var(--ogency-black)';
-                clickedItem.style.borderRadius = '16px';
+                clickedItem.style.borderRadius = '0';
                 clickedItem.style.position = 'relative';
                 clickedItem.style.zIndex = '10';
+                clickedItem.style.display = 'flex';
+                clickedItem.style.flexDirection = 'column';
                 console.log('Item expanded to full width');
                 
                 // Hide all other service items
@@ -382,24 +416,42 @@
         function backToServices() {
             console.log('backToServices called');
             
-            // Hide all service details
-            document.querySelectorAll('.services-details').forEach(detail => {
-                detail.style.display = 'none';
+            // Find all service items that were modified
+            document.querySelectorAll('.service-showcase__item').forEach(item => {
+                // Check if this item has original content stored
+                if (item.originalContent) {
+                    // Restore the original content
+                    item.innerHTML = item.originalContent;
+                    console.log('Restored original content for item');
+                }
+                
+                // Reset all the inline styles
+                item.style.width = '';
+                item.style.height = '';
+                item.style.margin = '';
+                item.style.padding = '';
+                item.style.background = '';
+                item.style.borderRadius = '';
+                item.style.position = '';
+                item.style.zIndex = '';
+                item.style.display = '';
+                item.style.flexDirection = '';
             });
-            console.log('All service details hidden');
             
-            // Show the service showcase section
+            // Show all service items
+            document.querySelectorAll('.service-showcase__item').forEach(item => {
+                item.style.display = '';
+            });
+            
+            // Scroll to top of services section
             const serviceShowcase = document.querySelector('.service-showcase');
             if (serviceShowcase) {
-                serviceShowcase.style.display = 'flex';
-                console.log('Service showcase shown');
+                serviceShowcase.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+                console.log('Scrolled to service showcase');
             }
-            
-            // Scroll to top of services
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
-            });
             
             // Clear URL hash
             window.location.hash = '';
@@ -411,88 +463,48 @@
         <section id="web-development-details" class="services-details" style="display: none;">
             <div class="container">
                 <div class="row">
-                    <div class="col-xl-4 col-lg-5">
-                        <div class="services-details__sidebar">
-                            <div class="services-details__services-list">
-                                <ul class="services-details__services list-unstyled">
-                                    <li><a href="#" onclick="showService('web-development-details')">Web Development</a></li>
-                                    <li><a href="#" onclick="showService('android-development-details')">Android App Development</a></li>
-                                    <li><a href="#" onclick="showService('ios-development-details')">IOS App Development</a></li>
-                                    <li><a href="#" onclick="showService('ai-integration-details')">AI Integration</a></li>
-                                    <li><a href="#" onclick="showService('digital-marketing-details')">Digital Marketing</a></li>
-                                    <li><a href="#" onclick="showService('e-commerce-details')">E-Commerce</a></li>
-                                    <li><a href="#" onclick="showService('payment-integration-details')">Payment Integration</a></li>
-                                    <li><a href="#" onclick="showService('cms-development-details')">CMS Web Development</a></li>
-                                    <li><a href="#" onclick="showService('web-hosting-details')">Web Hosting</a></li>
-                                    <li><a href="#" onclick="showService('email-automation-details')">Email Automation</a></li>
-                                    <li><a href="#" onclick="showService('influencer-marketing-details')">Influencer Marketing</a></li>
-                                    <li><a href="#" onclick="showService('web-design-details')">Web Design</a></li>
-                                </ul>
-                            </div>
-                            <div class="services-details__banner">
-                                <div class="services-details__banner__shape"></div>
-                                <div class="services-details__banner__image"><img src="/assets/banner-author-CZ63jT6g.png" alt="ogency"></div>
-                                <div class="services-details__banner__icon"><span class="icon-mobile-development"></span></div>
-                                <h3 class="services-details__banner__title">Are you looking for<br> a application development</h3>
-                                <a class="ogency-btn" href="contact.html">Contact</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-8 col-lg-7">
+                    <div class="col-xl-12 col-lg-12">
                         <div class="services-details__content">
-                            <div class="services-details__thumb"><img src="/assets/service-details-development-BkU8FyR2.jpg" alt="ogency"></div>
+                            <div class="services-details__thumb"><img src="/assets/webdev2-BLaP8fNf.png" alt="ogency"></div>
                             <h3 class="services-details__content__title">Web Development</h3>
                             <p class="services-details__content__text">
-                                There are many variations of passages of lorem ipsum is simply free text available in the market, but the majority time you
-                                put aside to be in our office. Lorem ipsum dolor sit amet, consectetLorem ipsum dolor sit amet, consectetur adipisicing elit,
-                                sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-                                sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                                We build custom websites that combine clean design, strong engineering, and business-focused functionality. Whether you need a corporate website, a dynamic web application, or a conversion-driven landing page, our solutions are designed to perform reliably in real-world conditions.
                             </p>
-                            <h4 class="services-details__content__title-two">Helping clients to solve application development problems</h4>
                             <p class="services-details__content__text">
-                                Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi
-                                consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur.
+                                Our focus goes beyond visuals — we ensure your website is fast, secure, scalable, and easy to maintain, providing a strong digital foundation for your business.
                             </p>
-                            <h3 class="services-details__content__title-three">Why choose?</h3>
-                            <p class="services-details__content__text">
-                                Quis lipsum simply free text available nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi
-                                consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur.
-                            </p>
-                            <ul class="services-details__points list-unstyled">
-                                <li>
-                                    <div class="services-details__points__icon"><span class="icon-success"></span></div>
-                                    <h3 class="services-details__points__title">Best creative<br> agency</h3>
-                                </li>
-                                <li>
-                                    <div class="services-details__points__icon"><span class="icon-job-promotion"></span></div>
-                                    <h3 class="services-details__points__title">99% success<br> rate</h3>
-                                </li>
-                                <li>
-                                    <div class="services-details__points__icon"><span class="icon-marketing"></span></div>
-                                    <h3 class="services-details__points__title">Quality<br> marketing</h3>
-                                </li>
+                            
+                            <h4 class="services-details__content__title-two">What We Offer</h4>
+                            <ul class="services-details__benefit__lists list-unstyled">
+                                <li><span class="fa fa-check-circle"></span>Custom website development tailored to your business needs</li>
+                                <li><span class="fa fa-check-circle"></span>Responsive designs optimized for all devices</li>
+                                <li><span class="fa fa-check-circle"></span>Performance-focused development for fast load times</li>
+                                <li><span class="fa fa-check-circle"></span>Secure architecture and best coding practices</li>
+                                <li><span class="fa fa-check-circle"></span>SEO-friendly structure and clean code</li>
+                                <li><span class="fa fa-check-circle"></span>CMS integration for easy content management</li>
+                                <li><span class="fa fa-check-circle"></span>Ongoing support, optimization, and maintenance</li>
                             </ul>
-                            <div class="services-details__benefit">
-                                <div class="row">
-                                    <div class="col-xl-6 col-lg-12 col-md-6">
-                                        <div class="services-details__benefit__img">
-                                            <img src="/assets/services-details-benefit-img-w_iwWpMO.jpg" alt="ogency">
-                                        </div>
-                                    </div>
-                                    <div class="col-xl-6 col-lg-12 col-md-6">
-                                        <div class="services-details__benefit__content">
-                                            <h3 class="services-details__benefit__title">Our benefits</h3>
-                                            <p class="services-details__benefit__text">Get the best digital marketing from the aspro agency of exellence</p>
-                                            <ul class="services-details__benefit__lists list-unstyled">
-                                                <li><span class="fa fa-check-circle"></span>Cost Effective</li>
-                                                <li><span class="fa fa-check-circle"></span>Equal Opportunities</li>
-                                                <li><span class="fa fa-check-circle"></span>Creates High Brand Awareness</li>
-                                                <li><span class="fa fa-check-circle"></span>Higher ROI</li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                            
+                            <h3 class="services-details__content__title-three">Our Approach</h3>
+                            <p class="services-details__content__text">
+                                We start by understanding your business goals and users. Based on this, we design intuitive user experiences and develop scalable systems using clean, maintainable code. Every website is tested thoroughly to ensure performance, security, and reliability before launch.
+                            </p>
+                            
+                            <h4 class="services-details__content__title-two">Why Choose Us for Web Development?</h4>
+                            <ul class="services-details__benefit__lists list-unstyled">
+                                <li><span class="fa fa-check-circle"></span>Business-focused solutions, not generic templates</li>
+                                <li><span class="fa fa-check-circle"></span>Clean, scalable, and future-ready code</li>
+                                <li><span class="fa fa-check-circle"></span>Transparent communication and clear timelines</li>
+                                <li><span class="fa fa-check-circle"></span>Performance, security, and usability as core priorities</li>
+                                <li><span class="fa fa-check-circle"></span>Long-term support beyond project delivery</li>
+                            </ul>
+                            
+                            <h4 class="services-details__content__title-two">Who This Is For</h4>
+                            <ul class="services-details__benefit__lists list-unstyled">
+                                <li><span class="fa fa-check-circle"></span>Startups launching their first product</li>
+                                <li><span class="fa fa-check-circle"></span>Businesses upgrading or redesigning their website</li>
+                                <li><span class="fa fa-check-circle"></span>Brands needing scalable and performance-driven web solutions</li>
+                            </ul>
                             <div class="services-details__back-btn">
                                 <button class="ogency-btn" onclick="backToServices()">← Back to Services</button>
                             </div>
@@ -506,83 +518,48 @@
         <section id="android-development-details" class="services-details" style="display: none;">
             <div class="container">
                 <div class="row">
-                    <div class="col-xl-4 col-lg-5">
-                        <div class="services-details__sidebar">
-                            <div class="services-details__services-list">
-                                <ul class="services-details__services list-unstyled">
-                                    <li><a href="#" onclick="showService('web-development-details')">Web Development</a></li>
-                                    <li><a href="#" onclick="showService('android-development-details')">Android App Development</a></li>
-                                    <li><a href="#" onclick="showService('ios-development-details')">IOS App Development</a></li>
-                                    <li><a href="#" onclick="showService('ai-integration-details')">AI Integration</a></li>
-                                    <li><a href="#" onclick="showService('digital-marketing-details')">Digital Marketing</a></li>
-                                    <li><a href="#" onclick="showService('e-commerce-details')">E-Commerce</a></li>
-                                    <li><a href="#" onclick="showService('payment-integration-details')">Payment Integration</a></li>
-                                    <li><a href="#" onclick="showService('cms-development-details')">CMS Web Development</a></li>
-                                    <li><a href="#" onclick="showService('web-hosting-details')">Web Hosting</a></li>
-                                    <li><a href="#" onclick="showService('email-automation-details')">Email Automation</a></li>
-                                    <li><a href="#" onclick="showService('influencer-marketing-details')">Influencer Marketing</a></li>
-                                    <li><a href="#" onclick="showService('web-design-details')">Web Design</a></li>
-                                </ul>
-                            </div>
-                            <div class="services-details__banner">
-                                <div class="services-details__banner__shape"></div>
-                                <div class="services-details__banner__image"><img src="/assets/banner-author-CZ63jT6g.png" alt="ogency"></div>
-                                <div class="services-details__banner__icon"><span class="icon-mobile-development"></span></div>
-                                <h3 class="services-details__banner__title">Are you looking for<br> Android app development</h3>
-                                <a class="ogency-btn" href="contact.html">Contact</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-8 col-lg-7">
+                    <div class="col-xl-12 col-lg-12">
                         <div class="services-details__content">
-                            <div class="services-details__thumb"><img src="/assets/service-details-app-BNMfxaua.jpg" alt="ogency"></div>
+                            <div class="services-details__thumb"><img src="/assets/android1-BHQTy2Cn.png" alt="ogency"></div>
                             <h3 class="services-details__content__title">Android App Development</h3>
                             <p class="services-details__content__text">
-                                Native Android app development for all devices. We create high-performance, user-friendly Android applications that meet your business needs and provide exceptional user experiences.
+                                We build Android applications that combine clean architecture, modern UI, and reliable performance. From business apps and on-demand platforms to custom enterprise solutions, our Android development process focuses on usability, stability, and scalability.
                             </p>
-                            <h4 class="services-details__content__title-two">Expert Android Development Services</h4>
                             <p class="services-details__content__text">
-                                Our team of experienced Android developers uses the latest technologies and best practices to build scalable, secure, and innovative mobile applications that run seamlessly on all Android devices.
+                                Our goal is to create apps that work flawlessly across devices, integrate seamlessly with your systems, and deliver a smooth experience for end users.
                             </p>
-                            <h3 class="services-details__content__title-three">Why choose our Android development?</h3>
-                            <p class="services-details__content__text">
-                                We deliver cutting-edge Android solutions with focus on performance, security, and user experience. Our apps are optimized for the latest Android versions and device specifications.
-                            </p>
-                            <ul class="services-details__points list-unstyled">
-                                <li>
-                                    <div class="services-details__points__icon"><span class="icon-success"></span></div>
-                                    <h3 class="services-details__points__title">Native<br> Performance</h3>
-                                </li>
-                                <li>
-                                    <div class="services-details__points__icon"><span class="icon-job-promotion"></span></div>
-                                    <h3 class="services-details__points__title">Expert<br> Developers</h3>
-                                </li>
-                                <li>
-                                    <div class="services-details__points__icon"><span class="icon-marketing"></span></div>
-                                    <h3 class="services-details__points__title">Latest<br> Technologies</h3>
-                                </li>
+                            
+                            <h4 class="services-details__content__title-two">What We Offer</h4>
+                            <ul class="services-details__benefit__lists list-unstyled">
+                                <li><span class="fa fa-check-circle"></span>Custom Android app development tailored to your business</li>
+                                <li><span class="fa fa-check-circle"></span>Clean and scalable architecture for long-term growth</li>
+                                <li><span class="fa fa-check-circle"></span>Intuitive UI/UX aligned with Android design standards</li>
+                                <li><span class="fa fa-check-circle"></span>Backend and API integration</li>
+                                <li><span class="fa fa-check-circle"></span>Secure authentication and data handling</li>
+                                <li><span class="fa fa-check-circle"></span>Performance optimization and device compatibility</li>
+                                <li><span class="fa fa-check-circle"></span>App testing, deployment, and ongoing support</li>
                             </ul>
-                            <div class="services-details__benefit">
-                                <div class="row">
-                                    <div class="col-xl-6 col-lg-12 col-md-6">
-                                        <div class="services-details__benefit__img">
-                                            <img src="/assets/services-details-benefit-img-w_iwWpMO.jpg" alt="ogency">
-                                        </div>
-                                    </div>
-                                    <div class="col-xl-6 col-lg-12 col-md-6">
-                                        <div class="services-details__benefit__content">
-                                            <h3 class="services-details__benefit__title">Our benefits</h3>
-                                            <p class="services-details__benefit__text">Get the best Android app development from our expert team</p>
-                                            <ul class="services-details__benefit__lists list-unstyled">
-                                                <li><span class="fa fa-check-circle"></span>Native Development</li>
-                                                <li><span class="fa fa-check-circle"></span>Play Store Ready</li>
-                                                <li><span class="fa fa-check-circle"></span>Regular Updates</li>
-                                                <li><span class="fa fa-check-circle"></span>24/7 Support</li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                            
+                            <h3 class="services-details__content__title-three">Our Approach</h3>
+                            <p class="services-details__content__text">
+                                We start by understanding your product vision and user requirements. From wireframing and UI design to development and testing, every step is handled with precision. We ensure your Android app is fast, stable, and ready for real-world usage before launch.
+                            </p>
+                            
+                            <h4 class="services-details__content__title-two">Why Choose Us for Android App Development?</h4>
+                            <ul class="services-details__benefit__lists list-unstyled">
+                                <li><span class="fa fa-check-circle"></span>Business-focused app solutions</li>
+                                <li><span class="fa fa-check-circle"></span>Clean, maintainable, and scalable code</li>
+                                <li><span class="fa fa-check-circle"></span>Smooth performance across Android devices</li>
+                                <li><span class="fa fa-check-circle"></span>Transparent communication and clear timelines</li>
+                                <li><span class="fa fa-check-circle"></span>Long-term support and updates</li>
+                            </ul>
+                            
+                            <h4 class="services-details__content__title-two">Who This Is For</h4>
+                            <ul class="services-details__benefit__lists list-unstyled">
+                                <li><span class="fa fa-check-circle"></span>Startups building Android-first products</li>
+                                <li><span class="fa fa-check-circle"></span>Businesses launching mobile applications</li>
+                                <li><span class="fa fa-check-circle"></span>Companies upgrading or scaling existing Android apps</li>
+                            </ul>
                             <div class="services-details__back-btn">
                                 <button class="ogency-btn" onclick="backToServices()">← Back to Services</button>
                             </div>
@@ -596,82 +573,46 @@
         <section id="ios-development-details" class="services-details" style="display: none;">
             <div class="container">
                 <div class="row">
-                    <div class="col-xl-4 col-lg-5">
-                        <div class="services-details__sidebar">
-                            <div class="services-details__services-list">
-                                <ul class="services-details__services list-unstyled">
-                                    <li><a href="#" onclick="showService('web-development-details')">Web Development</a></li>
-                                    <li><a href="#" onclick="showService('android-development-details')">Android App Development</a></li>
-                                    <li><a href="#" onclick="showService('ios-development-details')">IOS App Development</a></li>
-                                    <li><a href="#" onclick="showService('ai-integration-details')">AI Integration</a></li>
-                                    <li><a href="#" onclick="showService('digital-marketing-details')">Digital Marketing</a></li>
-                                    <li><a href="#" onclick="showService('e-commerce-details')">E-Commerce</a></li>
-                                    <li><a href="#" onclick="showService('payment-integration-details')">Payment Integration</a></li>
-                                    <li><a href="#" onclick="showService('cms-development-details')">CMS Web Development</a></li>
-                                    <li><a href="#" onclick="showService('web-hosting-details')">Web Hosting</a></li>
-                                    <li><a href="#" onclick="showService('email-automation-details')">Email Automation</a></li>
-                                    <li><a href="#" onclick="showService('influencer-marketing-details')">Influencer Marketing</a></li>
-                                    <li><a href="#" onclick="showService('web-design-details')">Web Design</a></li>
-                                </ul>
-                            </div>
-                            <div class="services-details__banner">
-                                <div class="services-details__banner__shape"></div>
-                                <div class="services-details__banner__image"><img src="/assets/banner-author-CZ63jT6g.png" alt="ogency"></div>
-                                <div class="services-details__banner__icon"><span class="icon-mobile-development"></span></div>
-                                <h3 class="services-details__banner__title">Are you looking for<br> iOS app development</h3>
-                                <a class="ogency-btn" href="contact.html">Contact</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-8 col-lg-7">
+                    <div class="col-xl-12 col-lg-12">
                         <div class="services-details__content">
-                            <div class="services-details__thumb"><img src="/assets/service-details-app-BNMfxaua.jpg" alt="ogency"></div>
+                            <div class="services-details__thumb"><img src="/assets/ios1-B7Hq692e.png" alt="ogency"></div>
                             <h3 class="services-details__content__title">iOS App Development</h3>
                             <p class="services-details__content__text">
-                                Native iOS app development for iPhone and iPad. We create high-performance, user-friendly iOS applications that meet your business needs and provide exceptional user experiences.
+                                We build iOS applications that combine precision engineering, refined design, and reliable performance. From consumer apps to business and enterprise solutions, our focus is on creating products that feel smooth, responsive, and intuitive within the Apple ecosystem.
                             </p>
-                            <h4 class="services-details__content__title-two">Expert iOS Development Services</h4>
                             <p class="services-details__content__text">
-                                Our team of experienced iOS developers uses the latest technologies and best practices to build scalable, secure, and innovative mobile applications that run seamlessly on all iOS devices.
+                                Every app we build follows Apple's design and performance standards, ensuring stability, security, and long-term maintainability.
                             </p>
-                            <h3 class="services-details__content__title-three">Why choose our iOS development?</h3>
-                            <p class="services-details__content__text">
-                                We deliver cutting-edge iOS solutions with focus on performance, security, and user experience. Our apps are optimized for the latest iOS versions and device specifications.
-                            </p>
-                            <ul class="services-details__points list-unstyled">
-                                <li>
-                                    <div class="services-details__points__icon"><span class="icon-success"></span></div>
-                                    <h3 class="services-details__points__title">Native<br> Performance</h3>
-                                </li>
-                                <li>
-                                    <div class="services-details__points__icon"><span class="icon-job-promotion"></span></div>
-                                    <h3 class="services-details__points__title">Expert<br> Developers</h3>
-                                </li>
-                                <li>
-                                    <div class="services-details__points__icon"><span class="icon-marketing"></span></div>
-                                    <h3 class="services-details__points__title">App Store<br> Ready</h3>
-                                </li>
+                            <h4 class="services-details__content__title-two">What We Offer</h4>
+                            <ul class="services-details__benefit__lists list-unstyled">
+                                <li><span class="fa fa-check-circle"></span>Custom iOS app development for iPhone and iPad</li>
+                                <li><span class="fa fa-check-circle"></span>Clean and scalable app architecture</li>
+                                <li><span class="fa fa-check-circle"></span>Intuitive UI/UX following Apple Human Interface Guidelines</li>
+                                <li><span class="fa fa-check-circle"></span>Backend and API integration</li>
+                                <li><span class="fa fa-check-circle"></span>Secure authentication and data handling</li>
+                                <li><span class="fa fa-check-circle"></span>Performance optimization and testing</li>
+                                <li><span class="fa fa-check-circle"></span>App Store deployment and ongoing support</li>
                             </ul>
-                            <div class="services-details__benefit">
-                                <div class="row">
-                                    <div class="col-xl-6 col-lg-12 col-md-6">
-                                        <div class="services-details__benefit__img">
-                                            <img src="/assets/services-details-benefit-img-w_iwWpMO.jpg" alt="ogency">
-                                        </div>
-                                    </div>
-                                    <div class="col-xl-6 col-lg-12 col-md-6">
-                                        <div class="services-details__benefit__content">
-                                            <h3 class="services-details__benefit__title">Our benefits</h3>
-                                            <p class="services-details__benefit__text">Get the best iOS app development from our expert team</p>
-                                            <ul class="services-details__benefit__lists list-unstyled">
-                                                <li><span class="fa fa-check-circle"></span>Native Development</li>
-                                                <li><span class="fa fa-check-circle"></span>App Store Ready</li>
-                                                <li><span class="fa fa-check-circle"></span>Regular Updates</li>
-                                                <li><span class="fa fa-check-circle"></span>24/7 Support</li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
+                            <h3 class="services-details__content__title-three">Our Approach</h3>
+                            <p class="services-details__content__text">
+                                We begin by understanding your product vision and users. Through careful planning, design, development, and testing, we ensure your iOS app delivers a seamless experience and meets high quality standards before launch.
+                            </p>
+                            <h4 class="services-details__content__title-two">Why Choose Us for iOS App Development?</h4>
+                            <ul class="services-details__benefit__lists list-unstyled">
+                                <li><span class="fa fa-check-circle"></span>Expertise in Apple-focused development</li>
+                                <li><span class="fa fa-check-circle"></span>Clean, maintainable, and scalable code</li>
+                                <li><span class="fa fa-check-circle"></span>Performance-driven and security-focused approach</li>
+                                <li><span class="fa fa-check-circle"></span>Clear communication and transparent timelines</li>
+                                <li><span class="fa fa-check-circle"></span>Reliable post-launch support</li>
+                            </ul>
+                            <h4 class="services-details__content__title-two">Who This Is For</h4>
+                            <ul class="services-details__benefit__lists list-unstyled">
+                                <li><span class="fa fa-check-circle"></span>Startups building iOS-first products</li>
+                                <li><span class="fa fa-check-circle"></span>Businesses expanding to Apple devices</li>
+                                <li><span class="fa fa-check-circle"></span>Brands seeking premium mobile experiences</li>
+                            </ul>
+                            <div class="services-details__back-btn">
+                                <button class="ogency-btn" onclick="backToServices()">← Back to Services</button>
                             </div>
                         </div>
                     </div>
@@ -683,82 +624,43 @@
         <section id="ai-integration-details" class="services-details" style="display: none;">
             <div class="container">
                 <div class="row">
-                    <div class="col-xl-4 col-lg-5">
-                        <div class="services-details__sidebar">
-                            <div class="services-details__services-list">
-                                <ul class="services-details__services list-unstyled">
-                                    <li><a href="#" onclick="showService('web-development-details')">Web Development</a></li>
-                                    <li><a href="#" onclick="showService('android-development-details')">Android App Development</a></li>
-                                    <li><a href="#" onclick="showService('ios-development-details')">IOS App Development</a></li>
-                                    <li><a href="#" onclick="showService('ai-integration-details')">AI Integration</a></li>
-                                    <li><a href="#" onclick="showService('digital-marketing-details')">Digital Marketing</a></li>
-                                    <li><a href="#" onclick="showService('e-commerce-details')">E-Commerce</a></li>
-                                    <li><a href="#" onclick="showService('payment-integration-details')">Payment Integration</a></li>
-                                    <li><a href="#" onclick="showService('cms-development-details')">CMS Web Development</a></li>
-                                    <li><a href="#" onclick="showService('web-hosting-details')">Web Hosting</a></li>
-                                    <li><a href="#" onclick="showService('email-automation-details')">Email Automation</a></li>
-                                    <li><a href="#" onclick="showService('influencer-marketing-details')">Influencer Marketing</a></li>
-                                    <li><a href="#" onclick="showService('web-design-details')">Web Design</a></li>
-                                </ul>
-                            </div>
-                            <div class="services-details__banner">
-                                <div class="services-details__banner__shape"></div>
-                                <div class="services-details__banner__image"><img src="/assets/banner-author-CZ63jT6g.png" alt="ogency"></div>
-                                <div class="services-details__banner__icon"><span class="icon-mobile-development"></span></div>
-                                <h3 class="services-details__banner__title">Are you looking for<br> AI integration solutions</h3>
-                                <a class="ogency-btn" href="contact.html">Contact</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-8 col-lg-7">
+                    <div class="col-xl-12 col-lg-12">
                         <div class="services-details__content">
-                            <div class="services-details__thumb"><img src="/assets/service-details-development-BkU8FyR2.jpg" alt="ogency"></div>
+                            <div class="services-details__thumb"><img src="/assets/ai2-BRfJ-Uv8.png" alt="ogency"></div>
                             <h3 class="services-details__content__title">AI Integration</h3>
                             <p class="services-details__content__text">
-                                Cutting-edge AI solutions for your business needs. We integrate artificial intelligence technologies to enhance your business processes and customer experiences.
+                                We help businesses enhance their digital products by integrating practical, reliable AI solutions that deliver measurable value. From automation and intelligent features to data-driven insights, our AI integrations are designed to work seamlessly within your existing web and mobile systems.
                             </p>
-                            <h4 class="services-details__content__title-two">Expert AI Integration Services</h4>
-                            <p class="services-details__content__text">
-                                Our team specializes in implementing AI solutions that automate processes, provide insights, and create intelligent systems that adapt to your business requirements.
-                            </p>
-                            <h3 class="services-details__content__title-three">Why choose our AI integration?</h3>
-                            <p class="services-details__content__text">
-                                We deliver innovative AI solutions with focus on practical implementation, scalability, and measurable business impact. Our AI systems are designed to grow with your business.
-                            </p>
-                            <ul class="services-details__points list-unstyled">
-                                <li>
-                                    <div class="services-details__points__icon"><span class="icon-success"></span></div>
-                                    <h3 class="services-details__points__title">Cutting-edge<br> Technology</h3>
-                                </li>
-                                <li>
-                                    <div class="services-details__points__icon"><span class="icon-job-promotion"></span></div>
-                                    <h3 class="services-details__points__title">Expert<br> AI Team</h3>
-                                </li>
-                                <li>
-                                    <div class="services-details__points__icon"><span class="icon-marketing"></span></div>
-                                    <h3 class="services-details__points__title">Scalable<br> Solutions</h3>
-                                </li>
+                            <h4 class="services-details__content__title-two">What We Offer</h4>
+                            <ul class="services-details__benefit__lists list-unstyled">
+                                <li><span class="fa fa-check-circle"></span>AI integration for web and mobile applications</li>
+                                <li><span class="fa fa-check-circle"></span>Intelligent automation for repetitive workflows</li>
+                                <li><span class="fa fa-check-circle"></span>AI-powered chatbots and virtual assistants</li>
+                                <li><span class="fa fa-check-circle"></span>Recommendation and personalization systems</li>
+                                <li><span class="fa fa-check-circle"></span>Data analysis and predictive insights</li>
+                                <li><span class="fa fa-check-circle"></span>API-based AI services integration</li>
+                                <li><span class="fa fa-check-circle"></span>Secure and scalable AI system architecture</li>
                             </ul>
-                            <div class="services-details__benefit">
-                                <div class="row">
-                                    <div class="col-xl-6 col-lg-12 col-md-6">
-                                        <div class="services-details__benefit__img">
-                                            <img src="/assets/services-details-benefit-img-w_iwWpMO.jpg" alt="ogency">
-                                        </div>
-                                    </div>
-                                    <div class="col-xl-6 col-lg-12 col-md-6">
-                                        <div class="services-details__benefit__content">
-                                            <h3 class="services-details__benefit__title">Our benefits</h3>
-                                            <p class="services-details__benefit__text">Get the best AI integration solutions from our expert team</p>
-                                            <ul class="services-details__benefit__lists list-unstyled">
-                                                <li><span class="fa fa-check-circle"></span>Machine Learning</li>
-                                                <li><span class="fa fa-check-circle"></span>Natural Language Processing</li>
-                                                <li><span class="fa fa-check-circle"></span>Predictive Analytics</li>
-                                                <li><span class="fa fa-check-circle"></span>24/7 Support</li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
+                            <h3 class="services-details__content__title-three">Our Approach</h3>
+                            <p class="services-details__content__text">
+                                We start by identifying where AI can add real value to your product. Based on your goals and data, we select the right AI models and integrate them smoothly into your existing systems, ensuring performance, security, and reliability.
+                            </p>
+                            <h4 class="services-details__content__title-two">Why Choose Us for AI Integration?</h4>
+                            <ul class="services-details__benefit__lists list-unstyled">
+                                <li><span class="fa fa-check-circle"></span>Business-focused AI solutions, not experiments</li>
+                                <li><span class="fa fa-check-circle"></span>Clean, scalable, and maintainable integrations</li>
+                                <li><span class="fa fa-check-circle"></span>Seamless integration with web and mobile apps</li>
+                                <li><span class="fa fa-check-circle"></span>Transparent process and clear communication</li>
+                                <li><span class="fa fa-check-circle"></span>Long-term support and optimization</li>
+                            </ul>
+                            <h4 class="services-details__content__title-two">Who This Is For</h4>
+                            <ul class="services-details__benefit__lists list-unstyled">
+                                <li><span class="fa fa-check-circle"></span>Businesses looking to automate processes</li>
+                                <li><span class="fa fa-check-circle"></span>Startups adding intelligent features to products</li>
+                                <li><span class="fa fa-check-circle"></span>Teams seeking data-driven insights and efficiency</li>
+                            </ul>
+                            <div class="services-details__back-btn">
+                                <button class="ogency-btn" onclick="backToServices()">← Back to Services</button>
                             </div>
                         </div>
                     </div>
@@ -770,82 +672,46 @@
         <section id="digital-marketing-details" class="services-details" style="display: none;">
             <div class="container">
                 <div class="row">
-                    <div class="col-xl-4 col-lg-5">
-                        <div class="services-details__sidebar">
-                            <div class="services-details__services-list">
-                                <ul class="services-details__services list-unstyled">
-                                    <li><a href="#" onclick="showService('web-development-details')">Web Development</a></li>
-                                    <li><a href="#" onclick="showService('android-development-details')">Android App Development</a></li>
-                                    <li><a href="#" onclick="showService('ios-development-details')">IOS App Development</a></li>
-                                    <li><a href="#" onclick="showService('ai-integration-details')">AI Integration</a></li>
-                                    <li><a href="#" onclick="showService('digital-marketing-details')">Digital Marketing</a></li>
-                                    <li><a href="#" onclick="showService('e-commerce-details')">E-Commerce</a></li>
-                                    <li><a href="#" onclick="showService('payment-integration-details')">Payment Integration</a></li>
-                                    <li><a href="#" onclick="showService('cms-development-details')">CMS Web Development</a></li>
-                                    <li><a href="#" onclick="showService('web-hosting-details')">Web Hosting</a></li>
-                                    <li><a href="#" onclick="showService('email-automation-details')">Email Automation</a></li>
-                                    <li><a href="#" onclick="showService('influencer-marketing-details')">Influencer Marketing</a></li>
-                                    <li><a href="#" onclick="showService('web-design-details')">Web Design</a></li>
-                                </ul>
-                            </div>
-                            <div class="services-details__banner">
-                                <div class="services-details__banner__shape"></div>
-                                <div class="services-details__banner__image"><img src="/assets/banner-author-CZ63jT6g.png" alt="ogency"></div>
-                                <div class="services-details__banner__icon"><span class="icon-mobile-development"></span></div>
-                                <h3 class="services-details__banner__title">Are you looking for<br> digital marketing</h3>
-                                <a class="ogency-btn" href="contact.html">Contact</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-8 col-lg-7">
+                    <div class="col-xl-12 col-lg-12">
                         <div class="services-details__content">
-                            <div class="services-details__thumb"><img src="/assets/service-details-development-BkU8FyR2.jpg" alt="ogency"></div>
+                            <div class="services-details__thumb"><img src="/assets/digital2-CiVhfb45.png" alt="ogency"></div>
                             <h3 class="services-details__content__title">Digital Marketing</h3>
                             <p class="services-details__content__text">
-                                Comprehensive digital marketing strategies to grow your online presence and reach your target audience effectively.
+                                We provide result-oriented digital marketing services designed to increase reach, improve engagement, and drive consistent growth. Our approach focuses on understanding your audience, choosing the right channels, and executing strategies that deliver measurable outcomes.
                             </p>
-                            <h4 class="services-details__content__title-two">Expert Digital Marketing Services</h4>
                             <p class="services-details__content__text">
-                                Our team creates data-driven marketing campaigns that deliver measurable results and maximize your return on investment.
+                                Rather than generic campaigns, we build custom marketing strategies aligned with your business goals and digital products.
                             </p>
-                            <h3 class="services-details__content__title-three">Why choose our digital marketing?</h3>
-                            <p class="services-details__content__text">
-                                We deliver innovative digital marketing solutions with focus on ROI, brand visibility, and sustainable business growth.
-                            </p>
-                            <ul class="services-details__points list-unstyled">
-                                <li>
-                                    <div class="services-details__points__icon"><span class="icon-success"></span></div>
-                                    <h3 class="services-details__points__title">Data-driven<br> Strategies</h3>
-                                </li>
-                                <li>
-                                    <div class="services-details__points__icon"><span class="icon-job-promotion"></span></div>
-                                    <h3 class="services-details__points__title">Expert<br> Marketers</h3>
-                                </li>
-                                <li>
-                                    <div class="services-details__points__icon"><span class="icon-marketing"></span></div>
-                                    <h3 class="services-details__points__title">Proven<br> Results</h3>
-                                </li>
+                            <h4 class="services-details__content__title-two">What We Offer</h4>
+                            <ul class="services-details__benefit__lists list-unstyled">
+                                <li><span class="fa fa-check-circle"></span>Search Engine Optimization (SEO) for long-term visibility</li>
+                                <li><span class="fa fa-check-circle"></span>Paid advertising campaigns (Google Ads, social ads)</li>
+                                <li><span class="fa fa-check-circle"></span>Social media marketing and content strategy</li>
+                                <li><span class="fa fa-check-circle"></span>Conversion rate optimization (CRO)</li>
+                                <li><span class="fa fa-check-circle"></span>Performance tracking and analytics</li>
+                                <li><span class="fa fa-check-circle"></span>Marketing automation and lead nurturing</li>
+                                <li><span class="fa fa-check-circle"></span>Campaign optimization and reporting</li>
                             </ul>
-                            <div class="services-details__benefit">
-                                <div class="row">
-                                    <div class="col-xl-6 col-lg-12 col-md-6">
-                                        <div class="services-details__benefit__img">
-                                            <img src="/assets/services-details-benefit-img-w_iwWpMO.jpg" alt="ogency">
-                                        </div>
-                                    </div>
-                                    <div class="col-xl-6 col-lg-12 col-md-6">
-                                        <div class="services-details__benefit__content">
-                                            <h3 class="services-details__benefit__title">Our benefits</h3>
-                                            <p class="services-details__benefit__text">Get the best digital marketing solutions from our expert team</p>
-                                            <ul class="services-details__benefit__lists list-unstyled">
-                                                <li><span class="fa fa-check-circle"></span>SEO Optimization</li>
-                                                <li><span class="fa fa-check-circle"></span>Social Media Marketing</li>
-                                                <li><span class="fa fa-check-circle"></span>Content Marketing</li>
-                                                <li><span class="fa fa-check-circle"></span>Analytics & Reporting</li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
+                            <h3 class="services-details__content__title-three">Our Approach</h3>
+                            <p class="services-details__content__text">
+                                We begin by understanding your business, target audience, and competition. Based on insights and data, we create and execute marketing strategies that focus on performance, continuous optimization, and sustainable growth.
+                            </p>
+                            <h4 class="services-details__content__title-two">Why Choose Us for Digital Marketing?</h4>
+                            <ul class="services-details__benefit__lists list-unstyled">
+                                <li><span class="fa fa-check-circle"></span>Data-driven and performance-focused strategies</li>
+                                <li><span class="fa fa-check-circle"></span>Transparent reporting and measurable results</li>
+                                <li><span class="fa fa-check-circle"></span>Marketing aligned with your web and app products</li>
+                                <li><span class="fa fa-check-circle"></span>Continuous optimization for better ROI</li>
+                                <li><span class="fa fa-check-circle"></span>Clear communication and collaboration</li>
+                            </ul>
+                            <h4 class="services-details__content__title-two">Who This Is For</h4>
+                            <ul class="services-details__benefit__lists list-unstyled">
+                                <li><span class="fa fa-check-circle"></span>Businesses looking to grow online visibility</li>
+                                <li><span class="fa fa-check-circle"></span>Startups launching new products or services</li>
+                                <li><span class="fa fa-check-circle"></span>Brands seeking consistent leads and conversions</li>
+                            </ul>
+                            <div class="services-details__back-btn">
+                                <button class="ogency-btn" onclick="backToServices()">← Back to Services</button>
                             </div>
                         </div>
                     </div>
@@ -857,82 +723,47 @@
         <section id="e-commerce-details" class="services-details" style="display: none;">
             <div class="container">
                 <div class="row">
-                    <div class="col-xl-4 col-lg-5">
-                        <div class="services-details__sidebar">
-                            <div class="services-details__services-list">
-                                <ul class="services-details__services list-unstyled">
-                                    <li><a href="#" onclick="showService('web-development-details')">Web Development</a></li>
-                                    <li><a href="#" onclick="showService('android-development-details')">Android App Development</a></li>
-                                    <li><a href="#" onclick="showService('ios-development-details')">IOS App Development</a></li>
-                                    <li><a href="#" onclick="showService('ai-integration-details')">AI Integration</a></li>
-                                    <li><a href="#" onclick="showService('digital-marketing-details')">Digital Marketing</a></li>
-                                    <li><a href="#" onclick="showService('e-commerce-details')">E-Commerce</a></li>
-                                    <li><a href="#" onclick="showService('payment-integration-details')">Payment Integration</a></li>
-                                    <li><a href="#" onclick="showService('cms-development-details')">CMS Web Development</a></li>
-                                    <li><a href="#" onclick="showService('web-hosting-details')">Web Hosting</a></li>
-                                    <li><a href="#" onclick="showService('email-automation-details')">Email Automation</a></li>
-                                    <li><a href="#" onclick="showService('influencer-marketing-details')">Influencer Marketing</a></li>
-                                    <li><a href="#" onclick="showService('web-design-details')">Web Design</a></li>
-                                </ul>
-                            </div>
-                            <div class="services-details__banner">
-                                <div class="services-details__banner__shape"></div>
-                                <div class="services-details__banner__image"><img src="/assets/banner-author-CZ63jT6g.png" alt="ogency"></div>
-                                <div class="services-details__banner__icon"><span class="icon-mobile-development"></span></div>
-                                <h3 class="services-details__banner__title">Are you looking for<br> e-commerce solutions</h3>
-                                <a class="ogency-btn" href="contact.html">Contact</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-8 col-lg-7">
+                    <div class="col-xl-12 col-lg-12">
                         <div class="services-details__content">
-                            <div class="services-details__thumb"><img src="/assets/service-details-development-BkU8FyR2.jpg" alt="ogency"></div>
+                            <div class="services-details__thumb"><img src="/assets/ecomm2-CcAW2vb7.png" alt="ogency"></div>
                             <h3 class="services-details__content__title">E-Commerce</h3>
                             <p class="services-details__content__text">
-                                Complete e-commerce solutions for online stores. We build powerful, scalable, and user-friendly e-commerce platforms.
+                                We build e-commerce solutions that combine clean design, strong performance, and conversion-focused functionality. From product catalogs to checkout and order management, every element is designed to create smooth buying experiences and drive sales.
                             </p>
-                            <h4 class="services-details__content__title-two">Expert E-Commerce Development</h4>
                             <p class="services-details__content__text">
-                                Our team specializes in creating custom e-commerce solutions that drive sales, enhance user experience, and streamline operations.
+                                Our e-commerce platforms are secure, scalable, and easy to manage, giving you full control while supporting long-term growth.
                             </p>
-                            <h3 class="services-details__content__title-three">Why choose our e-commerce solutions?</h3>
-                            <p class="services-details__content__text">
-                                We deliver robust e-commerce platforms with focus on security, performance, and conversion optimization.
-                            </p>
-                            <ul class="services-details__points list-unstyled">
-                                <li>
-                                    <div class="services-details__points__icon"><span class="icon-success"></span></div>
-                                    <h3 class="services-details__points__title">Secure<br> Payments</h3>
-                                </li>
-                                <li>
-                                    <div class="services-details__points__icon"><span class="icon-job-promotion"></span></div>
-                                    <h3 class="services-details__points__title">Mobile<br> Optimized</h3>
-                                </li>
-                                <li>
-                                    <div class="services-details__points__icon"><span class="icon-marketing"></span></div>
-                                    <h3 class="services-details__points__title">High<br> Conversions</h3>
-                                </li>
+                            <h4 class="services-details__content__title-two">What We Offer</h4>
+                            <ul class="services-details__benefit__lists list-unstyled">
+                                <li><span class="fa fa-check-circle"></span>Custom e-commerce website development</li>
+                                <li><span class="fa fa-check-circle"></span>Secure payment gateway integration</li>
+                                <li><span class="fa fa-check-circle"></span>Product, inventory, and order management</li>
+                                <li><span class="fa fa-check-circle"></span>Mobile-friendly and responsive store design</li>
+                                <li><span class="fa fa-check-circle"></span>Performance optimization for fast loading</li>
+                                <li><span class="fa fa-check-circle"></span>CMS and admin dashboard integration</li>
+                                <li><span class="fa fa-check-circle"></span>Third-party integrations and automation</li>
+                                <li><span class="fa fa-check-circle"></span>Ongoing support and store optimization</li>
                             </ul>
-                            <div class="services-details__benefit">
-                                <div class="row">
-                                    <div class="col-xl-6 col-lg-12 col-md-6">
-                                        <div class="services-details__benefit__img">
-                                            <img src="/assets/services-details-benefit-img-w_iwWpMO.jpg" alt="ogency">
-                                        </div>
-                                    </div>
-                                    <div class="col-xl-6 col-lg-12 col-md-6">
-                                        <div class="services-details__benefit__content">
-                                            <h3 class="services-details__benefit__title">Our benefits</h3>
-                                            <p class="services-details__benefit__text">Get the best e-commerce solutions from our expert team</p>
-                                            <ul class="services-details__benefit__lists list-unstyled">
-                                                <li><span class="fa fa-check-circle"></span>Custom Design</li>
-                                                <li><span class="fa fa-check-circle"></span>Inventory Management</li>
-                                                <li><span class="fa fa-check-circle"></span>Analytics Dashboard</li>
-                                                <li><span class="fa fa-check-circle"></span>24/7 Support</li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
+                            <h3 class="services-details__content__title-three">Our Approach</h3>
+                            <p class="services-details__content__text">
+                                We begin by understanding your products, customers, and business goals. Based on this, we design intuitive shopping experiences and build scalable systems that ensure security, speed, and reliability from browsing to checkout.
+                            </p>
+                            <h4 class="services-details__content__title-two">Why Choose Us for E-Commerce Development?</h4>
+                            <ul class="services-details__benefit__lists list-unstyled">
+                                <li><span class="fa fa-check-circle"></span>Conversion-focused design and development</li>
+                                <li><span class="fa fa-check-circle"></span>Secure and scalable architecture</li>
+                                <li><span class="fa fa-check-circle"></span>Seamless checkout and payment experience</li>
+                                <li><span class="fa fa-check-circle"></span>Clean, maintainable codebase</li>
+                                <li><span class="fa fa-check-circle"></span>Transparent communication and support</li>
+                            </ul>
+                            <h4 class="services-details__content__title-two">Who This Is For</h4>
+                            <ul class="services-details__benefit__lists list-unstyled">
+                                <li><span class="fa fa-check-circle"></span>Startups launching online stores</li>
+                                <li><span class="fa fa-check-circle"></span>Businesses expanding into e-commerce</li>
+                                <li><span class="fa fa-check-circle"></span>Brands looking to scale digital sales</li>
+                            </ul>
+                            <div class="services-details__back-btn">
+                                <button class="ogency-btn" onclick="backToServices()">← Back to Services</button>
                             </div>
                         </div>
                     </div>
@@ -944,82 +775,46 @@
         <section id="cms-development-details" class="services-details" style="display: none;">
             <div class="container">
                 <div class="row">
-                    <div class="col-xl-4 col-lg-5">
-                        <div class="services-details__sidebar">
-                            <div class="services-details__services-list">
-                                <ul class="services-details__services list-unstyled">
-                                    <li><a href="#" onclick="showService('web-development-details')">Web Development</a></li>
-                                    <li><a href="#" onclick="showService('android-development-details')">Android App Development</a></li>
-                                    <li><a href="#" onclick="showService('ios-development-details')">IOS App Development</a></li>
-                                    <li><a href="#" onclick="showService('ai-integration-details')">AI Integration</a></li>
-                                    <li><a href="#" onclick="showService('digital-marketing-details')">Digital Marketing</a></li>
-                                    <li><a href="#" onclick="showService('e-commerce-details')">E-Commerce</a></li>
-                                    <li><a href="#" onclick="showService('payment-integration-details')">Payment Integration</a></li>
-                                    <li><a href="#" onclick="showService('cms-development-details')">CMS Web Development</a></li>
-                                    <li><a href="#" onclick="showService('web-hosting-details')">Web Hosting</a></li>
-                                    <li><a href="#" onclick="showService('email-automation-details')">Email Automation</a></li>
-                                    <li><a href="#" onclick="showService('influencer-marketing-details')">Influencer Marketing</a></li>
-                                    <li><a href="#" onclick="showService('web-design-details')">Web Design</a></li>
-                                </ul>
-                            </div>
-                            <div class="services-details__banner">
-                                <div class="services-details__banner__shape"></div>
-                                <div class="services-details__banner__image"><img src="/assets/banner-author-CZ63jT6g.png" alt="ogency"></div>
-                                <div class="services-details__banner__icon"><span class="icon-mobile-development"></span></div>
-                                <h3 class="services-details__banner__title">Are you looking for<br> CMS development</h3>
-                                <a class="ogency-btn" href="contact.html">Contact</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-8 col-lg-7">
+                    <div class="col-xl-12 col-lg-12">
                         <div class="services-details__content">
-                            <div class="services-details__thumb"><img src="/assets/service-details-development-BkU8FyR2.jpg" alt="ogency"></div>
+                            <div class="services-details__thumb"><img src="/assets/cms2-D1-_BosR.png" alt="ogency"></div>
                             <h3 class="services-details__content__title">CMS Web Development</h3>
                             <p class="services-details__content__text">
-                                Custom CMS solutions for easy content management. We build user-friendly content management systems tailored to your needs.
+                                We build custom CMS solutions that give businesses complete control over their content without compromising performance or security. Whether it's a website, e-commerce platform, or web application, our CMS solutions are designed to be intuitive, flexible, and scalable.
                             </p>
-                            <h4 class="services-details__content__title-two">Expert CMS Development Services</h4>
                             <p class="services-details__content__text">
-                                Our team specializes in creating scalable, secure CMS platforms that make content management simple and efficient.
+                                Our focus is on creating content systems that are easy to use for teams and powerful enough to support business growth.
                             </p>
-                            <h3 class="services-details__content__title-three">Why choose our CMS development?</h3>
-                            <p class="services-details__content__text">
-                                We deliver intuitive CMS solutions with focus on usability, security, and seamless content workflows.
-                            </p>
-                            <ul class="services-details__points list-unstyled">
-                                <li>
-                                    <div class="services-details__points__icon"><span class="icon-success"></span></div>
-                                    <h3 class="services-details__points__title">Easy<br> Management</h3>
-                                </li>
-                                <li>
-                                    <div class="services-details__points__icon"><span class="icon-job-promotion"></span></div>
-                                    <h3 class="services-details__points__title">Custom<br> Solutions</h3>
-                                </li>
-                                <li>
-                                    <div class="services-details__points__icon"><span class="icon-marketing"></span></div>
-                                    <h3 class="services-details__points__title">Secure<br> Platform</h3>
-                                </li>
+                            <h4 class="services-details__content__title-two">What We Offer</h4>
+                            <ul class="services-details__benefit__lists list-unstyled">
+                                <li><span class="fa fa-check-circle"></span>Custom CMS development tailored to your workflow</li>
+                                <li><span class="fa fa-check-circle"></span>User-friendly admin dashboards</li>
+                                <li><span class="fa fa-check-circle"></span>Role-based access and permissions</li>
+                                <li><span class="fa fa-check-circle"></span>Content, media, and page management</li>
+                                <li><span class="fa fa-check-circle"></span>CMS integration with websites and applications</li>
+                                <li><span class="fa fa-check-circle"></span>Performance and security optimization</li>
+                                <li><span class="fa fa-check-circle"></span>Training and ongoing support</li>
                             </ul>
-                            <div class="services-details__benefit">
-                                <div class="row">
-                                    <div class="col-xl-6 col-lg-12 col-md-6">
-                                        <div class="services-details__benefit__img">
-                                            <img src="/assets/services-details-benefit-img-w_iwWpMO.jpg" alt="ogency">
-                                        </div>
-                                    </div>
-                                    <div class="col-xl-6 col-lg-12 col-md-6">
-                                        <div class="services-details__benefit__content">
-                                            <h3 class="services-details__benefit__title">Our benefits</h3>
-                                            <p class="services-details__benefit__text">Get the best CMS solutions from our expert team</p>
-                                            <ul class="services-details__benefit__lists list-unstyled">
-                                                <li><span class="fa fa-check-circle"></span>User-Friendly Interface</li>
-                                                <li><span class="fa fa-check-circle"></span>Custom Workflows</li>
-                                                <li><span class="fa fa-check-circle"></span>Multi-user Support</li>
-                                                <li><span class="fa fa-check-circle"></span>24/7 Support</li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
+                            <h3 class="services-details__content__title-three">Our Approach</h3>
+                            <p class="services-details__content__text">
+                                We start by understanding how your team manages content. Based on your needs, we design a CMS that simplifies daily operations, integrates smoothly with your existing systems, and scales as your content grows.
+                            </p>
+                            <h4 class="services-details__content__title-two">Why Choose Us for CMS Development?</h4>
+                            <ul class="services-details__benefit__lists list-unstyled">
+                                <li><span class="fa fa-check-circle"></span>Custom-built solutions, not rigid templates</li>
+                                <li><span class="fa fa-check-circle"></span>Simple and intuitive content management</li>
+                                <li><span class="fa fa-check-circle"></span>Secure and scalable architecture</li>
+                                <li><span class="fa fa-check-circle"></span>Clean, maintainable code</li>
+                                <li><span class="fa fa-check-circle"></span>Long-term support and enhancements</li>
+                            </ul>
+                            <h4 class="services-details__content__title-two">Who This Is For</h4>
+                            <ul class="services-details__benefit__lists list-unstyled">
+                                <li><span class="fa fa-check-circle"></span>Businesses managing dynamic website content</li>
+                                <li><span class="fa fa-check-circle"></span>Teams needing easy content updates</li>
+                                <li><span class="fa fa-check-circle"></span>Brands seeking flexible and scalable CMS solutions</li>
+                            </ul>
+                            <div class="services-details__back-btn">
+                                <button class="ogency-btn" onclick="backToServices()">← Back to Services</button>
                             </div>
                         </div>
                     </div>
@@ -1031,82 +826,46 @@
         <section id="payment-integration-details" class="services-details" style="display: none;">
             <div class="container">
                 <div class="row">
-                    <div class="col-xl-4 col-lg-5">
-                        <div class="services-details__sidebar">
-                            <div class="services-details__services-list">
-                                <ul class="services-details__services list-unstyled">
-                                    <li><a href="#" onclick="showService('web-development-details')">Web Development</a></li>
-                                    <li><a href="#" onclick="showService('android-development-details')">Android App Development</a></li>
-                                    <li><a href="#" onclick="showService('ios-development-details')">IOS App Development</a></li>
-                                    <li><a href="#" onclick="showService('ai-integration-details')">AI Integration</a></li>
-                                    <li><a href="#" onclick="showService('digital-marketing-details')">Digital Marketing</a></li>
-                                    <li><a href="#" onclick="showService('e-commerce-details')">E-Commerce</a></li>
-                                    <li><a href="#" onclick="showService('payment-integration-details')">Payment Integration</a></li>
-                                    <li><a href="#" onclick="showService('cms-development-details')">CMS Web Development</a></li>
-                                    <li><a href="#" onclick="showService('web-hosting-details')">Web Hosting</a></li>
-                                    <li><a href="#" onclick="showService('email-automation-details')">Email Automation</a></li>
-                                    <li><a href="#" onclick="showService('influencer-marketing-details')">Influencer Marketing</a></li>
-                                    <li><a href="#" onclick="showService('web-design-details')">Web Design</a></li>
-                                </ul>
-                            </div>
-                            <div class="services-details__banner">
-                                <div class="services-details__banner__shape"></div>
-                                <div class="services-details__banner__image"><img src="/assets/banner-author-CZ63jT6g.png" alt="ogency"></div>
-                                <div class="services-details__banner__icon"><span class="icon-mobile-development"></span></div>
-                                <h3 class="services-details__banner__title">Are you looking for<br> payment integration</h3>
-                                <a class="ogency-btn" href="contact.html">Contact</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-8 col-lg-7">
+                    <div class="col-xl-12 col-lg-12">
                         <div class="services-details__content">
-                            <div class="services-details__thumb"><img src="/assets/service-details-development-BkU8FyR2.jpg" alt="ogency"></div>
+                            <div class="services-details__thumb"><img src="/assets/payment2-BcC9dZgS.png" alt="ogency"></div>
                             <h3 class="services-details__content__title">Payment Integration</h3>
                             <p class="services-details__content__text">
-                                Secure payment gateway integration services. We integrate multiple payment solutions to provide seamless transaction experiences.
+                                We provide secure, scalable payment integration solutions that enable smooth and reliable transactions across web and mobile platforms. From online payments to subscriptions and automated billing, our integrations are designed to be fast, compliant, and easy to manage.
                             </p>
-                            <h4 class="services-details__content__title-two">Expert Payment Integration Services</h4>
                             <p class="services-details__content__text">
-                                Our team specializes in integrating various payment gateways with focus on security, compliance, and user experience.
+                                Our focus is on security, performance, and user experience, ensuring payments work flawlessly in real-world usage.
                             </p>
-                            <h3 class="services-details__content__title-three">Why choose our payment integration?</h3>
-                            <p class="services-details__content__text">
-                                We deliver secure, reliable payment solutions that support multiple currencies and payment methods.
-                            </p>
-                            <ul class="services-details__points list-unstyled">
-                                <li>
-                                    <div class="services-details__points__icon"><span class="icon-success"></span></div>
-                                    <h3 class="services-details__points__title">Secure<br> Transactions</h3>
-                                </li>
-                                <li>
-                                    <div class="services-details__points__icon"><span class="icon-job-promotion"></span></div>
-                                    <h3 class="services-details__points__title">Multiple<br> Gateways</h3>
-                                </li>
-                                <li>
-                                    <div class="services-details__points__icon"><span class="icon-marketing"></span></div>
-                                    <h3 class="services-details__points__title">Global<br> Support</h3>
-                                </li>
+                            <h4 class="services-details__content__title-two">What We Offer</h4>
+                            <ul class="services-details__benefit__lists list-unstyled">
+                                <li><span class="fa fa-check-circle"></span>Payment gateway integration for web and mobile apps</li>
+                                <li><span class="fa fa-check-circle"></span>UPI, card, net banking, and wallet support</li>
+                                <li><span class="fa fa-check-circle"></span>Subscription and recurring payment setup</li>
+                                <li><span class="fa fa-check-circle"></span>Secure checkout and payment flow design</li>
+                                <li><span class="fa fa-check-circle"></span>Fraud prevention and secure data handling</li>
+                                <li><span class="fa fa-check-circle"></span>Third-party payment API integration</li>
+                                <li><span class="fa fa-check-circle"></span>Testing, deployment, and ongoing support</li>
                             </ul>
-                            <div class="services-details__benefit">
-                                <div class="row">
-                                    <div class="col-xl-6 col-lg-12 col-md-6">
-                                        <div class="services-details__benefit__img">
-                                            <img src="/assets/services-details-benefit-img-w_iwWpMO.jpg" alt="ogency">
-                                        </div>
-                                    </div>
-                                    <div class="col-xl-6 col-lg-12 col-md-6">
-                                        <div class="services-details__benefit__content">
-                                            <h3 class="services-details__benefit__title">Our benefits</h3>
-                                            <p class="services-details__benefit__text">Get the best payment integration solutions from our expert team</p>
-                                            <ul class="services-details__benefit__lists list-unstyled">
-                                                <li><span class="fa fa-check-circle"></span>PCI Compliance</li>
-                                                <li><span class="fa fa-check-circle"></span>Multiple Currencies</li>
-                                                <li><span class="fa fa-check-circle"></span>Fraud Detection</li>
-                                                <li><span class="fa fa-check-circle"></span>24/7 Support</li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
+                            <h3 class="services-details__content__title-three">Our Approach</h3>
+                            <p class="services-details__content__text">
+                                We begin by understanding your business model and transaction flow. Based on your requirements, we integrate the right payment gateways, ensure secure handling of data, and test thoroughly to deliver a smooth and reliable payment experience.
+                            </p>
+                            <h4 class="services-details__content__title-two">Why Choose Us for Payment Integration?</h4>
+                            <ul class="services-details__benefit__lists list-unstyled">
+                                <li><span class="fa fa-check-circle"></span>Secure and compliant payment solutions</li>
+                                <li><span class="fa fa-check-circle"></span>Seamless user experience across devices</li>
+                                <li><span class="fa fa-check-circle"></span>Scalable systems for high transaction volumes</li>
+                                <li><span class="fa fa-check-circle"></span>Clean and maintainable integrations</li>
+                                <li><span class="fa fa-check-circle"></span>Transparent communication and support</li>
+                            </ul>
+                            <h4 class="services-details__content__title-two">Who This Is For</h4>
+                            <ul class="services-details__benefit__lists list-unstyled">
+                                <li><span class="fa fa-check-circle"></span>E-commerce platforms and online stores</li>
+                                <li><span class="fa fa-check-circle"></span>Mobile apps requiring secure payments</li>
+                                <li><span class="fa fa-check-circle"></span>Businesses offering subscriptions or digital services</li>
+                            </ul>
+                            <div class="services-details__back-btn">
+                                <button class="ogency-btn" onclick="backToServices()">← Back to Services</button>
                             </div>
                         </div>
                     </div>
@@ -1118,82 +877,46 @@
         <section id="web-hosting-details" class="services-details" style="display: none;">
             <div class="container">
                 <div class="row">
-                    <div class="col-xl-4 col-lg-5">
-                        <div class="services-details__sidebar">
-                            <div class="services-details__services-list">
-                                <ul class="services-details__services list-unstyled">
-                                    <li><a href="#" onclick="showService('web-development-details')">Web Development</a></li>
-                                    <li><a href="#" onclick="showService('android-development-details')">Android App Development</a></li>
-                                    <li><a href="#" onclick="showService('ios-development-details')">IOS App Development</a></li>
-                                    <li><a href="#" onclick="showService('ai-integration-details')">AI Integration</a></li>
-                                    <li><a href="#" onclick="showService('digital-marketing-details')">Digital Marketing</a></li>
-                                    <li><a href="#" onclick="showService('e-commerce-details')">E-Commerce</a></li>
-                                    <li><a href="#" onclick="showService('payment-integration-details')">Payment Integration</a></li>
-                                    <li><a href="#" onclick="showService('cms-development-details')">CMS Web Development</a></li>
-                                    <li><a href="#" onclick="showService('web-hosting-details')">Web Hosting</a></li>
-                                    <li><a href="#" onclick="showService('email-automation-details')">Email Automation</a></li>
-                                    <li><a href="#" onclick="showService('influencer-marketing-details')">Influencer Marketing</a></li>
-                                    <li><a href="#" onclick="showService('web-design-details')">Web Design</a></li>
-                                </ul>
-                            </div>
-                            <div class="services-details__banner">
-                                <div class="services-details__banner__shape"></div>
-                                <div class="services-details__banner__image"><img src="/assets/banner-author-CZ63jT6g.png" alt="ogency"></div>
-                                <div class="services-details__banner__icon"><span class="icon-mobile-development"></span></div>
-                                <h3 class="services-details__banner__title">Are you looking for<br> web hosting</h3>
-                                <a class="ogency-btn" href="contact.html">Contact</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-8 col-lg-7">
+                    <div class="col-xl-12 col-lg-12">
                         <div class="services-details__content">
-                            <div class="services-details__thumb"><img src="/assets/service-details-development-BkU8FyR2.jpg" alt="ogency"></div>
+                            <div class="services-details__thumb"><img src="/assets/webhosting2-DA1euEqS.png" alt="ogency"></div>
                             <h3 class="services-details__content__title">Web Hosting</h3>
                             <p class="services-details__content__text">
-                                Reliable and secure web hosting solutions. We provide fast, scalable hosting services with 99.9% uptime guarantee.
+                                We offer high-performance web hosting solutions tailored to the needs of modern websites and web applications. Our hosting services are built to deliver speed, security, and reliability, allowing businesses to focus on growth without worrying about infrastructure.
                             </p>
-                            <h4 class="services-details__content__title-two">Expert Web Hosting Services</h4>
                             <p class="services-details__content__text">
-                                Our team delivers robust hosting solutions with advanced security, daily backups, and exceptional technical support.
+                                Whether you're hosting a simple website or a complex web application, our solutions are designed to scale with your needs.
                             </p>
-                            <h3 class="services-details__content__title-three">Why choose our web hosting?</h3>
-                            <p class="services-details__content__text">
-                                We provide reliable hosting infrastructure with focus on speed, security, and seamless scalability.
-                            </p>
-                            <ul class="services-details__points list-unstyled">
-                                <li>
-                                    <div class="services-details__points__icon"><span class="icon-success"></span></div>
-                                    <h3 class="services-details__points__title">99.9%<br> Uptime</h3>
-                                </li>
-                                <li>
-                                    <div class="services-details__points__icon"><span class="icon-job-promotion"></span></div>
-                                    <h3 class="services-details__points__title">Fast<br> Servers</h3>
-                                </li>
-                                <li>
-                                    <div class="services-details__points__icon"><span class="icon-marketing"></span></div>
-                                    <h3 class="services-details__points__title">24/7<br> Support</h3>
-                                </li>
+                            <h4 class="services-details__content__title-two">What We Offer</h4>
+                            <ul class="services-details__benefit__lists list-unstyled">
+                                <li><span class="fa fa-check-circle"></span>Secure and reliable web hosting solutions</li>
+                                <li><span class="fa fa-check-circle"></span>High-speed servers optimized for performance</li>
+                                <li><span class="fa fa-check-circle"></span>Domain and SSL certificate setup</li>
+                                <li><span class="fa fa-check-circle"></span>Regular backups and data protection</li>
+                                <li><span class="fa fa-check-circle"></span>Server monitoring and uptime management</li>
+                                <li><span class="fa fa-check-circle"></span>Scalable hosting plans as your business grows</li>
+                                <li><span class="fa fa-check-circle"></span>Technical support and maintenance</li>
                             </ul>
-                            <div class="services-details__benefit">
-                                <div class="row">
-                                    <div class="col-xl-6 col-lg-12 col-md-6">
-                                        <div class="services-details__benefit__img">
-                                            <img src="/assets/services-details-benefit-img-w_iwWpMO.jpg" alt="ogency">
-                                        </div>
-                                    </div>
-                                    <div class="col-xl-6 col-lg-12 col-md-6">
-                                        <div class="services-details__benefit__content">
-                                            <h3 class="services-details__benefit__title">Our benefits</h3>
-                                            <p class="services-details__benefit__text">Get the best hosting solutions from our expert team</p>
-                                            <ul class="services-details__benefit__lists list-unstyled">
-                                                <li><span class="fa fa-check-circle"></span>Daily Backups</li>
-                                                <li><span class="fa fa-check-circle"></span>SSL Certificate</li>
-                                                <li><span class="fa fa-check-circle"></span>DDoS Protection</li>
-                                                <li><span class="fa fa-check-circle"></span>Free Migration</li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
+                            <h3 class="services-details__content__title-three">Our Approach</h3>
+                            <p class="services-details__content__text">
+                                We assess your website's requirements and recommend hosting configurations that ensure optimal performance and security. Our team handles setup, monitoring, and maintenance so your digital assets stay fast and reliable.
+                            </p>
+                            <h4 class="services-details__content__title-two">Why Choose Us for Web Hosting?</h4>
+                            <ul class="services-details__benefit__lists list-unstyled">
+                                <li><span class="fa fa-check-circle"></span>High uptime and consistent performance</li>
+                                <li><span class="fa fa-check-circle"></span>Security-focused hosting environments</li>
+                                <li><span class="fa fa-check-circle"></span>Scalable infrastructure for growing projects</li>
+                                <li><span class="fa fa-check-circle"></span>Hassle-free setup and management</li>
+                                <li><span class="fa fa-check-circle"></span>Reliable technical support</li>
+                            </ul>
+                            <h4 class="services-details__content__title-two">Who This Is For</h4>
+                            <ul class="services-details__benefit__lists list-unstyled">
+                                <li><span class="fa fa-check-circle"></span>Businesses needing dependable website hosting</li>
+                                <li><span class="fa fa-check-circle"></span>Startups launching new web products</li>
+                                <li><span class="fa fa-check-circle"></span>Brands seeking secure and scalable hosting solutions</li>
+                            </ul>
+                            <div class="services-details__back-btn">
+                                <button class="ogency-btn" onclick="backToServices()">← Back to Services</button>
                             </div>
                         </div>
                     </div>
@@ -1205,82 +928,47 @@
         <section id="email-automation-details" class="services-details" style="display: none;">
             <div class="container">
                 <div class="row">
-                    <div class="col-xl-4 col-lg-5">
-                        <div class="services-details__sidebar">
-                            <div class="services-details__services-list">
-                                <ul class="services-details__services list-unstyled">
-                                    <li><a href="#" onclick="showService('web-development-details')">Web Development</a></li>
-                                    <li><a href="#" onclick="showService('android-development-details')">Android App Development</a></li>
-                                    <li><a href="#" onclick="showService('ios-development-details')">IOS App Development</a></li>
-                                    <li><a href="#" onclick="showService('ai-integration-details')">AI Integration</a></li>
-                                    <li><a href="#" onclick="showService('digital-marketing-details')">Digital Marketing</a></li>
-                                    <li><a href="#" onclick="showService('e-commerce-details')">E-Commerce</a></li>
-                                    <li><a href="#" onclick="showService('payment-integration-details')">Payment Integration</a></li>
-                                    <li><a href="#" onclick="showService('cms-development-details')">CMS Web Development</a></li>
-                                    <li><a href="#" onclick="showService('web-hosting-details')">Web Hosting</a></li>
-                                    <li><a href="#" onclick="showService('email-automation-details')">Email Automation</a></li>
-                                    <li><a href="#" onclick="showService('influencer-marketing-details')">Influencer Marketing</a></li>
-                                    <li><a href="#" onclick="showService('web-design-details')">Web Design</a></li>
-                                </ul>
-                            </div>
-                            <div class="services-details__banner">
-                                <div class="services-details__banner__shape"></div>
-                                <div class="services-details__banner__image"><img src="/assets/banner-author-CZ63jT6g.png" alt="ogency"></div>
-                                <div class="services-details__banner__icon"><span class="icon-mobile-development"></span></div>
-                                <h3 class="services-details__banner__title">Are you looking for<br> email automation</h3>
-                                <a class="ogency-btn" href="contact.html">Contact</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-8 col-lg-7">
+                    <div class="col-xl-12 col-lg-12">
                         <div class="services-details__content">
-                            <div class="services-details__thumb"><img src="/assets/service-details-development-BkU8FyR2.jpg" alt="ogency"></div>
+                            <div class="services-details__thumb"><img src="/assets/email2-Bo26x4_S.png" alt="ogency"></div>
                             <h3 class="services-details__content__title">Email Automation</h3>
                             <p class="services-details__content__text">
-                                Advanced email automation solutions. We create intelligent email campaigns that engage customers and drive conversions.
+                                We build intelligent email automation systems that streamline communication, improve engagement, and support business growth. From onboarding sequences to transactional and marketing emails, our solutions are designed to deliver timely, relevant messages automatically.
                             </p>
-                            <h4 class="services-details__content__title-two">Expert Email Automation Services</h4>
                             <p class="services-details__content__text">
-                                Our team specializes in setting up automated email workflows that nurture leads and build customer relationships.
+                                Our focus is on efficiency, reliability, and performance, ensuring every email adds value to your customer journey.
                             </p>
-                            <h3 class="services-details__content__title-three">Why choose our email automation?</h3>
-                            <p class="services-details__content__text">
-                                We deliver sophisticated email automation with focus on personalization, timing, and measurable results.
-                            </p>
-                            <ul class="services-details__points list-unstyled">
-                                <li>
-                                    <div class="services-details__points__icon"><span class="icon-success"></span></div>
-                                    <h3 class="services-details__points__title">Smart<br> Workflows</h3>
-                                </li>
-                                <li>
-                                    <div class="services-details__points__icon"><span class="icon-job-promotion"></span></div>
-                                    <h3 class="services-details__points__title">Personalized<br> Content</h3>
-                                </li>
-                                <li>
-                                    <div class="services-details__points__icon"><span class="icon-marketing"></span></div>
-                                    <h3 class="services-details__points__title">High<br> Open Rates</h3>
-                                </li>
+                            <h4 class="services-details__content__title-two">What We Offer</h4>
+                            <ul class="services-details__benefit__lists list-unstyled">
+                                <li><span class="fa fa-check-circle"></span>Automated email workflow setup</li>
+                                <li><span class="fa fa-check-circle"></span>Transactional and system email integration</li>
+                                <li><span class="fa fa-check-circle"></span>Marketing and lead-nurturing campaigns</li>
+                                <li><span class="fa fa-check-circle"></span>User onboarding and drip sequences</li>
+                                <li><span class="fa fa-check-circle"></span>Event-based and behavior-triggered emails</li>
+                                <li><span class="fa fa-check-circle"></span>Email template design and optimization</li>
+                                <li><span class="fa fa-check-circle"></span>Analytics, tracking, and optimization</li>
+                                <li><span class="fa fa-check-circle"></span>Secure and compliant email delivery</li>
                             </ul>
-                            <div class="services-details__benefit">
-                                <div class="row">
-                                    <div class="col-xl-6 col-lg-12 col-md-6">
-                                        <div class="services-details__benefit__img">
-                                            <img src="/assets/services-details-benefit-img-w_iwWpMO.jpg" alt="ogency">
-                                        </div>
-                                    </div>
-                                    <div class="col-xl-6 col-lg-12 col-md-6">
-                                        <div class="services-details__benefit__content">
-                                            <h3 class="services-details__benefit__title">Our benefits</h3>
-                                            <p class="services-details__benefit__text">Get the best email automation solutions from our expert team</p>
-                                            <ul class="services-details__benefit__lists list-unstyled">
-                                                <li><span class="fa fa-check-circle"></span>A/B Testing</li>
-                                                <li><span class="fa fa-check-circle"></span>Analytics Dashboard</li>
-                                                <li><span class="fa fa-check-circle"></span>List Segmentation</li>
-                                                <li><span class="fa fa-check-circle"></span>24/7 Support</li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
+                            <h3 class="services-details__content__title-three">Our Approach</h3>
+                            <p class="services-details__content__text">
+                                We start by understanding your customer journey and communication needs. Based on this, we design automated workflows that trigger the right emails at the right moments, ensuring consistent engagement and measurable results.
+                            </p>
+                            <h4 class="services-details__content__title-two">Why Choose Us for Email Automation?</h4>
+                            <ul class="services-details__benefit__lists list-unstyled">
+                                <li><span class="fa fa-check-circle"></span>Business-focused automation strategies</li>
+                                <li><span class="fa fa-check-circle"></span>Reliable and scalable email systems</li>
+                                <li><span class="fa fa-check-circle"></span>Clean integration with web and mobile apps</li>
+                                <li><span class="fa fa-check-circle"></span>Improved engagement and conversion rates</li>
+                                <li><span class="fa fa-check-circle"></span>Transparent process and ongoing support</li>
+                            </ul>
+                            <h4 class="services-details__content__title-two">Who This Is For</h4>
+                            <ul class="services-details__benefit__lists list-unstyled">
+                                <li><span class="fa fa-check-circle"></span>Businesses looking to automate customer communication</li>
+                                <li><span class="fa fa-check-circle"></span>Startups onboarding users at scale</li>
+                                <li><span class="fa fa-check-circle"></span>Teams seeking consistent and efficient email campaigns</li>
+                            </ul>
+                            <div class="services-details__back-btn">
+                                <button class="ogency-btn" onclick="backToServices()">← Back to Services</button>
                             </div>
                         </div>
                     </div>
@@ -1288,173 +976,109 @@
             </div>
         </section>
 
-        <!-- Influencer Marketing Details -->
-        <section id="influencer-marketing-details" class="services-details" style="display: none;">
-            <div class="container">
-                <div class="row">
-                    <div class="col-xl-4 col-lg-5">
-                        <div class="services-details__sidebar">
-                            <div class="services-details__services-list">
-                                <ul class="services-details__services list-unstyled">
-                                    <li><a href="#" onclick="showService('web-development-details')">Web Development</a></li>
-                                    <li><a href="#" onclick="showService('android-development-details')">Android App Development</a></li>
-                                    <li><a href="#" onclick="showService('ios-development-details')">IOS App Development</a></li>
-                                    <li><a href="#" onclick="showService('ai-integration-details')">AI Integration</a></li>
-                                    <li><a href="#" onclick="showService('digital-marketing-details')">Digital Marketing</a></li>
-                                    <li><a href="#" onclick="showService('e-commerce-details')">E-Commerce</a></li>
-                                    <li><a href="#" onclick="showService('payment-integration-details')">Payment Integration</a></li>
-                                    <li><a href="#" onclick="showService('cms-development-details')">CMS Web Development</a></li>
-                                    <li><a href="#" onclick="showService('web-hosting-details')">Web Hosting</a></li>
-                                    <li><a href="#" onclick="showService('email-automation-details')">Email Automation</a></li>
-                                    <li><a href="#" onclick="showService('influencer-marketing-details')">Influencer Marketing</a></li>
-                                    <li><a href="#" onclick="showService('web-design-details')">Web Design</a></li>
-                                </ul>
-                            </div>
-                            <div class="services-details__banner">
-                                <div class="services-details__banner__shape"></div>
-                                <div class="services-details__banner__image"><img src="/assets/banner-author-CZ63jT6g.png" alt="ogency"></div>
-                                <div class="services-details__banner__icon"><span class="icon-mobile-development"></span></div>
-                                <h3 class="services-details__banner__title">Are you looking for<br> influencer marketing</h3>
-                                <a class="ogency-btn" href="contact.html">Contact</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-8 col-lg-7">
-                        <div class="services-details__content">
-                            <div class="services-details__thumb"><img src="/assets/service-details-development-BkU8FyR2.jpg" alt="ogency"></div>
-                            <h3 class="services-details__content__title">Influencer Marketing</h3>
-                            <p class="services-details__content__text">
-                                Strategic influencer marketing campaigns. We connect brands with relevant influencers to amplify your message and reach.
-                            </p>
-                            <h4 class="services-details__content__title-two">Expert Influencer Marketing Services</h4>
-                            <p class="services-details__content__text">
-                                Our team specializes in creating authentic influencer partnerships that drive engagement and deliver measurable ROI.
-                            </p>
-                            <h3 class="services-details__content__title-three">Why choose our influencer marketing?</h3>
-                            <p class="services-details__content__text">
-                                We deliver data-driven influencer campaigns with focus on authenticity, reach, and conversion optimization.
-                            </p>
-                            <ul class="services-details__points list-unstyled">
-                                <li>
-                                    <div class="services-details__points__icon"><span class="icon-success"></span></div>
-                                    <h3 class="services-details__points__title">Authentic<br> Partnerships</h3>
-                                </li>
-                                <li>
-                                    <div class="services-details__points__icon"><span class="icon-job-promotion"></span></div>
-                                    <h3 class="services-details__points__title">Targeted<br> Reach</h3>
-                                </li>
-                                <li>
-                                    <div class="services-details__points__icon"><span class="icon-marketing"></span></div>
-                                    <h3 class="services-details__points__title">Measurable<br> Results</h3>
-                                </li>
-                            </ul>
-                            <div class="services-details__benefit">
-                                <div class="row">
-                                    <div class="col-xl-6 col-lg-12 col-md-6">
-                                        <div class="services-details__benefit__img">
-                                            <img src="/assets/services-details-benefit-img-w_iwWpMO.jpg" alt="ogency">
-                                        </div>
-                                    </div>
-                                    <div class="col-xl-6 col-lg-12 col-md-6">
-                                        <div class="services-details__benefit__content">
-                                            <h3 class="services-details__benefit__title">Our benefits</h3>
-                                            <p class="services-details__benefit__text">Get the best influencer marketing solutions from our expert team</p>
-                                            <ul class="services-details__benefit__lists list-unstyled">
-                                                <li><span class="fa fa-check-circle"></span>Influencer Vetting</li>
-                                                <li><span class="fa fa-check-circle"></span>Campaign Management</li>
-                                                <li><span class="fa fa-check-circle"></span>Performance Tracking</li>
-                                                <li><span class="fa fa-check-circle"></span>24/7 Support</li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
+        
 
         <!-- Web Design Details -->
         <section id="web-design-details" class="services-details" style="display: none;">
             <div class="container">
                 <div class="row">
-                    <div class="col-xl-4 col-lg-5">
-                        <div class="services-details__sidebar">
-                            <div class="services-details__services-list">
-                                <ul class="services-details__services list-unstyled">
-                                    <li><a href="#" onclick="showService('web-development-details')">Web Development</a></li>
-                                    <li><a href="#" onclick="showService('android-development-details')">Android App Development</a></li>
-                                    <li><a href="#" onclick="showService('ios-development-details')">IOS App Development</a></li>
-                                    <li><a href="#" onclick="showService('ai-integration-details')">AI Integration</a></li>
-                                    <li><a href="#" onclick="showService('digital-marketing-details')">Digital Marketing</a></li>
-                                    <li><a href="#" onclick="showService('e-commerce-details')">E-Commerce</a></li>
-                                    <li><a href="#" onclick="showService('payment-integration-details')">Payment Integration</a></li>
-                                    <li><a href="#" onclick="showService('cms-development-details')">CMS Web Development</a></li>
-                                    <li><a href="#" onclick="showService('web-hosting-details')">Web Hosting</a></li>
-                                    <li><a href="#" onclick="showService('email-automation-details')">Email Automation</a></li>
-                                    <li><a href="#" onclick="showService('influencer-marketing-details')">Influencer Marketing</a></li>
-                                    <li><a href="#" onclick="showService('web-design-details')">Web Design</a></li>
-                                </ul>
-                            </div>
-                            <div class="services-details__banner">
-                                <div class="services-details__banner__shape"></div>
-                                <div class="services-details__banner__image"><img src="/assets/banner-author-CZ63jT6g.png" alt="ogency"></div>
-                                <div class="services-details__banner__icon"><span class="icon-mobile-development"></span></div>
-                                <h3 class="services-details__banner__title">Are you looking for<br> web design</h3>
-                                <a class="ogency-btn" href="contact.html">Contact</a>
+                    <div class="col-xl-12 col-lg-12">
+                        <div class="services-details__content">
+                            <div class="services-details__thumb"><img src="/assets/webdesign2-K9LH3Ghb.png" alt="ogency"></div>
+                            <h3 class="services-details__content__title">Web Design</h3>
+                            <p class="services-details__content__text">
+                                We create modern, clean, and intuitive web designs that reflect your brand identity and deliver meaningful user experiences. Our design process focuses on clarity, usability, and consistency — ensuring your website not only looks great but also feels easy to use.
+                            </p>
+                            <p class="services-details__content__text">
+                                Every design decision is made with user behavior, business goals, and performance in mind.
+                            </p>
+                            <h4 class="services-details__content__title-two">What We Offer</h4>
+                            <ul class="services-details__benefit__lists list-unstyled">
+                                <li><span class="fa fa-check-circle"></span>Custom website and landing page design</li>
+                                <li><span class="fa fa-check-circle"></span>UI/UX design focused on user experience</li>
+                                <li><span class="fa fa-check-circle"></span>Responsive designs for all screen sizes</li>
+                                <li><span class="fa fa-check-circle"></span>Brand-aligned color, typography, and layout systems</li>
+                                <li><span class="fa fa-check-circle"></span>Wireframes and visual prototypes</li>
+                                <li><span class="fa fa-check-circle"></span>Design optimization for conversions</li>
+                                <li><span class="fa fa-check-circle"></span>Collaboration with development for pixel-perfect execution</li>
+                            </ul>
+                            <h3 class="services-details__content__title-three">Our Approach</h3>
+                            <p class="services-details__content__text">
+                                We begin by understanding your brand, audience, and goals. From wireframes to final visuals, we design interfaces that guide users naturally and support smooth interaction across devices.
+                            </p>
+                            <h4 class="services-details__content__title-two">Why Choose Us for Web Design?</h4>
+                            <ul class="services-details__benefit__lists list-unstyled">
+                                <li><span class="fa fa-check-circle"></span>User-first and business-driven design approach</li>
+                                <li><span class="fa fa-check-circle"></span>Clean, modern, and timeless visuals</li>
+                                <li><span class="fa fa-check-circle"></span>Strong focus on usability and clarity</li>
+                                <li><span class="fa fa-check-circle"></span>Design consistency across web and mobile</li>
+                                <li><span class="fa fa-check-circle"></span>Seamless handoff to development</li>
+                            </ul>
+                            <h4 class="services-details__content__title-two">Who This Is For</h4>
+                            <ul class="services-details__benefit__lists list-unstyled">
+                                <li><span class="fa fa-check-circle"></span>Startups building their brand presence</li>
+                                <li><span class="fa fa-check-circle"></span>Businesses redesigning existing websites</li>
+                                <li><span class="fa fa-check-circle"></span>Brands seeking modern and conversion-focused designs</li>
+                            </ul>
+                            <div class="services-details__back-btn">
+                                <button class="ogency-btn" onclick="backToServices()">← Back to Services</button>
                             </div>
                         </div>
                     </div>
-                    <div class="col-xl-8 col-lg-7">
+                </div>
+            </div>
+        </section>
+
+        <!-- SEO Development Details -->
+        <section id="seo-development-details" class="services-details" style="display: none;">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-12 col-lg-12">
                         <div class="services-details__content">
-                            <div class="services-details__thumb"><img src="/assets/service-details-development-BkU8FyR2.jpg" alt="ogency"></div>
-                            <h3 class="services-details__content__title">Web Design</h3>
+                            <div class="services-details__thumb"><img src="/assets/seo2-BHEvVtLi.png" alt="SEO Development"></div>
+                            <h3 class="services-details__content__title">SEO (Search Engine Optimization)</h3>
                             <p class="services-details__content__text">
-                                Creative and responsive web design solutions. We create stunning, user-friendly websites that captivate your audience and drive results.
+                                We deliver comprehensive SEO solutions that improve your website's visibility, increase organic traffic, and drive measurable business results. Our approach combines technical optimization, high-quality content, and smart link strategies to help your website rank for the keywords that matter most.
                             </p>
-                            <h4 class="services-details__content__title-two">Expert Web Design Services</h4>
                             <p class="services-details__content__text">
-                                Our team specializes in creating visually appealing, functional designs that provide exceptional user experiences across all devices.
+                                From site structure and speed to content relevance and authority, every part of your website is optimized to perform better in search results and provide a strong user experience.
                             </p>
-                            <h3 class="services-details__content__title-three">Why choose our web design?</h3>
-                            <p class="services-details__content__text">
-                                We deliver innovative design solutions with focus on aesthetics, usability, and conversion optimization.
-                            </p>
-                            <ul class="services-details__points list-unstyled">
-                                <li>
-                                    <div class="services-details__points__icon"><span class="icon-success"></span></div>
-                                    <h3 class="services-details__points__title">Creative<br> Designs</h3>
-                                </li>
-                                <li>
-                                    <div class="services-details__points__icon"><span class="icon-job-promotion"></span></div>
-                                    <h3 class="services-details__points__title">User<br> Focused</h3>
-                                </li>
-                                <li>
-                                    <div class="services-details__points__icon"><span class="icon-marketing"></span></div>
-                                    <h3 class="services-details__points__title">Mobile<br> Responsive</h3>
-                                </li>
+                            
+                            <h4 class="services-details__content__title-two">What We Offer</h4>
+                            <ul class="services-details__benefit__lists list-unstyled">
+                                <li><span class="fa fa-check-circle"></span>In-depth SEO audit and strategy planning</li>
+                                <li><span class="fa fa-check-circle"></span>Keyword research and search intent mapping</li>
+                                <li><span class="fa fa-check-circle"></span>On-page SEO (titles, meta tags, content optimization)</li>
+                                <li><span class="fa fa-check-circle"></span>Technical SEO (site speed, indexing, crawlability)</li>
+                                <li><span class="fa fa-check-circle"></span>Content strategy and SEO copywriting guidance</li>
+                                <li><span class="fa fa-check-circle"></span>Internal linking and site architecture optimization</li>
+                                <li><span class="fa fa-check-circle"></span>High-quality backlink and authority building</li>
+                                <li><span class="fa fa-check-circle"></span>Ongoing tracking, reporting, and performance improvements</li>
                             </ul>
-                            <div class="services-details__benefit">
-                                <div class="row">
-                                    <div class="col-xl-6 col-lg-12 col-md-6">
-                                        <div class="services-details__benefit__img">
-                                            <img src="/assets/services-details-benefit-img-w_iwWpMO.jpg" alt="ogency">
-                                        </div>
-                                    </div>
-                                    <div class="col-xl-6 col-lg-12 col-md-6">
-                                        <div class="services-details__benefit__content">
-                                            <h3 class="services-details__benefit__title">Our benefits</h3>
-                                            <p class="services-details__benefit__text">Get the best web design solutions from our expert team</p>
-                                            <ul class="services-details__benefit__lists list-unstyled">
-                                                <li><span class="fa fa-check-circle"></span>Modern Design</li>
-                                                <li><span class="fa fa-check-circle"></span>UX/UI Optimization</li>
-                                                <li><span class="fa fa-check-circle"></span>Brand Consistency</li>
-                                                <li><span class="fa fa-check-circle"></span>24/7 Support</li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
+                            
+                            <h3 class="services-details__content__title-three">Our Approach</h3>
+                            <p class="services-details__content__text">
+                                We start by analyzing your current website, competitors, and target keywords. Based on real data, we create a structured SEO roadmap and implement optimizations step by step, continuously monitoring rankings and traffic to refine the strategy over time.
+                            </p>
+                            
+                            <h4 class="services-details__content__title-two">Why Choose Us for SEO?</h4>
+                            <ul class="services-details__benefit__lists list-unstyled">
+                                <li><span class="fa fa-check-circle"></span>Data-driven, long-term ranking strategies</li>
+                                <li><span class="fa fa-check-circle"></span>Technical and content SEO combined</li>
+                                <li><span class="fa fa-check-circle"></span>Focus on qualified traffic, not vanity metrics</li>
+                                <li><span class="fa fa-check-circle"></span>Transparent reporting and clear progress tracking</li>
+                                <li><span class="fa fa-check-circle"></span>SEO aligned with your website and business goals</li>
+                            </ul>
+                            
+                            <h4 class="services-details__content__title-two">Who This Is For</h4>
+                            <ul class="services-details__benefit__lists list-unstyled">
+                                <li><span class="fa fa-check-circle"></span>Businesses wanting more organic website traffic</li>
+                                <li><span class="fa fa-check-circle"></span>Startups building long-term online visibility</li>
+                                <li><span class="fa fa-check-circle"></span>Brands looking to rank for competitive keywords</li>
+                            </ul>
+                            
+                            <div class="services-details__back-btn">
+                                <button class="ogency-btn" onclick="backToServices()">← Back to Services</button>
                             </div>
                         </div>
                     </div>
@@ -1507,56 +1131,22 @@
     <script src="assets/js/ogency.js"></script>
     <!-- Contact Overlay JavaScript -->
     <script src="assets/js/contact-overlay.js"></script>
-
-    <!-- Service Details JavaScript -->
+    <!-- Service Cards Mobile Flip JavaScript -->
+    <script src="assets/js/service-cards.js"></script>
+    <!-- Project Showcase Scroll Animations -->
+    <script src="assets/js/project-showcase.js"></script>
+    <!-- Fix Bootstrap Select Version Issue -->
     <script>
-        function scrollToService(serviceId) {
-            event.preventDefault();
-            
-            // Hide all service detail sections
-            var allSections = document.querySelectorAll('.services-details');
-            allSections.forEach(function(section) {
-                section.style.display = 'none';
-            });
-            
-            // Show the selected service detail section
-            var targetSection = document.getElementById(serviceId);
-            if (targetSection) {
-                targetSection.style.display = 'block';
+        // Wait for DOM to be ready and Bootstrap to be loaded
+        $(document).ready(function() {
+            // Set Bootstrap version for bootstrap-select
+            if (typeof $.fn.selectpicker !== 'undefined') {
+                $.fn.selectpicker.Constructor.BootstrapVersion = '5';
                 
-                // Smooth scroll to the section
-                setTimeout(function() {
-                    targetSection.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }, 100);
+                // Re-initialize selectpickers after setting version
+                $('.selectpicker').selectpicker('refresh');
             }
-        }
-        
-        function showService(serviceId) {
-            event.preventDefault();
-            
-            // Hide all service detail sections
-            var allSections = document.querySelectorAll('.services-details');
-            allSections.forEach(function(section) {
-                section.style.display = 'none';
-            });
-            
-            // Show the selected service detail section
-            var targetSection = document.getElementById(serviceId);
-            if (targetSection) {
-                targetSection.style.display = 'block';
-                
-                // Smooth scroll to the section
-                setTimeout(function() {
-                    targetSection.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }, 100);
-            }
-        }
+        });
     </script>
     <!-- Floating WhatsApp and Call Buttons -->
     <div class="floating-buttons">

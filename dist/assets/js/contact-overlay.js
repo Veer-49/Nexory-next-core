@@ -1,128 +1,129 @@
 // Contact Overlay JavaScript
-document.addEventListener('DOMContentLoaded', function() {
-    console.log('Contact overlay script loaded');
+(function() {
+    'use strict';
     
-    // Use MutationObserver to detect when header is loaded
-    const observer = new MutationObserver(function(mutations) {
-        mutations.forEach(function(mutation) {
-            if (mutation.type === 'childList') {
-                const getInTouchBtn = document.querySelector('.main-menu__right .ogency-btn[href="contact.html"]');
-                if (getInTouchBtn && !getInTouchBtn.hasAttribute('data-overlay-initialized')) {
-                    console.log('Header detected, initializing contact overlay');
-                    initializeContactOverlay();
-                    getInTouchBtn.setAttribute('data-overlay-initialized', 'true');
-                    observer.disconnect();
-                }
-            }
-        });
-    });
+    let overlayInitialized = false;
     
-    // Start observing the document body for changes
-    observer.observe(document.body, {
-        childList: true,
-        subtree: true
-    });
-    
-    // Also check immediately in case header is already loaded
-    if (document.querySelector('.main-menu__right .ogency-btn[href="contact.html"]')) {
-        initializeContactOverlay();
-    }
-    
-    // Wait for header to be loaded before initializing
     function initializeContactOverlay() {
-        console.log('Initializing contact overlay...');
+        if (overlayInitialized) return;
         
-        const getInTouchBtn = document.querySelector('.main-menu__right .ogency-btn[href="contact.html"]');
+        const getInTouchBtns = document.querySelectorAll('.get-in-touch-btn');
         const contactOverlay = document.getElementById('contactOverlay');
-        const closeBtn = document.getElementById('closeContact');
-        const contactForm = document.getElementById('contactForm');
-        const overlayTitle = document.querySelector('.contact-overlay__title');
         
-        console.log('Elements found:', {
-            getInTouchBtn: !!getInTouchBtn,
-            contactOverlay: !!contactOverlay,
-            closeBtn: !!closeBtn,
-            contactForm: !!contactForm,
-            overlayTitle: !!overlayTitle
-        });
-        
-        // Prevent default link behavior and open overlay
-        if (getInTouchBtn) {
-            getInTouchBtn.addEventListener('click', function(e) {
-                console.log('Get in touch button clicked');
-                e.preventDefault();
-                openContactOverlay();
-            });
-            console.log('Contact overlay event listener attached successfully');
-        } else {
-            console.error('Get in touch button not found');
+        if (!getInTouchBtns.length || !contactOverlay) {
+            console.log('Elements not found yet, retrying...');
+            return false;
         }
         
-        // Close overlay
+        console.log('Contact overlay elements found, initializing...');
+        
+        const closeBtn = document.getElementById('closeContact');
+        const contactForm = document.getElementById('contactForm');
+        const overlayBg = document.querySelector('.contact-overlay-new__bg');
+        
+        // Open overlay
+        getInTouchBtns.forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                e.preventDefault();
+                console.log('Get in touch button clicked');
+                contactOverlay.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            });
+        });
+        
+        // Close overlay functions
+        function closeOverlay() {
+            contactOverlay.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+        
+        // Close on close button
         if (closeBtn) {
-            closeBtn.addEventListener('click', closeContactOverlay);
+            closeBtn.addEventListener('click', closeOverlay);
+        }
+        
+        // Close on background click
+        if (overlayBg) {
+            overlayBg.addEventListener('click', closeOverlay);
         }
         
         // Close on escape key
         document.addEventListener('keydown', function(e) {
-            if (e.key === 'Escape' && contactOverlay && contactOverlay.classList.contains('active')) {
-                closeContactOverlay();
+            if (e.key === 'Escape' && contactOverlay.classList.contains('active')) {
+                closeOverlay();
             }
         });
-        
-        // Close on background click
-        if (contactOverlay) {
-            contactOverlay.addEventListener('click', function(e) {
-                if (e.target === contactOverlay) {
-                    closeContactOverlay();
-                }
-            });
-        }
-        
-        function openContactOverlay() {
-            if (contactOverlay) {
-                contactOverlay.classList.add('active');
-                document.body.style.overflow = 'hidden';
-                
-                // Animate button text to title
-                setTimeout(() => {
-                    if (overlayTitle) {
-                        overlayTitle.classList.add('animate-in');
-                    }
-                }, 300);
-            }
-        }
-        
-        function closeContactOverlay() {
-            if (contactOverlay) {
-                contactOverlay.classList.remove('active');
-                document.body.style.overflow = '';
-                if (overlayTitle) {
-                    overlayTitle.classList.remove('animate-in');
-                }
-            }
-        }
         
         // Handle form submission
         if (contactForm) {
             contactForm.addEventListener('submit', function(e) {
                 e.preventDefault();
                 
-                // Add success animation
-                const submitBtn = this.querySelector('.contact-overlay__submit');
+                // Show success message
+                const submitBtn = contactForm.querySelector('.contact-overlay-new__btn');
                 if (submitBtn) {
-                    submitBtn.classList.add('success');
-                    submitBtn.innerHTML = '<span>Message Sent!</span><svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M20 6L9 17L4 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+                    const originalText = submitBtn.innerHTML;
+                    
+                    submitBtn.innerHTML = '✓ Message Sent!';
+                    submitBtn.disabled = true;
+                    submitBtn.classList.add('submit-success');
                     
                     // Reset form after delay
                     setTimeout(() => {
                         contactForm.reset();
-                        submitBtn.classList.remove('success');
-                        submitBtn.innerHTML = '<span>Send Message</span><svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M22 2L11 13M22 2L15 22L11 13L2 9L22 2Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>';
-                        closeContactOverlay();
+                        submitBtn.innerHTML = originalText;
+                        submitBtn.disabled = false;
+                        submitBtn.classList.remove('submit-success');
+                        closeOverlay();
                     }, 2000);
                 }
             });
         }
+        
+        overlayInitialized = true;
+        console.log('Contact overlay initialized successfully');
+        return true;
     }
-});
+    
+    // Try to initialize on DOMContentLoaded
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('DOMContentLoaded fired');
+            // Try multiple times to catch dynamically loaded header
+            let attempts = 0;
+            const maxAttempts = 50;
+            const interval = setInterval(() => {
+                if (initializeContactOverlay() || attempts >= maxAttempts) {
+                    clearInterval(interval);
+                }
+                attempts++;
+            }, 100);
+        });
+    } else {
+        // DOM already loaded
+        console.log('DOM already loaded');
+        let attempts = 0;
+        const maxAttempts = 50;
+        const interval = setInterval(() => {
+            if (initializeContactOverlay() || attempts >= maxAttempts) {
+                clearInterval(interval);
+            }
+            attempts++;
+        }, 100);
+    }
+    
+    // Use MutationObserver to detect when header is dynamically loaded
+    const observer = new MutationObserver(function(mutations) {
+        if (initializeContactOverlay()) {
+            observer.disconnect();
+        }
+    });
+    
+    // Observe the document for changes
+    observer.observe(document.documentElement, {
+        childList: true,
+        subtree: true,
+        attributes: false,
+        characterData: false
+    });
+})();
