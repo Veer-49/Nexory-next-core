@@ -7,10 +7,10 @@
     function initializeContactOverlay() {
         if (overlayInitialized) return;
         
-        const getInTouchBtn = document.querySelector('.get-in-touch-btn');
+        const getInTouchBtns = document.querySelectorAll('.get-in-touch-btn');
         const contactOverlay = document.getElementById('contactOverlay');
         
-        if (!getInTouchBtn || !contactOverlay) {
+        if (!getInTouchBtns.length || !contactOverlay) {
             console.log('Elements not found yet, retrying...');
             return false;
         }
@@ -22,11 +22,13 @@
         const overlayBg = document.querySelector('.contact-overlay-new__bg');
         
         // Open overlay
-        getInTouchBtn.addEventListener('click', function(e) {
-            e.preventDefault();
-            console.log('Get in touch button clicked');
-            contactOverlay.classList.add('active');
-            document.body.style.overflow = 'hidden';
+        getInTouchBtns.forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                e.preventDefault();
+                console.log('Get in touch button clicked');
+                contactOverlay.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            });
         });
         
         // Close overlay functions
