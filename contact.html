@@ -146,7 +146,7 @@
                 </div><!-- section-title -->
                 <div class="contact-one__left text-center">
                     <div class="contact-one__form-box">
-                        <form action="https://bracketweb.com/ogency-html-main/assets/inc/sendemail.php" class="contact-one__form contact-form-validated" novalidate="novalidate">
+                        <form id="contact-form" action="#" class="contact-one__form contact-form-validated" novalidate="novalidate">
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="contact-one__input-box">
@@ -165,7 +165,7 @@
                                 </div>
                                 <div class="col-md-6">
                                     <div class="contact-one__input-box">
-                                        <select class="selectpicker" aria-label="Default select example">
+                                        <select class="selectpicker" aria-label="Default select example" name="service">
                                             <option selected>Select service</option>
                                             <option value="web-development">Web Development</option>
                                             <option value="android-development">Android App Development</option>
@@ -290,5 +290,183 @@
     <script src="assets/js/ogency.js"></script>
     <!-- Contact Overlay JavaScript -->
     <script src="assets/js/contact-overlay.js"></script>
+    <script>
+        (function () {
+            'use strict';
+
+            const EMAILJS_USER_ID = '8XYNZGBfYNxYCCYuo';
+            const EMAILJS_SERVICE_ID = 'service_17o4tq4';
+            const EMAILJS_CONTACT_TEMPLATE_ID = 'template_muzi8cb';
+            const EMAILJS_AUTO_REPLY_TEMPLATE_ID = 'template_4b8rnwc';
+
+            function loadEmailJS() {
+                return new Promise((resolve, reject) => {
+                    if (typeof emailjs !== 'undefined') {
+                        emailjs.init(EMAILJS_USER_ID);
+                        resolve();
+                        return;
+                    }
+
+                    const sources = [
+                        'https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js',
+                        'https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js'
+                    ];
+
+                    let idx = 0;
+                    function tryNext() {
+                        if (idx >= sources.length) {
+                            reject(new Error('All EmailJS sources failed to load'));
+                            return;
+                        }
+                        const script = document.createElement('script');
+                        script.type = 'text/javascript';
+                        script.src = sources[idx];
+                        script.onload = () => {
+                            setTimeout(() => {
+                                if (typeof emailjs !== 'undefined') {
+                                    emailjs.init(EMAILJS_USER_ID);
+                                    resolve();
+                                } else {
+                                    idx++;
+                                    tryNext();
+                                }
+                            }, 500);
+                        };
+                        script.onerror = () => {
+                            idx++;
+                            tryNext();
+                        };
+                        document.head.appendChild(script);
+                    }
+                    tryNext();
+                });
+            }
+
+            function fallbackEmailSubmission(values, submitBtn, originalText, form, resultEl) {
+                const submission = {
+                    ...values,
+                    timestamp: new Date().toISOString()
+                };
+
+                let submissions = JSON.parse(localStorage.getItem('contactSubmissions') || '[]');
+                submissions.push(submission);
+                localStorage.setItem('contactSubmissions', JSON.stringify(submissions));
+
+                const subject = encodeURIComponent(`New Contact Form Submission from ${values.name || ''}`);
+                const body = encodeURIComponent(
+                    `Name: ${values.name || ''}\nEmail: ${values.email || ''}\nPhone: ${values.phone || ''}\nService: ${values.service || ''}\nMessage: ${values.message || ''}`
+                );
+                const mailtoLink = `mailto:jupiter.digital.tech@gmail.com?subject=${subject}&body=${body}`;
+
+                if (resultEl) {
+                    resultEl.innerHTML = '<div class="alert alert-info">Opening your email client to send the message...</div>';
+                }
+
+                submitBtn.innerHTML = 'Opening Email Client...';
+                window.open(mailtoLink, '_blank');
+
+                setTimeout(() => {
+                    submitBtn.innerHTML = originalText;
+                    submitBtn.disabled = false;
+                    form.reset();
+                }, 1500);
+            }
+
+            function handleContactPageForm() {
+                const form = document.querySelector('.contact-one__form');
+                if (!form) return;
+
+                const resultEl = form.parentElement ? form.parentElement.querySelector('.result') : null;
+                const submitBtn = form.querySelector('button[type="submit"]');
+                if (!submitBtn) return;
+
+                form.addEventListener('submit', async function (e) {
+                    e.preventDefault();
+
+                    const originalText = submitBtn.innerHTML;
+                    submitBtn.innerHTML = 'Sending...';
+                    submitBtn.disabled = true;
+
+                    const fd = new FormData(form);
+                    const values = {
+                        name: fd.get('name'),
+                        email: fd.get('email'),
+                        phone: fd.get('phone'),
+                        service: fd.get('service'),
+                        message: fd.get('message')
+                    };
+
+                    try {
+                        await loadEmailJS();
+
+                        const contactParams = {
+                            name: values.name,
+                            email: values.email,
+                            phone: values.phone,
+                            service: values.service,
+                            message: values.message,
+                            to_email: 'jupiter.digital.tech@gmail.com',
+                            to: 'jupiter.digital.tech@gmail.com',
+                            recipient_email: 'jupiter.digital.tech@gmail.com',
+                            recipient: 'jupiter.digital.tech@gmail.com',
+                            destination: 'jupiter.digital.tech@gmail.com',
+                            from_name: values.name,
+                            from_email: values.email,
+                            user_name: values.name,
+                            user_email: values.email,
+                            user_phone: values.phone,
+                            user_service: values.service,
+                            user_message: values.message,
+                            customer_name: values.name,
+                            customer_email: values.email,
+                            customer_phone: values.phone,
+                            customer_service: values.service,
+                            customer_message: values.message
+                        };
+
+                        const replyParams = {
+                            email: values.email,
+                            to_email: values.email,
+                            to_name: values.name,
+                            from_name: 'Jupiter Digital Technologies',
+                            name: values.name,
+                            customer_name: values.name,
+                            customer_email: values.email,
+                            recipient_name: values.name,
+                            recipient_email: values.email,
+                            company_name: 'Jupiter Digital Technologies',
+                            support_email: 'jupiter.digital.tech@gmail.com',
+                            reply_to: values.email
+                        };
+
+                        await emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_CONTACT_TEMPLATE_ID, contactParams);
+                        try {
+                            await emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_AUTO_REPLY_TEMPLATE_ID, replyParams);
+                        } catch (err) {
+                        }
+
+                        if (resultEl) {
+                            resultEl.innerHTML = '<div class="alert alert-success">Message sent successfully.</div>';
+                        }
+
+                        submitBtn.innerHTML = '✓ Message Sent!';
+                        setTimeout(() => {
+                            form.reset();
+                            submitBtn.innerHTML = originalText;
+                            submitBtn.disabled = false;
+                        }, 2000);
+                    } catch (err) {
+                        fallbackEmailSubmission(values, submitBtn, originalText, form, resultEl);
+                    }
+                });
+            }
+
+            if (document.readyState === 'loading') {
+                document.addEventListener('DOMContentLoaded', handleContactPageForm);
+            } else {
+                handleContactPageForm();
+            }
+        })();
+    </script>
 </body>
 </html>
