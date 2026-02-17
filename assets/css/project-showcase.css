@@ -507,14 +507,14 @@
   left: 0;
   width: 50%;
   justify-content: flex-end;
-  text-align: right;
+  text-align: left;
 }
 
 .service-showcase__item:nth-child(even) .service-showcase__overlay {
   right: 0;
   width: 50%;
   justify-content: flex-end;
-  text-align: right;
+  text-align: left;
 }
 
 /* Hover state - expand to full width but keep text outside image */
@@ -554,7 +554,7 @@
 
 .service-showcase__item:nth-child(odd):hover .service-showcase__content {
   margin-left: auto;
-  text-align: right;
+  text-align: left;
 }
 
 .service-showcase__item:nth-child(even):hover .service-showcase__content {
@@ -572,7 +572,7 @@
   transition-delay: 100ms;
   max-width: 100%;
   opacity: 1;
-  text-align: right;
+  text-align: left;
 }
 
 .service-showcase__item.animate-in:hover .service-showcase__content {
