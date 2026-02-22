@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Home</title>
     
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="assets/images/gallery/icon.png">
+    
     <!-- fonts -->
     <link rel="preconnect" href="https://fonts.gstatic.com/" />
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap" rel="stylesheet" />
@@ -224,7 +227,7 @@
                                 <h5 class="section-title__tagline section-title__tagline--has-dots">about the agency</h5>
                                 <h2 class="section-title__title">Helping Businesses Grow with Web, App & AI Solutions</h2>
                             </div><!-- section-title -->
-                            <img src="assets/images/gallery/signature.png" alt="ogency" width="100" />
+                            <img src="assets/images/gallery/signature.png" alt="Jupiter Digital Technologies" width="100" />
                             <p class="about-two__left--text">Veer Momaya -Founder</p>
                         </div><!-- about content left -->
                     </div>
@@ -559,8 +562,8 @@
         <!-- Sliding Text Start-->
         <section class="slider-text-one">
             <div class="slider-text-one__animate-text">
-                <span>Web, App Design <span>&</span> development agency.&nbsp;</span>
-                <span>Web, App Design <span>&</span> development agency.&nbsp;</span>
+                <h2 style="color: rgb(5, 153, 202);">• Web Development&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;• Android App Development&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;• iOS App Development&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;• AI Integration&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;• Digital Marketing&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;• E-Commerce&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;• Payment Integration&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;• CMS Web Development&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;• Web Hosting&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;• Email Automation&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;• Web Design&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;• SEO Development</h2>
+                
             </div>
         </section>
         <!-- Sliding Text Start-->
@@ -1000,6 +1003,7 @@
                                                     <option value="email-automation">Email Automation</option>
                                                     <option value="web-design">Web Design</option>
                                                     <option value="seo-development">SEO Development</option>
+                                                    <option value="be a part of company" selected>Be a Part of Company</option>
                                                 </select>
                                             </div>
                                         </div>
@@ -1034,10 +1038,21 @@
         <!-- Include centralized footer -->
         <div id="footer-container"></div>
         <script>
-            fetch('footer.html')
+            fetch('footer.html?v=' + Date.now())
                 .then(response => response.text())
                 .then(data => {
                     document.getElementById('footer-container').innerHTML = data;
+                    // Execute scripts in the inserted HTML
+                    const scripts = document.getElementById('footer-container').querySelectorAll('script');
+                    scripts.forEach(script => {
+                        const newScript = document.createElement('script');
+                        if (script.src) {
+                            newScript.src = script.src;
+                        } else {
+                            newScript.textContent = script.textContent;
+                        }
+                        document.body.appendChild(newScript);
+                    });
                 });
         </script>
 
