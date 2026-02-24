@@ -2938,6 +2938,25 @@ h6 {
     padding: 0;
     top: 0;
   }
+  
+  .main-menu .container-fluid {
+    flex-direction: row-reverse;
+  }
+  
+  .main-menu__logo {
+    order: 2;
+  }
+  
+  .main-menu__right {
+    order: 1;
+    margin-left: 0;
+    margin-right: auto;
+  }
+  
+  /* Hide Get in Touch button on mobile */
+  .main-menu__right .ogency-btn {
+    display: none;
+  }
 }
 
 @media (min-width: 991px) and (max-width: 1360px) {
