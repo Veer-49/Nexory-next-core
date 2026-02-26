@@ -9,7 +9,7 @@
     const EMAILJS_AUTO_REPLY_TEMPLATE_ID = 'template_4b8rnwc'; // Template for auto-reply to user
 
     // Google Sheets Configuration
-    const GOOGLE_SHEETS_URL = 'https://script.google.com/macros/s/AKfycbwmQHEA47YSIZPeL7VrXv95eoZCuwAUfD5pzFn1yuUuDctwWCddO2KNLNgNR59RNrRDyw/exec';
+    const GOOGLE_SHEETS_URL = 'https://script.google.com/macros/s/AKfycby5VoGkuqlzXOB7Kscb4QzzGiu-ntPSOCbHx9KCQjfktEYScSrpdtvBNPCmEDtBYaTXKg/exec';
 
     let overlayInitialized = false;
     
@@ -68,40 +68,47 @@
         });
     }
     
-    // Function to submit data to Google Sheets
+    // Function to submit data to Google Sheets via backend API
     function submitToGoogleSheets(name, email, phone, service, message) {
         return new Promise((resolve, reject) => {
-            const formData = {
-                name: name,
-                email: email,
-                phone: phone,
-                service: service,
-                message: message
+            // Submit via backend API endpoint (bypasses CORS issues)
+            const payload = {
+                name: name || '',
+                email: email || '',
+                phone: phone || '',
+                service: service || '',
+                message: message || ''
             };
 
-            console.log('Submitting to Google Sheets:', formData);
+            console.log('Submitting to backend API:', payload);
 
-            fetch(GOOGLE_SHEETS_URL, {
+            fetch('/api/submit-form', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify(formData)
+                body: JSON.stringify(payload)
             })
             .then(response => {
-                console.log('Google Sheets response status:', response.status);
-                console.log('Google Sheets response ok:', response.ok);
+                console.log('Backend API response status:', response.status);
+                console.log('Backend API response ok:', response.ok);
 
                 if (response.ok) {
-                    console.log('Google Sheets submission successful');
-                    resolve({ success: true });
+                    return response.json().then(data => {
+                        console.log('Form submission successful:', data);
+                        resolve({ success: true, data });
+                    });
                 } else {
-                    console.error('Google Sheets submission failed with status:', response.status);
-                    reject(new Error(`HTTP ${response.status}: ${response.statusText}`));
+                    return response.json().then(data => {
+                        console.error('Form submission failed with status:', response.status);
+                        reject(new Error(`HTTP ${response.status}: ${data.error || response.statusText}`));
+                    }).catch(() => {
+                        reject(new Error(`HTTP ${response.status}: ${response.statusText}`));
+                    });
                 }
             })
             .catch(error => {
-                console.error('Google Sheets submission failed:', error);
+                console.error('Form submission failed:', error);
                 reject(error);
             });
         });

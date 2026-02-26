@@ -2,6 +2,39 @@ import { defineConfig } from 'vite'
 import { copyFileSync, mkdirSync, existsSync } from 'fs'
 import { join } from 'path'
 
+// Custom middleware for API routes
+function apiMiddleware(req, res, next) {
+  // Handle API routes
+  if (req.url.startsWith('/api/')) {
+    const route = req.url.split('?')[0]; // Remove query string
+    
+    if (route === '/api/submit-form' && req.method === 'POST') {
+      // Import the submit-form handler
+      import('./api/submit-form.js').then(module => {
+        const handler = module.default;
+        handler(req, res);
+      }).catch(error => {
+        console.error('Error loading submit-form handler:', error);
+        res.statusCode = 500;
+        res.end(JSON.stringify({ error: 'Internal Server Error' }));
+      });
+      return;
+    }
+    
+    // Handle CORS preflight
+    if (req.method === 'OPTIONS') {
+      res.setHeader('Access-Control-Allow-Origin', '*');
+      res.setHeader('Access-Control-Allow-Methods', 'GET,OPTIONS,PATCH,DELETE,POST,PUT');
+      res.setHeader('Access-Control-Allow-Headers', 'X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version');
+      res.statusCode = 200;
+      res.end();
+      return;
+    }
+  }
+  
+  next();
+}
+
 export default defineConfig({
   root: '.',
   build: {
@@ -28,9 +61,21 @@ export default defineConfig({
   server: {
     port: 3000,
     open: true,
-    historyApiFallback: true
+    historyApiFallback: true,
+    middlewareMode: false
   },
   plugins: [
+    {
+      name: 'api-middleware',
+      configResolved(config) {
+        // Store config for use in middleware
+      },
+      configureServer(server) {
+        return () => {
+          server.middlewares.use(apiMiddleware);
+        };
+      }
+    },
     {
       name: 'copy-assets',
       writeBundle() {
