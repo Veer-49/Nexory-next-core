@@ -69,15 +69,14 @@
     function initializeContactOverlay() {
         if (overlayInitialized) return;
         
-        const getInTouchBtns = document.querySelectorAll('.get-in-touch-btn');
         const contactOverlay = document.getElementById('contactOverlay');
         
-        if (!getInTouchBtns.length || !contactOverlay) {
-            console.log('Elements not found yet, retrying...');
+        if (!contactOverlay) {
+            console.log('Contact overlay not found yet, retrying...');
             return false;
         }
         
-        console.log('Contact overlay elements found, initializing...');
+        console.log('Contact overlay found, initializing...');
         
         // Initialize EmailJS
         loadEmailJS().catch(error => {
@@ -88,14 +87,14 @@
         const contactForm = document.getElementById('contactForm');
         const overlayBg = document.querySelector('.contact-overlay-new__bg');
         
-        // Open overlay
-        getInTouchBtns.forEach(btn => {
-            btn.addEventListener('click', function(e) {
+        // Use event delegation for get-in-touch-btn to handle dynamic buttons
+        document.addEventListener('click', function(e) {
+            if (e.target.closest('.get-in-touch-btn')) {
                 e.preventDefault();
                 console.log('Get in touch button clicked');
                 contactOverlay.classList.add('active');
                 document.body.style.overflow = 'hidden';
-            });
+            }
         });
         
         // Close overlay functions
