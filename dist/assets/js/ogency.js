@@ -20,6 +20,9 @@
         },
       },
       submitHandler: function (form) {
+        if ($(form).is("#contact-form") || $(form).is("#home-contact-form")) {
+          return false;
+        }
         // sending value with ajax request
         $.post(
           $(form).attr("action"),

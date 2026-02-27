@@ -9,15 +9,64 @@ function apiMiddleware(req, res, next) {
     const route = req.url.split('?')[0]; // Remove query string
     
     if (route === '/api/submit-form' && req.method === 'POST') {
-      // Import the submit-form handler
-      import('./api/submit-form.js').then(module => {
-        const handler = module.default;
-        handler(req, res);
-      }).catch(error => {
-        console.error('Error loading submit-form handler:', error);
-        res.statusCode = 500;
-        res.end(JSON.stringify({ error: 'Internal Server Error' }));
+      // Parse body for POST request
+      let body = '';
+      
+      req.on('data', chunk => {
+        body += chunk.toString();
+        // Prevent large payloads
+        if (body.length > 1e6) {
+          req.connection.destroy();
+          res.statusCode = 413;
+          res.end('Payload too large');
+          return;
+        }
       });
+      
+      req.on('end', () => {
+        try {
+          const contentType = req.headers['content-type'] || '';
+          
+          // Parse body based on content type
+          if (contentType.includes('application/json')) {
+            try {
+              req.body = body ? JSON.parse(body) : {};
+            } catch (e) {
+              req.body = body;
+            }
+          } else if (contentType.includes('application/x-www-form-urlencoded')) {
+            req.body = body;
+          } else {
+            req.body = body;
+          }
+          
+          // Now load and call the handler
+          import('./api/submit-form.js').then(module => {
+            const handler = module.default;
+            handler(req, res);
+          }).catch(error => {
+            console.error('Error loading submit-form handler:', error);
+            res.statusCode = 500;
+            res.setHeader('Content-Type', 'application/json');
+            res.end(JSON.stringify({ error: 'Internal Server Error', details: error.message }));
+          });
+        } catch (error) {
+          console.error('Error processing request body:', error);
+          res.statusCode = 500;
+          res.setHeader('Content-Type', 'application/json');
+          res.end(JSON.stringify({ error: 'Failed to process request', details: error.message }));
+        }
+      });
+      
+      req.on('error', (error) => {
+        console.error('Request stream error:', error);
+        if (!res.headersSent) {
+          res.statusCode = 400;
+          res.setHeader('Content-Type', 'application/json');
+          res.end(JSON.stringify({ error: 'Request error', details: error.message }));
+        }
+      });
+      
       return;
     }
     
@@ -72,6 +121,7 @@ export default defineConfig({
       },
       configureServer(server) {
         return () => {
+          // Register API middleware (handles both body parsing and routing)
           server.middlewares.use(apiMiddleware);
         };
       }

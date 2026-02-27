@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Billing - Create & Download Bills</title>
     
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="/assets/icon-DVrPYuXS.png">
+    
     <!-- fonts -->
     <link rel="preconnect" href="https://fonts.gstatic.com/" />
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap" rel="stylesheet" />
@@ -334,124 +337,161 @@
             }
         }
 
-        /* Password Protection Modal */
-        .password-modal {
+        /* New Invoice Styles */
+        .invoice-wrapper {
+            max-width: 800px;
+            margin: auto;
+            background: #ffffff;
+            padding: 40px;
+            box-shadow: 0 0 15px rgba(0,0,0,0.1);
+        }
+
+        .invoice-wrapper .header {
             display: flex;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.9);
-            z-index: 9999;
-            justify-content: center;
+            justify-content: space-between;
             align-items: center;
-        }
-
-        .password-modal.hidden {
-            display: none;
-        }
-
-        .password-modal-content {
-            background: linear-gradient(135deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.05) 100%);
-            border: 2px solid rgba(0,123,255,0.5);
-            border-radius: 20px;
-            padding: 50px;
-            max-width: 400px;
-            width: 90%;
-            text-align: center;
-            backdrop-filter: blur(10px);
-            box-shadow: 0 20px 60px rgba(0,123,255,0.3);
-        }
-
-        .password-modal-content h2 {
-            color: var(--ogency-white);
-            font-size: 32px;
-            margin-bottom: 20px;
-            font-weight: 700;
-        }
-
-        .password-modal-content p {
-            color: rgba(255,255,255,0.7);
+            border-bottom: 2px solid #333;
+            padding-bottom: 15px;
             margin-bottom: 30px;
-            font-size: 16px;
         }
 
-        .password-input-group {
-            margin-bottom: 25px;
+        .invoice-wrapper .company-details h2 {
+            margin: 0;
+            font-size: 26px;
         }
 
-        .password-input-group input {
-            width: 100%;
-            background: rgba(255,255,255,0.05);
-            border: 2px solid rgba(255,255,255,0.2);
-            color: var(--ogency-white);
-            padding: 15px;
-            border-radius: 10px;
-            font-size: 16px;
-            transition: all 0.3s ease;
-        }
-
-        .password-input-group input:focus {
-            outline: none;
-            background: rgba(255,255,255,0.08);
-            border-color: var(--ogency-base);
-            box-shadow: 0 0 0 3px rgba(0,123,255,0.2);
-        }
-
-        .password-input-group input::placeholder {
-            color: rgba(255,255,255,0.4);
-        }
-
-        .btn-unlock {
-            background: linear-gradient(135deg, var(--ogency-base) 0%, #0056b3 100%);
-            color: var(--ogency-white);
-            border: none;
-            border-radius: 10px;
-            padding: 12px 40px;
-            font-size: 16px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            box-shadow: 0 10px 25px rgba(0,123,255,0.3);
-        }
-
-        .btn-unlock:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 15px 35px rgba(0,123,255,0.4);
-        }
-
-        .password-error {
-            color: #ff6b6b;
-            margin-top: 15px;
-            display: none;
+        .invoice-wrapper .company-details p {
+            margin: 4px 0;
             font-size: 14px;
         }
 
-        .password-error.show {
-            display: block;
+        .invoice-wrapper .invoice-title {
+            text-align: right;
+        }
+
+        .invoice-wrapper .invoice-title h1 {
+            margin: 0;
+            font-size: 32px;
+            color: #333;
+        }
+
+        .invoice-wrapper .invoice-title p {
+            margin: 5px 0;
+            font-size: 14px;
+        }
+
+        .invoice-wrapper .bill-info {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 30px;
+        }
+
+        .invoice-wrapper .bill-info div {
+            width: 48%;
+        }
+
+        .invoice-wrapper .bill-info h4 {
+            margin-bottom: 8px;
+            font-size: 15px;
+            color: #555;
+        }
+
+        .invoice-wrapper .bill-info p {
+            margin: 3px 0;
+            font-size: 14px;
+        }
+
+        .invoice-wrapper table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+
+        .invoice-wrapper table th {
+            background: #333;
+            color: #fff;
+            padding: 10px;
+            font-size: 14px;
+            border: 1px solid #333;
+        }
+
+        .invoice-wrapper table td {
+            padding: 10px;
+            font-size: 14px;
+            border: 1px solid #ccc;
+        }
+
+        .invoice-wrapper .text-right {
+            text-align: right;
+        }
+
+        .invoice-wrapper .totals {
+            width: 100%;
+            max-width: 350px;
+            margin-left: auto;
+        }
+
+        .invoice-wrapper .totals table td {
+            border: none;
+            padding: 6px;
+        }
+
+        .invoice-wrapper .totals tr:last-child td {
+            font-weight: bold;
+            font-size: 16px;
+            border-top: 2px solid #333;
+        }
+
+        .invoice-wrapper .amount-words {
+            margin-top: 20px;
+            font-size: 14px;
+            font-style: italic;
+        }
+
+        .invoice-wrapper .notes {
+            margin-top: 25px;
+            font-size: 14px;
+        }
+
+        .invoice-wrapper .footer {
+            margin-top: 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+        }
+
+        .invoice-wrapper .declaration {
+            font-size: 13px;
+            width: 60%;
+        }
+
+        .invoice-wrapper .signature {
+            text-align: right;
+        }
+
+        .invoice-wrapper .signature p {
+            margin: 5px 0;
+            font-size: 14px;
+        }
+
+        @media print {
+            body {
+                background: none;
+                padding: 0;
+            }
+            .invoice-wrapper {
+                box-shadow: none;
+                margin: 0;
+            }
         }
     </style>
-  <link rel="stylesheet" crossorigin href="/assets/ogency-D6W8In7n.css">
-  <link rel="stylesheet" crossorigin href="/assets/project-showcase-ClDCzcQK.css">
+  <link rel="stylesheet" crossorigin href="/assets/ogency-8rAlYHoU.css">
+  <link rel="stylesheet" crossorigin href="/assets/project-showcase-DrKeHtc5.css">
 </head>
 
 <body class="custom-cursor">
     <div class="custom-cursor__cursor"></div>
     <div class="custom-cursor__cursor-two"></div>
-
-    <!-- Password Protection Modal -->
-    <div class="password-modal" id="passwordModal">
-        <div class="password-modal-content">
-            <h2>🔒 Billing Access</h2>
-            <p>Enter the password to access the billing system</p>
-            <div class="password-input-group">
-                <input type="password" id="passwordInput" placeholder="Enter password" onkeypress="handlePasswordKeypress(event)">
-            </div>
-            <button class="btn-unlock" onclick="verifyPassword()">Unlock</button>
-            <div class="password-error" id="passwordError">Incorrect password. Please try again.</div>
-        </div>
-    </div>
 
     <div class="page-wrapper">
         <!-- Include centralized header -->
@@ -723,88 +763,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
     <script>
-        // Password Protection with API
-        const API_ENDPOINT = '/api/auth';
-        
-        // Check if user has valid token
-        function hasValidToken() {
-            const token = localStorage.getItem('authToken');
-            if (!token) return false;
-            
-            try {
-                const decoded = JSON.parse(atob(token));
-                return decoded.authenticated && decoded.expires > new Date().getTime();
-            } catch (e) {
-                return false;
-            }
-        }
-        
-        // Always show password modal on page load if not authenticated
-        window.addEventListener('DOMContentLoaded', function() {
-            if (!hasValidToken()) {
-                document.getElementById('passwordModal').classList.remove('hidden');
-                document.getElementById('passwordInput').focus();
-            } else {
-                document.getElementById('passwordModal').classList.add('hidden');
-            }
-            document.getElementById('billDate').valueAsDate = new Date();
-        });
-        
-        // Verify password with API
-        async function verifyPassword() {
-            const password = document.getElementById('passwordInput').value;
-            const errorMsg = document.getElementById('passwordError');
-            const btn = event.target;
-            
-            if (!password) {
-                errorMsg.textContent = 'Please enter a password';
-                errorMsg.classList.add('show');
-                return;
-            }
-            
-            try {
-                btn.disabled = true;
-                btn.textContent = 'Verifying...';
-                
-                const response = await fetch(API_ENDPOINT, {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify({ password })
-                });
-                
-                const data = await response.json();
-                
-                if (data.success) {
-                    localStorage.setItem('authToken', data.token);
-                    document.getElementById('passwordModal').classList.add('hidden');
-                    document.getElementById('passwordInput').value = '';
-                    errorMsg.classList.remove('show');
-                } else {
-                    errorMsg.textContent = 'Incorrect password. Please try again.';
-                    errorMsg.classList.add('show');
-                    document.getElementById('passwordInput').value = '';
-                    document.getElementById('passwordInput').focus();
-                }
-            } catch (error) {
-                console.error('Auth error:', error);
-                errorMsg.textContent = 'Connection error. Please try again.';
-                errorMsg.classList.add('show');
-            } finally {
-                btn.disabled = false;
-                btn.textContent = 'Unlock';
-            }
-        }
-        
-        // Handle Enter key press
-        function handlePasswordKeypress(event) {
-            if (event.key === 'Enter') {
-                // Create a dummy event for verifyPassword
-                event.target.form.querySelector('.btn-unlock').click();
-            }
-        }
-        
         // Set today's date as default
         document.getElementById('billDate').valueAsDate = new Date();
         
@@ -949,74 +907,153 @@
             document.getElementById('previewSection').scrollIntoView({ behavior: 'smooth' });
         }
         
+        // Function to convert number to words
+        function numberToWords(num) {
+            const ones = ['', 'One', 'Two', 'Three', 'Four', 'Five', 'Six', 'Seven', 'Eight', 'Nine'];
+            const teens = ['Ten', 'Eleven', 'Twelve', 'Thirteen', 'Fourteen', 'Fifteen', 'Sixteen', 'Seventeen', 'Eighteen', 'Nineteen'];
+            const tens = ['', '', 'Twenty', 'Thirty', 'Forty', 'Fifty', 'Sixty', 'Seventy', 'Eighty', 'Ninety'];
+            const thousands = ['', 'Thousand', 'Lakh', 'Crore'];
+            
+            function convertHundreds(n) {
+                let str = '';
+                if (n > 99) {
+                    str += ones[Math.floor(n / 100)] + ' Hundred ';
+                    n %= 100;
+                }
+                if (n > 9 && n < 20) {
+                    str += teens[n - 10] + ' ';
+                } else {
+                    str += tens[Math.floor(n / 10)] + ' ';
+                    str += ones[n % 10] + ' ';
+                }
+                return str.trim();
+            }
+            
+            if (num === 0) return 'Zero';
+            
+            let result = '';
+            let thousandIndex = 0;
+            
+            while (num > 0) {
+                if (num % 1000 !== 0) {
+                    result = convertHundreds(num % 1000) + thousands[thousandIndex] + ' ' + result;
+                }
+                num = Math.floor(num / 1000);
+                thousandIndex++;
+            }
+            
+            return result.trim() + ' Only';
+        }
+        
         // Generate bill preview function
         function generateBillPreview(billData, items) {
+            // Extract numeric values for calculations
+            const subtotalValue = parseFloat(billData.subtotal.replace('₹', '').replace(',', ''));
+            const taxValue = parseFloat(billData.taxAmount.replace('₹', '').replace(',', ''));
+            const discountValue = parseFloat(billData.discountAmount.replace('₹', '').replace(',', ''));
+            const grandTotalValue = parseFloat(billData.grandTotal.replace('₹', '').replace(',', ''));
+            const taxRate = document.getElementById('taxRate').value || 0;
+            
             const previewHTML = `
-                <div class="bill-header">
-                    <div style="margin-bottom: 20px;">
-                        <img src="assets/images/logo/logo.png" alt="Company Logo" style="max-height: 60px; object-fit: contain;">
+                <div class="invoice-wrapper">
+                    <!-- HEADER -->
+                    <div class="header">
+                        <div class="company-details">
+                            <h2>${billData.businessName || 'Your IT Company Name'}</h2>
+                            <p>${billData.businessAddress || 'Address Line, City, State, PIN'}</p>
+                            <p>Email: ${billData.businessEmail || 'info@company.com'} | Phone: ${billData.businessPhone || '+91-XXXXXXXXXX'}</p>
+                            <p>GSTIN: 27XXXXXXXXXXXX</p>
+                        </div>
+                        <div class="invoice-title">
+                            <h1>INVOICE</h1>
+                            <p><strong>Invoice No:</strong> ${billData.billNumber}</p>
+                            <p><strong>Date:</strong> ${billData.billDate}</p>
+                        </div>
                     </div>
-                    <h3>INVOICE</h3>
-                    <p><strong>${billData.businessName}</strong></p>
-                    <p>${billData.businessAddress}</p>
-                    <p>${billData.businessEmail} | ${billData.businessPhone}</p>
-                </div>
-                
-                <div class="bill-info">
-                    <div class="bill-info-column">
-                        <h4>Bill To:</h4>
-                        <p><strong>${billData.clientName}</strong></p>
-                        <p>${billData.clientAddress || 'N/A'}</p>
-                        <p>${billData.clientEmail || 'N/A'}</p>
-                        <p>${billData.clientPhone || 'N/A'}</p>
+
+                    <!-- BILL INFO -->
+                    <div class="bill-info">
+                        <div>
+                            <h4>BILL TO</h4>
+                            <p><strong>${billData.clientName}</strong></p>
+                            <p>${billData.clientAddress || 'Client Address'}</p>
+                            <p>Email: ${billData.clientEmail || 'client@email.com'}</p>
+                            <p>GSTIN: XXXXXXXX</p>
+                        </div>
+                        <div>
+                            <h4>PAYMENT DETAILS</h4>
+                            <p>Due Date: ${billData.dueDate}</p>
+                            <p>Payment Method: ${billData.paymentMethod || 'Bank Transfer'}</p>
+                        </div>
                     </div>
-                    <div class="bill-info-column" style="text-align: right;">
-                        <h4>Bill Details:</h4>
-                        <p><strong>Bill Number:</strong> ${billData.billNumber}</p>
-                        <p><strong>Bill Date:</strong> ${billData.billDate}</p>
-                        <p><strong>Due Date:</strong> ${billData.dueDate}</p>
-                        <p><strong>Payment Method:</strong> ${billData.paymentMethod || 'N/A'}</p>
-                    </div>
-                </div>
-                
-                <table style="width: 100%; border-collapse: collapse; margin-bottom: 20px;">
-                    <thead>
-                        <tr style="background: #f5f5f5;">
-                            <th style="padding: 12px; text-align: left; border: 1px solid #ddd;">Item Description</th>
-                            <th style="padding: 12px; text-align: center; border: 1px solid #ddd;">Quantity</th>
-                            <th style="padding: 12px; text-align: right; border: 1px solid #ddd;">Unit Price</th>
-                            <th style="padding: 12px; text-align: right; border: 1px solid #ddd;">Total</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        ${items.map(item => `
+
+                    <!-- ITEMS TABLE -->
+                    <table>
+                        <thead>
                             <tr>
-                                <td style="padding: 12px; border: 1px solid #ddd;">${item.description}</td>
-                                <td style="padding: 12px; text-align: center; border: 1px solid #ddd;">${item.quantity}</td>
-                                <td style="padding: 12px; text-align: right; border: 1px solid #ddd;">₹${parseFloat(item.price).toFixed(2)}</td>
-                                <td style="padding: 12px; text-align: right; border: 1px solid #ddd;">₹${parseFloat(item.total).toFixed(2)}</td>
+                                <th>Sr</th>
+                                <th>Description</th>
+                                <th>Qty</th>
+                                <th>Rate (₹)</th>
+                                <th>Amount (₹)</th>
                             </tr>
-                        `).join('')}
-                    </tbody>
-                </table>
-                
-                <div style="text-align: right; margin-bottom: 20px;">
-                    <p><strong>Subtotal:</strong> ${billData.subtotal}</p>
-                    <p><strong>Tax Amount:</strong> ${billData.taxAmount}</p>
-                    <p><strong>Discount Amount:</strong> ${billData.discountAmount}</p>
-                    <p style="font-size: 18px; font-weight: bold; color: #007bff;"><strong>Grand Total:</strong> ${billData.grandTotal}</p>
-                </div>
-                
-                ${billData.notes ? `
-                    <div style="margin-top: 30px; padding: 20px; background: #f9f9f9; border-radius: 5px;">
-                        <h4>Notes:</h4>
-                        <p>${billData.notes}</p>
+                        </thead>
+                        <tbody>
+                            ${items.map((item, index) => `
+                                <tr>
+                                    <td>${index + 1}</td>
+                                    <td>${item.description}</td>
+                                    <td class="text-right">${item.quantity}</td>
+                                    <td class="text-right">${parseFloat(item.price).toFixed(2)}</td>
+                                    <td class="text-right">${parseFloat(item.total).toFixed(2)}</td>
+                                </tr>
+                            `).join('')}
+                        </tbody>
+                    </table>
+
+                    <!-- TOTALS -->
+                    <div class="totals">
+                        <table>
+                            <tr>
+                                <td>Sub Total</td>
+                                <td class="text-right">₹${subtotalValue.toFixed(2)}</td>
+                            </tr>
+                            <tr>
+                                <td>GST (${document.getElementById('taxRate').value || 0}%)</td>
+                                <td class="text-right">₹${taxValue.toFixed(2)}</td>
+                            </tr>
+                            <tr>
+                                <td>Grand Total</td>
+                                <td class="text-right">₹${grandTotalValue.toFixed(2)}</td>
+                            </tr>
+                        </table>
                     </div>
-                ` : ''}
-                
-                <div style="margin-top: 30px; text-align: center; font-size: 12px; color: #666;">
-                    <p>Thank you for your business!</p>
-                    <p>Generated on ${new Date().toLocaleDateString()}</p>
+
+                    <!-- AMOUNT IN WORDS -->
+                    <div class="amount-words">
+                        Amount in Words: <strong>${numberToWords(Math.round(grandTotalValue))} Rupees Only</strong>
+                    </div>
+
+                    <!-- NOTES -->
+                    ${billData.notes ? `
+                        <div class="notes">
+                            <strong>Notes:</strong>
+                            <p>${billData.notes}</p>
+                        </div>
+                    ` : ''}
+
+                    <!-- FOOTER -->
+                    <div class="footer">
+                        <div class="declaration">
+                            <p><strong>Declaration:</strong></p>
+                            <p>We declare that this invoice shows the actual price of the services provided and all particulars are true and correct.</p>
+                        </div>
+                        <div class="signature">
+                            <p>For <strong>${billData.businessName || 'Your IT Company Name'}</strong></p>
+                            <br><br>
+                            <p>Authorized Signatory</p>
+                        </div>
+                    </div>
                 </div>
             `;
             
