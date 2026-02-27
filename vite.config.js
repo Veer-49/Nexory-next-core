@@ -70,6 +70,79 @@ function apiMiddleware(req, res, next) {
       return;
     }
     
+    // Handle billing auth
+    if (route === '/api/auth' && req.method === 'POST') {
+      let body = '';
+      
+      req.on('data', chunk => {
+        body += chunk.toString();
+        if (body.length > 1e6) {
+          req.connection.destroy();
+          res.statusCode = 413;
+          res.end('Payload too large');
+          return;
+        }
+      });
+      
+      req.on('end', () => {
+        try {
+          const contentType = req.headers['content-type'] || '';
+          
+          let parsedBody = {};
+          if (contentType.includes('application/json')) {
+            try {
+              parsedBody = body ? JSON.parse(body) : {};
+            } catch (e) {
+              parsedBody = {};
+            }
+          }
+          
+          const { password } = parsedBody;
+          
+          if (!password) {
+            res.statusCode = 400;
+            res.setHeader('Content-Type', 'application/json');
+            res.end(JSON.stringify({ success: false, error: 'Password is required' }));
+            return;
+          }
+          
+          const correctPassword = 'Billing@123'; // Default password
+          
+          if (password === correctPassword) {
+            // Create a simple token (expires in 24 hours)
+            const token = Buffer.from(JSON.stringify({
+              authenticated: true,
+              exp: Date.now() + (24 * 60 * 60 * 1000) // 24 hours
+            })).toString('base64');
+            
+            res.statusCode = 200;
+            res.setHeader('Content-Type', 'application/json');
+            res.end(JSON.stringify({ success: true, token: token, message: 'Authentication successful' }));
+          } else {
+            res.statusCode = 401;
+            res.setHeader('Content-Type', 'application/json');
+            res.end(JSON.stringify({ success: false, error: 'Invalid password' }));
+          }
+        } catch (error) {
+          console.error('Auth error:', error);
+          res.statusCode = 500;
+          res.setHeader('Content-Type', 'application/json');
+          res.end(JSON.stringify({ success: false, error: 'Authentication failed' }));
+        }
+      });
+      
+      req.on('error', (error) => {
+        console.error('Auth request error:', error);
+        if (!res.headersSent) {
+          res.statusCode = 400;
+          res.setHeader('Content-Type', 'application/json');
+          res.end(JSON.stringify({ error: 'Request error', details: error.message }));
+        }
+      });
+      
+      return;
+    }
+    
     // Handle CORS preflight
     if (req.method === 'OPTIONS') {
       res.setHeader('Access-Control-Allow-Origin', '*');

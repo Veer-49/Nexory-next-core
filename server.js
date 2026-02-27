@@ -2,6 +2,7 @@ const express = require('express');
 const cors = require('cors');
 const fetch = require('node-fetch');
 const nodemailer = require('nodemailer');
+const jwt = require('jsonwebtoken');
 
 const app = express();
 const PORT = process.env.PORT || 3001;
@@ -10,6 +11,9 @@ const PORT = process.env.PORT || 3001;
 app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+
+// Serve static files
+app.use(express.static('.'));
 
 // EmailJS Configuration
 const EMAILJS_USER_ID = '8XYNZGBfYNxYCCYuo';
@@ -70,6 +74,47 @@ app.post('/api/contact', async (req, res) => {
         res.status(500).json({
             success: false,
             error: error.message || 'Internal server error'
+        });
+    }
+});
+
+// Billing authentication endpoint
+app.post('/api/auth', (req, res) => {
+    try {
+        const { password } = req.body;
+
+        if (!password) {
+            return res.status(400).json({
+                success: false,
+                error: 'Password is required'
+            });
+        }
+
+        const correctPassword = process.env.BILLING_PASSWORD || 'Billing@123';
+
+        if (password === correctPassword) {
+            // Create a simple token (expires in 24 hours)
+            const token = Buffer.from(JSON.stringify({
+                authenticated: true,
+                exp: Date.now() + (24 * 60 * 60 * 1000) // 24 hours
+            })).toString('base64');
+
+            res.json({
+                success: true,
+                token: token,
+                message: 'Authentication successful'
+            });
+        } else {
+            res.status(401).json({
+                success: false,
+                error: 'Invalid password'
+            });
+        }
+    } catch (error) {
+        console.error('Auth error:', error);
+        res.status(500).json({
+            success: false,
+            error: 'Authentication failed'
         });
     }
 });
