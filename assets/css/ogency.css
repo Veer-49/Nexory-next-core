@@ -257,26 +257,16 @@ body.custom-cursor .page-wrapper .service-showcase:has(~ .slider-text-one) {
     padding: 80px 0;
 }
 
-/* Mobile click-to-flip functionality */
+/* Enable hover flip functionality on all devices */
 @media (max-width: 768px) {
-    body.custom-cursor.page-wrapper-home .service-showcase__item.flipped .service-showcase__card-inner,
-    body.custom-cursor .page-wrapper .service-showcase:has(~ .slider-text-one) .service-showcase__item.flipped .service-showcase__card-inner {
-        transform: rotateY(180deg);
-    }
-    
     body.custom-cursor.page-wrapper-home .service-showcase__item,
     body.custom-cursor .page-wrapper .service-showcase:has(~ .slider-text-one) .service-showcase__item {
         cursor: pointer;
     }
     
-    /* Disable hover flip on mobile */
+    /* Keep hover flip enabled on mobile - same as desktop */
     body.custom-cursor.page-wrapper-home .service-showcase__item:hover .service-showcase__card-inner,
     body.custom-cursor .page-wrapper .service-showcase:has(~ .slider-text-one) .service-showcase__item:hover .service-showcase__card-inner {
-        transform: none;
-    }
-    
-    body.custom-cursor.page-wrapper-home .service-showcase__item.flipped:hover .service-showcase__card-inner,
-    body.custom-cursor .page-wrapper .service-showcase:has(~ .slider-text-one) .service-showcase__item.flipped:hover .service-showcase__card-inner {
         transform: rotateY(180deg);
     }
 }
