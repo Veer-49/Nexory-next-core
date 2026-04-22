@@ -844,16 +844,41 @@
   }
   
   .service-showcase__overlay {
-    display: none !important;
+    position: static !important;
+    display: block !important;
+    width: 100% !important;
+    height: auto !important;
+    padding: 20px 0 !important;
+    background: transparent !important;
+    align-items: flex-start !important;
+    justify-content: flex-start !important;
+    text-align: left !important;
   }
   
   .service-showcase__item:nth-child(odd) .service-showcase__overlay,
   .service-showcase__item:nth-child(even) .service-showcase__overlay {
-    display: none !important;
+    position: static !important;
+    display: block !important;
+    width: 100% !important;
+    height: auto !important;
+    padding: 20px 0 !important;
+    background: transparent !important;
+    align-items: flex-start !important;
+    justify-content: flex-start !important;
+    text-align: left !important;
   }
   
   .service-showcase__content {
-    display: none !important;
+    display: block !important;
+    position: static !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    padding: 0 !important;
+    background: transparent !important;
+    border: none !important;
+    border-radius: 0 !important;
+    transform: none !important;
+    opacity: 1 !important;
   }
   
   .service-showcase__cats {
@@ -892,10 +917,19 @@
     display: block !important;
   }
   
-  .service-showcase__read-more-container {
-    position: static !important;
-    text-align: left !important;
-    margin-top: 15px !important;
+  .service-showcase__read-more {
+    display: inline-block !important;
+    color: var(--ogency-base) !important;
+    text-decoration: none !important;
+    font-weight: 600 !important;
+    font-size: 13px !important;
+    opacity: 1 !important;
+    transform: translateY(0) !important;
+    transition: color 300ms ease !important;
+  }
+  
+  .service-showcase__read-more:hover {
+    color: var(--ogency-white) !important;
   }
   
   .service-showcase__read-more-link {
@@ -1001,15 +1035,25 @@
     bottom: auto !important;
     left: auto !important;
     right: auto !important;
-    align-items: unset !important;
-    justify-content: unset !important;
+    align-items: flex-start !important;
+    justify-content: flex-start !important;
+    text-align: left !important;
     order: 2;
     flex: 1;
     border-radius: 0;
   }
   
   .service-showcase__content {
-    display: none !important;
+    display: block !important;
+    position: static !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    padding: 0 !important;
+    background: transparent !important;
+    border: none !important;
+    border-radius: 0 !important;
+    transform: none !important;
+    opacity: 1 !important;
   }
   
   .service-showcase__cats {
