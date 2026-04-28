@@ -42,6 +42,40 @@
 # Custom Cursor
 # Boxed Version
 --------------------------------------------------------------*/
+
+/* Hide scrollbars across the entire website */
+html {
+    overflow-x: hidden;
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE and Edge */
+}
+
+body {
+    overflow-x: hidden;
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE and Edge */
+}
+
+/* Hide scrollbars for Webkit browsers (Chrome, Safari) */
+html::-webkit-scrollbar,
+body::-webkit-scrollbar {
+    display: none;
+}
+
+/* Hide scrollbars for all elements */
+*::-webkit-scrollbar {
+    display: none;
+}
+
+/* Hide scrollbars for Firefox */
+* {
+    scrollbar-width: none;
+}
+
+/* Hide scrollbars for IE and Edge */
+* {
+    -ms-overflow-style: none;
+}
 /*--------------------------------------------------------------
 # Homepage Service Section - Custom Layout
 --------------------------------------------------------------*/
