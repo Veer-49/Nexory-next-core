@@ -1030,4 +1030,15 @@ if ($('.how-we-work__timeline').length) {
 initTimelineAnimation();
 }
 
+// Loader functionality
+window.addEventListener("load", () => {
+  setTimeout(() => {
+    document.getElementById("loader").style.opacity = "0";
+    document.getElementById("loader").style.transition = "0.5s";
+    setTimeout(() => {
+      document.getElementById("loader").style.display = "none";
+    }, 500);
+  }, 1800);
+});
+
 })(jQuery);

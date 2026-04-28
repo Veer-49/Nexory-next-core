@@ -20,6 +20,15 @@
 </head>
 <body>
 
+    <!-- Loader -->
+    <div id="loader">
+      <h1 class="logo">
+        <span>J</span>
+        <span>D</span>
+        <span>T</span>
+      </h1>
+    </div>
+
     <div class="invoice-box">
         <div class="flex justify-between items-start mb-8">
             <!-- Left side - Company Logo -->
@@ -225,5 +234,8 @@
         document.addEventListener('input', calculate);
         window.onload = calculate;
     </script>
+    
+    <!-- Include ogency.js for loader functionality -->
+    <script src="assets/js/ogency.js"></script>
 </body>
 </html>
