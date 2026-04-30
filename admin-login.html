@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Login - Nexory</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #2563eb;
+            --secondary-color: #64748b;
+            --success-color: #10b981;
+            --danger-color: #ef4444;
+            --dark-color: #1e293b;
+            --light-bg: #f8fafc;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: linear-gradient(135deg, var(--primary-color), #1e40af);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0;
+        }
+
+        .login-container {
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            overflow: hidden;
+            width: 100%;
+            max-width: 400px;
+            margin: 20px;
+        }
+
+        .login-header {
+            background: linear-gradient(135deg, var(--primary-color), #1e40af);
+            color: white;
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .login-header h3 {
+            margin: 0;
+            font-size: 1.5rem;
+            font-weight: 600;
+        }
+
+        .login-header p {
+            margin: 0.5rem 0 0 0;
+            opacity: 0.9;
+            font-size: 0.875rem;
+        }
+
+        .login-body {
+            padding: 2rem;
+        }
+
+        .form-floating {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-control {
+            border-radius: 8px;
+            border: 1px solid #e2e8f0;
+            padding: 0.75rem 1rem;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .form-control:focus {
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+        }
+
+        .btn-login {
+            background: var(--primary-color);
+            border: none;
+            border-radius: 8px;
+            padding: 0.75rem 1.5rem;
+            font-weight: 500;
+            font-size: 1rem;
+            width: 100%;
+            transition: all 0.3s ease;
+        }
+
+        .btn-login:hover {
+            background: #1d4ed8;
+            transform: translateY(-1px);
+        }
+
+        .alert {
+            border-radius: 8px;
+            border: none;
+            margin-bottom: 1.5rem;
+        }
+
+        .loading-spinner {
+            display: none;
+            text-align: center;
+            padding: 1rem;
+        }
+
+        .back-link {
+            text-align: center;
+            margin-top: 1.5rem;
+        }
+
+        .back-link a {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-size: 0.875rem;
+            transition: color 0.3s ease;
+        }
+
+        .back-link a:hover {
+            color: #1d4ed8;
+            text-decoration: underline;
+        }
+
+        @media (max-width: 480px) {
+            .login-container {
+                margin: 10px;
+            }
+            
+            .login-header {
+                padding: 1.5rem;
+            }
+            
+            .login-body {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <div class="login-header">
+            <i class="fas fa-shield-alt fa-2x mb-2"></i>
+            <h3>Admin Login</h3>
+            <p>Enter your credentials to access the admin panel</p>
+        </div>
+        
+        <div class="login-body">
+            <div id="alertContainer"></div>
+            
+            <form id="loginForm">
+                <div class="form-floating">
+                    <input type="text" class="form-control" id="username" placeholder="Username" required>
+                    <label for="username">Username</label>
+                </div>
+                
+                <div class="form-floating">
+                    <input type="password" class="form-control" id="password" placeholder="Password" required>
+                    <label for="password">Password</label>
+                </div>
+                
+                <div class="form-check mb-3">
+                    <input class="form-check-input" type="checkbox" id="rememberMe">
+                    <label class="form-check-label" for="rememberMe">
+                        Remember me
+                    </label>
+                </div>
+                
+                <button type="submit" class="btn btn-primary btn-login" id="loginBtn">
+                    <i class="fas fa-sign-in-alt me-2"></i>
+                    <span id="loginBtnText">Sign In</span>
+                </button>
+                
+                <div class="loading-spinner" id="loadingSpinner">
+                    <div class="spinner-border text-primary" role="status">
+                        <span class="visually-hidden">Loading...</span>
+                    </div>
+                </div>
+            </form>
+            
+            <div class="back-link">
+                <a href="index.html">
+                    <i class="fas fa-arrow-left me-1"></i>
+                    Back to Website
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Dynamic API URL detection for all environments
+        function getApiBaseUrl() {
+            const currentHost = window.location.hostname;
+            
+            if (currentHost === 'localhost' || currentHost === '127.0.0.1') {
+                return 'http://localhost:3001';
+            } else if (currentHost.includes('vercel.app')) {
+                return ''; // Use relative URLs for same-domain API
+            } else {
+                return `https://${currentHost}`;
+            }
+        }
+
+        // Check if already logged in (validate API key first)
+        const storedApiKey = localStorage.getItem('adminApiKey') || sessionStorage.getItem('adminApiKey');
+        if (storedApiKey) {
+            // Validate the stored API key with server before redirecting
+            validateApiKeyAndRedirect(storedApiKey);
+        }
+
+        // Login form submission
+        document.getElementById('loginForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const usernameInput = document.getElementById('username');
+            const passwordInput = document.getElementById('password');
+            const rememberMe = document.getElementById('rememberMe').checked;
+            
+            const username = usernameInput ? usernameInput.value.trim() : '';
+            const password = passwordInput ? passwordInput.value.trim() : '';
+            
+            console.log('Login form values:', { username, password, rememberMe });
+            
+            if (!username || !password) {
+                showAlert('Please enter both username and password', 'danger');
+                return;
+            }
+            
+            // Show loading state
+            showLoading(true);
+            hideAlert();
+            
+            try {
+                const apiUrl = getApiBaseUrl() + '/api/admin/login';
+                console.log('Sending login request to:', apiUrl);
+                
+                const response = await fetch(apiUrl, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ username, password })
+                });
+                
+                const result = await response.json();
+                
+                if (result.success) {
+                    // Store authentication data
+                    if (rememberMe) {
+                        localStorage.setItem('adminApiKey', result.data.apiKey);
+                        localStorage.setItem('adminUser', JSON.stringify(result.data.user));
+                    } else {
+                        sessionStorage.setItem('adminApiKey', result.data.apiKey);
+                        sessionStorage.setItem('adminUser', JSON.stringify(result.data.user));
+                    }
+                    
+                    showAlert('Login successful! Redirecting...', 'success');
+                    
+                    // Redirect to admin panel
+                    setTimeout(() => {
+                        window.location.href = 'admin.html';
+                    }, 1500);
+                } else {
+                    showAlert(result.error || 'Login failed', 'danger');
+                }
+            } catch (error) {
+                console.error('Login error:', error);
+                showAlert('Network error. Please try again.', 'danger');
+            } finally {
+                showLoading(false);
+            }
+        });
+
+        function showLoading(show) {
+            const spinner = document.getElementById('loadingSpinner');
+            const loginBtn = document.getElementById('loginBtn');
+            const loginBtnText = document.getElementById('loginBtnText');
+            
+            if (show) {
+                spinner.style.display = 'block';
+                loginBtn.disabled = true;
+                loginBtnText.textContent = 'Signing In...';
+            } else {
+                spinner.style.display = 'none';
+                loginBtn.disabled = false;
+                loginBtnText.textContent = 'Sign In';
+            }
+        }
+
+        function showAlert(message, type) {
+            const alertContainer = document.getElementById('alertContainer');
+            const alertClass = type === 'success' ? 'alert-success' : 'alert-danger';
+            
+            alertContainer.innerHTML = `
+                <div class="alert ${alertClass} alert-dismissible fade show" role="alert">
+                    ${message}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                </div>
+            `;
+        }
+
+        function hideAlert() {
+            document.getElementById('alertContainer').innerHTML = '';
+        }
+
+        // Validate API key with server before redirecting
+        async function validateApiKeyAndRedirect(apiKey) {
+            try {
+                const response = await fetch(getApiBaseUrl() + '/api/validate', {
+                    headers: {
+                        'X-Admin-API-Key': apiKey
+                    }
+                });
+                
+                const result = await response.json();
+                
+                if (response.ok && result.success) {
+                    // API key is valid, redirect to admin
+                    window.location.replace('admin.html');
+                } else {
+                    // Invalid API key, clear it and stay on login page
+                    localStorage.removeItem('adminApiKey');
+                    localStorage.removeItem('adminUser');
+                    sessionStorage.removeItem('adminApiKey');
+                    sessionStorage.removeItem('adminUser');
+                    showAlert('Session expired. Please login again.', 'danger');
+                }
+            } catch (error) {
+                // Server not available, clear invalid session
+                localStorage.removeItem('adminApiKey');
+                localStorage.removeItem('adminUser');
+                sessionStorage.removeItem('adminApiKey');
+                sessionStorage.removeItem('adminUser');
+                showAlert('Server unavailable. Please try again.', 'danger');
+            }
+        }
+
+        // Add some interactivity
+        document.getElementById('username').addEventListener('focus', function() {
+            this.select();
+        });
+
+        document.getElementById('password').addEventListener('focus', function() {
+            this.select();
+        });
+
+        // Enter key handling
+        document.addEventListener('keypress', function(e) {
+            if (e.key === 'Enter' && !document.getElementById('loginBtn').disabled) {
+                document.getElementById('loginForm').dispatchEvent(new Event('submit'));
+            }
+        });
+    </script>
+</body>
+</html>

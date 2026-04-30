@@ -1,0 +1,1066 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel - Nexory</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #080808;
+            --secondary-color: #64748b;
+            --success-color: #10b981;
+            --danger-color: #ef4444;
+            --warning-color: #f50b0b;
+            --dark-color: #1e293b;
+            --light-bg: #f8fafc;
+            --border-color: #076bee;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background-color: var(--light-bg);
+            color: var(--dark-color);
+        }
+
+        .sidebar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 100vh;
+            width: 280px;
+            background: linear-gradient(135deg, var(--primary-color), #1e40af);
+            color: white;
+            z-index: 1000;
+            transition: transform 0.3s ease;
+            overflow-y: auto;
+        }
+
+        .sidebar-header {
+            padding: 2rem 1.5rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .sidebar-menu {
+            padding: 1.5rem 0;
+        }
+
+        .menu-item {
+            display: block;
+            padding: 0.875rem 1.5rem;
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            border: none;
+            background: none;
+            width: 100%;
+            text-align: left;
+            cursor: pointer;
+        }
+
+        .menu-item:hover {
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            padding-left: 2rem;
+        }
+
+        .menu-item.active {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            border-left: 4px solid white;
+        }
+
+        .main-content {
+            margin-left: 280px;
+            min-height: 100vh;
+            transition: margin-left 0.3s ease;
+        }
+
+        .top-header {
+            background: white;
+            padding: 1rem 2rem;
+            border-bottom: 1px solid var(--border-color);
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        }
+
+        .content-area {
+            padding: 2rem;
+        }
+
+        .stat-card {
+            background: white;
+            border-radius: 12px;
+            padding: 1.5rem;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 1px solid var(--border-color);
+        }
+
+        .stat-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+        }
+
+        .stat-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.25rem;
+        }
+
+        .table-container {
+            background: white;
+            border-radius: 12px;
+            padding: 1.5rem;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            border: 1px solid var(--border-color);
+        }
+
+        .btn-primary-custom {
+            background: var(--primary-color);
+            border: none;
+            border-radius: 8px;
+            padding: 0.625rem 1.25rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary-custom:hover {
+            background: #1d4ed8;
+            transform: translateY(-1px);
+        }
+
+        .form-control,
+        .form-select {
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+            padding: 0.625rem 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .form-control:focus,
+        .form-select:focus {
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+        }
+
+        .modal-content {
+            border-radius: 12px;
+            border: none;
+        }
+
+        .modal-header {
+            border-bottom: 1px solid var(--border-color);
+            padding: 1.5rem;
+        }
+
+        .modal-body {
+            padding: 1.5rem;
+        }
+
+        .badge-status {
+            padding: 0.375rem 0.75rem;
+            border-radius: 6px;
+            font-size: 0.875rem;
+            font-weight: 500;
+        }
+
+        .chart-container {
+            background: white;
+            border-radius: 12px;
+            padding: 1.5rem;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            border: 1px solid var(--border-color);
+            height: 400px;
+        }
+
+        @media (max-width: 768px) {
+            .sidebar {
+                transform: translateX(-100%);
+            }
+
+            .sidebar.show {
+                transform: translateX(0);
+            }
+
+            .main-content {
+                margin-left: 0;
+            }
+
+            .content-area {
+                padding: 1rem;
+            }
+        }
+
+        .loading-spinner {
+            display: none;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .page-section {
+            display: none;
+        }
+
+        .page-section.active {
+            display: block;
+        }
+
+        .revenue-positive {
+            color: var(--success-color);
+            font-weight: 600;
+        }
+
+        .revenue-negative {
+            color: var(--danger-color);
+            font-weight: 600;
+        }
+
+        .profit-loss-card {
+            background: linear-gradient(135deg, #f8fafc, #e2e8f0);
+            border-left: 4px solid var(--primary-color);
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Sidebar -->
+    <nav class="sidebar">
+        <div class="sidebar-header">
+            <h4><i class="fas fa-chart-line me-2"></i>Admin Panel</h4>
+            <small class="text-white-50">Nexory Management</small>
+        </div>
+        <div class="sidebar-menu">
+            <button class="menu-item active" onclick="showSection('dashboard')">
+                <i class="fas fa-tachometer-alt me-2"></i> Dashboard
+            </button>
+            <button class="menu-item" onclick="showSection('leads')">
+                <i class="fas fa-user-plus me-2"></i> Leads
+            </button>
+            <button class="menu-item" onclick="showSection('clients')">
+                <i class="fas fa-users me-2"></i> Clients
+            </button>
+            <button class="menu-item" onclick="showSection('billing')">
+                <i class="fas fa-file-invoice-dollar me-2"></i> Billing
+            </button>
+            <button class="menu-item" onclick="showSection('revenue')">
+                <i class="fas fa-chart-bar me-2"></i> Revenue
+            </button>
+            <button class="menu-item" onclick="showSection('expenses')">
+                <i class="fas fa-receipt me-2"></i> Expenses
+            </button>
+            <button class="menu-item" onclick="showSection('reports')">
+                <i class="fas fa-chart-pie me-2"></i> Reports
+            </button>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Top Header -->
+        <header class="top-header">
+            <div class="d-flex justify-content-between align-items-center">
+                <div>
+                    <h5 class="mb-0">Welcome to Admin Panel</h5>
+                    <small class="text-muted">Manage your business efficiently</small>
+                </div>
+                <div class="d-flex align-items-center gap-3">
+                    <button class="btn btn-outline-primary btn-sm" onclick="refreshData()">
+                        <i class="fas fa-sync-alt me-1"></i> Refresh
+                    </button>
+                    <div class="dropdown">
+                        <button class="btn btn-outline-secondary btn-sm dropdown-toggle" type="button"
+                            data-bs-toggle="dropdown">
+                            <i class="fas fa-user me-1"></i> Admin
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#"><i class="fas fa-cog me-2"></i>Settings</a></li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li><a class="dropdown-item" href="#" onclick="logout()"><i
+                                        class="fas fa-sign-out-alt me-2"></i>Logout</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Content Area -->
+        <div class="content-area">
+            <!-- Dashboard Section -->
+            <section id="dashboard" class="page-section active">
+                <div class="row mb-4">
+                    <div class="col-12">
+                        <h4>Dashboard Overview</h4>
+                        <p class="text-muted">Real-time business metrics and performance indicators</p>
+                    </div>
+                </div>
+
+                <div class="row mb-4">
+                    <div class="col-md-3 col-sm-6 mb-3">
+                        <div class="stat-card">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div>
+                                    <h6 class="text-muted mb-2">Total Leads</h6>
+                                    <h3 id="totalLeads">0</h3>
+                                    <small class="text-success"><i class="fas fa-arrow-up"></i> <span
+                                            id="leadsGrowth">0%</span> this month</small>
+                                </div>
+                                <div class="stat-icon bg-primary bg-opacity-10 text-primary">
+                                    <i class="fas fa-user-plus"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-sm-6 mb-3">
+                        <div class="stat-card">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div>
+                                    <h6 class="text-muted mb-2">Active Clients</h6>
+                                    <h3 id="totalClients">0</h3>
+                                    <small class="text-success"><i class="fas fa-arrow-up"></i> <span
+                                            id="clientsGrowth">0%</span> this month</small>
+                                </div>
+                                <div class="stat-icon bg-success bg-opacity-10 text-success">
+                                    <i class="fas fa-users"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-sm-6 mb-3">
+                        <div class="stat-card">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div>
+                                    <h6 class="text-muted mb-2">Total Revenue</h6>
+                                    <h3 id="totalRevenue">₹0</h3>
+                                    <small class="text-success"><i class="fas fa-arrow-up"></i> <span
+                                            id="revenueGrowth">0%</span> this month</small>
+                                </div>
+                                <div class="stat-icon bg-warning bg-opacity-10 text-warning">
+                                    <i class="fas fa-rupee-sign"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-sm-6 mb-3">
+                        <div class="stat-card profit-loss-card">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div>
+                                    <h6 class="text-muted mb-2">Net Profit</h6>
+                                    <h3 id="netProfit">₹0</h3>
+                                    <small class="text-muted" id="profitMargin">Margin: 0%</small>
+                                </div>
+                                <div class="stat-icon bg-info bg-opacity-10 text-info">
+                                    <i class="fas fa-chart-line"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-8 mb-4">
+                        <div class="chart-container">
+                            <h5 class="mb-3">Revenue Trend</h5>
+                            <canvas id="revenueChart"></canvas>
+                        </div>
+                    </div>
+                    <div class="col-md-4 mb-4">
+                        <div class="chart-container">
+                            <h5 class="mb-3">Lead Sources</h5>
+                            <canvas id="leadSourceChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Leads Section -->
+            <section id="leads" class="page-section">
+                <div class="row mb-4">
+                    <div class="col-md-8">
+                        <h4>Leads Management</h4>
+                        <p class="text-muted">Track and manage potential customers</p>
+                    </div>
+                    <div class="col-md-4 text-end">
+                        <button class="btn btn-primary-custom" onclick="openLeadModal()">
+                            <i class="fas fa-plus me-2"></i>Add Lead
+                        </button>
+                    </div>
+                </div>
+
+                <div class="table-container">
+                    <div class="row mb-3">
+                        <div class="col-md-6">
+                            <input type="text" class="form-control" placeholder="Search leads..." id="leadSearch"
+                                onkeyup="searchLeads()">
+                        </div>
+                        <div class="col-md-3">
+                            <select class="form-select" id="leadStatusFilter" onchange="filterLeads()">
+                                <option value="">All Status</option>
+                                <option value="new">New</option>
+                                <option value="contacted">Contacted</option>
+                                <option value="qualified">Qualified</option>
+                                <option value="converted">Converted</option>
+                                <option value="lost">Lost</option>
+                            </select>
+                        </div>
+                        <div class="col-md-3">
+                            <select class="form-select" id="leadSourceFilter" onchange="filterLeads()">
+                                <option value="">All Sources</option>
+                                <option value="website">Website</option>
+                                <option value="social">Social Media</option>
+                                <option value="referral">Referral</option>
+                                <option value="email">Email</option>
+                                <option value="phone">Phone</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="table-responsive">
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Email</th>
+                                    <th>Phone</th>
+                                    <th>Source</th>
+                                    <th>Status</th>
+                                    <th>Created</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="leadsTableBody">
+                                <!-- Leads will be populated here -->
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="loading-spinner">
+                        <div class="spinner-border text-primary" role="status">
+                            <span class="visually-hidden">Loading...</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Clients Section -->
+            <section id="clients" class="page-section">
+                <div class="row mb-4">
+                    <div class="col-md-8">
+                        <h4>Clients Management</h4>
+                        <p class="text-muted">Manage your active clients and projects</p>
+                    </div>
+                    <div class="col-md-4 text-end">
+                        <button class="btn btn-primary-custom" onclick="openClientModal()">
+                            <i class="fas fa-plus me-2"></i>Add Client
+                        </button>
+                    </div>
+                </div>
+
+                <div class="table-container">
+                    <div class="row mb-3">
+                        <div class="col-md-6">
+                            <input type="text" class="form-control" placeholder="Search clients..." id="clientSearch"
+                                onkeyup="searchClients()">
+                        </div>
+                        <div class="col-md-3">
+                            <select class="form-select" id="clientStatusFilter" onchange="filterClients()">
+                                <option value="">All Status</option>
+                                <option value="active">Active</option>
+                                <option value="inactive">Inactive</option>
+                                <option value="pending">Pending</option>
+                            </select>
+                        </div>
+                        <div class="col-md-3">
+                            <select class="form-select" id="clientTypeFilter" onchange="filterClients()">
+                                <option value="">All Types</option>
+                                <option value="regular">Regular</option>
+                                <option value="premium">Premium</option>
+                                <option value="enterprise">Enterprise</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="table-responsive">
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th>Company</th>
+                                    <th>Contact Person</th>
+                                    <th>Email</th>
+                                    <th>Phone</th>
+                                    <th>Type</th>
+                                    <th>Status</th>
+                                    <th>Projects</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="clientsTableBody">
+                                <!-- Clients will be populated here -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Billing Section -->
+            <section id="billing" class="page-section">
+                <div class="row mb-4">
+                    <div class="col-md-8">
+                        <h4>Billing & Invoices</h4>
+                        <p class="text-muted">Manage invoices and payments</p>
+                    </div>
+                    <div class="col-md-4 text-end">
+                        <a href="create-bill.html" class="btn btn-success me-2">
+                            <i class="fas fa-file-invoice-dollar me-2"></i>Detailed Bill
+                        </a>
+                        <button class="btn btn-primary-custom" onclick="openInvoiceModal()">
+                            <i class="fas fa-plus me-2"></i>Create Invoice
+                        </button>
+                    </div>
+                </div>
+
+                <div class="table-container">
+                    <div class="row mb-3">
+                        <div class="col-md-4">
+                            <input type="text" class="form-control" placeholder="Search invoices..." id="invoiceSearch"
+                                onkeyup="searchInvoices()">
+                        </div>
+                        <div class="col-md-3">
+                            <select class="form-select" id="invoiceStatusFilter" onchange="filterInvoices()">
+                                <option value="">All Status</option>
+                                <option value="draft">Draft</option>
+                                <option value="sent">Sent</option>
+                                <option value="paid">Paid</option>
+                                <option value="overdue">Overdue</option>
+                                <option value="cancelled">Cancelled</option>
+                            </select>
+                        </div>
+                        <div class="col-md-3">
+                            <input type="month" class="form-control" id="invoiceMonthFilter"
+                                onchange="filterInvoices()">
+                        </div>
+                        <div class="col-md-2">
+                            <button class="btn btn-outline-primary w-100" onclick="exportInvoices()">
+                                <i class="fas fa-download"></i> Export
+                            </button>
+                        </div>
+                    </div>
+                    <div class="table-responsive">
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th>Invoice #</th>
+                                    <th>Client</th>
+                                    <th>Amount</th>
+                                    <th>Due Date</th>
+                                    <th>Status</th>
+                                    <th>Created</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="invoicesTableBody">
+                                <!-- Invoices will be populated here -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Revenue Section -->
+            <section id="revenue" class="page-section">
+                <div class="row mb-4">
+                    <div class="col-12">
+                        <h4>Revenue Analytics</h4>
+                        <p class="text-muted">Track your revenue performance and trends</p>
+                    </div>
+                </div>
+
+                <div class="row mb-4">
+                    <div class="col-md-3">
+                        <div class="stat-card">
+                            <h6 class="text-muted mb-2">Today's Revenue</h6>
+                            <h3 id="todayRevenue">₹0</h3>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="stat-card">
+                            <h6 class="text-muted mb-2">This Week</h6>
+                            <h3 id="weekRevenue">₹0</h3>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="stat-card">
+                            <h6 class="text-muted mb-2">This Month</h6>
+                            <h3 id="monthRevenue">₹0</h3>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="stat-card">
+                            <h6 class="text-muted mb-2">This Year</h6>
+                            <h3 id="yearRevenue">₹0</h3>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-8 mb-4">
+                        <div class="chart-container">
+                            <h5 class="mb-3">Revenue Overview</h5>
+                            <canvas id="revenueOverviewChart"></canvas>
+                        </div>
+                    </div>
+                    <div class="col-md-4 mb-4">
+                        <div class="chart-container">
+                            <h5 class="mb-3">Revenue by Client</h5>
+                            <canvas id="revenueByClientChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Expenses Section -->
+            <section id="expenses" class="page-section">
+                <div class="row mb-4">
+                    <div class="col-md-8">
+                        <h4>Expense Management</h4>
+                        <p class="text-muted">Track and manage business expenses</p>
+                    </div>
+                    <div class="col-md-4 text-end">
+                        <button class="btn btn-primary-custom" onclick="openExpenseModal()">
+                            <i class="fas fa-plus me-2"></i>Add Expense
+                        </button>
+                    </div>
+                </div>
+
+                <div class="row mb-4">
+                    <div class="col-md-4">
+                        <div class="stat-card">
+                            <h6 class="text-muted mb-2">This Month</h6>
+                            <h3 id="monthExpenses">₹0</h3>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="stat-card">
+                            <h6 class="text-muted mb-2">Last Month</h6>
+                            <h3 id="lastMonthExpenses">₹0</h3>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="stat-card">
+                            <h6 class="text-muted mb-2">Average</h6>
+                            <h3 id="avgExpenses">₹0</h3>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="table-container">
+                    <div class="row mb-3">
+                        <div class="col-md-4">
+                            <input type="text" class="form-control" placeholder="Search expenses..." id="expenseSearch"
+                                onkeyup="searchExpenses()">
+                        </div>
+                        <div class="col-md-3">
+                            <select class="form-select" id="expenseCategoryFilter" onchange="filterExpenses()">
+                                <option value="">All Categories</option>
+                                <option value="office">Office</option>
+                                <option value="marketing">Marketing</option>
+                                <option value="software">Software</option>
+                                <option value="travel">Travel</option>
+                                <option value="utilities">Utilities</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                        <div class="col-md-3">
+                            <input type="month" class="form-control" id="expenseMonthFilter"
+                                onchange="filterExpenses()">
+                        </div>
+                        <div class="col-md-2">
+                            <button class="btn btn-outline-primary w-100" onclick="exportExpenses()">
+                                <i class="fas fa-download"></i> Export
+                            </button>
+                        </div>
+                    </div>
+                    <div class="table-responsive">
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th>Date</th>
+                                    <th>Description</th>
+                                    <th>Category</th>
+                                    <th>Amount</th>
+                                    <th>Payment Method</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="expensesTableBody">
+                                <!-- Expenses will be populated here -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Reports Section -->
+            <section id="reports" class="page-section">
+                <div class="row mb-4">
+                    <div class="col-12">
+                        <h4>Financial Reports</h4>
+                        <p class="text-muted">Comprehensive business analytics and reports</p>
+                    </div>
+                </div>
+
+                <div class="row mb-4">
+                    <div class="col-md-6">
+                        <div class="stat-card profit-loss-card">
+                            <h5 class="mb-3">Profit & Loss Summary</h5>
+                            <div class="row">
+                                <div class="col-6">
+                                    <small class="text-muted">Total Revenue</small>
+                                    <h4 id="reportTotalRevenue" class="revenue-positive">₹0</h4>
+                                </div>
+                                <div class="col-6">
+                                    <small class="text-muted">Total Expenses</small>
+                                    <h4 id="reportTotalExpenses" class="revenue-negative">₹0</h4>
+                                </div>
+                                <div class="col-12 mt-3">
+                                    <hr>
+                                    <small class="text-muted">Net Profit/Loss</small>
+                                    <h4 id="reportNetProfit" class="revenue-positive">₹0</h4>
+                                    <small class="text-muted" id="reportProfitMargin">Profit Margin: 0%</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="chart-container">
+                            <h5 class="mb-3">Expense Breakdown</h5>
+                            <canvas id="expenseBreakdownChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-12">
+                        <div class="table-container">
+                            <h5 class="mb-3">Monthly Performance</h5>
+                            <div class="table-responsive">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th>Month</th>
+                                            <th>Revenue</th>
+                                            <th>Expenses</th>
+                                            <th>Net Profit</th>
+                                            <th>Profit Margin</th>
+                                            <th>Growth</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="monthlyPerformanceTable">
+                                        <!-- Monthly data will be populated here -->
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Lead Modal -->
+    <div class="modal fade" id="leadModal" tabindex="-1">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Add New Lead</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="leadForm">
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label">Name *</label>
+                                <input type="text" class="form-control" id="leadName" required>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label">Email *</label>
+                                <input type="email" class="form-control" id="leadEmail" required>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label">Phone</label>
+                                <input type="tel" class="form-control" id="leadPhone">
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label">Company</label>
+                                <input type="text" class="form-control" id="leadCompany">
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label">Source *</label>
+                                <select class="form-select" id="leadSource" required>
+                                    <option value="">Select Source</option>
+                                    <option value="website">Website</option>
+                                    <option value="social">Social Media</option>
+                                    <option value="referral">Referral</option>
+                                    <option value="email">Email</option>
+                                    <option value="phone">Phone</option>
+                                </select>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label">Status *</label>
+                                <select class="form-select" id="leadStatus" required>
+                                    <option value="new">New</option>
+                                    <option value="contacted">Contacted</option>
+                                    <option value="qualified">Qualified</option>
+                                    <option value="converted">Converted</option>
+                                    <option value="lost">Lost</option>
+                                </select>
+                            </div>
+                            <div class="col-12 mb-3">
+                                <label class="form-label">Notes</label>
+                                <textarea class="form-control" id="leadNotes" rows="3"></textarea>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-primary-custom" onclick="saveLead()">Save Lead</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Client Modal -->
+    <div class="modal fade" id="clientModal" tabindex="-1">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Add New Client</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="clientForm">
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label">Company Name *</label>
+                                <input type="text" class="form-control" id="clientCompany" required>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label">Contact Person *</label>
+                                <input type="text" class="form-control" id="clientContact" required>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label">Email *</label>
+                                <input type="email" class="form-control" id="clientEmail" required>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label">Phone</label>
+                                <input type="tel" class="form-control" id="clientPhone">
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label">Type *</label>
+                                <select class="form-select" id="clientType" required>
+                                    <option value="">Select Type</option>
+                                    <option value="regular">Regular</option>
+                                    <option value="premium">Premium</option>
+                                    <option value="enterprise">Enterprise</option>
+                                </select>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label">Status *</label>
+                                <select class="form-select" id="clientStatus" required>
+                                    <option value="active">Active</option>
+                                    <option value="inactive">Inactive</option>
+                                    <option value="pending">Pending</option>
+                                </select>
+                            </div>
+                            <div class="col-12 mb-3">
+                                <label class="form-label">Address</label>
+                                <textarea class="form-control" id="clientAddress" rows="2"></textarea>
+                            </div>
+                            <div class="col-12 mb-3">
+                                <label class="form-label">Notes</label>
+                                <textarea class="form-control" id="clientNotes" rows="3"></textarea>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-primary-custom" onclick="saveClient()">Save Client</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Invoice Modal -->
+    <div class="modal fade" id="invoiceModal" tabindex="-1">
+        <div class="modal-dialog modal-xl">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Create Invoice</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="invoiceForm">
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label">Client *</label>
+                                <select class="form-select" id="invoiceClient" required>
+                                    <option value="">Select Client</option>
+                                </select>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label">Invoice Number</label>
+                                <input type="text" class="form-control" id="invoiceNumber" readonly>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label">Issue Date *</label>
+                                <input type="date" class="form-control" id="invoiceDate" required>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label">Due Date *</label>
+                                <input type="date" class="form-control" id="invoiceDueDate" required>
+                            </div>
+                        </div>
+
+                        <hr>
+                        <h6>Invoice Items</h6>
+                        <div id="invoiceItems">
+                            <div class="row mb-2">
+                                <div class="col-md-5">
+                                    <input type="text" class="form-control" placeholder="Description"
+                                        name="itemDescription">
+                                </div>
+                                <div class="col-md-2">
+                                    <input type="number" class="form-control" placeholder="Quantity" name="itemQuantity"
+                                        min="1" value="1">
+                                </div>
+                                <div class="col-md-2">
+                                    <input type="number" class="form-control" placeholder="Price" name="itemPrice"
+                                        min="0" step="0.01">
+                                </div>
+                                <div class="col-md-2">
+                                    <input type="number" class="form-control" placeholder="Total" name="itemTotal"
+                                        readonly>
+                                </div>
+                                <div class="col-md-1">
+                                    <button type="button" class="btn btn-danger btn-sm"
+                                        onclick="removeInvoiceItem(this)">
+                                        <i class="fas fa-trash"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <button type="button" class="btn btn-outline-primary btn-sm mt-2" onclick="addInvoiceItem()">
+                            <i class="fas fa-plus"></i> Add Item
+                        </button>
+
+                        <hr>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label class="form-label">Notes</label>
+                                <textarea class="form-control" id="invoiceNotes" rows="3"></textarea>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="row">
+                                    <div class="col-6">
+                                        <label class="form-label">Subtotal</label>
+                                        <input type="number" class="form-control" id="invoiceSubtotal" readonly>
+                                    </div>
+                                    <div class="col-6">
+                                        <label class="form-label">Tax (%)</label>
+                                        <input type="number" class="form-control" id="invoiceTax" min="0" max="100"
+                                            value="0">
+                                    </div>
+                                    <div class="col-6 mt-2">
+                                        <label class="form-label">Tax Amount</label>
+                                        <input type="number" class="form-control" id="invoiceTaxAmount" readonly>
+                                    </div>
+                                    <div class="col-6 mt-2">
+                                        <label class="form-label">Total</label>
+                                        <input type="number" class="form-control" id="invoiceTotal" readonly>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-primary-custom" onclick="saveInvoice()">Create Invoice</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Expense Modal -->
+    <div class="modal fade" id="expenseModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Add Expense</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="expenseForm">
+                        <div class="mb-3">
+                            <label class="form-label">Date *</label>
+                            <input type="date" class="form-control" id="expenseDate" required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Description *</label>
+                            <input type="text" class="form-control" id="expenseDescription" required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Category *</label>
+                            <select class="form-select" id="expenseCategory" required>
+                                <option value="">Select Category</option>
+                                <option value="office">Office</option>
+                                <option value="marketing">Marketing</option>
+                                <option value="software">Software</option>
+                                <option value="travel">Travel</option>
+                                <option value="utilities">Utilities</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Amount *</label>
+                            <input type="number" class="form-control" id="expenseAmount" min="0" step="0.01" required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Payment Method</label>
+                            <select class="form-select" id="expensePaymentMethod">
+                                <option value="cash">Cash</option>
+                                <option value="card">Card</option>
+                                <option value="bank">Bank Transfer</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Notes</label>
+                            <textarea class="form-control" id="expenseNotes" rows="3"></textarea>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-primary-custom" onclick="saveExpense()">Save Expense</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Admin JS -->
+    <script src="assets/js/admin.js"></script>
+</body>
+
+</html>
