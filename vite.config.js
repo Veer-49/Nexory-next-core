@@ -172,7 +172,9 @@ export default defineConfig({
         privacy: './privacy-policy.html',
         projects: './projects.html',
         services: './services.html',
-        terms: './terms&condition.html'
+        terms: './terms&condition.html',
+        admin: './admin.html',
+        'admin-login': './admin-login.html'
       }
     },
     assetsDir: 'assets',
