@@ -3,6 +3,9 @@
 .env.local
 .env.*.local
 
+# Config files with sensitive data
+config.json
+
 # Node modules
 node_modules/
 npm-debug.log

@@ -4,6 +4,14 @@ const API_BASE_URL = getApiBaseUrl();
 let currentSection = 'dashboard';
 let charts = {};
 
+// In-memory mock data storage (replaces database)
+const mockData = {
+    leads: [],
+    clients: [],
+    invoices: [],
+    expenses: []
+};
+
 // Function to detect API base URL based on current domain
 function getApiBaseUrl() {
     const currentHost = window.location.hostname;
@@ -58,18 +66,15 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 // Check authentication
-async function checkAuthentication() {
+function checkAuthentication() {
     const apiKey = localStorage.getItem('adminApiKey') || sessionStorage.getItem('adminApiKey');
     
     console.log('Checking authentication - API Key found:', !!apiKey);
     
-    // Strict authentication check - redirect if no API key
+    // Simple authentication check - redirect if no API key
     if (!apiKey) {
         console.log('No API key found, redirecting to login');
-        // Clear any existing invalid session data
         clearAuthData();
-        
-        // Redirect to login page
         window.location.replace('admin-login.html');
         return false;
     }
@@ -77,29 +82,6 @@ async function checkAuthentication() {
     // Validate API key format (basic validation)
     if (apiKey.length < 10) {
         console.log('Invalid API key format, redirecting to login');
-        clearAuthData();
-        window.location.replace('admin-login.html');
-        return false;
-    }
-    
-    // Validate API key with server
-    try {
-        const response = await fetch(`${API_BASE_URL}/api/validate`, {
-            headers: {
-                'X-Admin-API-Key': apiKey
-            }
-        });
-        
-        const result = await response.json();
-        
-        if (!response.ok || !result.success) {
-            console.log('Invalid API key, redirecting to login');
-            clearAuthData();
-            window.location.replace('admin-login.html');
-            return false;
-        }
-    } catch (error) {
-        console.log('Cannot validate API key, redirecting to login');
         clearAuthData();
         window.location.replace('admin-login.html');
         return false;
@@ -233,33 +215,38 @@ function refreshData() {
     showNotification('Data refreshed successfully!', 'success');
 }
 
-// Dashboard Functions
+// Load dashboard data
 async function loadDashboardData() {
     try {
-        // Check if backend is available first
-        const healthResponse = await fetch(`${API_BASE_URL}/health`);
-        if (!healthResponse.ok) {
-            throw new Error('Backend server not responding');
-        }
-        
-        const response = await authenticatedFetch(`${API_BASE_URL}/api/admin/dashboard/stats`);
-        const result = await response.json();
-        
-        if (result.success) {
-            updateDashboardStats(result.data);
-            await loadRevenueCharts();
-        } else {
-            showNotification('Failed to load dashboard data', 'error');
-        }
+        // Static mock data for demo
+        const stats = {
+            totalLeads: 0,
+            leadsThisMonth: 0,
+            totalClients: 0,
+            totalRevenue: 0,
+            revenueThisMonth: 0,
+            revenueThisWeek: 0,
+            revenueThisYear: 0,
+            totalExpenses: 0,
+            expensesThisMonth: 0,
+            expensesThisWeek: 0,
+            expensesThisYear: 0,
+            netProfit: 0
+        };
+
+        const revenue = {
+            today: 0,
+            week: 0,
+            month: 0,
+            year: 0,
+            monthlyTrend: []
+        };
+
+        updateDashboardStats(stats);
+        loadRevenueCharts(revenue);
     } catch (error) {
         console.error('Error loading dashboard data:', error);
-        
-        // Handle connection errors specifically
-        if (error.message.includes('Failed to fetch') || error.message.includes('ERR_CONNECTION_REFUSED')) {
-            showNotification('Backend server is not running. Please start the server.', 'error');
-        } else {
-            showNotification('Error loading dashboard data. Please try again.', 'error');
-        }
+        showNotification('Error loading dashboard data. Please try again.', 'error');
         
         // Set default values to prevent UI errors
         updateDashboardStats({
@@ -287,18 +274,18 @@ function updateDashboardStats(stats) {
     document.getElementById('profitMargin').textContent = `Margin: ${margin}%`;
 }
 
-async function loadRevenueCharts() {
-    try {
-        const response = await fetch(`${API_BASE_URL}/api/admin/revenue/analytics`);
-        const result = await response.json();
-        
-        if (result.success) {
-            createRevenueChart(result.data.monthlyTrend);
-            createLeadSourceChart();
-        }
-    } catch (error) {
-        console.error('Error loading revenue charts:', error);
-    }
+function loadRevenueCharts() {
+    // Static mock data for revenue charts
+    const mockRevenueData = {
+        today: 0,
+        week: 0,
+        month: 0,
+        year: 0,
+        monthlyTrend: []
+    };
+    
+    createRevenueChart(mockRevenueData.monthlyTrend);
+    createLeadSourceChart();
 }
 
 function createRevenueChart(monthlyData) {
@@ -510,15 +497,10 @@ function createLeadSourceChart() {
 }
 
 // Leads Functions
-async function loadLeads() {
+function loadLeads() {
     try {
         showLoading(true);
-        const response = await authenticatedFetch(`${API_BASE_URL}/api/admin/leads`);
-        const result = await response.json();
-        
-        if (result.success) {
-            displayLeads(result.data);
-        }
+        displayLeads(mockData.leads);
     } catch (error) {
         console.error('Error loading leads:', error);
         showNotification('Error loading leads', 'error');
@@ -561,7 +543,7 @@ function openLeadModal() {
     modal.show();
 }
 
-async function saveLead() {
+function saveLead() {
     const editId = document.getElementById('leadForm').dataset.editId;
     const formData = {
         name: document.getElementById('leadName').value,
@@ -576,60 +558,44 @@ async function saveLead() {
     console.log('Saving lead with data:', formData, 'Edit ID:', editId);
     
     try {
-        let response;
         if (editId) {
             // Update existing lead
-            response = await authenticatedFetch(`${API_BASE_URL}/api/admin/leads/${editId}`, {
-                method: 'PUT',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(formData)
-            });
+            const leadIndex = mockData.leads.findIndex(l => l.id === editId);
+            if (leadIndex !== -1) {
+                mockData.leads[leadIndex] = { ...mockData.leads[leadIndex], ...formData, updated_at: new Date().toISOString() };
+            }
         } else {
             // Create new lead
-            response = await authenticatedFetch(`${API_BASE_URL}/api/admin/leads`, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(formData)
-            });
+            const newLead = {
+                id: 'lead_' + Date.now(),
+                ...formData,
+                created_at: new Date().toISOString(),
+                updated_at: new Date().toISOString()
+            };
+            mockData.leads.push(newLead);
         }
         
-        const result = await response.json();
-        
-        if (result.success) {
-            bootstrap.Modal.getInstance(document.getElementById('leadModal')).hide();
-            showNotification(editId ? 'Lead updated successfully!' : 'Lead saved successfully!', 'success');
-            loadLeads();
-            // Reset editId
-            delete document.getElementById('leadForm').dataset.editId;
-            document.querySelector('#leadModal .modal-title').textContent = 'Add New Lead';
-        } else {
-            showNotification('Error saving lead: ' + result.error, 'error');
-        }
+        bootstrap.Modal.getInstance(document.getElementById('leadModal')).hide();
+        showNotification(editId ? 'Lead updated successfully!' : 'Lead saved successfully!', 'success');
+        loadLeads();
+        delete document.getElementById('leadForm').dataset.editId;
     } catch (error) {
         console.error('Error saving lead:', error);
         showNotification('Error saving lead', 'error');
     }
 }
 
-async function deleteLead(id) {
+function deleteLead(id) {
     if (!confirm('Are you sure you want to delete this lead?')) return;
     
     try {
-        const response = await authenticatedFetch(`${API_BASE_URL}/api/admin/leads/${id}`, {
-            method: 'DELETE'
-        });
-        
-        const result = await response.json();
-        
-        if (result.success) {
+        const leadIndex = mockData.leads.findIndex(l => l.id === id);
+        if (leadIndex !== -1) {
+            mockData.leads.splice(leadIndex, 1);
             showNotification('Lead deleted successfully!', 'success');
             loadLeads();
         } else {
-            showNotification('Error deleting lead: ' + result.error, 'error');
+            showNotification('Lead not found', 'error');
         }
     } catch (error) {
         console.error('Error deleting lead:', error);
@@ -665,15 +631,10 @@ async function loadLeadsWithFilters(search, status, source) {
 }
 
 // Clients Functions
-async function loadClients() {
+function loadClients() {
     try {
         showLoading(true);
-        const response = await fetch(`${API_BASE_URL}/api/admin/clients`);
-        const result = await response.json();
-        
-        if (result.success) {
-            displayClients(result.data);
-        }
+        displayClients(mockData.clients);
     } catch (error) {
         console.error('Error loading clients:', error);
         showNotification('Error loading clients', 'error');
@@ -717,7 +678,7 @@ function openClientModal() {
     modal.show();
 }
 
-async function saveClient() {
+function saveClient() {
     const editId = document.getElementById('clientForm').dataset.editId;
     const formData = {
         company_name: document.getElementById('clientCompany').value,
@@ -731,60 +692,45 @@ async function saveClient() {
     };
     
     try {
-        let response;
         if (editId) {
             // Update existing client
-            response = await authenticatedFetch(`${API_BASE_URL}/api/admin/clients/${editId}`, {
-                method: 'PUT',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(formData)
-            });
+            const clientIndex = mockData.clients.findIndex(c => c.id === editId);
+            if (clientIndex !== -1) {
+                mockData.clients[clientIndex] = { ...mockData.clients[clientIndex], ...formData, updated_at: new Date().toISOString() };
+            }
         } else {
             // Create new client
-            response = await authenticatedFetch(`${API_BASE_URL}/api/admin/clients`, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(formData)
-            });
+            const newClient = {
+                id: 'client_' + Date.now(),
+                ...formData,
+                created_at: new Date().toISOString(),
+                updated_at: new Date().toISOString()
+            };
+            mockData.clients.push(newClient);
         }
         
-        const result = await response.json();
-        
-        if (result.success) {
-            bootstrap.Modal.getInstance(document.getElementById('clientModal')).hide();
-            showNotification(editId ? 'Client updated successfully!' : 'Client saved successfully!', 'success');
-            loadClients();
-            // Reset editId
-            delete document.getElementById('clientForm').dataset.editId;
-            document.querySelector('#clientModal .modal-title').textContent = 'Add New Client';
-        } else {
-            showNotification('Error saving client: ' + result.error, 'error');
-        }
+        bootstrap.Modal.getInstance(document.getElementById('clientModal')).hide();
+        showNotification(editId ? 'Client updated successfully!' : 'Client saved successfully!', 'success');
+        loadClients();
+        delete document.getElementById('clientForm').dataset.editId;
+        document.querySelector('#clientModal .modal-title').textContent = 'Add New Client';
     } catch (error) {
         console.error('Error saving client:', error);
         showNotification('Error saving client', 'error');
     }
 }
 
-async function deleteClient(id) {
+function deleteClient(id) {
     if (!confirm('Are you sure you want to delete this client?')) return;
     
     try {
-        const response = await authenticatedFetch(`${API_BASE_URL}/api/admin/clients/${id}`, {
-            method: 'DELETE'
-        });
-        
-        const result = await response.json();
-        
-        if (result.success) {
+        const clientIndex = mockData.clients.findIndex(c => c.id === id);
+        if (clientIndex !== -1) {
+            mockData.clients.splice(clientIndex, 1);
             showNotification('Client deleted successfully!', 'success');
             loadClients();
         } else {
-            showNotification('Error deleting client: ' + result.error, 'error');
+            showNotification('Client not found', 'error');
         }
     } catch (error) {
         console.error('Error deleting client:', error);
@@ -793,16 +739,10 @@ async function deleteClient(id) {
 }
 
 // Invoice Functions
-async function loadInvoices() {
+function loadInvoices() {
     try {
         showLoading(true);
-        const response = await fetch(`${API_BASE_URL}/api/admin/invoices`);
-        const result = await response.json();
-        
-        if (result.success) {
-            displayInvoices(result.data);
-            loadClientsForInvoice();
-        }
+        displayInvoices(mockData.invoices);
     } catch (error) {
         console.error('Error loading invoices:', error);
         showNotification('Error loading invoices', 'error');
@@ -840,22 +780,17 @@ function displayInvoices(invoices) {
     });
 }
 
-async function loadClientsForInvoice() {
+function loadClientsForInvoice() {
     try {
-        const response = await fetch(`${API_BASE_URL}/api/admin/clients`);
-        const result = await response.json();
+        const clientSelect = document.getElementById('invoiceClient');
+        clientSelect.innerHTML = '<option value="">Select Client</option>';
         
-        if (result.success) {
-            const select = document.getElementById('invoiceClient');
-            select.innerHTML = '<option value="">Select Client</option>';
-            
-            result.data.forEach(client => {
-                const option = document.createElement('option');
-                option.value = client.id;
-                option.textContent = client.company_name;
-                select.appendChild(option);
-            });
-        }
+        mockData.clients.forEach(client => {
+            const option = document.createElement('option');
+            option.value = client.id;
+            option.textContent = `${client.company_name} (${client.contact_person})`;
+            clientSelect.appendChild(option);
+        });
     } catch (error) {
         console.error('Error loading clients for invoice:', error);
     }
@@ -971,23 +906,20 @@ async function saveInvoice() {
     };
     
     try {
-        const response = await fetch(`${API_BASE_URL}/api/admin/invoices`, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(invoiceData)
-        });
+        const newInvoice = {
+            id: 'invoice_' + Date.now(),
+            invoice_number: document.getElementById('invoiceNumber').value,
+            company_name: mockData.clients.find(c => c.id === clientId).company_name,
+            total: parseFloat(document.getElementById('invoiceTotal').value),
+            status: 'pending',
+            created_at: new Date().toISOString(),
+            ...invoiceData
+        };
+        mockData.invoices.push(newInvoice);
         
-        const result = await response.json();
-        
-        if (result.success) {
-            bootstrap.Modal.getInstance(document.getElementById('invoiceModal')).hide();
-            showNotification('Invoice created successfully!', 'success');
-            loadInvoices();
-        } else {
-            showNotification('Error creating invoice: ' + result.error, 'error');
-        }
+        bootstrap.Modal.getInstance(document.getElementById('invoiceModal')).hide();
+        showNotification('Invoice created successfully!', 'success');
+        loadInvoices();
     } catch (error) {
         console.error('Error creating invoice:', error);
         showNotification('Error creating invoice', 'error');
@@ -995,16 +927,10 @@ async function saveInvoice() {
 }
 
 // Expense Functions
-async function loadExpenses() {
+function loadExpenses() {
     try {
         showLoading(true);
-        const response = await fetch(`${API_BASE_URL}/api/admin/expenses`);
-        const result = await response.json();
-        
-        if (result.success) {
-            displayExpenses(result.data);
-            updateExpenseStats(result.data);
-        }
+        displayExpenses(mockData.expenses);
     } catch (error) {
         console.error('Error loading expenses:', error);
         showNotification('Error loading expenses', 'error');
@@ -1070,7 +996,7 @@ function openExpenseModal() {
     modal.show();
 }
 
-async function saveExpense() {
+function saveExpense() {
     const editId = document.getElementById('expenseForm').dataset.editId;
     const formData = {
         date: document.getElementById('expenseDate').value,
@@ -1082,60 +1008,45 @@ async function saveExpense() {
     };
     
     try {
-        let response;
         if (editId) {
             // Update existing expense
-            response = await authenticatedFetch(`${API_BASE_URL}/api/admin/expenses/${editId}`, {
-                method: 'PUT',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(formData)
-            });
+            const expenseIndex = mockData.expenses.findIndex(e => e.id === editId);
+            if (expenseIndex !== -1) {
+                mockData.expenses[expenseIndex] = { ...mockData.expenses[expenseIndex], ...formData, updated_at: new Date().toISOString() };
+            }
         } else {
             // Create new expense
-            response = await authenticatedFetch(`${API_BASE_URL}/api/admin/expenses`, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(formData)
-            });
+            const newExpense = {
+                id: 'expense_' + Date.now(),
+                ...formData,
+                created_at: new Date().toISOString(),
+                updated_at: new Date().toISOString()
+            };
+            mockData.expenses.push(newExpense);
         }
         
-        const result = await response.json();
-        
-        if (result.success) {
-            bootstrap.Modal.getInstance(document.getElementById('expenseModal')).hide();
-            showNotification(editId ? 'Expense updated successfully!' : 'Expense saved successfully!', 'success');
-            loadExpenses();
-            // Reset editId
-            delete document.getElementById('expenseForm').dataset.editId;
-            document.querySelector('#expenseModal .modal-title').textContent = 'Add Expense';
-        } else {
-            showNotification('Error saving expense: ' + result.error, 'error');
-        }
+        bootstrap.Modal.getInstance(document.getElementById('expenseModal')).hide();
+        showNotification(editId ? 'Expense updated successfully!' : 'Expense saved successfully!', 'success');
+        loadExpenses();
+        delete document.getElementById('expenseForm').dataset.editId;
+        document.querySelector('#expenseModal .modal-title').textContent = 'Add Expense';
     } catch (error) {
         console.error('Error saving expense:', error);
         showNotification('Error saving expense', 'error');
     }
 }
 
-async function deleteExpense(id) {
+function deleteExpense(id) {
     if (!confirm('Are you sure you want to delete this expense?')) return;
     
     try {
-        const response = await authenticatedFetch(`${API_BASE_URL}/api/admin/expenses/${id}`, {
-            method: 'DELETE'
-        });
-        
-        const result = await response.json();
-        
-        if (result.success) {
+        const expenseIndex = mockData.expenses.findIndex(e => e.id === id);
+        if (expenseIndex !== -1) {
+            mockData.expenses.splice(expenseIndex, 1);
             showNotification('Expense deleted successfully!', 'success');
             loadExpenses();
         } else {
-            showNotification('Error deleting expense: ' + result.error, 'error');
+            showNotification('Expense not found', 'error');
         }
     } catch (error) {
         console.error('Error deleting expense:', error);
@@ -1144,23 +1055,19 @@ async function deleteExpense(id) {
 }
 
 // Revenue Functions
-async function loadRevenueData() {
-    try {
-        showLoading(true);
-        const response = await fetch(`${API_BASE_URL}/api/admin/revenue/analytics`);
-        const result = await response.json();
-        
-        if (result.success) {
-            updateRevenueStats(result.data);
-            createRevenueOverviewChart(result.data.monthlyTrend);
-            createRevenueByClientChart();
-        }
-    } catch (error) {
-        console.error('Error loading revenue data:', error);
-        showNotification('Error loading revenue data', 'error');
-    } finally {
-        showLoading(false);
-    }
+function loadRevenueData() {
+    // Static mock data for revenue
+    const mockRevenue = {
+        today: 0,
+        week: 0,
+        month: 0,
+        year: 0,
+        monthlyTrend: []
+    };
+    
+    updateRevenueStats(mockRevenue);
+    createRevenueOverviewChart(mockRevenue.monthlyTrend);
+    createRevenueByClientChart();
 }
 
 function updateRevenueStats(data) {

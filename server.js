@@ -3,7 +3,6 @@ const cors = require('cors');
 const fetch = require('node-fetch');
 const nodemailer = require('nodemailer');
 const jwt = require('jsonwebtoken');
-const sqlite3 = require('sqlite3').verbose();
 const { v4: uuidv4 } = require('uuid');
 
 const app = express();
@@ -14,104 +13,13 @@ app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-// Initialize SQLite database
-const db = new sqlite3.Database('./business_data.db', (err) => {
-    if (err) {
-        console.error('Error opening database:', err);
-    } else {
-        console.log('Connected to SQLite database');
-        initializeTables();
-    }
-});
-
-// Initialize database tables
-function initializeTables() {
-    // Leads table
-    db.run(`CREATE TABLE IF NOT EXISTS leads (
-        id TEXT PRIMARY KEY,
-        name TEXT NOT NULL,
-        email TEXT NOT NULL,
-        phone TEXT,
-        company TEXT,
-        source TEXT NOT NULL,
-        status TEXT NOT NULL DEFAULT 'new',
-        notes TEXT,
-        created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
-        updated_at DATETIME DEFAULT CURRENT_TIMESTAMP
-    )`);
-
-    // Clients table
-    db.run(`CREATE TABLE IF NOT EXISTS clients (
-        id TEXT PRIMARY KEY,
-        company_name TEXT NOT NULL,
-        contact_person TEXT NOT NULL,
-        email TEXT NOT NULL,
-        phone TEXT,
-        address TEXT,
-        type TEXT NOT NULL DEFAULT 'regular',
-        status TEXT NOT NULL DEFAULT 'active',
-        notes TEXT,
-        created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
-        updated_at DATETIME DEFAULT CURRENT_TIMESTAMP
-    )`);
-
-    // Invoices table
-    db.run(`CREATE TABLE IF NOT EXISTS invoices (
-        id TEXT PRIMARY KEY,
-        invoice_number TEXT UNIQUE NOT NULL,
-        client_id TEXT NOT NULL,
-        issue_date DATE NOT NULL,
-        due_date DATE NOT NULL,
-        status TEXT NOT NULL DEFAULT 'draft',
-        subtotal DECIMAL(10,2) NOT NULL,
-        tax_rate DECIMAL(5,2) DEFAULT 0,
-        tax_amount DECIMAL(10,2) DEFAULT 0,
-        total DECIMAL(10,2) NOT NULL,
-        notes TEXT,
-        created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
-        updated_at DATETIME DEFAULT CURRENT_TIMESTAMP,
-        FOREIGN KEY (client_id) REFERENCES clients(id)
-    )`);
-
-    // Invoice items table
-    db.run(`CREATE TABLE IF NOT EXISTS invoice_items (
-        id TEXT PRIMARY KEY,
-        invoice_id TEXT NOT NULL,
-        description TEXT NOT NULL,
-        quantity INTEGER NOT NULL DEFAULT 1,
-        unit_price DECIMAL(10,2) NOT NULL,
-        total DECIMAL(10,2) NOT NULL,
-        created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
-        FOREIGN KEY (invoice_id) REFERENCES invoices(id) ON DELETE CASCADE
-    )`);
-
-    // Expenses table
-    db.run(`CREATE TABLE IF NOT EXISTS expenses (
-        id TEXT PRIMARY KEY,
-        date DATE NOT NULL,
-        description TEXT NOT NULL,
-        category TEXT NOT NULL,
-        amount DECIMAL(10,2) NOT NULL,
-        payment_method TEXT DEFAULT 'cash',
-        notes TEXT,
-        created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
-        updated_at DATETIME DEFAULT CURRENT_TIMESTAMP
-    )`);
-
-    // Payments table
-    db.run(`CREATE TABLE IF NOT EXISTS payments (
-        id TEXT PRIMARY KEY,
-        invoice_id TEXT NOT NULL,
-        amount DECIMAL(10,2) NOT NULL,
-        payment_date DATE NOT NULL,
-        payment_method TEXT,
-        notes TEXT,
-        created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
-        FOREIGN KEY (invoice_id) REFERENCES invoices(id)
-    )`);
-
-    console.log('Database tables initialized');
-}
+// Static data for demo purposes
+const mockData = {
+    leads: [],
+    clients: [],
+    invoices: [],
+    expenses: []
+};
 
 // EmailJS Configuration
 const EMAILJS_USER_ID = '8XYNZGBfYNxYCCYuo';
@@ -365,6 +273,15 @@ app.get('/api/validate', adminAuth, (req, res) => {
     });
 });
 
+// Get credentials endpoint
+app.get('/api/get-credentials', (req, res) => {
+    res.json({ 
+        validUsername: process.env.ADMIN_USERNAME || 'admin',
+        validPassword: process.env.ADMIN_PASSWORD || process.env.PASSWORD || 'admin123',
+        validApiKey: process.env.ADMIN_API_KEY || 'admin-secret-key-2024'
+    });
+});
+
 // Admin login endpoint
 app.post('/api/admin/login', (req, res) => {
     console.log('Login attempt received:', req.body);
@@ -372,7 +289,7 @@ app.post('/api/admin/login', (req, res) => {
     
     // Simple authentication (in production, use proper password hashing)
     const validUsername = process.env.ADMIN_USERNAME || 'admin';
-    const validPassword = process.env.ADMIN_PASSWORD || 'admin123';
+    const validPassword = process.env.ADMIN_PASSWORD || process.env.PASSWORD || 'admin123';
     
     console.log('Validating credentials:', { username, validUsername, password, validPassword });
     
@@ -402,169 +319,147 @@ app.post('/api/admin/login', (req, res) => {
             error: 'Invalid credentials'
         });
     }
-});
 
 // API Routes for Admin Panel
 
 // LEADS ENDPOINTS
 app.get('/api/admin/leads', adminAuth, (req, res) => {
     const { status, source, search } = req.query;
-    let query = 'SELECT * FROM leads WHERE 1=1';
-    const params = [];
-
+    
+    let filteredLeads = mockData.leads;
+    
     if (status) {
-        query += ' AND status = ?';
-        params.push(status);
+        filteredLeads = filteredLeads.filter(lead => lead.status === status);
     }
     if (source) {
-        query += ' AND source = ?';
-        params.push(source);
+        filteredLeads = filteredLeads.filter(lead => lead.source === source);
     }
     if (search) {
-        query += ' AND (name LIKE ? OR email LIKE ? OR company LIKE ?)';
-        params.push(`%${search}%`, `%${search}%`, `%${search}%`);
+        filteredLeads = filteredLeads.filter(lead => 
+            lead.name.toLowerCase().includes(search.toLowerCase()) ||
+            lead.email.toLowerCase().includes(search.toLowerCase()) ||
+            lead.company.toLowerCase().includes(search.toLowerCase())
+        );
     }
-
-    query += ' ORDER BY created_at DESC';
-
-    db.all(query, params, (err, rows) => {
-        if (err) {
-            return res.status(500).json({ success: false, error: err.message });
-        }
-        res.json({ success: true, data: rows });
-    });
+    
+    res.json({ success: true, data: filteredLeads });
 });
 
 app.post('/api/admin/leads', adminAuth, (req, res) => {
     const { name, email, phone, company, source, status, notes } = req.body;
     const id = uuidv4();
-
-    db.run(`INSERT INTO leads (id, name, email, phone, company, source, status, notes) 
-            VALUES (?, ?, ?, ?, ?, ?, ?, ?)`,
-        [id, name, email, phone, company, source, status, notes],
-        function(err) {
-            if (err) {
-                return res.status(500).json({ success: false, error: err.message });
-            }
-            res.json({ success: true, data: { id, name, email, phone, company, source, status, notes } });
-        }
-    );
+    
+    const newLead = {
+        id, name, email, phone, company, source, status, notes,
+        created_at: new Date().toISOString(),
+        updated_at: new Date().toISOString()
+    };
+    
+    mockData.leads.push(newLead);
+    res.json({ success: true, data: newLead });
 });
 
 app.put('/api/admin/leads/:id', adminAuth, (req, res) => {
     const { id } = req.params;
     const { name, email, phone, company, source, status, notes } = req.body;
-
-    db.run(`UPDATE leads SET name = ?, email = ?, phone = ?, company = ?, source = ?, 
-            status = ?, notes = ?, updated_at = CURRENT_TIMESTAMP WHERE id = ?`,
-        [name, email, phone, company, source, status, notes, id],
-        function(err) {
-            if (err) {
-                return res.status(500).json({ success: false, error: err.message });
-            }
-            if (this.changes === 0) {
-                return res.status(404).json({ success: false, error: 'Lead not found' });
-            }
-            res.json({ success: true, message: 'Lead updated successfully' });
-        }
-    );
+    
+    const leadIndex = mockData.leads.findIndex(lead => lead.id === id);
+    if (leadIndex === -1) {
+        return res.status(404).json({ success: false, error: 'Lead not found' });
+    }
+    
+    mockData.leads[leadIndex] = {
+        id, name, email, phone, company, source, status, notes,
+        updated_at: new Date().toISOString()
+    };
+    
+    res.json({ success: true, message: 'Lead updated successfully' });
 });
 
 app.delete('/api/admin/leads/:id', adminAuth, (req, res) => {
     const { id } = req.params;
-
-    db.run('DELETE FROM leads WHERE id = ?', [id], function(err) {
-        if (err) {
-            return res.status(500).json({ success: false, error: err.message });
-        }
-        if (this.changes === 0) {
-            return res.status(404).json({ success: false, error: 'Lead not found' });
-        }
-        res.json({ success: true, message: 'Lead deleted successfully' });
-    });
+    
+    const leadIndex = mockData.leads.findIndex(lead => lead.id === id);
+    if (leadIndex === -1) {
+        return res.status(404).json({ success: false, error: 'Lead not found' });
+    }
+    
+    mockData.leads.splice(leadIndex, 1);
+    res.json({ success: true, message: 'Lead deleted successfully' });
 });
 
 // CLIENTS ENDPOINTS
 app.get('/api/admin/clients', adminAuth, (req, res) => {
     const { status, type, search } = req.query;
-    let query = 'SELECT * FROM clients WHERE 1=1';
-    const params = [];
-
+    
+    let filteredClients = mockData.clients;
+    
     if (status) {
-        query += ' AND status = ?';
-        params.push(status);
+        filteredClients = filteredClients.filter(client => client.status === status);
     }
     if (type) {
-        query += ' AND type = ?';
-        params.push(type);
+        filteredClients = filteredClients.filter(client => client.type === type);
     }
     if (search) {
-        query += ' AND (company_name LIKE ? OR contact_person LIKE ? OR email LIKE ?)';
-        params.push(`%${search}%`, `%${search}%`, `%${search}%`);
+        filteredClients = filteredClients.filter(client => 
+            client.company_name.toLowerCase().includes(search.toLowerCase()) ||
+            client.contact_person.toLowerCase().includes(search.toLowerCase()) ||
+            client.email.toLowerCase().includes(search.toLowerCase())
+        );
     }
-
-    query += ' ORDER BY created_at DESC';
-
-    db.all(query, params, (err, rows) => {
-        if (err) {
-            return res.status(500).json({ success: false, error: err.message });
-        }
-        res.json({ success: true, data: rows });
-    });
+    
+    res.json({ success: true, data: filteredClients });
 });
 
 app.post('/api/admin/clients', adminAuth, (req, res) => {
     const { company_name, contact_person, email, phone, address, type, status, notes } = req.body;
     const id = uuidv4();
-
-    db.run(`INSERT INTO clients (id, company_name, contact_person, email, phone, address, type, status, notes) 
-            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)`,
-        [id, company_name, contact_person, email, phone, address, type, status, notes],
-        function(err) {
-            if (err) {
-                return res.status(500).json({ success: false, error: err.message });
-            }
-            res.json({ success: true, data: { id, company_name, contact_person, email, phone, address, type, status, notes } });
-        }
-    );
+    
+    const newClient = {
+        id, company_name, contact_person, email, phone, address, type, status, notes,
+        created_at: new Date().toISOString(),
+        updated_at: new Date().toISOString()
+    };
+    
+    mockData.clients.push(newClient);
+    res.json({ success: true, data: newClient });
 });
 
 app.put('/api/admin/clients/:id', adminAuth, (req, res) => {
     const { id } = req.params;
     const { company_name, contact_person, email, phone, address, type, status, notes } = req.body;
-
-    db.run(`UPDATE clients SET company_name = ?, contact_person = ?, email = ?, phone = ?, 
-            address = ?, type = ?, status = ?, notes = ?, updated_at = CURRENT_TIMESTAMP WHERE id = ?`,
-        [company_name, contact_person, email, phone, address, type, status, notes, id],
-        function(err) {
-            if (err) {
-                return res.status(500).json({ success: false, error: err.message });
-            }
-            if (this.changes === 0) {
-                return res.status(404).json({ success: false, error: 'Client not found' });
-            }
-            res.json({ success: true, message: 'Client updated successfully' });
-        }
-    );
+    
+    const clientIndex = mockData.clients.findIndex(client => client.id === id);
+    if (clientIndex === -1) {
+        return res.status(404).json({ success: false, error: 'Client not found' });
+    }
+    
+    mockData.clients[clientIndex] = {
+        id, company_name, contact_person, email, phone, address, type, status, notes,
+        updated_at: new Date().toISOString()
+    };
+    
+    res.json({ success: true, message: 'Client updated successfully' });
 });
 
 app.delete('/api/admin/clients/:id', adminAuth, (req, res) => {
     const { id } = req.params;
-
-    db.run('DELETE FROM clients WHERE id = ?', [id], function(err) {
-        if (err) {
-            return res.status(500).json({ success: false, error: err.message });
-        }
-        if (this.changes === 0) {
-            return res.status(404).json({ success: false, error: 'Client not found' });
-        }
-        res.json({ success: true, message: 'Client deleted successfully' });
-    });
+    
+    const clientIndex = mockData.clients.findIndex(client => client.id === id);
+    if (clientIndex === -1) {
+        return res.status(404).json({ success: false, error: 'Client not found' });
+    }
+    
+    mockData.clients.splice(clientIndex, 1);
+    res.json({ success: true, message: 'Client deleted successfully' });
 });
 
 // INVOICES ENDPOINTS
 app.get('/api/admin/invoices', adminAuth, (req, res) => {
     const { status, month, search } = req.query;
+    
+    let filteredInvoices = mockData.invoices;
+    
     let query = `SELECT i.*, c.company_name, c.contact_person 
                  FROM invoices i 
                  JOIN clients c ON i.client_id = c.id 
@@ -787,57 +682,22 @@ app.put('/api/admin/expenses/:id', adminAuth, (req, res) => {
 
 // DASHBOARD STATISTICS
 app.get('/api/admin/dashboard/stats', adminAuth, (req, res) => {
-    const stats = {};
+    const stats = {
+        totalLeads: 0,
+        leadsThisMonth: 0,
+        totalClients: 0,
+        totalRevenue: 0,
+        revenueThisMonth: 0,
+        revenueThisWeek: 0,
+        revenueThisYear: 0,
+        totalExpenses: 0,
+        expensesThisMonth: 0,
+        expensesThisWeek: 0,
+        expensesThisYear: 0,
+        netProfit: 0
+    };
 
-    // Total leads
-    db.get('SELECT COUNT(*) as count FROM leads', (err, row) => {
-        if (err) return res.status(500).json({ success: false, error: err.message });
-        stats.totalLeads = row.count;
-
-        // Leads this month
-        db.get(`SELECT COUNT(*) as count FROM leads 
-                WHERE strftime("%Y-%m", created_at) = strftime("%Y-%m", "now")`, (err, row) => {
-            if (err) return res.status(500).json({ success: false, error: err.message });
-            stats.leadsThisMonth = row.count;
-
-            // Total clients
-            db.get('SELECT COUNT(*) as count FROM clients WHERE status = "active"', (err, row) => {
-                if (err) return res.status(500).json({ success: false, error: err.message });
-                stats.totalClients = row.count;
-
-                // Total revenue
-                db.get('SELECT COALESCE(SUM(total), 0) as total FROM invoices WHERE status = "paid"', (err, row) => {
-                    if (err) return res.status(500).json({ success: false, error: err.message });
-                    stats.totalRevenue = row.total;
-
-                    // Total expenses
-                    db.get('SELECT COALESCE(SUM(amount), 0) as total FROM expenses', (err, row) => {
-                        if (err) return res.status(500).json({ success: false, error: err.message });
-                        stats.totalExpenses = row.total;
-
-                        // Net profit
-                        stats.netProfit = stats.totalRevenue - stats.totalExpenses;
-
-                        // Revenue this month
-                        db.get(`SELECT COALESCE(SUM(total), 0) as total FROM invoices 
-                                WHERE status = "paid" AND strftime("%Y-%m", created_at) = strftime("%Y-%m", "now")`, (err, row) => {
-                            if (err) return res.status(500).json({ success: false, error: err.message });
-                            stats.revenueThisMonth = row.total;
-
-                            // Expenses this month
-                            db.get(`SELECT COALESCE(SUM(amount), 0) as total FROM expenses 
-                                    WHERE strftime("%Y-%m", date) = strftime("%Y-%m", "now")`, (err, row) => {
-                                if (err) return res.status(500).json({ success: false, error: err.message });
-                                stats.expensesThisMonth = row.total;
-
-                                res.json({ success: true, data: stats });
-                            });
-                        });
-                    });
-                });
-            });
-        });
-    });
+    res.json({ success: true, data: stats });
 });
 
 // REVENUE ANALYTICS

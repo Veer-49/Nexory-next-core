@@ -16,17 +16,11 @@
   },
   "dependencies": {
     "@emailjs/browser": "^4.4.1",
-    "bcrypt": "^6.0.0",
     "cors": "^2.8.6",
     "express": "^5.2.1",
-    "express-fileupload": "^1.5.2",
     "jsonwebtoken": "^9.0.3",
-    "multer": "^2.1.1",
     "node-fetch": "^3.3.2",
     "nodemailer": "^8.0.7",
-    "sqlite3": "^6.0.1",
-    "terser": "^5.44.1",
-    "uuid": "^9.0.1",
-    "vite": "^7.3.0"
+    "uuid": "^9.0.1"
   }
 }
