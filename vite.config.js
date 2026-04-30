@@ -1,5 +1,5 @@
 import { defineConfig } from 'vite'
-import { copyFileSync, mkdirSync, existsSync } from 'fs'
+import { copyFileSync, mkdirSync, existsSync, readdirSync } from 'fs'
 import { join } from 'path'
 
 // Custom middleware for API routes
@@ -165,7 +165,7 @@ export default defineConfig({
       input: {
         index: './index.html',
         about: './about.html',
-        billing: './billing.html',
+        billing: './create-bill.html',
         leads: './leads.html',
         contact: './contact.html',
         faq: './faq.html',
@@ -204,22 +204,19 @@ export default defineConfig({
     {
       name: 'copy-assets',
       writeBundle() {
-        const fs = require('fs')
-        const path = require('path')
-        
         const copyDir = (src, dest) => {
-          if (!fs.existsSync(dest)) {
-            fs.mkdirSync(dest, { recursive: true })
+          if (!existsSync(dest)) {
+            mkdirSync(dest, { recursive: true })
           }
-          if (fs.existsSync(src)) {
-            const entries = fs.readdirSync(src, { withFileTypes: true })
+          if (existsSync(src)) {
+            const entries = readdirSync(src, { withFileTypes: true })
             for (const entry of entries) {
-              const srcPath = path.join(src, entry.name)
-              const destPath = path.join(dest, entry.name)
+              const srcPath = join(src, entry.name)
+              const destPath = join(dest, entry.name)
               if (entry.isDirectory()) {
                 copyDir(srcPath, destPath)
               } else {
-                fs.copyFileSync(srcPath, destPath)
+                copyFileSync(srcPath, destPath)
               }
             }
           }
@@ -232,11 +229,11 @@ export default defineConfig({
         copyDir('assets/css', 'dist/assets/css')
         
         // Copy header and footer files
-        if (fs.existsSync('header.html')) {
-          fs.copyFileSync('header.html', 'dist/header.html')
+        if (existsSync('header.html')) {
+          copyFileSync('header.html', 'dist/header.html')
         }
-        if (fs.existsSync('footer.html')) {
-          fs.copyFileSync('footer.html', 'dist/footer.html')
+        if (existsSync('footer.html')) {
+          copyFileSync('footer.html', 'dist/footer.html')
         }
       }
     }

@@ -19,9 +19,12 @@
     "jsonwebtoken": "^9.0.3",
     "node-fetch": "^3.3.2",
     "nodemailer": "^8.0.7",
-    "uuid": "^9.0.1"
+    "uuid": "^9.0.1",
+    "vite": "^5.0.0",
+    "terser": "^5.0.0"
   },
-  "devDependencies": {
-    "vite": "^5.0.0"
+  "devDependencies": {},
+  "engines": {
+    "node": ">=18.0.0"
   }
 }

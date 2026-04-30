@@ -8,9 +8,6 @@
     const EMAILJS_CONTACT_TEMPLATE_ID = 'template_muzi8cb'; // Template for contact form submission
     const EMAILJS_AUTO_REPLY_TEMPLATE_ID = 'template_4b8rnwc'; // Template for auto-reply to user
 
-    // Google Sheets Configuration
-    const GOOGLE_SHEETS_URL = 'https://script.google.com/macros/s/AKfycby5VoGkuqlzXOB7Kscb4QzzGiu-ntPSOCbHx9KCQjfktEYScSrpdtvBNPCmEDtBYaTXKg/exec';
-
     let overlayInitialized = false;
     
     // Function to load EmailJS if not already loaded
@@ -68,57 +65,18 @@
         });
     }
     
-    // Function to submit data to Google Sheets
-    function submitToGoogleSheets(name, email, phone, service, message) {
-        return new Promise((resolve, reject) => {
-            // Use URL-encoded form data (compatible with Google Apps Script)
-            const formData = new URLSearchParams();
-            formData.append('name', name || '');
-            formData.append('email', email || '');
-            formData.append('phone', phone || '');
-            formData.append('service', service || '');
-            formData.append('message', message || '');
-
-            console.log('Submitting to Google Sheets:', Object.fromEntries(formData));
-
-            fetch(GOOGLE_SHEETS_URL, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/x-www-form-urlencoded',
-                },
-                body: formData.toString()
-            })
-            .then(response => {
-                console.log('Google Sheets response status:', response.status);
-                console.log('Google Sheets response ok:', response.ok);
-
-                if (response.ok) {
-                    console.log('Google Sheets submission successful');
-                    resolve({ success: true });
-                } else {
-                    console.error('Google Sheets submission failed with status:', response.status);
-                    reject(new Error(`HTTP ${response.status}: ${response.statusText}`));
-                }
-            })
-            .catch(error => {
-                console.error('Google Sheets submission failed:', error);
-                reject(error);
-            });
-        });
-    }
     
     function initializeContactOverlay() {
         if (overlayInitialized) return;
         
-        const getInTouchBtns = document.querySelectorAll('.get-in-touch-btn');
         const contactOverlay = document.getElementById('contactOverlay');
         
-        if (!getInTouchBtns.length || !contactOverlay) {
-            console.log('Elements not found yet, retrying...');
+        if (!contactOverlay) {
+            console.log('Contact overlay not found yet, retrying...');
             return false;
         }
         
-        console.log('Contact overlay elements found, initializing...');
+        console.log('Contact overlay found, initializing...');
         
         // Initialize EmailJS
         loadEmailJS().catch(error => {
@@ -129,14 +87,14 @@
         const contactForm = document.getElementById('contactForm');
         const overlayBg = document.querySelector('.contact-overlay-new__bg');
         
-        // Open overlay
-        getInTouchBtns.forEach(btn => {
-            btn.addEventListener('click', function(e) {
+        // Use event delegation for get-in-touch-btn to handle dynamic buttons
+        document.addEventListener('click', function(e) {
+            if (e.target.closest('.get-in-touch-btn')) {
                 e.preventDefault();
                 console.log('Get in touch button clicked');
                 contactOverlay.classList.add('active');
                 document.body.style.overflow = 'hidden';
-            });
+            }
         });
         
         // Close overlay functions
@@ -182,130 +140,111 @@
                     const userService = formData.get('service');
                     const userMessage = formData.get('message');
                     
-                    // Try Google Sheets first
-                    console.log('Attempting Google Sheets submission first...');
-                    submitToGoogleSheets(userName, userEmail, userPhone, userService, userMessage)
+                    // Submit directly to EmailJS
+                    console.log('Submitting to EmailJS...');
+
+                    // Ensure EmailJS is loaded and initialized
+                    if (typeof emailjs === 'undefined') {
+                        console.error('EmailJS library not loaded');
+                        fallbackEmailSubmission(userName, userEmail, userPhone, userService, userMessage, submitBtn, originalText, contactForm, closeOverlay);
+                        return;
+                    }
+
+                    // Ensure EmailJS is initialized
+                    if (!emailjs._userID) {
+                        console.log('EmailJS not initialized, initializing now...');
+                        try {
+                            emailjs.init(EMAILJS_USER_ID);
+                            console.log('EmailJS initialized successfully');
+                        } catch (initError) {
+                            console.error('EmailJS initialization failed:', initError);
+                            fallbackEmailSubmission(userName, userEmail, userPhone, userService, userMessage, submitBtn, originalText, contactForm, closeOverlay);
+                            return;
+                        }
+                    }
+
+                    // Validate EmailJS configuration
+                    if (!EMAILJS_SERVICE_ID || !EMAILJS_CONTACT_TEMPLATE_ID || !EMAILJS_USER_ID) {
+                        console.error('EmailJS configuration missing');
+                        fallbackEmailSubmission(userName, userEmail, userPhone, userService, userMessage, submitBtn, originalText, contactForm, closeOverlay);
+                        return;
+                    }
+
+                    // Prepare EmailJS parameters
+                    const contactParams = {
+                        name: userName,
+                        email: userEmail,
+                        phone: userPhone,
+                        service: userService,
+                        message: userMessage,
+                        // Additional field names that might be in your template
+                        to_email: 'jupiter.digital.tech@gmail.com',
+                        to: 'jupiter.digital.tech@gmail.com',
+                        recipient_email: 'jupiter.digital.tech@gmail.com',
+                        recipient: 'jupiter.digital.tech@gmail.com',
+                        destination: 'jupiter.digital.tech@gmail.com',
+                        from_name: userName,
+                        from_email: userEmail,
+                        user_name: userName,
+                        user_email: userEmail,
+                        user_phone: userPhone,
+                        user_service: userService,
+                        user_message: userMessage,
+                        customer_name: userName,
+                        customer_email: userEmail,
+                        customer_phone: userPhone,
+                        customer_service: userService,
+                        customer_message: userMessage
+                    };
+
+                    const replyParams = {
+                        email: userEmail,
+                        to_email: userEmail,
+                        to_name: userName,
+                        from_name: 'Jupiter Digital Technologies',
+                        name: userName,
+                        customer_name: userName,
+                        customer_email: userEmail,
+                        recipient_name: userName,
+                        recipient_email: userEmail,
+                        company_name: 'Jupiter Digital Technologies',
+                        support_email: 'jupiter.digital.tech@gmail.com',
+                        reply_to: userEmail
+                    };
+
+                    console.log('Contact params:', contactParams);
+                    console.log('Reply params:', replyParams);
+
+                    // Send contact email
+                    emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_CONTACT_TEMPLATE_ID, contactParams)
                         .then(function(response) {
-                            console.log('Google Sheets submission successful:', response);
+                            console.log('Contact email sent successfully:', response);
+
+                            // Try to send auto-reply
+                            return emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_AUTO_REPLY_TEMPLATE_ID, replyParams)
+                                .then(function(autoReplyResponse) {
+                                    console.log('Auto-reply sent successfully:', autoReplyResponse);
+                                    return autoReplyResponse;
+                                })
+                                .catch(function(autoReplyError) {
+                                    console.warn('Auto-reply failed, but contact email was sent:', autoReplyError);
+                                    return { status: 'partial_success', message: 'Contact email sent, auto-reply failed' };
+                                });
+                        })
+                        .then(function(response) {
+                            console.log('Email process completed:', response);
                             showSuccessMessage(submitBtn, originalText, contactForm, closeOverlay);
                         })
                         .catch(function(error) {
-                            console.error('Google Sheets submission failed, trying EmailJS:', error);
-                            
-                            // Fallback to EmailJS
-                            if (typeof emailjs !== 'undefined') {
-                                console.log('EmailJS is available, attempting to send...');
-                                console.log('Service ID:', EMAILJS_SERVICE_ID);
-                                console.log('Template ID:', EMAILJS_CONTACT_TEMPLATE_ID);
-                                console.log('User ID:', EMAILJS_USER_ID);
-                                
-                                // Validate EmailJS configuration
-                                if (!EMAILJS_SERVICE_ID || !EMAILJS_CONTACT_TEMPLATE_ID || !EMAILJS_USER_ID) {
-                                    console.error('EmailJS configuration missing');
-                                    fallbackEmailSubmission(userName, userEmail, userPhone, userService, userMessage, submitBtn, originalText, contactForm, closeOverlay);
-                                    return;
-                                }
-                                
-                                // Ensure EmailJS is initialized
-                                if (!emailjs._userID) {
-                                    console.log('EmailJS not initialized, initializing now...');
-                                    try {
-                                        emailjs.init(EMAILJS_USER_ID);
-                                        console.log('EmailJS initialized successfully');
-                                    } catch (initError) {
-                                        console.error('EmailJS initialization failed:', initError);
-                                        fallbackEmailSubmission(userName, userEmail, userPhone, userService, userMessage, submitBtn, originalText, contactForm, closeOverlay);
-                                        return;
-                                    }
-                                }
-                                
-                                // Use EmailJS
-                                const contactParams = {
-                                    name: userName,
-                                    email: userEmail,
-                                    phone: userPhone,
-                                    service: userService,
-                                    message: userMessage,
-                                    // Try all possible recipient field names
-                                    to_email: 'jupiter.digital.tech@gmail.com',
-                                    to: 'jupiter.digital.tech@gmail.com',
-                                    recipient_email: 'jupiter.digital.tech@gmail.com',
-                                    recipient: 'jupiter.digital.tech@gmail.com',
-                                    destination: 'jupiter.digital.tech@gmail.com',
-                                    // Additional field names that might be in your template
-                                    from_name: userName,
-                                    from_email: userEmail,
-                                    user_name: userName,
-                                    user_email: userEmail,
-                                    user_phone: userPhone,
-                                    user_service: userService,
-                                    user_message: userMessage,
-                                    customer_name: userName,
-                                    customer_email: userEmail,
-                                    customer_phone: userPhone,
-                                    customer_service: userService,
-                                    customer_message: userMessage
-                                };
-                                
-                                console.log('Contact params:', contactParams);
-                                
-                                const replyParams = {
-                                    email: userEmail, // For {{email}} in To Email field
-                                    to_email: userEmail,
-                                    to_name: userName,
-                                    from_name: 'Jupiter Digital Technologies',
-                                    // Additional field names for auto-reply template
-                                    name: userName,
-                                    customer_name: userName,
-                                    customer_email: userEmail,
-                                    recipient_name: userName,
-                                    recipient_email: userEmail,
-                                    company_name: 'Jupiter Digital Technologies',
-                                    support_email: 'jupiter.digital.tech@gmail.com',
-                                    reply_to: userEmail // For reply functionality
-                                };
-                                
-                                console.log('Reply params:', replyParams);
-                                
-                                // Send the full contact email directly (no test email)
-                                emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_CONTACT_TEMPLATE_ID, contactParams)
-                                    .then(function(response) {
-                                        console.log('Full contact email sent successfully:', response);
-                                        // Try to send auto-reply, but don't fail if it doesn't work
-                                        return emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_AUTO_REPLY_TEMPLATE_ID, replyParams)
-                                            .then(function(autoReplyResponse) {
-                                                console.log('Auto-reply sent successfully:', autoReplyResponse);
-                                                return autoReplyResponse;
-                                            })
-                                            .catch(function(autoReplyError) {
-                                                console.warn('Auto-reply failed, but contact email was sent:', autoReplyError);
-                                                // Return success even if auto-reply fails
-                                                return { status: 'partial_success', message: 'Contact email sent, auto-reply failed' };
-                                            });
-                                    })
-                                    .then(function(response) {
-                                        console.log('Email process completed:', response);
-                                        showSuccessMessage(submitBtn, originalText, contactForm, closeOverlay);
-                                    })
-                                    .catch(function(error) {
-                                        console.error('EmailJS sending failed:', error);
-                                        console.error('Error details:', {
-                                            status: error.status,
-                                            text: error.text,
-                                            serviceId: EMAILJS_SERVICE_ID,
-                                            templateId: EMAILJS_CONTACT_TEMPLATE_ID,
-                                            fullError: error
-                                        });
-                                        // Log additional error properties
-                                        console.error('Error status:', error.status);
-                                        console.error('Error text:', error.text);
-                                        console.error('Error message:', error.message);
-                                        fallbackEmailSubmission(userName, userEmail, userPhone, userService, userMessage, submitBtn, originalText, contactForm, closeOverlay);
-                                    });
-                            } else {
-                                // EmailJS not available, use final fallback
-                                fallbackEmailSubmission(userName, userEmail, userPhone, userService, userMessage, submitBtn, originalText, contactForm, closeOverlay);
-                            }
+                            console.error('EmailJS sending failed:', error);
+                            console.error('Error details:', {
+                                status: error.status,
+                                text: error.text,
+                                serviceId: EMAILJS_SERVICE_ID,
+                                templateId: EMAILJS_CONTACT_TEMPLATE_ID,
+                                fullError: error
+                            });
+                            fallbackEmailSubmission(userName, userEmail, userPhone, userService, userMessage, submitBtn, originalText, contactForm, closeOverlay);
                         });
                 }
             });
