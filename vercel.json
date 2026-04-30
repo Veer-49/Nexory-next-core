@@ -1,6 +1,10 @@
 {
   "version": 2,
-  "builds": [],
+  "buildCommand": null,
+  "outputDirectory": null,
+  "installCommand": null,
+  "framework": null,
+  "functions": {},
   "routes": [
     {
       "src": "/(.*)",
