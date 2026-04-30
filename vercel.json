@@ -1,14 +1,13 @@
 {
   "version": 2,
-  "buildCommand": null,
-  "outputDirectory": null,
-  "installCommand": null,
-  "framework": null,
-  "functions": {},
-  "routes": [
+  "buildCommand": "npm run build",
+  "outputDirectory": "dist",
+  "installCommand": "npm install",
+  "framework": "vite",
+  "rewrites": [
     {
-      "src": "/(.*)",
-      "dest": "/$1"
+      "source": "/(.*)",
+      "destination": "/$1"
     }
   ]
 }

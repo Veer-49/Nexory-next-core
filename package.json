@@ -5,12 +5,13 @@
   "main": "index.js",
   "scripts": {
     "dev": "vite",
+    "build": "vite build",
     "preview": "vite preview"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-    "dependencies": {
+  "dependencies": {
     "@emailjs/browser": "^4.4.1",
     "cors": "^2.8.6",
     "express": "^5.2.1",
@@ -18,5 +19,8 @@
     "node-fetch": "^3.3.2",
     "nodemailer": "^8.0.7",
     "uuid": "^9.0.1"
+  },
+  "devDependencies": {
+    "vite": "^5.0.0"
   }
 }
