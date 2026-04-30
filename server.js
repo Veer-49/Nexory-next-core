@@ -898,18 +898,23 @@ app.use((err, req, res, next) => {
     });
 });
 
-// Start server
-app.listen(PORT, () => {
-    console.log(`✓ Backend server running on http://localhost:${PORT}`);
-    console.log(`✓ Health check: http://localhost:${PORT}/health`);
-    console.log(`✓ Contact endpoint: POST http://localhost:${PORT}/api/contact`);
-    console.log(`✓ CORS enabled for all origins`);
-    
-    if (!transporter) {
-        console.warn('⚠ Gmail not configured. Email will fall back to EmailJS.');
-        console.warn('⚠ Set GMAIL_USER and GMAIL_PASSWORD environment variables for Gmail support.');
-    }
-});
+// Export for Vercel serverless
+module.exports = app;
+
+// Start server for local development
+if (process.env.NODE_ENV !== 'production' || !process.env.VERCEL) {
+    app.listen(PORT, () => {
+        console.log(`✓ Backend server running on http://localhost:${PORT}`);
+        console.log(`✓ Health check: http://localhost:${PORT}/health`);
+        console.log(`✓ Contact endpoint: POST http://localhost:${PORT}/api/contact`);
+        console.log(`✓ CORS enabled for all origins`);
+        
+        if (!transporter) {
+            console.warn('⚠ Gmail not configured. Email will fall back to EmailJS.');
+            console.warn('⚠ Set GMAIL_USER and GMAIL_PASSWORD environment variables for Gmail support.');
+        }
+    });
+}
 
 // Graceful shutdown
 process.on('SIGTERM', () => {
