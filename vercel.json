@@ -1,14 +1,10 @@
 {
   "version": 2,
-  "buildCommand": null,
-  "installCommand": null,
+  "builds": [],
   "routes": [
     {
       "src": "/(.*)",
       "dest": "/$1"
     }
-  ],
-  "env": {
-    "NODE_ENV": "production"
-  }
+  ]
 }
