@@ -1,0 +1,7 @@
+{
+  "admin": {
+    "username": "admin",
+    "password": "admin123",
+    "apiKey": "admin-secret-key-2024"
+  }
+}
