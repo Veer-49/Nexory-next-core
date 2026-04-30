@@ -139,5 +139,10 @@ tooltip.addEventListener('click', () => {
         }
     }
 });
+
+// Set dynamic year in footer
+document.querySelectorAll('.dynamic-year').forEach(el => {
+    el.textContent = new Date().getFullYear();
+});
 </script>
 
