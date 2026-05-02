@@ -279,6 +279,8 @@
                             <i class="fas fa-user me-1"></i> Admin
                         </button>
                         <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#" onclick="showDataRetentionInfo()"><i class="fas fa-clock me-2"></i>Data Retention</a></li>
+                            <li><a class="dropdown-item" href="#" onclick="cleanupOldData()"><i class="fas fa-broom me-2"></i>Cleanup Old Data</a></li>
                             <li><a class="dropdown-item" href="#"><i class="fas fa-cog me-2"></i>Settings</a></li>
                             <li>
                                 <hr class="dropdown-divider">
@@ -910,7 +912,7 @@
                         <div class="row">
                             <div class="col-md-6 mb-3">
                                 <label class="form-label">Client *</label>
-                                <select class="form-select" id="invoiceClient" required>
+                                <select class="form-select" id="invoiceClient" required onchange="updateInvoiceClientName()">
                                     <option value="">Select Client</option>
                                 </select>
                             </div>

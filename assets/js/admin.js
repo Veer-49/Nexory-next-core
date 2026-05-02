@@ -12,6 +12,13 @@ const mockData = {
     expenses: []
 };
 
+// Data retention settings
+const DATA_RETENTION = {
+    LEADS_CLIENTS_MONTHS: 1, // Auto-delete leads/clients after 1 month
+    INVOICES_YEARS: 5,      // Keep invoices for 5 years (long-term revenue)
+    EXPENSES_YEARS: 5        // Keep expenses for 5 years (long-term records)
+};
+
 // Function to detect API base URL based on current domain
 function getApiBaseUrl() {
     const currentHost = window.location.hostname;
@@ -58,11 +65,165 @@ async function authenticatedFetch(url, options = {}) {
     return fetch(fullUrl, options);
 }
 
+// Data cleanup functions
+function cleanupOldData() {
+    const now = new Date();
+    const oneMonthAgo = new Date(now.getFullYear(), now.getMonth() - DATA_RETENTION.LEADS_CLIENTS_MONTHS, now.getDate());
+    const fiveYearsAgo = new Date(now.getFullYear() - DATA_RETENTION.INVOICES_YEARS, now.getMonth(), now.getDate());
+    
+    // Cleanup old leads (older than 1 month)
+    const originalLeadsCount = mockData.leads.length;
+    mockData.leads = mockData.leads.filter(lead => {
+        const leadDate = new Date(lead.created_at);
+        return leadDate > oneMonthAgo;
+    });
+    
+    // Cleanup old clients (older than 1 month)
+    const originalClientsCount = mockData.clients.length;
+    mockData.clients = mockData.clients.filter(client => {
+        const clientDate = new Date(client.created_at);
+        return clientDate > oneMonthAgo;
+    });
+    
+    // Keep invoices for long-term revenue (5 years)
+    const originalInvoicesCount = mockData.invoices.length;
+    mockData.invoices = mockData.invoices.filter(invoice => {
+        const invoiceDate = new Date(invoice.created_at);
+        return invoiceDate > fiveYearsAgo;
+    });
+    
+    // Keep expenses for long-term records (5 years)
+    const originalExpensesCount = mockData.expenses.length;
+    mockData.expenses = mockData.expenses.filter(expense => {
+        const expenseDate = new Date(expense.created_at);
+        return expenseDate > fiveYearsAgo;
+    });
+    
+    // Log cleanup results
+    const deletedLeads = originalLeadsCount - mockData.leads.length;
+    const deletedClients = originalClientsCount - mockData.clients.length;
+    const deletedInvoices = originalInvoicesCount - mockData.invoices.length;
+    const deletedExpenses = originalExpensesCount - mockData.expenses.length;
+    
+    if (deletedLeads > 0 || deletedClients > 0 || deletedInvoices > 0 || deletedExpenses > 0) {
+        console.log('Data cleanup completed:', {
+            deletedLeads,
+            deletedClients,
+            deletedInvoices,
+            deletedExpenses,
+            cleanupDate: now.toISOString()
+        });
+        
+        // Show notification for significant cleanups
+        if (deletedLeads > 0 || deletedClients > 0) {
+            showNotification(`Auto-cleanup: Removed ${deletedLeads} old leads and ${deletedClients} old clients (older than 1 month)`, 'info');
+        }
+    }
+}
+
+function getDataRetentionInfo() {
+    const now = new Date();
+    const oneMonthAgo = new Date(now.getFullYear(), now.getMonth() - 1, now.getDate());
+    const fiveYearsAgo = new Date(now.getFullYear() - 5, now.getMonth(), now.getDate());
+    
+    const expiringLeads = mockData.leads.filter(lead => {
+        const leadDate = new Date(lead.created_at);
+        return leadDate <= oneMonthAgo;
+    }).length;
+    
+    const expiringClients = mockData.clients.filter(client => {
+        const clientDate = new Date(client.created_at);
+        return clientDate <= oneMonthAgo;
+    }).length;
+    
+    return {
+        totalLeads: mockData.leads.length,
+        totalClients: mockData.clients.length,
+        totalInvoices: mockData.invoices.length,
+        totalExpenses: mockData.expenses.length,
+        expiringLeads,
+        expiringClients,
+        retentionPeriod: `${DATA_RETENTION.LEADS_CLIENTS_MONTHS} month(s)`,
+        invoiceRetention: `${DATA_RETENTION.INVOICES_YEARS} year(s)`,
+        nextCleanup: 'Next page load'
+    };
+}
+
+function showDataRetentionInfo() {
+    const info = getDataRetentionInfo();
+    
+    const modalHtml = `
+        <div class="modal fade" id="dataRetentionModal" tabindex="-1">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">
+                            <i class="fas fa-clock me-2"></i>Data Retention Policy
+                        </h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="alert alert-info">
+                            <i class="fas fa-info-circle me-2"></i>
+                            <strong>Automatic Data Cleanup</strong><br>
+                            Old data is automatically cleaned up to maintain system performance.
+                        </div>
+                        
+                        <h6 class="mt-3"><i class="fas fa-users me-2"></i>Leads & Clients</h6>
+                        <ul class="list-unstyled">
+                            <li><strong>Retention Period:</strong> ${info.retentionPeriod}</li>
+                            <li><strong>Current Leads:</strong> ${info.totalLeads}</li>
+                            <li><strong>Current Clients:</strong> ${info.totalClients}</li>
+                            ${info.expiringLeads > 0 || info.expiringClients > 0 ? 
+                                `<li class="text-warning"><i class="fas fa-exclamation-triangle me-1"></i>
+                                    ${info.expiringLeads} leads and ${info.expiringClients} clients will be deleted on next cleanup</li>` : 
+                                '<li class="text-success"><i class="fas fa-check me-1"></i>No leads/clients expiring soon</li>'}
+                        </ul>
+                        
+                        <h6 class="mt-3"><i class="fas fa-file-invoice-dollar me-2"></i>Financial Data</h6>
+                        <ul class="list-unstyled">
+                            <li><strong>Invoices Retention:</strong> ${info.invoiceRetention} (long-term revenue tracking)</li>
+                            <li><strong>Current Invoices:</strong> ${info.totalInvoices}</li>
+                            <li><strong>Current Expenses:</strong> ${info.totalExpenses}</li>
+                        </ul>
+                        
+                        <div class="alert alert-success mt-3">
+                            <i class="fas fa-shield-alt me-2"></i>
+                            <strong>Revenue Data Preserved</strong><br>
+                            All financial data is kept long-term for accurate business analytics and reporting.
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary" onclick="cleanupOldData(); bootstrap.Modal.getInstance(document.getElementById('dataRetentionModal')).hide();">
+                            <i class="fas fa-broom me-2"></i>Run Cleanup Now
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    `;
+    
+    // Remove existing modal if present
+    const existingModal = document.getElementById('dataRetentionModal');
+    if (existingModal) {
+        existingModal.remove();
+    }
+    
+    // Add modal to body and show it
+    document.body.insertAdjacentHTML('beforeend', modalHtml);
+    const modal = new bootstrap.Modal(document.getElementById('dataRetentionModal'));
+    modal.show();
+}
+
 // Initialize on page load
 document.addEventListener('DOMContentLoaded', function() {
     checkAuthentication();
     initializeEventListeners();
     setDefaultDates();
+    
+    // Run data cleanup on page load
+    cleanupOldData();
 });
 
 // Check authentication
@@ -208,37 +369,64 @@ function showSection(sectionName) {
 // Refresh all data
 function refreshData() {
     showNotification('Refreshing data...', 'info');
+    
+    // Run cleanup before refreshing data
+    cleanupOldData();
+    
     loadDashboardData();
     if (currentSection !== 'dashboard') {
         showSection(currentSection);
     }
-    showNotification('Data refreshed successfully!', 'success');
+    
+    const retentionInfo = getDataRetentionInfo();
+    showNotification(`Data refreshed! Active: ${retentionInfo.totalLeads} leads, ${retentionInfo.totalClients} clients`, 'success');
 }
 
 // Load dashboard data
 async function loadDashboardData() {
     try {
-        // Static mock data for demo
+        // Calculate actual stats from mock data
+        const currentMonth = new Date().getMonth();
+        const currentYear = new Date().getFullYear();
+        
         const stats = {
-            totalLeads: 0,
-            leadsThisMonth: 0,
-            totalClients: 0,
-            totalRevenue: 0,
-            revenueThisMonth: 0,
-            revenueThisWeek: 0,
-            revenueThisYear: 0,
-            totalExpenses: 0,
-            expensesThisMonth: 0,
-            expensesThisWeek: 0,
-            expensesThisYear: 0,
+            totalLeads: mockData.leads.length,
+            leadsThisMonth: mockData.leads.filter(lead => {
+                const leadDate = new Date(lead.created_at);
+                return leadDate.getMonth() === currentMonth && leadDate.getFullYear() === currentYear;
+            }).length,
+            totalClients: mockData.clients.length,
+            totalRevenue: mockData.invoices.reduce((sum, invoice) => sum + (invoice.total || 0), 0),
+            revenueThisMonth: mockData.invoices.filter(invoice => {
+                const invoiceDate = new Date(invoice.created_at);
+                return invoiceDate.getMonth() === currentMonth && invoiceDate.getFullYear() === currentYear;
+            }).reduce((sum, invoice) => sum + (invoice.total || 0), 0),
+            revenueThisWeek: 0, // Calculate this week if needed
+            revenueThisYear: mockData.invoices.filter(invoice => {
+                const invoiceDate = new Date(invoice.created_at);
+                return invoiceDate.getFullYear() === currentYear;
+            }).reduce((sum, invoice) => sum + (invoice.total || 0), 0),
+            totalExpenses: mockData.expenses.reduce((sum, expense) => sum + (expense.amount || 0), 0),
+            expensesThisMonth: mockData.expenses.filter(expense => {
+                const expenseDate = new Date(expense.created_at);
+                return expenseDate.getMonth() === currentMonth && expenseDate.getFullYear() === currentYear;
+            }).reduce((sum, expense) => sum + (expense.amount || 0), 0),
+            expensesThisWeek: 0, // Calculate this week if needed
+            expensesThisYear: mockData.expenses.filter(expense => {
+                const expenseDate = new Date(expense.created_at);
+                return expenseDate.getFullYear() === currentYear;
+            }).reduce((sum, expense) => sum + (expense.amount || 0), 0),
             netProfit: 0
         };
 
+        // Calculate net profit
+        stats.netProfit = stats.totalRevenue - stats.totalExpenses;
+
         const revenue = {
             today: 0,
-            week: 0,
-            month: 0,
-            year: 0,
+            week: stats.revenueThisWeek,
+            month: stats.revenueThisMonth,
+            year: stats.revenueThisYear,
             monthlyTrend: []
         };
 
@@ -275,17 +463,57 @@ function updateDashboardStats(stats) {
 }
 
 function loadRevenueCharts() {
-    // Static mock data for revenue charts
-    const mockRevenueData = {
-        today: 0,
-        week: 0,
-        month: 0,
-        year: 0,
-        monthlyTrend: []
-    };
+    // Calculate actual revenue data from invoices
+    const revenueData = calculateRevenueData();
     
-    createRevenueChart(mockRevenueData.monthlyTrend);
+    createRevenueChart(revenueData.monthlyTrend);
     createLeadSourceChart();
+    createRevenueByClientChart();
+}
+
+function calculateRevenueData() {
+    const currentMonth = new Date().getMonth();
+    const currentYear = new Date().getFullYear();
+    
+    // Calculate monthly revenue trend for the last 6 months
+    const monthlyTrend = [];
+    const today = new Date();
+    
+    for (let i = 5; i >= 0; i--) {
+        const date = new Date(today.getFullYear(), today.getMonth() - i, 1);
+        const monthStr = date.toISOString().slice(0, 7); // YYYY-MM format
+        const month = date.getMonth();
+        const year = date.getFullYear();
+        
+        const monthRevenue = mockData.invoices
+            .filter(invoice => {
+                const invoiceDate = new Date(invoice.created_at);
+                return invoiceDate.getMonth() === month && invoiceDate.getFullYear() === year;
+            })
+            .reduce((sum, invoice) => sum + (invoice.total || 0), 0);
+        
+        monthlyTrend.push({
+            month: monthStr,
+            revenue: monthRevenue
+        });
+    }
+    
+    return {
+        today: mockData.invoices.filter(invoice => {
+            const invoiceDate = new Date(invoice.created_at);
+            return invoiceDate.toDateString() === today.toDateString();
+        }).reduce((sum, invoice) => sum + (invoice.total || 0), 0),
+        week: 0, // Calculate this week if needed
+        month: mockData.invoices.filter(invoice => {
+            const invoiceDate = new Date(invoice.created_at);
+            return invoiceDate.getMonth() === currentMonth && invoiceDate.getFullYear() === currentYear;
+        }).reduce((sum, invoice) => sum + (invoice.total || 0), 0),
+        year: mockData.invoices.filter(invoice => {
+            const invoiceDate = new Date(invoice.created_at);
+            return invoiceDate.getFullYear() === currentYear;
+        }).reduce((sum, invoice) => sum + (invoice.total || 0), 0),
+        monthlyTrend: monthlyTrend
+    };
 }
 
 function createRevenueChart(monthlyData) {
@@ -578,6 +806,7 @@ function saveLead() {
         bootstrap.Modal.getInstance(document.getElementById('leadModal')).hide();
         showNotification(editId ? 'Lead updated successfully!' : 'Lead saved successfully!', 'success');
         loadLeads();
+        loadDashboardData(); // Update dashboard stats
         delete document.getElementById('leadForm').dataset.editId;
     } catch (error) {
         console.error('Error saving lead:', error);
@@ -712,6 +941,7 @@ function saveClient() {
         bootstrap.Modal.getInstance(document.getElementById('clientModal')).hide();
         showNotification(editId ? 'Client updated successfully!' : 'Client saved successfully!', 'success');
         loadClients();
+        loadDashboardData(); // Update dashboard stats
         delete document.getElementById('clientForm').dataset.editId;
         document.querySelector('#clientModal .modal-title').textContent = 'Add New Client';
     } catch (error) {
@@ -796,9 +1026,26 @@ function loadClientsForInvoice() {
     }
 }
 
+function updateInvoiceClientName() {
+    const clientId = document.getElementById('invoiceClient').value;
+    const clientNameInput = document.getElementById('invoiceClientName');
+    
+    if (clientId && clientNameInput) {
+        const client = mockData.clients.find(c => c.id === clientId);
+        if (client) {
+            clientNameInput.value = client.company_name;
+        } else {
+            clientNameInput.value = '';
+        }
+    } else if (clientNameInput) {
+        clientNameInput.value = '';
+    }
+}
+
 function openInvoiceModal() {
     document.getElementById('invoiceForm').reset();
     generateInvoiceNumber();
+    loadClientsForInvoice(); // Load clients when opening modal
     const modal = new bootstrap.Modal(document.getElementById('invoiceModal'));
     modal.show();
 }
@@ -920,6 +1167,7 @@ async function saveInvoice() {
         bootstrap.Modal.getInstance(document.getElementById('invoiceModal')).hide();
         showNotification('Invoice created successfully!', 'success');
         loadInvoices();
+        loadDashboardData(); // Update dashboard stats
     } catch (error) {
         console.error('Error creating invoice:', error);
         showNotification('Error creating invoice', 'error');
@@ -1056,17 +1304,11 @@ function deleteExpense(id) {
 
 // Revenue Functions
 function loadRevenueData() {
-    // Static mock data for revenue
-    const mockRevenue = {
-        today: 0,
-        week: 0,
-        month: 0,
-        year: 0,
-        monthlyTrend: []
-    };
+    // Calculate actual revenue data from invoices
+    const revenueData = calculateRevenueData();
     
-    updateRevenueStats(mockRevenue);
-    createRevenueOverviewChart(mockRevenue.monthlyTrend);
+    updateRevenueStats(revenueData);
+    createRevenueOverviewChart(revenueData.monthlyTrend);
     createRevenueByClientChart();
 }
 
@@ -1127,18 +1369,37 @@ function createRevenueByClientChart() {
         charts.revenueByClientChart.destroy();
     }
     
-    // Empty data until real client revenue data is available
+    // Calculate revenue by client
+    const clientRevenue = {};
+    
+    mockData.invoices.forEach(invoice => {
+        const clientName = invoice.company_name || 'Unknown Client';
+        if (!clientRevenue[clientName]) {
+            clientRevenue[clientName] = 0;
+        }
+        clientRevenue[clientName] += invoice.total || 0;
+    });
+    
+    // Sort by revenue and take top clients
+    const sortedClients = Object.entries(clientRevenue)
+        .sort(([,a], [,b]) => b - a)
+        .slice(0, 5); // Top 5 clients
+    
+    const labels = sortedClients.map(([client]) => client);
+    const data = sortedClients.map(([, revenue]) => revenue);
+    
     charts.revenueByClientChart = new Chart(ctx, {
         type: 'doughnut',
         data: {
-            labels: [],
+            labels: labels,
             datasets: [{
-                data: [],
+                data: data,
                 backgroundColor: [
                     '#2563eb',
                     '#10b981',
                     '#f59e0b',
-                    '#ef4444'
+                    '#ef4444',
+                    '#8b5cf6'
                 ]
             }]
         },
@@ -1148,6 +1409,17 @@ function createRevenueByClientChart() {
             plugins: {
                 legend: {
                     position: 'bottom'
+                },
+                tooltip: {
+                    callbacks: {
+                        label: function(context) {
+                            const label = context.label || '';
+                            const value = '₹' + formatNumber(context.parsed);
+                            const total = context.dataset.data.reduce((a, b) => a + b, 0);
+                            const percentage = ((context.parsed / total) * 100).toFixed(1);
+                            return `${label}: ${value} (${percentage}%)`;
+                        }
+                    }
                 }
             }
         }
@@ -1504,22 +1776,18 @@ async function markAsPaid(id) {
     if (!confirm('Are you sure you want to mark this invoice as paid?')) return;
     
     try {
-        const response = await authenticatedFetch(`${API_BASE_URL}/api/admin/invoices/${id}`, {
-            method: 'PUT',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({ status: 'paid' })
-        });
-        
-        const result = await response.json();
-        
-        if (result.success) {
+        // Find the invoice in mock data
+        const invoiceIndex = mockData.invoices.findIndex(inv => inv.id === id);
+        if (invoiceIndex !== -1) {
+            // Update the invoice status
+            mockData.invoices[invoiceIndex].status = 'paid';
+            mockData.invoices[invoiceIndex].updated_at = new Date().toISOString();
+            
             showNotification('Invoice marked as paid!', 'success');
             loadInvoices();
-            refreshDashboardStats();
+            loadDashboardData(); // Update dashboard stats
         } else {
-            showNotification('Error updating invoice: ' + result.error, 'error');
+            showNotification('Invoice not found', 'error');
         }
     } catch (error) {
         console.error('Error marking invoice as paid:', error);
@@ -1531,19 +1799,17 @@ async function deleteInvoice(id) {
     if (!confirm('Are you sure you want to delete this invoice? This action cannot be undone and will affect revenue calculations.')) return;
     
     try {
-        const response = await authenticatedFetch(`${API_BASE_URL}/api/admin/invoices/${id}`, {
-            method: 'DELETE'
-        });
-        
-        const result = await response.json();
-        
-        if (result.success) {
+        // Find the invoice in mock data
+        const invoiceIndex = mockData.invoices.findIndex(inv => inv.id === id);
+        if (invoiceIndex !== -1) {
+            // Remove the invoice
+            mockData.invoices.splice(invoiceIndex, 1);
+            
             showNotification('Invoice deleted successfully!', 'success');
             loadInvoices();
-            refreshDashboardStats();
-            refreshRevenueStats();
+            loadDashboardData(); // Update dashboard stats
         } else {
-            showNotification('Error deleting invoice: ' + result.error, 'error');
+            showNotification('Invoice not found', 'error');
         }
     } catch (error) {
         console.error('Error deleting invoice:', error);
